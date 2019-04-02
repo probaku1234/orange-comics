@@ -48,16 +48,24 @@
                 <a class="nav-link" href="my_favorites">My Favorites</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 nav_list_indent">
+        <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type>Search</button>
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">
                 <a class="nav-link" href="messages">Messages</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="notifications">Notifications</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Notification (3)
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="notifications">notification 1</a>
+                    <a class="dropdown-item" href="notifications">notification 2</a>
+                    <a class="dropdown-item" href="notifications">notification 3</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="login">Log In</a>
@@ -65,8 +73,23 @@
         </ul>
     </div>
 </nav>
-<div class="splash_login h-92">
-search results
+<div class="splash h-92">
+    <div style="height: 5%;"></div>
+    <div style="height: 5%; margin-left: 10%; margin-right: 10%">
+        <div style="width: 62%; height: 100%; margin-right: 10%;">
+            <form class="form-inline my-2 my-lg-0 nav_list_indent">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 70%">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search within Results</button>
+            </form>
+        </div>
+    </div>
+
+    <div style="height: 85%; display: flex; margin-left: 10%; margin-right: 10%">
+        <div style="width: 100%; height: 100%; border-style: solid; border-color: #1d2124;">
+            <div style="text-align: center; font-size: 30px">Search results are showed here</div>
+        </div>
+
+    </div>
 </div>
 
 </body>

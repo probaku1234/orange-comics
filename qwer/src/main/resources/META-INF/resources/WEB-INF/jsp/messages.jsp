@@ -73,7 +73,7 @@
         </ul>
     </div>
 </nav>
-<div class="splash_login h-92">
+<div class="splash h-92">
     <div style="height: 10%"></div>
     <div class="container">
         <div class="messaging">

@@ -73,8 +73,40 @@
         </ul>
     </div>
 </nav>
-<div class="splash_login h-92">
-My Favorites
+<div class="splash h-92">
+    <div style="height: 5%;"></div>
+    <div style="height: 5%;">
+        <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 3%;">
+
+        </div>
+        <div style="width: 62%; height: 100%; margin-right: 10%;">
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+        </div>
+    </div>
+
+    <div style="height: 85%; display: flex">
+        <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 3%; border-style: solid; border-color: #1d2124;">
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+        </div>
+        <div style="width: 62%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124;">
+            <div style="text-align: center; font-size: 30px">List of my favorite comics are showed here</div>
+        </div>
+
+    </div>
 </div>
 
 </body>

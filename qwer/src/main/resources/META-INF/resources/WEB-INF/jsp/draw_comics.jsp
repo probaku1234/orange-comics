@@ -73,8 +73,56 @@
         </ul>
     </div>
 </nav>
-<div class="splash_login h-92">
-Draw/Post/Edit Comics
+<div class="splash h-92">
+    <div style="height: 5%;"></div>
+    <div id="functions" style="height: 10%; margin-left: 10%; margin-right: 10%; display: flex">
+        <div style="height: 100%; width: 33%; border-style: solid; border-color: #1b1e21; flex: 1;">
+            Font Options
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Sansrif</a>
+                    <a class="dropdown-item" href="#">Arial</a>
+                    <a class="dropdown-item" href="#">Consolas</a>
+                </div>
+            </div>
+        </div>
+        <div style="height: 100%; width: 33%; border-style: solid; border-color: #1b1e21; flex: 1;">
+            Shapes Options
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" href="#">Rectangle</a>
+                    <a class="dropdown-item" href="#">Circle</a>
+                    <a class="dropdown-item" href="#">Triangle</a>
+                </div>
+            </div>
+        </div>
+        <div style="height: 100%; width: 33%; border-style: solid; border-color: #1b1e21; flex: 1;">
+            pre-made character
+        </div>
+    </div>
+    <div style="height: 3%"></div>
+    <div class="align-content-center" style="display: flex; height: 75%">
+        <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 2%; align-items: center; border-style: solid; border-color: #1d2124;">
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Navigate Comic Pages</button>
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Add Background</button>
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Upload Image</button>
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Upload moving Image</button>
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Cartoonize Image</button>
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Add Genre & Tags</button>
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Save Draft</button>
+            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Post Comics</button>
+        </div>
+
+        <div id="canvas" style="width: 63%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
+            canvas
+        </div>
+    </div>
 </div>
 
 </body>

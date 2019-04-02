@@ -20,12 +20,6 @@ public class WelcomeController {
         return "login";
     }
 
-    @RequestMapping("/notifications")
-    public String notifications(Map<String, Object> model) {
-        model.put("message", "You are in new page !!");
-        return "notifications";
-    }
-
     @RequestMapping("/messages")
     public String messages(Map<String, Object> model) {
         model.put("message", "You are in new page !!");
