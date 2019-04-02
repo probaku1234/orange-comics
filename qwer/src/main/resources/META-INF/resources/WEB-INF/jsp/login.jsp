@@ -15,7 +15,7 @@
 
     <title>Orange Comics</title>
 </head>
-<body>
+<body style="overflow:hidden;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
