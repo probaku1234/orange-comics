@@ -57,14 +57,15 @@
                 <a class="nav-link" href="messages">Messages</a>
             </li>
 
-
-
-
-
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="notifications">Notifications</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Notification (3)
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="notifications">notification 1</a>
+                    <a class="dropdown-item" href="notifications">notification 2</a>
+                    <a class="dropdown-item" href="notifications">notification 3</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="login">Log In</a>
@@ -72,8 +73,6 @@
         </ul>
     </div>
 </nav>
-
-
 
 
 <div class="splash h-92">

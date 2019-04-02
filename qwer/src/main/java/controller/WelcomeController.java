@@ -32,16 +32,16 @@ public class WelcomeController {
         return "messages";
     }
 
-    @RequestMapping("/my_favorites")
-    public String my_favorites(Map<String, Object> model) {
-        model.put("message", "You are in new page !!");
-        return "my_favorites";
-    }
-
     @RequestMapping("/all_comics")
     public String all_comics(Map<String, Object> model) {
         model.put("message", "You are in new page !!");
         return "all_comics";
+    }
+
+    @RequestMapping("/my_favorites")
+    public String my_favorites(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "my_favorites";
     }
 
     @RequestMapping("/draw_comics")

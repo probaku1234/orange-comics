@@ -54,7 +54,7 @@
     </div>
 </nav>
 <div class="splash_login h-92">
-
+Notifications
 </div>
 
 </body>
