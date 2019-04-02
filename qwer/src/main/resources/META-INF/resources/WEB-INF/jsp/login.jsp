@@ -108,7 +108,7 @@
             </div>
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                    Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+                    Don't have an account? <a href="#" class="ml-2" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center links">
                     <a href="#">Forgot your password?</a>
@@ -117,8 +117,42 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <i class="fas fa-user prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+                        <input type="text" id="orangeForm-name" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-5">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+                        <input type="email" id="orangeForm-email" class="form-control validate">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+                        <input type="password" id="orangeForm-pass" class="form-control validate">
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-deep-orange">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="gradient"></div>
 </div>
-
 </body>
 </html>
