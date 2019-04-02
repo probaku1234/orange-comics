@@ -2,10 +2,10 @@
 cse 308 team orange project
 
 # members 
-jkc7848 - Kyung Chul Cho <br/>
-ConnorCMcD - Connor McDermott <br/>
-YONGHJEONG - Yong Hun Jeong <br/>
-probaku1234 - Yun Seob Lee
+Lead Designer : jkc7848 - Kyung Chul Cho <br/>
+Data Designer : ConnorCMcD - Connor McDermott <br/>
+Projet Manager : YONGHJEONG - Yong Hun Jeong <br/>
+Lead Progammer : probaku1234 - Yun Seob Lee
 
 # deploy
 http://orangecomics.herokuapp.com/
