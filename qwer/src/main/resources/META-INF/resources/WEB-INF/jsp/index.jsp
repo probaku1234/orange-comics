@@ -1,12 +1,133 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>JSP - Hello World Tutorial - Programmer Gate</title>
+    <meta name="viewport" content="width=1200" />
+    <meta name="keywords" content="page,flip,pages,effect,flipbook,flipboard,jquery,html5,book,magazine,newspaper,ipad,iphone,android,ios" />
+    <meta name="description" content="Turn.js makes a beautiful page turning effect using HTML5 and jQuery" />
+    <link rel="icon" type="image/png" href="pics/favicon.png" />
+    <link type="text/css" rel="stylesheet" href="css/jquery.ui.css"></link>
+    <link type="text/css" rel="stylesheet" href="css/default.css"></link>
+    <script type="text/javascript" src="extras/all.js"></script>
+    <script type="text/javascript" src="lib/hash.js"></script>
+    <script type="text/javascript" src="lib/turn.min.js"></script>
+    <script type="text/javascript" src="lib/zoom.min.js"></script>
+    <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="icon" href="/images/logo.png">
+
+    <title>Orange Comics</title>
 </head>
 <body>
-<p>hello world!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse no_padding_margin nav_left_margin" id="navbarTogglerDemo01">
+        <a class="navbar-brand no_padding_margin" href="index">
+            <img src="/images/logo2.png" width="150" alt="">
+        </a>
+        <p class="nav_logo_indent"></p>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item nav_list_indent">
+                <a class="nav-link" href="all_comics">All Comics</a>
+            </li>
+            <li class="nav-item nav_list_indent">
+                <a class="nav-link" href="draw_comics">Post Comics</a>
+            </li>
+            <li class="nav-item nav_list_indent">
+                <a class="nav-link" href="my_favorites">My Favorites</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 nav_list_indent">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
+            <li class="nav-item">
+                <a class="nav-link" href="messages">Messages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="notifications">Notifications</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login">Log In</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<div class="splash h-92">
+    <div class="center">
+        <div style="height: 10%"></div>
+        <div class="bookshelf">
+            <div class="shelf">
+                <div class="row-1">
+                    <div class="loc">
+                        <div> <div class="sample thumb1" sample="book1"></div> </div>
+                        <div> <div class="sample thumb2" sample="book2"></div> </div>
+                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    </div>
+                </div>
+                <div style="height: 10%"></div>
+                <div class="row-2">
+                    <div class="loc">
+                        <div> <div class="sample thumb1" sample="book1"></div> </div>
+                        <div> <div class="sample thumb2" sample="book2"></div> </div>
+                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bookshelf" style="float: right">
+            <div class="shelf">
+                <div class="row-1">
+                    <div class="loc">
+                        <div> <div class="sample thumb1" sample="book1"></div> </div>
+                        <div> <div class="sample thumb2" sample="book2"></div> </div>
+                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    </div>
+                </div>
+                <div style="height: 10%"></div>
+                <div class="row-2">
+                    <div class="loc">
+                        <div> <div class="sample thumb1" sample="book1"></div> </div>
+                        <div> <div class="sample thumb2" sample="book2"></div> </div>
+                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Samples-->
+        <div class="samples">
+            <div class="bar">
+                <a class="icon quit"></a>
+            </div>
+            <div id="book-wrapper">
+                <div id="book-zoom"></div>
+            </div>
+            <div id="slider-bar" class="turnjs-slider">
+                <div id="slider"></div>
+            </div>
+
+        </div>
+
+        <!-- End samples -->
+
+    </div>
+    <div class="gradient"></div>
+</div>
+
+
+
 </body>
 </html>
