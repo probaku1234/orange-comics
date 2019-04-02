@@ -19,4 +19,40 @@ public class WelcomeController {
         model.put("message", "You are in new page !!");
         return "login";
     }
+
+    @RequestMapping("/notifications")
+    public String notifications(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "notifications";
+    }
+
+    @RequestMapping("/messages")
+    public String messages(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "messages";
+    }
+
+    @RequestMapping("/my_favorites")
+    public String my_favorites(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "my_favorites";
+    }
+
+    @RequestMapping("/all_comics")
+    public String all_comics(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "all_comics";
+    }
+
+    @RequestMapping("/draw_comics")
+    public String draw_comics(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "draw_comics";
+    }
+
+    @RequestMapping("/search_result")
+    public String search_result(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "search_result";
+    }
 }
