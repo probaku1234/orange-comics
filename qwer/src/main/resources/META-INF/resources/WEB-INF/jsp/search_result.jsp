@@ -3,9 +3,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" rel="stylesheet" href="css/default.css"></link>
+    <meta name="viewport" content="width=1200" />
+    <meta name="keywords" content="page,flip,pages,effect,flipbook,flipboard,jquery,html5,book,magazine,newspaper,ipad,iphone,android,ios" />
+    <meta name="description" content="Turn.js makes a beautiful page turning effect using HTML5 and jQuery" />
+    <link type="text/css" rel="stylesheet" href="css/jquery.ui.css">
+    <link type="text/css" rel="stylesheet" href="css/default.css">
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
+    <script type="text/javascript" src='bootstrap/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="extras/all.js"></script>
+    <script type="text/javascript" src="lib/hash.js"></script>
+    <script type="text/javascript" src="lib/turn.min.js"></script>
+    <script type="text/javascript" src="lib/zoom.min.js"></script>
+    <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <link rel="icon" type="image/png" href="pics/favicon.png" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">

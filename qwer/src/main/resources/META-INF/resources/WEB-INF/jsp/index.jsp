@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/login.css">
     <link rel="icon" href="/images/logo.png">
 
     <title>Orange Comics</title>
