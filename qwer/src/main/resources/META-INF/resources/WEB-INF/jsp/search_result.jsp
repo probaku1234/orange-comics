@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/search_result.css">
     <link rel="icon" href="/images/logo.png">
 
     <title>Orange Comics</title>
@@ -72,71 +73,24 @@
         </ul>
     </div>
 </nav>
-
-
 <div class="splash h-92">
-    <div class="center">
-        <div style="height: 10%"></div>
-        <div class="bookshelf">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
+    <div style="height: 5%;"></div>
+    <div style="height: 5%; margin-left: 10%; margin-right: 10%">
+        <div style="width: 62%; height: 100%; margin-right: 10%;">
+            <form class="form-inline my-2 my-lg-0 nav_list_indent">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 70%">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search within Results</button>
+            </form>
         </div>
-        <div class="bookshelf" style="float: right">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
+    </div>
+
+    <div style="height: 85%; display: flex; margin-left: 10%; margin-right: 10%">
+        <div style="width: 100%; height: 100%; border-style: solid; border-color: #1d2124;">
+            <div style="text-align: center; font-size: 30px">Search results are showed here</div>
         </div>
-
-        <!-- Samples-->
-        <div class="samples">
-            <div class="bar">
-                <a class="icon quit"></a>
-            </div>
-            <div id="book-wrapper">
-                <div id="book-zoom"></div>
-            </div>
-            <div id="slider-bar" class="turnjs-slider">
-                <div id="slider"></div>
-            </div>
-
-        </div>
-
-        <!-- End samples -->
 
     </div>
-    <div class="gradient"></div>
 </div>
-
-
 
 </body>
 </html>

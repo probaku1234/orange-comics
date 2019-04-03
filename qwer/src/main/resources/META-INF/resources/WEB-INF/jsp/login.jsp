@@ -22,11 +22,12 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="icon" href="/images/logo.png">
 
     <title>Orange Comics</title>
 </head>
-<body>
+<body style="overflow:hidden;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -72,71 +73,86 @@
         </ul>
     </div>
 </nav>
-
-
-<div class="splash h-92">
-    <div class="center">
-        <div style="height: 10%"></div>
-        <div class="bookshelf">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
+<div class="splash_login h-92">
+    <div class="d-flex justify-content-center h-90">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="/images/logo.png" class="brand_logo" alt="Logo">
                 </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><img src="icons/person.svg" alt=""></span>
+                        </div>
+                        <input type="text" name="" class="form-control input_user" value="" placeholder="username">
                     </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><img src="icons/key.svg" alt=""></span>
+                        </div>
+                        <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customControlInline">
+                            <label class="custom-control-label" for="customControlInline">Remember me</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <button type="button" name="button" class="btn login_btn">Login</button>
+            </div>
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    Don't have an account? <a href="#" class="ml-2" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
+                </div>
+                <div class="d-flex justify-content-center links">
+                    <a href="#">Forgot your password?</a>
                 </div>
             </div>
         </div>
-        <div class="bookshelf" style="float: right">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Samples-->
-        <div class="samples">
-            <div class="bar">
-                <a class="icon quit"></a>
-            </div>
-            <div id="book-wrapper">
-                <div id="book-zoom"></div>
-            </div>
-            <div id="slider-bar" class="turnjs-slider">
-                <div id="slider"></div>
-            </div>
-
-        </div>
-
-        <!-- End samples -->
-
     </div>
+
+    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <i class="fas fa-user prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+                        <input type="text" id="orangeForm-name" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-5">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+                        <input type="email" id="orangeForm-email" class="form-control validate">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+                        <input type="password" id="orangeForm-pass" class="form-control validate">
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-deep-orange">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="gradient"></div>
 </div>
-
-
-
 </body>
 </html>

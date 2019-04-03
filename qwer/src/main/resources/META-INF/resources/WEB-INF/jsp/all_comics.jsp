@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/all_comics.css">
     <link rel="icon" href="/images/logo.png">
 
     <title>Orange Comics</title>
@@ -72,71 +73,41 @@
         </ul>
     </div>
 </nav>
-
-
 <div class="splash h-92">
-    <div class="center">
-        <div style="height: 10%"></div>
-        <div class="bookshelf">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bookshelf" style="float: right">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Samples-->
-        <div class="samples">
-            <div class="bar">
-                <a class="icon quit"></a>
-            </div>
-            <div id="book-wrapper">
-                <div id="book-zoom"></div>
-            </div>
-            <div id="slider-bar" class="turnjs-slider">
-                <div id="slider"></div>
-            </div>
+    <div style="height: 5%;"></div>
+    <div style="height: 5%;">
+        <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 3%;">
 
         </div>
+        <div style="width: 62%; height: 100%; margin-right: 10%;">
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+        </div>
+    </div>
 
-        <!-- End samples -->
+    <div style="height: 85%; display: flex">
+        <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 3%; border-style: solid; border-color: #1d2124;">
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</a>
+            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</a>
+        </div>
+        <div style="width: 62%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124;">
+            <div style="text-align: center; font-size: 30px">List of comics are showed here</div>
+        </div>
 
     </div>
-    <div class="gradient"></div>
 </div>
-
-
 
 </body>
 </html>

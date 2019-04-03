@@ -1,0 +1,29 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.nav_logo_indent {
+    width: 10%;
+}
+.nav_list_indent {
+    padding-right: 35px;
+}
+.no_padding_margin {
+    padding-top: 0;
+    padding-bottm: 0;
+    margin: 0;
+}
+.nav_left_margin {
+    margin-left: 5%;
+}
+.nav_right_margin {
+    margin-right: 5%;
+}
+
+
+
+
+
