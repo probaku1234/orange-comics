@@ -1,1 +1,1 @@
-asdasda
+web: gunicorn dep:app
