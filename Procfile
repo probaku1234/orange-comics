@@ -1,1 +1,1 @@
-web: java -jar target/comicbookwebapplication-0.0.1-SANPSHOT.war
+web: java $JAVA_OPTS -jar target/*.war
