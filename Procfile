@@ -1,0 +1,1 @@
+web: java -war target/comicbookwebapplication-0.0.1-SANPSHOT.war
