@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Document
 public class User {
@@ -17,7 +18,7 @@ public class User {
     public String email;
     public URL avatar;
     public String profile_description;
-    public ArrayList<String> notification_settings;
+    public HashMap<String, Boolean> notification_settings;
     public ArrayList<String> notifications;
     public String site_theme;
     public ArrayList<String> favorites;
@@ -33,7 +34,7 @@ public class User {
         this.email = email;
         avatar = null;
         profile_description = "";
-        notification_settings = new ArrayList<String>();
+        notification_settings = new HashMap<String, Boolean>();
         notifications = new ArrayList<String>();
         site_theme = "DEFAULT";
         favorites = new ArrayList<String>();
