@@ -5,7 +5,7 @@ html {
     height: 100%;
 }
 .user_card {
-    height: 400px;
+    height: 440px;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
@@ -63,4 +63,11 @@ html {
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #c0392b !important;
+}
+
+.password_warning {
+    color: #c82333;
+    font-weight: bold;
+    font-style: italic;
+    height: 20px;
 }

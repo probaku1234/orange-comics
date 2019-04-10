@@ -16,6 +16,7 @@
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="js/signup.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -87,13 +88,13 @@
                         <div class="input-group-append">
                             <span class="input-group-text"><img src="icons/person.svg" alt=""></span>
                         </div>
-                        <input type="text" name="" class="form-control input_user" value="" placeholder="username">
+                        <input type="text" id="login_username" class="form-control input_user" placeholder="username">
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-append">
                             <span class="input-group-text"><img src="icons/key.svg" alt=""></span>
                         </div>
-                        <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+                        <input type="password" id="login_password" class="form-control input_pass" placeholder="password">
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
@@ -101,56 +102,66 @@
                             <label class="custom-control-label" for="customControlInline">Remember me</label>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button id="login_btn" name="button" class="btn login_btn">Login</button>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2 password_warning">
+                        <label id="login_warning"></label>
+                    </div>
                 </form>
-            </div>
-            <div class="d-flex justify-content-center mt-3 login_container">
-                <button type="button" name="button" class="btn login_btn">Login</button>
             </div>
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
                     Don't have an account? <a href="#" class="ml-2" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center links">
-                    <a href="#">Forgot your password?</a>
+                    <a href="#">Forgot password?</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <div class="md-form mb-5">
-                        <i class="fas fa-user prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-                        <input type="text" id="orangeForm-name" class="form-control validate">
+    <form action ="/login" method="POST">
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-                        <input type="email" id="orangeForm-email" class="form-control validate">
-                    </div>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-4">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="signup_name">User Name</label>
+                            <input type="text" name="signup_username" id="signup_name" class="form-control validate" placeholder="username">
+                        </div>
+                        <div class="md-form mb-4">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="signup_email">Email</label>
+                            <input type="email" name="signup_email" id="signup_email" class="form-control validate" placeholder="email@address.com">
+                        </div>
 
-                    <div class="md-form mb-4">
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-                        <input type="password" id="orangeForm-pass" class="form-control validate">
-                    </div>
+                        <div class="md-form mb-4">
+                            <i class="fas fa-lock prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="signup_password">Password</label>
+                            <input type="password" name="signup_password" id="signup_password" class="form-control validate" placeholder="password">
+                        </div>
 
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-deep-orange">Sign up</button>
+                        <div class="md-form mb-4">
+                            <i class="fas fa-lock prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right" for="signup_password_confirm">Password Confirmation</label>
+                            <input type="password" id="signup_password_confirm" class="form-control validate" placeholder="password confirmation">
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-deep-orange" id="signup_btn" type="submit">Sign up</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <div class="gradient"></div>
 </div>
