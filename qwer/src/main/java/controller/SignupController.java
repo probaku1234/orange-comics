@@ -23,8 +23,6 @@ public class SignupController {
     @Autowired
     private JavaMailSender sender;
 
-    @Value("${local.server.port}")
-    private String serverPort;
 
     @RequestMapping(value = "/signupSubmit", method = RequestMethod.GET)
 //    public ModelAndView signUpRequset(){
