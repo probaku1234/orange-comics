@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    <form action ="/login" method="POST">
+    <form action ="/register" method="POST">
         <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

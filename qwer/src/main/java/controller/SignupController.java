@@ -28,21 +28,11 @@ public class SignupController {
     private UserServices usrServices;
 
 
-    @RequestMapping(value = "/signupSubmit", method = RequestMethod.GET)
-//    public ModelAndView signUpRequset(){
-    public ModelAndView signUpRequset(@RequestParam("signup_id") String id, @RequestParam("signup_pw") String pwd,
-                                      @RequestParam("e_mail") String email) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView signUpRequset(@RequestParam("signup_username") String id, @RequestParam("signup_password") String pwd,
+                                      @RequestParam("signup_email") String email) {
 
-        id = "ididid";
-        pwd = "wefef";
-        email = "yonghun.jeong@stonybrook.edu";
-        System.out.println(userRepository);
-
-        if (userRepository.findByName(id) == null) {
-//           usrServices.signUp(id,pwd,email,activationCode,activationBoolean);
-            usrServices.signUp(id,pwd,email);
-            System.out.println("If there is no error print before this sentence,sign up complete");
-        }
         //Generate Random key for e mail verification
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
@@ -53,6 +43,12 @@ public class SignupController {
             builder.append(alphabet.charAt(random.nextInt(alphabet.length())));
         }
         System.out.println("Key for email verification : "+builder.toString());
+
+        //save data
+        if (userRepository.findByName(id) == null) {
+            usrServices.signUp(id, pwd, email, builder.toString(), false);
+            System.out.println("If there is no error print before this sentence,sign up complete");
+        }
 
 
         //Send mail to user
