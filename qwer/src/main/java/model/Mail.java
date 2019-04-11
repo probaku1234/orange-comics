@@ -23,6 +23,7 @@ public class Mail {
         setSubject(subject);
         setMessage(sender.createMimeMessage());
         setHelper(new MimeMessageHelper(message));
+
     }
 
 
