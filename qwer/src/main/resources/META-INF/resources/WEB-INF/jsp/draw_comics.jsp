@@ -16,6 +16,7 @@
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="js/draw_comics.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -74,40 +75,7 @@
     </div>
 </nav>
 <div class="splash h-92">
-    <div style="height: 5%;"></div>
-    <div id="functions" style="height: 10%; margin-left: 10%; margin-right: 10%; display: flex">
-        <div style="height: 100%; width: 33%; border-style: solid; border-color: #1b1e21; flex: 1;">
-            Font Options
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Sansrif</a>
-                    <a class="dropdown-item" href="#">Arial</a>
-                    <a class="dropdown-item" href="#">Consolas</a>
-                </div>
-            </div>
-        </div>
-        <div style="height: 100%; width: 33%; border-style: solid; border-color: #1b1e21; flex: 1;">
-            Shapes Options
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <a class="dropdown-item" href="#">Rectangle</a>
-                    <a class="dropdown-item" href="#">Circle</a>
-                    <a class="dropdown-item" href="#">Triangle</a>
-                </div>
-            </div>
-        </div>
-        <div style="height: 100%; width: 33%; border-style: solid; border-color: #1b1e21; flex: 1;">
-            pre-made character
-        </div>
-    </div>
-    <div style="height: 3%"></div>
-    <div class="align-content-center" style="display: flex; height: 75%">
+    <div class="align-content-center" style="display: flex; margin-top: 2%; height: 85%">
         <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 2%; align-items: center; border-style: solid; border-color: #1d2124;">
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Navigate Comic Pages</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Add Background</button>
@@ -119,9 +87,60 @@
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Post Comics</button>
         </div>
 
-        <canvas id="draw_canvas" style="width: 63%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
-            canvas
+        <canvas id="canvas" style="background-color: white; width: 46%; height: 100%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
+
         </canvas>
+
+        <div id="functions" style="width: 15%; height: 100%; float: left; margin-left: 2%; margin-right: 10%; align-items: center; border-style: solid; border-color: #1d2124;">
+            <div class="navbar" style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Fonts
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Sansrif</a>
+                        <a class="dropdown-item" href="#">Arial</a>
+                        <a class="dropdown-item" href="#">Consolas</a>
+                    </div>
+                </div>
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Font Style
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Normal</a>
+                        <a class="dropdown-item" href="#">Bold</a>
+                        <a class="dropdown-item" href="#">Italic</a>
+                    </div>
+                </div>
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Shapes
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Sansrif</a>
+                        <a class="dropdown-item" href="#">Arial</a>
+                        <a class="dropdown-item" href="#">Consolas</a>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
+                Shapes Options
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <a class="dropdown-item" href="#">Rectangle</a>
+                        <a class="dropdown-item" href="#">Circle</a>
+                        <a class="dropdown-item" href="#">Triangle</a>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
+                pre-made character
+            </div>
+        </div>
 
     </div>
 </div>
