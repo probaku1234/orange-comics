@@ -23,7 +23,6 @@ public class User {
     public String site_theme;
     public ArrayList<String> favorites;
     public ArrayList<String> conversations;
-    public ArrayList<String> comics;
     public ArrayList<String> private_characters;
 
     public boolean activated;
@@ -42,7 +41,6 @@ public class User {
         site_theme = "DEFAULT";
         favorites = new ArrayList<String>();
         conversations = new ArrayList<String>();
-        comics = new ArrayList<String>();
         private_characters = new ArrayList<String>();
 
         activated = false;

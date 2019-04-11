@@ -1,9 +1,12 @@
 package data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Optional;
 import java.net.URL;
 
+@Component
 public class UserServices {
 
     public static String FAVORITE_NOTIFICATIONS = "FAVORITE";
@@ -258,4 +261,6 @@ public class UserServices {
         user.favorites.remove(comicID);
         userRepository.save(user);
     }
+
+
 }
