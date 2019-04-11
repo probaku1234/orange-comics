@@ -26,8 +26,11 @@ public class User {
     public ArrayList<String> comics;
     public ArrayList<String> private_characters;
 
+    public boolean activated;
+    public String activationCode;
 
-    public User(String name, byte[] password_salt, byte[] password_hash, String email){
+
+    public User(String name, byte[] password_salt, byte[] password_hash, String email, String activationCode){
         this.name = name;
         this.password_salt = password_salt;
         this.password_hash = password_hash;
@@ -41,5 +44,8 @@ public class User {
         conversations = new ArrayList<String>();
         comics = new ArrayList<String>();
         private_characters = new ArrayList<String>();
+
+        activated = false;
+        this.activationCode = activationCode;
     }
 }

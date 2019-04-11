@@ -15,7 +15,7 @@ public class UserServices {
     @Autowired
     private UserRepository userRepository;
 
-    public void signUp(String username, String password, String email){
+    public void signUp(String username, String password, String email, String activationCode){
         if(userRepository.findByName(username) != null){
             System.out.println("User with username already exists.");
             return;
@@ -27,10 +27,33 @@ public class UserServices {
         byte[] password_salt = Passwords.generateSalt();
         byte[] password_hash = Passwords.hash(password.toCharArray(), password_salt);
 
-        User user = new User(username, password_salt, password_hash, email);
+        User user = new User(username, password_salt, password_hash, email, activationCode);
         user.notification_settings.put(FAVORITE_NOTIFICATIONS, true);
         user.notification_settings.put(COMMENT_NOTIFICATIONS, true);
         user.notification_settings.put(MESSAGE_NOTIFICATIONS, true);
+        userRepository.save(user);
+    }
+
+    public void activateUser(String userID, String activationCode){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return;
+        }
+        User user = optUser.get();
+
+        if (user.activated) {
+            System.out.println("User already activated.");
+            return;
+        }
+
+        if(activationCode != user.activationCode){
+            System.out.println("Activation code is incorrect.");
+            return;
+        }
+
+        user.activated = true;
         userRepository.save(user);
     }
 
@@ -54,6 +77,17 @@ public class UserServices {
 
     public void signOut(){
         //TODO
+    }
+
+    public String getIDbyUsername(String username){
+        User user = userRepository.findByName(username);
+
+        if(user == null){
+            System.out.println("User with given username doesn't exist.");
+            return null;
+        }
+
+        return user.id;
     }
 
     public void changePassword(String userID, String password){
