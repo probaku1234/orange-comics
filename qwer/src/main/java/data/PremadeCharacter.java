@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.net.URL;
 import java.util.ArrayList;
 
-
+@Document
 public class PremadeCharacter {
     @Id
     public String id;
