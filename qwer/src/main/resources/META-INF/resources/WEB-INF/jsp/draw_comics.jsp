@@ -119,9 +119,10 @@
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Post Comics</button>
         </div>
 
-        <div id="canvas" style="width: 63%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
+        <canvas id="draw_canvas" style="width: 63%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
             canvas
-        </div>
+        </canvas>
+
     </div>
 </div>
 
