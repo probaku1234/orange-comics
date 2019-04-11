@@ -24,14 +24,23 @@ public class SignupController {
     private UserRepository userRepository;
     @Autowired
     private JavaMailSender sender;
+    @Autowired
+    private UserServices usrServices;
 
 
     @RequestMapping(value = "/signupSubmit", method = RequestMethod.GET)
 //    public ModelAndView signUpRequset(){
     public ModelAndView signUpRequset(@RequestParam("signup_id") String id, @RequestParam("signup_pw") String pwd,
                                       @RequestParam("e_mail") String email) {
+
+        id = "ididid";
+        pwd = "wefef";
+        email = "yonghun.jeong@stonybrook.edu";
+        System.out.println(userRepository);
+
         if (userRepository.findByName(id) == null) {
-            userRepository.save(UserServices.signUp(id,pwd,email,activationCode,activationBoolean));
+//           usrServices.signUp(id,pwd,email,activationCode,activationBoolean);
+            usrServices.signUp(id,pwd,email);
             System.out.println("If there is no error print before this sentence,sign up complete");
         }
         //Generate Random key for e mail verification
@@ -46,13 +55,10 @@ public class SignupController {
         System.out.println("Key for email verification : "+builder.toString());
 
 
-        //temp
-
-
         //Send mail to user
-        String setTo = id;
+        String setTo = email;
         String text ="[Click the link below to verify it]"+
-                      "http://localhost:8080/joinConfirm?signup_id="+signup_id+"&auth_key="+builder.toString();
+                      "http://localhost:8080/joinConfirm?signup_id="+id+"&activationCode="+builder.toString();
 
         String subject = "[Orange Comics]E-mail Verification Request";
         Mail mail = new Mail(sender, setTo, text, subject);
@@ -63,20 +69,21 @@ public class SignupController {
 
 
     @RequestMapping(value = "/joinConfirm", method = RequestMethod.GET)
-    public String email_verification(@RequestParam("auth_key") String auth_key,@RequestParam("signup_id") String signup_id){
+    public String email_verification(@RequestParam("activationCode") String activationCode,@RequestParam("signup_id") String signup_id){
 
         System.out.println("printed : When the user clicks url in their email");
         User user = userRepository.findByName(signup_id);
         if(user == null){
             System.out.println("Wrong user id while email verification");
         }else{
-            if ( user.activationCode == auth_key && user.activateBoolean == false) {
-                user.activateBoolean =true;
+            if ( user.activationCode == activationCode && user.activationCode == false) {
+                user.activated =true;
                 System.out.println("User Account is activated");
             }
-            if (user.activateBoolean == true) {
+            if (user.activated == true) {
                 System.out.println("User Account is already activated");
             }
+            System.out.println("you are here");
         }
 
         return "redirect:/index";
