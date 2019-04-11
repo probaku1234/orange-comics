@@ -1,9 +1,11 @@
 package data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Optional;
 import java.net.URL;
-
+@Component
 public class UserServices {
 
     public static String FAVORITE_NOTIFICATIONS = "FAVORITE";
@@ -11,7 +13,7 @@ public class UserServices {
     public static String MESSAGE_NOTIFICATIONS = "MESSAGE";
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public void signUp(String username, String password, String email){
         if(userRepository.findByName(username) != null){
