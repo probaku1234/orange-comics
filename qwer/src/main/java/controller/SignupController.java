@@ -26,7 +26,7 @@ public class SignupController {
     private UserServices usrServices;
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView signUpRequset(@RequestParam("signup_username") String id, @RequestParam("signup_password") String pwd,
                                       @RequestParam("signup_email") String email) {
@@ -44,7 +44,7 @@ public class SignupController {
 
         //save data
         if (userRepository.findByName(id) == null) {
-            usrServices.signUp(id,pwd,email,builder.toString(),false);
+            usrServices.signUp(id, pwd, email, builder.toString(), false);
             System.out.println("If there is no error print before this sentence,sign up complete");
         }
 
