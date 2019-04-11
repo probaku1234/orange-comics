@@ -32,20 +32,22 @@ public class UserServices {
         userRepository.save(user);
     }
 
-    public void signIn(String username, String password){
+    public int signIn(String username, String password){
         User user = userRepository.findByName(username);
 
         if(user == null){
             System.out.println("User with given username doesn't exist.");
-            return;
+            return 0;
         }
 
         if(!Passwords.isExpectedPassword(password.toCharArray(), user.password_salt, user.password_hash)){
             System.out.println("Password is incorrect.");
-            return;
+            return 0;
         }
 
         //TODO rest of login
+
+        return 1;
     }
 
     public void signOut(){
@@ -167,7 +169,7 @@ public class UserServices {
 
         if(!optUser.isPresent()){
             System.out.println("User doesn't exist.");
-            return;
+            return null;
         }
         User user = optUser.get();
 
