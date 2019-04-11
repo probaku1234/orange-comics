@@ -12,18 +12,16 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     @ResponseBody
-    public int loginRequest(@RequestParam("login_id") String uname, @RequestParam("login_pw") String psw, HttpSession session) {
-        User user = userRepository.findByName(uname);
-        if (user != null) {
-            if (Passwords.isExpectedPassword(psw.toCharArray(), user.password_salt, user.password_hash)) {
-                session.setAttribute("user", uname);
-                return 0;
-            } else {
-                return 1;
-            }
-        }else {
-            return 2;
-        }
+    public int loginRequest(@RequestParam("login_username") String username, @RequestParam("login_password") String password, HttpSession session) {
+        // UserSerVices service = new UserServices();
+        // int result = service.signIn(username, password);
+        // if (result == 0)
+        // return 0
+        // else
+        // session.setAttribute("user", username);
+        // move page to index r
+        // return new ModelAndView("index");
 
+        return 0;
     }
 }
