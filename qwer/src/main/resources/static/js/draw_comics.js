@@ -8,7 +8,8 @@ $(document).ready(function(){
     // canvas.setDimensions({width: '100%', height: '100%'}, {cssOnly: true});
 
     $('#dropdownMenuButton').click(function(){
-        var textbox = new fabric.Textbox('hello world', { left: 50,
+        var textbox = new fabric.Textbox('hello world', {
+            left: 50,
             top: 50,
             width: 150,
             fontSize: 20,
@@ -41,7 +42,7 @@ $(document).ready(function(){
                 strokeWidth: 3,
                 stroke: 'black'
             });
-            canvas.add(line);
+            canvas.add(line).setActiveObject(line);
         });
 
 
@@ -71,19 +72,19 @@ $(document).ready(function(){
                 var rect = new fabric.Rect({
                     width: 60, height: 45, fill: 'orange', left: 100, top: 100
                 });
-                canvas.add(rect);
+                canvas.add(rect).setActiveObject(rect);
                 break;
             case "circle":
                 var circle = new fabric.Circle({
                     radius: 40, fill: 'orange', left: 70, top: 200
                 });
-                canvas.add(circle);
+                canvas.add(circle).setActiveObject(circle);
                 break;
             case "triangle":
                 var triangle = new fabric.Triangle({
                     radius: 15, fill: 'orange', left: 120, top: 250
                 });
-                canvas.add(triangle);
+                canvas.add(triangle).setActiveObject(triangle);
                 break;
         }
     });
@@ -93,15 +94,35 @@ $(document).ready(function(){
 
         switch (value) {
             case "bubble1":
-                drawBubble(ctx, 10,60,220, 90, 20);
+                var circle = new fabric.Circle({
+                    radius: 100,
+                    fill: '#eef',
+                    scaleY: 0.5,
+                    originX: 'center',
+                    originY: 'center'
+                });
+
+                var text = new fabric.Textbox('hello world', {
+                    fontSize: 30,
+                    originX: 'center',
+                    originY: 'center'
+                });
+
+                var group = new fabric.Group([ circle, text ], {
+                    left: 150,
+                    top: 100,
+                    angle: -10
+                });
+
+                canvas.add(group).setActiveObject(group);
                 break;
             case "bubble2":
 
-                canvas.add();
+                canvas.add().setActiveObject(textbox);
                 break;
             case "bubble3":
 
-                canvas.add();
+                canvas.add().setActiveObject(textbox);
                 break;
         }
     });
@@ -114,44 +135,23 @@ $(document).ready(function(){
                 var imageUrl = 'https://www.pinclipart.com/picdir/big/91-910919_mule-clipart-shrek-character-donkey-from-shrek-png.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
                     oImg.scale(0.5).set('flipX', true);
-                    canvas.add(oImg);
+                    canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
             case "add_premade2":
                 var imageUrl = 'https://www.pinclipart.com/picdir/big/202-2020508_shrek-face-png-shrek-pixel-art-maker-pixel.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
                     oImg.scale(0.2).set('flipX', true);
-                    canvas.add(oImg);
+                    canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
             case "add_premade3":
                 var imageUrl = 'https://www.pinclipart.com/picdir/big/194-1949751_newest-version-of-pixel-art-maker-sans-clipart.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
                     oImg.scale(0.5).set('flipX', true);
-                    canvas.add(oImg);
+                    canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
         }
     });
 });
-
-function drawBubble(ctx, x, y, w, h, radius)
-{
-    var r = x + w;
-    var b = y + h;
-    ctx.beginPath();
-    ctx.strokeStyle="black";
-    ctx.lineWidth="2";
-    ctx.moveTo(x+radius, y);
-    ctx.lineTo(x+radius/2, y-10);
-    ctx.lineTo(x+radius * 2, y);
-    ctx.lineTo(r-radius, y);
-    ctx.quadraticCurveTo(r, y, r, y+radius);
-    ctx.lineTo(r, y+h-radius);
-    ctx.quadraticCurveTo(r, b, r-radius, b);
-    ctx.lineTo(x+radius, b);
-    ctx.quadraticCurveTo(x, b, x, b-radius);
-    ctx.lineTo(x, y+radius);
-    ctx.quadraticCurveTo(x, y, x+radius, y);
-    ctx.stroke();
-}

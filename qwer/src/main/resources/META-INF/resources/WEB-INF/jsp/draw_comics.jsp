@@ -153,8 +153,8 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
                         <a class="dropdown-item" value="bubble1" href="#">1</a>
-                        <a class="dropdown-item" value="bubble2" href="#">2</a>
-                        <a class="dropdown-item" value="bubble3" href="#">3</a>
+                        <%--<a class="dropdown-item" value="bubble2" href="#">2</a>--%>
+                        <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
                     </div>
                 </div>
             </div>
