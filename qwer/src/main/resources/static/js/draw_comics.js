@@ -45,8 +45,12 @@ $(document).ready(function(){
 
         canvas.on('mouse:up', function (o) {
             isDrawing = false;
+            canvas.off('mouse:move');
+            canvas.off('mouse:down');
+            canvas.off('mouse:up');
         });
-        
+
+
     });
 
     $('#shapes a').on('click', function () {
