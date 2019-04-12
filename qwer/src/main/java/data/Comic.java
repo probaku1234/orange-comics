@@ -32,8 +32,8 @@ public class Comic {
         publishedStatus = "";
         publishedDate = null;
         lastUpdate = null;
-        genres = new ArrayList<String>();
-        tags = new ArrayList<String>();
-        chapters = new ArrayList<String>();
+        genres = new ArrayList<>();
+        tags = new ArrayList<>();
+        chapters = new ArrayList<>();
     }
 }

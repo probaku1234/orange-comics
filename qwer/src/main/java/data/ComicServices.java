@@ -166,5 +166,46 @@ public class ComicServices {
         chapterRepository.delete(chapter);
     }
 
+    public void updateDescription(String comicID, String userID, String description){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
 
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return;
+        }
+
+        Comic comic = optComic.get();
+
+        if(comic.author != userID){
+            System.out.println("User is not author of comic.");
+            return;
+        }
+
+        comic.description = description;
+        comicRepository.save(comic);
+    }
+
+    public void changePublishedStatus(String comicID, String userID, String status){
+        if(status != STATUS_PRIVATE && status != STATUS_UNLISTED && status != STATUS_PUBLIC){
+            System.out.println("Invalid published status.");
+            return;
+        }
+
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return;
+        }
+
+        Comic comic = optComic.get();
+
+        if(comic.author != userID){
+            System.out.println("User is not author of comic.");
+            return;
+        }
+
+        comic.publishedStatus = status;
+        comicRepository.save(comic);
+    }
 }
