@@ -68,7 +68,14 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login">Log In</a>
+                <%
+                    if (session.getAttribute("user") == null) {
+                        %><a class="nav-link" href="login">Log In</a><%
+                    } else {
+                        String user = (String)session.getAttribute("user");
+                        %><a class="nav-link"><%=user%></a><%
+                    }
+                %>
             </li>
         </ul>
     </div>

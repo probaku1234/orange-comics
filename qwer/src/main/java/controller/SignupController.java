@@ -46,7 +46,7 @@ public class SignupController {
 
         //save data
         if (userRepository.findByName(id) == null) {
-            usrServices.signUp(id, pwd, email, builder.toString(), false);
+            usrServices.signUp(id, pwd, email, builder.toString());
             System.out.println("If there is no error print before this sentence,sign up complete");
         }
 
@@ -72,7 +72,7 @@ public class SignupController {
         if(user == null){
             System.out.println("Wrong user id while email verification");
         }else{
-            if ( user.activationCode == activationCode && user.activationCode == false) {
+            if ( user.activationCode == activationCode && user.activated == false) {
                 user.activated =true;
                 System.out.println("User Account is activated");
             }

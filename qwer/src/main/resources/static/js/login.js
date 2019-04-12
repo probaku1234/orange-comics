@@ -13,8 +13,10 @@ $(document).ready(function(){
             dataType:'json',
 
             success : function(data) {
+                console.log(data);
                 if(data==1){ // valid ID & password
                     $("#login_warning").text("");
+                    location.href="/index";
                 }
                 else { // Invalid ID & password
                     $("#login_warning").text('ID or Password is incorrect');

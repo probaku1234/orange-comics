@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center form_container">
-                <form>
+                <div>
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <span class="input-group-text"><img src="icons/person.svg" alt=""></span>
@@ -109,7 +109,7 @@
                     <div class="d-flex justify-content-center mt-2 password_warning">
                         <label id="login_warning"></label>
                     </div>
-                </form>
+                </div>
             </div>
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">

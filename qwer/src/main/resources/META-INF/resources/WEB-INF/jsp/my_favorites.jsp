@@ -26,6 +26,11 @@
     <link rel="icon" href="/images/logo.png">
 
     <title>Orange Comics</title>
+    <%
+        if (session.getAttribute("user") == null) {
+            %><jsp:forward page="login.jsp"></jsp:forward><%
+        }
+    %>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
@@ -68,7 +73,14 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login">Log In</a>
+                <%
+                    if (session.getAttribute("user") == null) {
+                        %><a class="nav-link" href="login">Log In</a><%
+                    } else {
+                        String user = (String)session.getAttribute("user");
+                        %><a class="nav-link"><%=user%></a><%
+                    }
+                %>
             </li>
         </ul>
     </div>
