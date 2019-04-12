@@ -18,6 +18,16 @@ $(document).ready(function(){
         canvas.add(textbox).setActiveObject(textbox);
     });
 
+    $('html').keyup(function(e){
+        if(e.keyCode == 46) {
+            var activeObjects = canvas.getActiveObjects();
+            activeObjects.forEach(function (object) {
+                canvas.remove(object);
+            });
+            canvas.discardActiveObject();
+        }
+    });
+
     $('#dropdownMenuButton3').on("click", function(){
         var line;
         var isDrawing;
