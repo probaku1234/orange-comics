@@ -16,6 +16,7 @@
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="lib/fabric.min.js"></script>
     <script type="text/javascript" src="js/draw_comics.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -51,7 +52,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type>Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">
@@ -87,27 +88,33 @@
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Post Comics</button>
         </div>
 
-        <canvas id="canvas" style="background-color: white; width: 46%; height: 100%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
+        <canvas id="canvas" style="width: 46%; height: 100%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
 
         </canvas>
 
         <div id="functions" style="width: 15%; height: 100%; float: left; margin-left: 2%; margin-right: 10%; align-items: center; border-style: solid; border-color: #1d2124;">
             <div class="navbar" style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
+                <div class="mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Add Textbox
+                    </button>
+                </div>
                 <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Fonts
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Sansrif</a>
-                        <a class="dropdown-item" href="#">Arial</a>
-                        <a class="dropdown-item" href="#">Consolas</a>
+                    <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
+                        <a class="dropdown-item" href="#">Ariel</a>
+                        <a class="dropdown-item" href="#">Helvetica</a>
+                        <a class="dropdown-item" href="#">Times New Roman</a>
+                        <a class="dropdown-item" href="#">Courier New</a>
                     </div>
                 </div>
                 <div class="dropdown mr-auto mt-2 mt-lg-0">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Font Style
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <a class="dropdown-item" href="#">Normal</a>
                         <a class="dropdown-item" href="#">Bold</a>
                         <a class="dropdown-item" href="#">Italic</a>
@@ -115,30 +122,72 @@
                 </div>
                 <div class="dropdown mr-auto mt-2 mt-lg-0">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Shapes
+                        Font Size
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Sansrif</a>
-                        <a class="dropdown-item" href="#">Arial</a>
-                        <a class="dropdown-item" href="#">Consolas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                        <a class="dropdown-item" href="#">12</a>
+                        <a class="dropdown-item" href="#">14</a>
+                        <a class="dropdown-item" href="#">16</a>
                     </div>
                 </div>
             </div>
-            <div style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
-                Shapes Options
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown button
+            <div class="navbar" style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
+                <div class="mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Draw Line
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <a class="dropdown-item" href="#">Rectangle</a>
-                        <a class="dropdown-item" href="#">Circle</a>
-                        <a class="dropdown-item" href="#">Triangle</a>
+                </div>
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Draw Shapes
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="drop">
+                        <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
+                        <a class="dropdown-item" value="circle" href="#">Circle</a>
+                        <a class="dropdown-item" value="triangle" href="#">Triangle</a>
+                        <a class="dropdown-item" value="straight_line" href="#">Straight Line</a>
+                    </div>
+                </div>
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Word Balloons
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                        <a class="dropdown-item" href="#">1</a>
+                        <a class="dropdown-item" href="#">2</a>
+                        <a class="dropdown-item" href="#">3</a>
                     </div>
                 </div>
             </div>
-            <div style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
-                pre-made character
+            <div class="navbar" style="height: 34%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pre-made Characters
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                        <a class="dropdown-item" href="#">1</a>
+                        <a class="dropdown-item" href="#">2</a>
+                        <a class="dropdown-item" href="#">3</a>
+                    </div>
+                </div>
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Add Image from URL
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
+                        <input class="form-control mr-sm-2" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="addImageButton">Add</button>
+                    </div>
+                </div>
+                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Add Background from URL
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
+                        <input class="form-control mr-sm-2" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="addBackgroundButton">Add</button>
+                    </div>
+                </div>
             </div>
         </div>
 
