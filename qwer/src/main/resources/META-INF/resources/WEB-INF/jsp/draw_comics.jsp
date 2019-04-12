@@ -141,7 +141,7 @@
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Draw Shapes
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="drop">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="shapes">
                         <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
                         <a class="dropdown-item" value="circle" href="#">Circle</a>
                         <a class="dropdown-item" value="triangle" href="#">Triangle</a>
@@ -150,12 +150,12 @@
                 </div>
                 <div class="dropdown mr-auto mt-2 mt-lg-0">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Word Balloons
+                        Speech Bubbles
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                        <a class="dropdown-item" href="#">1</a>
-                        <a class="dropdown-item" href="#">2</a>
-                        <a class="dropdown-item" href="#">3</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
+                        <a class="dropdown-item" value="bubble1" href="#">1</a>
+                        <a class="dropdown-item" value="bubble2" href="#">2</a>
+                        <a class="dropdown-item" value="bubble3" href="#">3</a>
                     </div>
                 </div>
             </div>
@@ -164,10 +164,10 @@
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pre-made Characters
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                        <a class="dropdown-item" href="#">1</a>
-                        <a class="dropdown-item" href="#">2</a>
-                        <a class="dropdown-item" href="#">3</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10" id="premade_images">
+                        <a class="dropdown-item" value="add_premade1" href="#">1</a>
+                        <a class="dropdown-item" value="add_premade2" href="#">2</a>
+                        <a class="dropdown-item" value="add_premade3" href="#">3</a>
                     </div>
                 </div>
                 <div class="dropdown mr-auto mt-2 mt-lg-0">
