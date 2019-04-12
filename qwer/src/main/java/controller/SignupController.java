@@ -6,7 +6,7 @@ import model.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
+//import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,8 +22,8 @@ import java.util.Random;
 public class SignupController {
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private JavaMailSender sender;
+    //@Autowired
+    //private JavaMailSender sender;
     @Autowired
     private UserServices usrServices;
 
@@ -52,6 +52,7 @@ public class SignupController {
 
 
         //Send mail to user
+        /*
         String setTo = email;
         String text ="[Click the link below to verify it]"+
                       "http://localhost:8080/joinConfirm?signup_id="+id+"&activationCode="+builder.toString();
@@ -59,11 +60,11 @@ public class SignupController {
         String subject = "[Orange Comics]E-mail Verification Request";
         Mail mail = new Mail(sender, setTo, text, subject);
         mail.sendMail();
-
+        */
         return new ModelAndView("index");
     }
 
-
+    /*
     @RequestMapping(value = "/joinConfirm", method = RequestMethod.GET)
     public String email_verification(@RequestParam("activationCode") String activationCode,@RequestParam("signup_id") String signup_id){
 
@@ -86,7 +87,7 @@ public class SignupController {
 
 
     }
-
+    */
 
 //    @RequestMapping(value = "/signup_id", method = RequestMethod.GET)
 //    @ResponseBody
