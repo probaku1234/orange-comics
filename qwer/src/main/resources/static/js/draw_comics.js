@@ -7,6 +7,10 @@ $(document).ready(function(){
     canvas.calcOffset();
     // canvas.setDimensions({width: '100%', height: '100%'}, {cssOnly: true});
 
+    canvas.on('mouse:down', function(options) {
+        if(selected)
+    });
+
     $('#dropdownMenuButton').click(function(){
         var textbox = new fabric.Textbox('hello world', {
             left: 50,
@@ -118,11 +122,11 @@ $(document).ready(function(){
                 break;
             case "bubble2":
 
-                canvas.add().setActiveObject(textbox);
+                canvas.add().setActiveObject();
                 break;
             case "bubble3":
 
-                canvas.add().setActiveObject(textbox);
+                canvas.add().setActiveObject();
                 break;
         }
     });
