@@ -123,6 +123,26 @@ $(document).ready(function(){
                 break;
         }
     });
+
+    $("#addBackgroundButton").click(function () {
+        var imageUrl = $('#addBackgroundFromURL').val();
+
+        fabric.Image.fromURL(imageUrl, function(img) {
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                // Needed to position backgroundImage at 0/0
+                scaleX: canvas.width / img.width,
+                scaleY: canvas.height / img.height
+            });
+        });
+    });
+
+    $("#addImageButton").click(function () {
+        var imageUrl = $('#addImageFromURL').val();
+        fabric.Image.fromURL(imageUrl, function(oImg) {
+            oImg.scale(0.5).set('flipX', true);
+            canvas.add(oImg);
+        });
+    });
 });
 
 function drawBubble(ctx, x, y, w, h, radius)
