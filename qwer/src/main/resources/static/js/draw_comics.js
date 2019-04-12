@@ -7,9 +7,7 @@ $(document).ready(function(){
     canvas.calcOffset();
     // canvas.setDimensions({width: '100%', height: '100%'}, {cssOnly: true});
 
-    canvas.on('mouse:down', function(options) {
-        if(selected)
-    });
+
 
     $('#dropdownMenuButton').click(function(){
         var textbox = new fabric.Textbox('hello world', {
