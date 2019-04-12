@@ -166,5 +166,5 @@ public class ComicServices {
         chapterRepository.delete(chapter);
     }
 
-    
+
 }

@@ -3,6 +3,7 @@ package data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.net.URL;
 
@@ -15,6 +16,9 @@ public class UserServices {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PremadeCharacterRepository premadeCharacterRepository;
 
     public void signUp(String username, String password, String email, String activationCode){
         if(userRepository.findByName(username) != null){
@@ -262,5 +266,83 @@ public class UserServices {
         userRepository.save(user);
     }
 
+    public ArrayList<PremadeCharacter> getAllPublicCharacters(){
+        return new ArrayList<>(premadeCharacterRepository.findByIsPublicIsTrue());
+    }
 
+    public void createPremadeCharacter(String userID, URL image){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return;
+        }
+        User user = optUser.get();
+
+        PremadeCharacter character = new PremadeCharacter(false, image);
+
+        premadeCharacterRepository.save(character);
+
+        user.private_characters.add(character.id);
+        userRepository.save(user);
+    }
+
+    public void deletePremadeCharacter(String userID, String charID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return;
+        }
+        User user = optUser.get();
+
+        if(!user.private_characters.contains(charID)){
+            System.out.println("User does not have rights to delete given character.");
+            return;
+        }
+
+        Optional<PremadeCharacter> optChar = premadeCharacterRepository.findById(charID);
+
+        if(!optChar.isPresent()){
+            System.out.println("Character doesn't exist.");
+            user.private_characters.remove(charID);
+            userRepository.save(user);
+            return;
+        }
+
+        PremadeCharacter character = optChar.get();
+
+        premadeCharacterRepository.delete(character);
+        user.private_characters.remove(charID);
+        userRepository.save(user);
+    }
+
+    public ArrayList<PremadeCharacter> getAllUserCharacters(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return null;
+        }
+        User user = optUser.get();
+
+        ArrayList<PremadeCharacter> characters = new ArrayList<>();
+        ArrayList<String> toRemove = new ArrayList<>(); //character IDs that somehow don't match to characters
+        for (String charID: user.private_characters){
+
+            Optional<PremadeCharacter> optChar = premadeCharacterRepository.findById(charID);
+
+            if(!optChar.isPresent()){
+                System.out.println("Character doesn't exist.");
+                toRemove.add(charID);
+            }else{
+                PremadeCharacter character = optChar.get();
+                characters.add(character);
+            }
+        }
+        user.private_characters.removeAll(toRemove);
+        userRepository.save(user);
+
+        return characters;
+    }
 }
