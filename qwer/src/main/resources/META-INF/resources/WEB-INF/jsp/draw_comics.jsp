@@ -164,7 +164,6 @@
                         <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
                         <a class="dropdown-item" value="circle" href="#">Circle</a>
                         <a class="dropdown-item" value="triangle" href="#">Triangle</a>
-                        <a class="dropdown-item" value="straight_line" href="#">Straight Line</a>
                     </div>
                 </div>
                 <div class="dropdown mr-auto mt-2 mt-lg-0">
