@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar qwer/target/comicbookwebapplication-0.0.1-SNAPSHOT.war
