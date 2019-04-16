@@ -7,7 +7,9 @@ $(document).ready(function(){
     canvas.calcOffset();
     // canvas.setDimensions({width: '100%', height: '100%'}, {cssOnly: true});
 
-
+    let jsonPageArray = new Array();
+    var currentPageIndex = 0;
+    jsonPageArray.push(JSON.stringify(canvas));
 
     $('#dropdownMenuButton').click(function(){
         var textbox = new fabric.Textbox('hello world', {
@@ -28,6 +30,22 @@ $(document).ready(function(){
                 canvas.remove(object);
             });
             canvas.discardActiveObject();
+        }
+        if(e.keyCode == 39) {
+            console.log("right");
+            if (currentPageIndex < jsonPageArray.length-1) {
+                saveCanvas();
+                currentPageIndex += 1;
+                restoreCanvas(currentPageIndex);
+            }
+        }
+        if (e.keyCode == 37) {
+            console.log("left");
+            if (currentPageIndex > 0) {
+                saveCanvas();
+                currentPageIndex -= 1;
+                restoreCanvas(currentPageIndex);
+            }
         }
     });
 
@@ -176,4 +194,53 @@ $(document).ready(function(){
             canvas.add(oImg);
         });
     });
+
+    $("#new_page").click(function () {
+        saveCanvas();
+        jsonPageArray.push('{"version":"2.4.6","objects":[]}');
+    });
+
+    $("#delete_page").click(function () {
+        if (currentPageIndex > 0) {
+            jsonPageArray.splice(currentPageIndex,1);
+            currentPageIndex -= 1;
+            restoreCanvas(currentPageIndex);
+        }
+    });
+
+    $("#load_draft").click(function () {
+
+    });
+
+    $("#save_button").click(function () {
+        console.log(jsonPageArray.toString());
+        $.ajax({
+            type: "POST",
+            url: "/save_draft",
+            data: {
+                "jsonArray" : JSON.stringify(createJSONObjectArray(jsonPageArray))
+            },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+
+    function saveCanvas() {
+        jsonPageArray[currentPageIndex] = JSON.stringify(canvas);
+    }
+
+    function restoreCanvas(index) {
+        canvas.loadFromJSON(jsonPageArray[index]);
+    }
+    
+    function createJSONObjectArray() {
+        var jsonObjectArray = new Array();
+        for (var i = 0; i <  jsonPageArray.length; i++) {
+            var obj = JSON.parse(jsonPageArray[i]);
+            jsonObjectArray.push(obj);
+        }
+        return jsonObjectArray;
+    }
 });
