@@ -15,13 +15,14 @@ public class Chapter {
     public URL url;
     public boolean isDraft;
     public Date publishedDate;
-    //public ??? pages (Fabric.js files)
+    public ArrayList<String> pages; //(Fabric.js files)
     public ArrayList<String> comments; //ids of comments
 
     public Chapter(URL url){
         this.url = url;
         isDraft = true;
         publishedDate = null;
+        pages = new ArrayList<>();
         comments = new ArrayList<>();
     }
 }

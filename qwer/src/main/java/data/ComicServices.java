@@ -3,6 +3,7 @@ package data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.net.URL;
@@ -207,5 +208,78 @@ public class ComicServices {
 
         comic.publishedStatus = status;
         comicRepository.save(comic);
+    }
+
+    public void updatePages(String chapID, String comicID, String userID, ArrayList<String> pages){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return;
+        }
+
+        Comic comic = optComic.get();
+
+        if(comic.author != userID){
+            System.out.println("User is not author of comic.");
+            return;
+        }
+
+        if(!comic.chapters.contains(chapID)){
+            System.out.println("Comic does not contain chapter");
+            return;
+        }
+
+        Optional<Chapter> optChapter = chapterRepository.findById(chapID);
+
+        if(!optChapter.isPresent()){
+            System.out.println("Chapter doesn't exist.");
+            comic.chapters.remove(chapID);
+            comicRepository.save(comic);
+            return;
+        }
+
+        Chapter chapter = optChapter.get();
+
+        if(!chapter.isDraft){
+            System.out.println("Chapter has been published and can't be changed");
+            return;
+        }
+
+        chapter.pages = pages;
+        chapterRepository.save(chapter);
+    }
+
+    public ArrayList<String> getPages(String chapID, String comicID, String userID){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return null;
+        }
+
+        Comic comic = optComic.get();
+
+        if(comic.author != userID){
+            System.out.println("User is not author of comic.");
+            return null;
+        }
+
+        if(!comic.chapters.contains(chapID)){
+            System.out.println("Comic does not contain chapter");
+            return null;
+        }
+
+        Optional<Chapter> optChapter = chapterRepository.findById(chapID);
+
+        if(!optChapter.isPresent()){
+            System.out.println("Chapter doesn't exist.");
+            comic.chapters.remove(chapID);
+            comicRepository.save(comic);
+            return null;
+        }
+
+        Chapter chapter = optChapter.get();
+        return chapter.pages;
     }
 }

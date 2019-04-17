@@ -126,6 +126,17 @@ public class UserServices {
         userRepository.save(user);
     }
 
+    public String getUsername(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return null;
+        }
+        User user = optUser.get();
+        return user.name;
+    }
+
     public void setAvatar(String userID, URL imageLink){
         Optional<User> optUser = userRepository.findById(userID);
 
@@ -137,6 +148,21 @@ public class UserServices {
 
         user.avatar = imageLink;
         userRepository.save(user);
+    }
+
+    public URL getAvatarLink(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return null;
+        }
+        User user = optUser.get();
+        if(user.avatar == null){
+            System.out.println("User doesn't have avatar");
+            return null; //TODO change to link for default avatar
+        }
+        return user.avatar;
     }
 
     public void setProfileDescription(String userID, String description){
@@ -152,7 +178,18 @@ public class UserServices {
         userRepository.save(user);
     }
 
-    public void setNotifications(String userID, String notificationType, boolean enabled){
+    public String getProfileDescription(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return null;
+        }
+        User user = optUser.get();
+        return user.profile_description;
+    }
+
+    public void setNotificationSettings(String userID, String notificationType, boolean enabled){
         if(notificationType != FAVORITE_NOTIFICATIONS && notificationType != COMMENT_NOTIFICATIONS &&
                 notificationType != MESSAGE_NOTIFICATIONS){
             System.out.println("Invalid notification type.");
@@ -203,6 +240,17 @@ public class UserServices {
 
         user.notifications.clear();
         userRepository.save(user);
+    }
+
+    public ArrayList<String> getNotifications(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return null;
+        }
+        User user = optUser.get();
+        return user.notifications;
     }
 
     public String getTheme(String userID){
@@ -264,6 +312,17 @@ public class UserServices {
 
         user.favorites.remove(comicID);
         userRepository.save(user);
+    }
+
+    public ArrayList<String> getFavoriteComics(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return null;
+        }
+        User user = optUser.get();
+        return user.favorites;
     }
 
     public ArrayList<PremadeCharacter> getAllPublicCharacters(){
