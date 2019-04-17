@@ -11,6 +11,30 @@ $(document).ready(function(){
     var currentPageIndex = 0;
     jsonPageArray.push(JSON.stringify(canvas));
 
+    canvas.on('object:added',function(){
+        if(!isRedoing){
+            h = [];
+        }
+        isRedoing = false;
+    });
+
+    var isRedoing = false;
+    var h = [];
+
+    $("#undo").click(function () {
+        if(canvas._objects.length>0){
+            h.push(canvas._objects.pop());
+            canvas.renderAll();
+        }
+    });
+    
+    $("#redo").click(function () {
+        if(h.length>0){
+            isRedoing = true;
+            canvas.add(h.pop());
+        }
+    });
+
     $('#dropdownMenuButton').click(function(){
         var textbox = new fabric.Textbox('hello world', {
             left: 50,
@@ -226,7 +250,15 @@ $(document).ready(function(){
             }
         });
     });
-
+    
+    $("#free_draw").click(function () {
+        if (canvas.isDrawingMode == false) {
+            canvas.isDrawingMode = true;
+        } else {
+            canvas.isDrawingMode = false;
+        }
+    });
+    
     function saveCanvas() {
         jsonPageArray[currentPageIndex] = JSON.stringify(canvas);
     }

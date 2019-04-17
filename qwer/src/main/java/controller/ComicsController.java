@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class DraftController {
+public class ComicsController {
     @RequestMapping(value = {"/save_draft"}, method = RequestMethod.POST)
     @ResponseBody
     public int saveDraftRequset(@RequestParam("jsonArray") String jsonString) {
@@ -33,5 +33,10 @@ public class DraftController {
         System.out.println(jsonArray);
         // save jsonArray to db
         return 1;
+    }
+
+    @RequestMapping(value = {"/create_comic"}, method = RequestMethod.POST)
+    public void createComicRequest(@RequestParam(value = "comic_name") String name) {
+        // create comic in db
     }
 }
