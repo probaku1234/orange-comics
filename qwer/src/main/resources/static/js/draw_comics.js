@@ -1,14 +1,16 @@
 $(document).ready(function(){
-    var canvas = new fabric.Canvas('canvas');
-    var ctx = canvas.getContext('2d');
-
+    let canvas = new fabric.Canvas('canvas', {preserveObjectStacking: true});
+    let ctx = canvas.getContext('2d');
+    let jsonPageArray = new Array();
+    let currentPageIndex = 0;
+    let isRedoing = false;
+    let h = [];
+    let selectedObject;
+    
     canvas.setWidth( 460 );
     canvas.setHeight( 582 );
     canvas.calcOffset();
     // canvas.setDimensions({width: '100%', height: '100%'}, {cssOnly: true});
-
-    let jsonPageArray = new Array();
-    var currentPageIndex = 0;
     jsonPageArray.push(JSON.stringify(canvas));
 
     canvas.on('object:added',function(){
@@ -18,8 +20,10 @@ $(document).ready(function(){
         isRedoing = false;
     });
 
-    var isRedoing = false;
-    var h = [];
+    canvas.on("object:selected", function (event) {
+        console.log(event.target);
+        selectedObject = event.target;
+    });
 
     $("#undo").click(function () {
         if(canvas._objects.length>0){
@@ -257,6 +261,14 @@ $(document).ready(function(){
         } else {
             canvas.isDrawingMode = false;
         }
+    });
+
+    $("#send_back").click(function () {
+        canvas.sendToBack(selectedObject);
+    });
+
+    $("#send_front").click(function () {
+        canvas.bringToFront(selectedObject);
     });
     
     function saveCanvas() {
