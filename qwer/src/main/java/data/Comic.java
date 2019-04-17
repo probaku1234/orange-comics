@@ -3,6 +3,7 @@ package data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,7 +15,7 @@ public class Comic {
     public String title;
     public String author; //ID of the author
     public String description;
-    public String url;
+    public URL url;
     public String publishedStatus;
     public Date publishedDate;
     public Date lastUpdate;
@@ -23,7 +24,7 @@ public class Comic {
     public ArrayList<String> chapters; //IDs of each chapter
 
 
-    public Comic(String title, String author, String url){
+    public Comic(String title, String author, URL url){
         this.title = title;
         this.author = author;
         description = "";
@@ -31,8 +32,8 @@ public class Comic {
         publishedStatus = "";
         publishedDate = null;
         lastUpdate = null;
-        genres = new ArrayList<String>();
-        tags = new ArrayList<String>();
-        chapters = new ArrayList<String>();
+        genres = new ArrayList<>();
+        tags = new ArrayList<>();
+        chapters = new ArrayList<>();
     }
 }
