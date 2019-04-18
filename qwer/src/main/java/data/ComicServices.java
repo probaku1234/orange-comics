@@ -61,6 +61,15 @@ public class ComicServices {
         comicRepository.delete(comic);
     }
 
+    public ArrayList<String> getUsersComics(String userID){
+        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userID));
+        ArrayList<String> comicIDs = new ArrayList<>();
+        for (Comic comic : comics) {
+            comicIDs.add(comic.id);
+        }
+        return comicIDs;
+    }
+
     public void createChapter(String comicID, String userID, URL url){
         if(chapterRepository.findByURL(url) != null){
             System.out.println("Given URL is already in use.");
@@ -167,6 +176,18 @@ public class ComicServices {
         chapterRepository.delete(chapter);
     }
 
+    public ArrayList<String> getChapters(String comicID){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return null;
+        }
+
+        Comic comic = optComic.get();
+        return comic.chapters;
+    }
+
     public void updateDescription(String comicID, String userID, String description){
         Optional<Comic> optComic = comicRepository.findById(comicID);
 
@@ -184,6 +205,18 @@ public class ComicServices {
 
         comic.description = description;
         comicRepository.save(comic);
+    }
+
+    public String getDescription(String comicID){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return null;
+        }
+
+        Comic comic = optComic.get();
+        return comic.description;
     }
 
     public void changePublishedStatus(String comicID, String userID, String status){
@@ -250,7 +283,7 @@ public class ComicServices {
         chapterRepository.save(chapter);
     }
 
-    public ArrayList<String> getPages(String chapID, String comicID, String userID){
+    public ArrayList<String> getPages(String chapID, String comicID){
         Optional<Comic> optComic = comicRepository.findById(comicID);
 
         if(!optComic.isPresent()){
@@ -259,11 +292,6 @@ public class ComicServices {
         }
 
         Comic comic = optComic.get();
-
-        if(comic.author != userID){
-            System.out.println("User is not author of comic.");
-            return null;
-        }
 
         if(!comic.chapters.contains(chapID)){
             System.out.println("Comic does not contain chapter");
