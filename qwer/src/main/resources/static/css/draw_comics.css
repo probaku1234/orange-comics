@@ -20,3 +20,12 @@
     padding:76px 8px 8px 8px;
     text-align:center;
 }
+
+.draw_canvas {
+    width: 460px;
+    height: 582px;
+    border-style: solid;
+    border-color: #1d2124;
+    font-size: 30px;
+    text-align: center;
+}

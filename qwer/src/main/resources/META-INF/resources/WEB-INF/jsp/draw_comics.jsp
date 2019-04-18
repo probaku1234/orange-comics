@@ -18,7 +18,6 @@
     <script src="jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
     <script type="text/javascript" src='bootstrap/js/bootstrap.min.js'></script>
-    <script type="text/javascript" src="extras/all.js"></script>
     <script type="text/javascript" src="lib/hash.js"></script>
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
@@ -96,7 +95,7 @@
     </div>
 </nav>
 <div class="splash h-92">
-    <div class="align-content-center" style="display: flex; margin-top: 2%; height: 85%">
+    <div class="align-content-center" style="display: flex; height: 85%">
         <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 2%; align-items: center; border-style: solid; border-color: #1d2124;">
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Navigate Comic Pages</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Add Background</button>
@@ -142,9 +141,23 @@
             </div>
         </div>
 
-        <canvas id="canvas" style="width: 46%; height: 100%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">
+        <div class="container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active">
+                    <a href="#page1" data-toggle="tab">Page 1</a> <button>x</button>
+                </li>
+                <li><a href="#" class="add-page">+ Add Page</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="page1">
+                    <canvas id="canvas" class="draw_canvas">
 
-        </canvas>
+                    </canvas>
+                </div>
+            </div>
+
+        </div>
 
         <div id="functions" style="width: 15%; height: 100%; float: left; margin-left: 2%; margin-right: 10%; align-items: center; border-style: solid; border-color: #1d2124;">
             <div class="navbar" style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
