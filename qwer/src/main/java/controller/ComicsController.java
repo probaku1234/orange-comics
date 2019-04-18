@@ -27,6 +27,7 @@ public class ComicsController {
     private UserServices userServices;
     @Autowired
     private ComicRepository comicRepository;
+    final String baseURL = "http://orangecomics.herokuapp.com";
 
     @RequestMapping(value = {"/save_draft"}, method = RequestMethod.POST)
     @ResponseBody
@@ -34,7 +35,6 @@ public class ComicsController {
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
         JSONArray jsonArray = new JSONArray(jsonString);
         ArrayList<String> pages = new ArrayList<>();
-        URL url = new URL("http://a-guide-to-java-sockets");
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -72,18 +72,19 @@ public class ComicsController {
     public void createComicRequest(@RequestParam(value = "comic_name") String title, HttpSession session) throws MalformedURLException {
         // create comic in db
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
-        URL url = new URL("http://a-guide-to-java-sockets");
+        URL url = new URL(baseURL + title);
         comicServices.createComic(title, userId, url, "UNLISTED");
     }
 
     @RequestMapping(value = {"/create_chapter"}, method = RequestMethod.POST)
     public void createChapterRequset(@RequestParam(value = "comic_name") String title, HttpSession session) throws MalformedURLException{
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
-        URL url = new URL("http://a-guide-to-java-sockets");
+
         //comicServices.createChapter();
         ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
         for (Comic comic : comics) {
             if (comic.title.equals(title)) {
+                URL url = new URL(baseURL+title+"/" + comicServices.getChapters(comic.id).size()+1);
                 comicServices.createChapter(comic.id, userId, url);
                 break;
             }
