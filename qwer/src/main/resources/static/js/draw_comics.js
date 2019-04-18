@@ -19,34 +19,35 @@ $(document).ready(function(){
             saveCanvas();
             currentPageIndex = $(this).parent().index();
             restoreCanvas(currentPageIndex);
-            console.log(currentPageIndex);
+            console.log($(this).parent().index());
         }
     })
         .on("click", "button", function () {
-            var anchor = $(this).siblings('a');
+            let anchor = $(this).siblings('a');
+            console.log(currentPageIndex);
+            if (currentPageIndex > 0) {
+                jsonPageArray.splice(currentPageIndex,1);
+                restoreCanvas(currentPageIndex);
+            }
             $(anchor.attr('href')).remove();
             $(this).parent().remove();
             $(".nav-tabs li").children('a').first().click();
-            if (currentPageIndex > 0) {
-                jsonPageArray.splice(currentPageIndex,1);
-                currentPageIndex = $(this).parent().index();
-                restoreCanvas(currentPageIndex);
-                console.log(currentPageIndex);
-            }
+            currentPageIndex = $(this).parent().index();
         });
+
 
     $('.add-page').click(function (e) {
         e.preventDefault();
-        var id = $(".nav-tabs").children().length; //think about it ;)
-        var tabId = 'page' + id;
-        var canvas_num = 'canvas' + id;
+        let id = $(".nav-tabs").children().length; //think about it ;)
+        let tabId = 'page' + id;
+        let canvas_num = 'canvas' + id;
 
         $(this).closest('li').before('<li><a href="#page' + id + '">Page ' + id + '</a> <button> x </button></li>');
 
         saveCanvas();
         jsonPageArray.push('{"version":"2.4.6","objects":[]}');
 
-
+        console.log($(".nav-tabs").children().closest('a').attr('id'));
 
         $('.nav-tabs li:nth-child(' + id + ') a').click();
     });
@@ -339,6 +340,13 @@ $(document).ready(function(){
             }
         });
     });
+
+    function sortPages() {
+        var id = $(".nav-tabs").children().length;
+        for (var i = 0; i < id; i++) {
+
+        }
+    }
 
     function saveCanvas() {
         jsonPageArray[currentPageIndex] = JSON.stringify(canvas);
