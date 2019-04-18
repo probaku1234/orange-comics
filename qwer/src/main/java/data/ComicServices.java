@@ -21,7 +21,7 @@ public class ComicServices {
     ChapterRepository chapterRepository;
 
     public void createComic(String title, String authorID, URL url, String publishedStatus){
-        if(comicRepository.findByURL(url) != null){
+        if(comicRepository.findByUrl(url) != null){
             System.out.println("Given URL is already in use.");
             return;
         }
@@ -71,7 +71,7 @@ public class ComicServices {
     }
 
     public void createChapter(String comicID, String userID, URL url){
-        if(chapterRepository.findByURL(url) != null){
+        if(chapterRepository.findByUrl(url) != null){
             System.out.println("Given URL is already in use.");
             return;
         }
@@ -85,7 +85,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -253,7 +253,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }

@@ -241,12 +241,17 @@ $(document).ready(function(){
     });
 
     $("#save_button").click(function () {
+        saveCanvas();
         console.log(jsonPageArray.toString());
+        var comic_name = $("#dropdownComicListButton").text();
+        var chapter = $("#dropdownChapterListButton").text();
         $.ajax({
             type: "POST",
             url: "/save_draft",
             data: {
-                "jsonArray" : JSON.stringify(createJSONObjectArray(jsonPageArray))
+                "jsonArray" : JSON.stringify(createJSONObjectArray(jsonPageArray)),
+                "comic_name" : comic_name,
+                "chapter" : chapter
             },
             dataType: 'json',
             success: function (response) {
@@ -270,7 +275,33 @@ $(document).ready(function(){
     $("#send_front").click(function () {
         canvas.bringToFront(selectedObject);
     });
-    
+
+    $(document).on('click', '#chapter_list a', function () {
+        var value = $(this).attr("value");
+        $(this).parents('.dropdown').find('.dropdown-toggle').html(value);
+        var comic_name = $("#dropdownComicListButton").text();
+        var chapter = $("#dropdownChapterListButton").text();
+
+        $.ajax({
+            type: "POST",
+            url: "/load_draft",
+            data: {
+                "comic_name" : comic_name,
+                "chapter" : chapter
+            },
+            dataType: 'json',
+            success: function (array) {
+                jsonPageArray.length = 0;
+                for (var i = 0; i < array.length; i++) {
+                    jsonPageArray.push(array[i]);
+                }
+                restoreCanvas(0);
+                currentPageIndex = 0;
+                console.log("load pages done");
+            }
+        });
+    });
+
     function saveCanvas() {
         jsonPageArray[currentPageIndex] = JSON.stringify(canvas);
     }

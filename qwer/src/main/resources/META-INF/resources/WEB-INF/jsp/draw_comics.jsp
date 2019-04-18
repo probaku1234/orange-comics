@@ -25,6 +25,7 @@
     <script type="text/javascript" src="lib/bookshelf.js"></script>
     <script type="text/javascript" src="lib/fabric.min.js"></script>
     <script type="text/javascript" src="js/draw_comics.js"></script>
+    <script type="text/javascript" src="js/comics.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -108,13 +109,37 @@
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_page">Add New Page</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="delete_page">Delete Page</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_comicbook">New Comic Book</button>
+            <div class="dropdown mr-auto mt-2 mt-lg-0">
+                <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add Comic Title
+                </button>
+                <div class="dropdown-menu" aria-labelledby="newComicButton">
+                    <input class="form-control mr-sm-2" id="new_comic_book_input" type="search" placeholder="Enter the Title" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
+                </div>
+            </div>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_chapter">New Chapter</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
             <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_front">Move Front</button>
+            <div class="dropdown mr-auto mt-2 mt-lg-0">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownComicListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Comic Titles
+                </button>
+                <div id="comic_list" class="dropdown-menu" aria-labelledby="dropdownComicListButton">
+
+                </div>
+            </div>
+            <div class="dropdown mr-auto mt-2 mt-lg-0">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChapterListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Chapters
+                </button>
+                <div id="chapter_list" class="dropdown-menu" aria-labelledby="dropdownChapterListButton">
+
+                </div>
+            </div>
         </div>
 
         <canvas id="canvas" style="width: 46%; height: 100%; border-style: solid; border-color: #1d2124; font-size: 30px; text-align: center">

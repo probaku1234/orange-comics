@@ -7,5 +7,5 @@ import java.net.URL;
 
 @Repository
 public interface ChapterRepository extends MongoRepository<Chapter, String>{
-    public Chapter findByURL(URL url);
+    public Chapter findByUrl(URL url);
 }

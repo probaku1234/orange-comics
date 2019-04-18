@@ -12,5 +12,5 @@ public interface ComicRepository extends MongoRepository<Comic, String>{
     public List<Comic> findByAuthor(String author);
     public List<Comic> findByTagsContaining(List<String> tags);
     public List<Comic> findByGenresContaining(List<String> genres);
-    public Comic findByURL(URL url);
+    public Comic findByUrl(URL url);
 }
