@@ -208,8 +208,8 @@ public class UserServices {
     }
 
     public void addNotification(String userID, String notificationType, String notification){
-        if(notificationType != FAVORITE_NOTIFICATIONS && notificationType != COMMENT_NOTIFICATIONS &&
-                notificationType != MESSAGE_NOTIFICATIONS){
+        if(!notificationType.equals(FAVORITE_NOTIFICATIONS) && !notificationType.equals(COMMENT_NOTIFICATIONS) &&
+                !notificationType.equals(MESSAGE_NOTIFICATIONS)){
             System.out.println("Invalid notification type.");
         }
 

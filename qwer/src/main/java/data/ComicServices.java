@@ -26,8 +26,8 @@ public class ComicServices {
             return;
         }
 
-        if(publishedStatus != STATUS_PRIVATE && publishedStatus != STATUS_UNLISTED &&
-                publishedStatus != STATUS_PUBLIC){
+        if(!publishedStatus.equals(STATUS_PRIVATE) && !publishedStatus.equals(STATUS_UNLISTED) &&
+                !publishedStatus.equals(STATUS_PUBLIC)){
             System.out.println("Invalid published status.");
             return;
         }
@@ -49,7 +49,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -85,7 +85,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -107,7 +107,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -150,7 +150,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -198,7 +198,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -220,7 +220,8 @@ public class ComicServices {
     }
 
     public void changePublishedStatus(String comicID, String userID, String status){
-        if(status != STATUS_PRIVATE && status != STATUS_UNLISTED && status != STATUS_PUBLIC){
+        if(!status.equals(STATUS_PRIVATE) && !status.equals(STATUS_UNLISTED) &&
+                !status.equals(STATUS_PUBLIC)){
             System.out.println("Invalid published status.");
             return;
         }
@@ -234,7 +235,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -253,7 +254,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
