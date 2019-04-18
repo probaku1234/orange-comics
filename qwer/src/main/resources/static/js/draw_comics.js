@@ -1,12 +1,46 @@
+$(document).ready(function () {
+    $(".nav-tabs").on("click", "a", function (e) {
+        e.preventDefault();
+        if (!$(this).hasClass('add-page')) {
+            $(this).tab('show');
+        }
+    })
+        .on("click", "button", function () {
+            var anchor = $(this).siblings('a');
+            $(anchor.attr('href')).remove();
+            $(this).parent().remove();
+            $(".nav-tabs li").children('a').first().click();
+        });
+
+    $('.add-page').click(function (e) {
+        e.preventDefault();
+        var id = $(".nav-tabs").children().length; //think about it ;)
+        var tabId = 'page' + id;
+        var canvas_num = 'canvas' + id;
+
+        $(this).closest('li').before('<li><a href="#page' + id + '">Page ' + id + '</a> <button> x </button></li>');
+        $('.tab-content').append('<div class="tab-pane" id="' + tabId + '"><canvas id="'+canvas_num+'" class="draw_canvas"></canvas></div>');
+
+        var canvas = new fabric.Canvas(canvas_num, {preserveObjectStacking: true});
+        drawingTool(canvas);
+
+        $('.nav-tabs li:nth-child(' + id + ') a').click();
+    });
+});
+
 $(document).ready(function(){
-    let canvas = new fabric.Canvas('canvas', {preserveObjectStacking: true});
-    let ctx = canvas.getContext('2d');
-    let jsonPageArray = new Array();
-    let currentPageIndex = 0;
-    let isRedoing = false;
-    let h = [];
-    let selectedObject;
-    
+    var canvas = new fabric.Canvas('canvas1', {preserveObjectStacking: true});
+    drawingTool(canvas);
+});
+
+function drawingTool(canvas) {
+    var ctx = canvas.getContext('2d');
+    var jsonPageArray = new Array();
+    var currentPageIndex = 0;
+    var isRedoing = false;
+    var h = [];
+    var selectedObject;
+
     canvas.setWidth( 460 );
     canvas.setHeight( 582 );
     canvas.calcOffset();
@@ -31,7 +65,7 @@ $(document).ready(function(){
             canvas.renderAll();
         }
     });
-    
+
     $("#redo").click(function () {
         if(h.length>0){
             isRedoing = true;
@@ -259,7 +293,7 @@ $(document).ready(function(){
             }
         });
     });
-    
+
     $("#free_draw").click(function () {
         if (canvas.isDrawingMode == false) {
             canvas.isDrawingMode = true;
@@ -309,7 +343,7 @@ $(document).ready(function(){
     function restoreCanvas(index) {
         canvas.loadFromJSON(jsonPageArray[index]);
     }
-    
+
     function createJSONObjectArray() {
         var jsonObjectArray = new Array();
         for (var i = 0; i <  jsonPageArray.length; i++) {
@@ -318,4 +352,4 @@ $(document).ready(function(){
         }
         return jsonObjectArray;
     }
-});
+}

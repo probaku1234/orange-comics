@@ -11,22 +11,23 @@
     <script src="jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
     <script type="text/javascript" src='bootstrap/js/bootstrap.min.js'></script>
-    <script type="text/javascript" src="extras/all.js"></script>
     <script type="text/javascript" src="lib/hash.js"></script>
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="js/my_profile.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/my_profile.css">
     <link rel="icon" href="/images/logo.png">
 
     <title>Orange Comics</title>
 </head>
-<body>
+<body style="overflow:hidden;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -67,83 +68,15 @@
                 </div>
             </li>
             <li class="nav-item">
-                <%
-                    if (session.getAttribute("user") == null) {
-                        %><a class="nav-link" href="login">Log In</a><%
-                    } else {
-                        String user = (String)session.getAttribute("user");
-                        %><a class="nav-link" href="profile"><%=user%></a><%
-                    }
-                %>
+                <a class="nav-link" href="login">Log In</a>
             </li>
         </ul>
     </div>
 </nav>
+<div class="splash_login h-92">
 
 
-<div class="splash h-92">
-    <div class="center">
-        <div style="height: 10%"></div>
-        <div class="bookshelf">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bookshelf" style="float: right">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Samples-->
-        <div class="samples">
-            <div class="bar">
-                <a class="icon quit"></a>
-            </div>
-            <div id="book-wrapper">
-                <div id="book-zoom"></div>
-            </div>
-            <div id="slider-bar" class="turnjs-slider">
-                <div id="slider"></div>
-            </div>
-
-        </div>
-
-        <!-- End samples -->
-
-    </div>
     <div class="gradient"></div>
 </div>
-
-
-
 </body>
 </html>

@@ -1,17 +1,16 @@
-.bubble
-{
+.bubble {
     position:relative;
     background:green;
     float:left;     /* because the image at left */
 }
-.bubbleborder
-{
+
+.bubbleborder {
     position:absolute;
     top:0;
     left:0;
 }
-.bubbletext
-{
+
+.bubbletext {
     position:absolute;
     top:0;
     left:0;
@@ -19,4 +18,40 @@
     height:200px;
     padding:76px 8px 8px 8px;
     text-align:center;
+}
+
+.page_tabs {
+    height: 5%;
+    text-align: center;
+}
+
+.draw_canvas {
+    width: 460px;
+    height: 582px;
+    border-style: solid;
+    border-color: #1d2124;
+    font-size: 30px;
+    text-align: center;
+}
+
+@import url('http://getbootstrap.com/2.3.2/assets/css/bootstrap.css');
+.container {
+    margin-top: 10px;
+}
+.nav-tabs > li {
+    position:relative;
+}
+.nav-tabs > li > a {
+    display:inline-block;
+}
+.nav-tabs > li > span {
+    display:none;
+    cursor:pointer;
+    position:absolute;
+    right: 6px;
+    top: 8px;
+    color: red;
+}
+.nav-tabs > li:hover > span {
+    display: inline-block;
 }

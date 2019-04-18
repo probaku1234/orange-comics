@@ -49,4 +49,10 @@ public class WelcomeController {
         model.put("message", "You are in new page !!");
         return "search_result";
     }
+
+    @RequestMapping("/profile")
+    public String my_profile(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "my_profile";
+    }
 }
