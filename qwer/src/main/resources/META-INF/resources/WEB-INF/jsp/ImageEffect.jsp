@@ -4,22 +4,37 @@
 <html lang="en">
 <head>
     <title></title>
-<%--    <script src="processing.min.js"></script>--%>
-<%--    <script src="p5.js"></script>--%>
-    <script type="text/javascript" src="lib/p5.js"></script>
-    <script type="text/javascript" src="lib/processing.js"></script>
     <script type="text/javascript" src="lib/imageBlending.js"></script>
     <script type="text/javascript" src="lib/blendings.js"></script>
     <link rel="stylesheet" href="/css/blending.css">
+    <script src="jquery/jquery-3.3.1.min.js"></script>
 
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
+    <script async src="https://docs.opencv.org/master/opencv.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/opencv.js"></script>
 </head>
 <body>
 <div id="wrapper">
+    <div>
+        <div class="inputoutput">
+            <img id="imageSrc" alt="No Image" />
+            <div class="caption">imageSrc
+                <input type="file" id="fileInput" name="file" />
+            </div>
+        </div>
+
+
+        <div class="inputoutput">
+            <canvas id="canvasOutput" ></canvas>
+            <div class="caption">canvasOutput</div>
+        </div>
+    </div>
+    <div>
+        <button id="gray">Effect1</button>
+        <button id="bilateralFilter">Effect2</button>
+        <button id="ImageCanny">Effect3</button>
+        <button>Effect4</button>
+        <button>Effect5</button>
+    </div>
 
     <div id="aaa" class="clearfix">
         <div>
@@ -28,6 +43,7 @@
             <img id="_hand" src="/images/handd.png" height="200" width="200" alt="hand">
             <img id="_sign" src="/images/signn.png" height="200" width="200" alt="sign">
         </div>
+
         <div>
             <button onclick="changeImageSet()">Image Setting</button>
             <button onclick="changeImageSet2()">Image Setting</button>
@@ -66,5 +82,26 @@
 </div>
 
 
+<script>
+    let imgElement = document.getElementById('imageSrc');
+    let inputElement = document.getElementById('fileInput');
+    inputElement.addEventListener('change', (e) => {
+        imgElement.src = URL.createObjectURL(e.target.files[0]);
+    }, false);
+    $('#gray').click(function() {
+        let src = cv.imread(imgElement);
+        makePictureGray(src);
+    });
+    $('#bilateralFilter').click(function() {
+        let src = cv.imread(imgElement);
+        smoothing(src);
+    });
+    $('#ImageCanny').click(function() {
+        let src = cv.imread(imgElement);
+        ImageCanny(src);
+    });
+
+</script>
 </body>
+
 </html>
