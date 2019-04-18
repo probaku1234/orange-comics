@@ -1,0 +1,246 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>Comicify -- Make a phote look like a comic book drawing...</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        function comicify(c){
+            var _t = this;
+            console.log(_t)
+            _t.draw(c);
+        }
+
+        comicify.prototype={
+            draw:function(container){
+                var t = this;
+                t.container = container;
+                var input = $('<input>').val(t.distance).change(function(){
+                    t.distance=this.value;
+                    if(''!= t.srcimg[0].src){
+                        t.process();
+                    }
+                });
+
+                container.append($('<div>').text("Directions:").append(
+                    $('<ul>')
+                        .append($('<li>').text("Set the distance to distance (manitude between color vecotrs) that defines a single (new) color"))
+                        .append($('<li>').text("Paste an image to the page"))
+                        .append($('<li>').text("Wait -- you're processing an image in Javascript..."))
+                ));
+                container.append($('<div>').append($('<span>').text("Distance:").width("400px")).append(input))
+                t.srcimg = $('<img>');
+                t.srcimg.load(function(){t.process()});
+                // $("#btn").click(function(e){
+                //   console.log("we")
+                //   var ele = document.getElementById('fileInput');
+                //   ele.addEventListener('change', (e) => {
+                //     t.srcimg[0].src = URL.createObjectURL(e.target.files[0]);
+                //   }, false);
+
+
+                // return(t.handlePaste(e));
+                // })
+                container.on('paste',function(e){
+                    return(t.handlePaste(e));
+                });
+            },
+            handlePaste : function  (evt) {
+                var t = this;
+                console.log(t)
+                var items = evt.originalEvent.clipboardData.items, paste;
+                console.log(evt.originalEvent.clipboardData.items,paste)
+                console.log(items)
+                for (var i in items){
+                    if('file' ==items[i].kind){
+                        var fr = new FileReader();
+                        console.log("Going");
+                        fr.onload = function(revt){
+                            t.srcimg[0].src = revt.target.result;
+                            console.log(revt.target.result)
+                        }
+                        fr.readAsDataURL(items[i].getAsFile());
+                    }
+                }
+            },
+
+
+            process:function(){
+
+                var canvas = document.createElement('canvas');
+                var context = canvas.getContext('2d');
+                var img = document.getElementById('img');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                context.drawImage(img, 0, 0 );
+                var myData = context.getImageData(0, 0, img.width, img.height);
+
+                var t = this;
+                var canvas = $('<canvas>');
+                var w = canvas[0].width = t.srcimg[0].width;
+                var h = canvas[0].height= t.srcimg[0].height;
+                var prog = $('<span>').text("Processing...");
+                t.container.append(prog);
+                t.ctx = canvas[0].getContext('2d');
+                t.ctx.drawImage(t.srcimg[0],0,0);
+
+                // t.ctx.drawImage(img.src,0,0);
+                // t.image = t.ctx.getImageData(0,0,w,h);  //array [4*w*h] of colors RGBA
+                t.image = myData;
+
+
+
+
+
+                t.ctx.clearRect ( 0 , 0 ,w,h);
+                t.mask = Array(w);
+                var zz = Array();
+                for (var i =0;i<w*h;i++){
+                    zz[i]=i;
+                }
+                for (var i =0;i<w;i++){
+                    t.mask[i] = Array(h);
+                    for(var j=0;j<h;j++){
+                        t.mask[i][j]=true;
+                        var n = Math.floor(w*h*Math.random());
+                        var z = zz[n];
+                        zz[n] = zz[i*j];
+                        zz[i*j] =z;
+                    }
+                }
+
+                var n =0;
+
+                var err = "";
+                var step = (w*h)/100;
+                var progress = 0;
+                var fn  = function(){
+                    if (n<(w*h) && err == ""){
+                        var q = Math.floor(step);
+                        while  (q > 0 && n<(w*h) && err == ""){
+                            var x = zz[n];
+                            var j = Math.floor(x / w);
+                            var i = x % w;
+                            if(t.mask[i][j]) {
+                                var y = x*4;
+                                var avgct=0;
+                                t.avg=[t.image.data[y++],t.image.data[y++],t.image.data[y++],t.image.data[y++]];
+                                try {
+                                    t.doPoint(i,j);   // do all the points next to it too...
+                                    t.doPaint();
+                                } catch(e){
+                                    if (! e.message == "Maximum call stack size exceeded") {
+                                        err = e.message;
+                                        prog.text(e.message);
+                                    } else{
+                                        t.doPaint();
+                                    } // ignore call stack (we'll try
+                                }
+                            }
+                            n++;
+                            q--;
+                        }
+                        progress ++;
+                        if (err == ""){
+                            prog.text("Processing " + String(progress) + "%");
+                            window.setTimeout(fn,0.0001);
+                        }
+                    } else {
+                        if (err == ""){
+                            prog.remove();
+                        }
+                        t.ctx.putImageData(t.image,0,0);
+                        var outImg = $('<img>');
+                        outImg[0].src =canvas[0].toDataURL();
+                        t.container.append(outImg);
+                    }
+                };
+                window.setTimeout(fn,4);
+            },
+            doPaint:function(){
+                var t= this;
+                var w = t.srcimg[0].width;
+                var h = t.srcimg[0].height;
+                var avgct = 1;
+                for (var i =0;i<w;i++){
+                    for(var j=0;j<h;j++){
+                        var x = 4*(i+(j*w));
+                        if(null==t.mask[i][j]){
+                            for (var k=0;k<4;k++) {
+                                t.avg[k] = ((t.avg[k]*avgct) +t.image.data[x+k]) /(avgct +1);
+                            }
+                            avgct++;
+                        }
+                    }
+                }
+                for (var i =0;i<w;i++){
+                    for(var j=0;j<h;j++){
+                        if(null==t.mask[i][j]){
+                            var n = 4*(i+(j*w));
+                            for (var k=0;k<4;k++) {
+                                t.image.data[n+k]  = Math.floor(t.avg[k]);
+                            }
+                            t.mask[i][j] = 0;
+                        }
+                    }
+                }
+            },
+
+            doPoint:function(i,j){
+                var t = this;
+                var w = t.srcimg[0].width;
+                var h = t.srcimg[0].height;
+                var x = 4*(i+(j*w));
+                var p = [t.image.data[x++],t.image.data[x++],t.image.data[x++],t.image.data[x++]]
+                if (t.distance > distance(t.avg,p)){
+                    t.mask[i][j] = null;
+                    if( i+1 < w && t.mask[i+1][j] ) { t.doPoint(i+1,j)}
+                    if( i-1 > 0 && t.mask[i-1][j] ) { t.doPoint(i-1,j)}
+                    if( j+1 < h && t.mask[i][j+1] ) { t.doPoint(i,j+1)}
+                    if( j-1 > 0 && t.mask[i][j-1] ) { t.doPoint(i,j-1)}
+                }
+                return;
+            },
+            avgPt:function(i,j,ct){
+                var t = this;
+                var w = t.srcimg[0].width;
+                var h = t.srcimg[0].height;
+                if(i>0 && j>0 && i<w && j<h){
+                    var x = 4*(i+(j*w));
+                    var p = [t.image.data[x++],t.image.data[x++],t.image.data[x++],t.image.data[x++]]
+                    for (var k=0;k<4;k++) {
+                        t.avg[k] = ((t.avg[k]*ct) +p[k]) /(ct +1);
+                    }
+                }
+            },
+            avgct:0,
+            ctx:0,
+            mask:0,
+            image:0,
+            avg:0,
+            srcimg:0,
+            cnv:0,
+            distance : 35,
+            container : 0  // container
+        } // proto
+
+        function distance(a,b){
+            var o =0;
+            for(i=0;i<4;i++){
+                o += (a[i]-b[i])*(a[i]-b[i]);
+            }
+            return(Math.sqrt(o));
+        }
+        $(document).ready(function(){ var c = new comicify($('body'));});
+
+
+
+    </script>
+</head>
+<body>
+<h1>Comicify</h1><h2>Make a photo look like a comic book drawing...</h2>
+<input type="file" id="fileInput" name="file" />
+<button id="btn">button</button>
+<img id ='img' src="images/signn.png" alt="rose">
+</body>
+</html>

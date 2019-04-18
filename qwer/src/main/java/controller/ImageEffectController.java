@@ -21,4 +21,9 @@ public class ImageEffectController {
         model.put("message", "You are in new page !!");
         return "ImageEffect";
     }
+    @RequestMapping("/ImageEffect2")
+    public String messages2(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "ImageEffect2";
+    }
 }
