@@ -23,14 +23,18 @@ $(document).ready(function(){
         }
     })
         .on("click", "button", function () {
-            var anchor = $(this).siblings('a');
-            $(anchor.attr('href')).remove();
-            $(this).parent().remove();
-            $(".nav-tabs li").children('a').first().click();
             if (currentPageIndex > 0) {
-                jsonPageArray.splice(currentPageIndex,1);
-                currentPageIndex = $(this).parent().index();
-                restoreCanvas(currentPageIndex);
+                saveCanvas();
+                var anchor = $(this).siblings('a');
+                var index = $(this).parent().index();
+                $(anchor.attr('href')).remove();
+                $(this).parent().remove();
+                $(".nav-tabs li").children('a').first().click();
+                jsonPageArray.splice(index,1);
+                if (currentPageIndex == index) {
+                    currentPageIndex -= 1;
+                    restoreCanvas(currentPageIndex);
+                }
                 console.log(currentPageIndex);
             }
         });
@@ -274,10 +278,6 @@ $(document).ready(function(){
         }
     });
 
-    $("#load_draft").click(function () {
-
-    });
-
     $("#save_button").click(function () {
         saveCanvas();
         console.log(jsonPageArray.toString());
@@ -316,6 +316,7 @@ $(document).ready(function(){
 
     $(document).on('click', '#chapter_list a', function () {
         var value = $(this).attr("value");
+        value = parseInt(value,10) + 1;
         $(this).parents('.dropdown').find('.dropdown-toggle').html(value);
         var comic_name = $("#dropdownComicListButton").text();
         var chapter = $("#dropdownChapterListButton").text();
@@ -332,9 +333,15 @@ $(document).ready(function(){
                 jsonPageArray.length = 0;
                 for (var i = 0; i < array.length; i++) {
                     jsonPageArray.push(array[i]);
+                    // add tabs
+                    if (i > 0) {
+                        var id = $(".nav-tabs").children().length;
+                        $(".add-page").closest('li').before('<li><a href="#page' + id + '">Page ' + id + '</a> <button> x </button></li>');
+                    }
                 }
                 restoreCanvas(0);
                 currentPageIndex = 0;
+
                 console.log("load pages done");
             }
         });
