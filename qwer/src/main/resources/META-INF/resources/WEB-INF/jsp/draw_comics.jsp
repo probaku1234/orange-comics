@@ -140,7 +140,7 @@
         <div class="container">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="active">
-                    <a href="#page1" data-toggle="tab">Page 1</a> <button value="0">x</button>
+                    <a href="#page1" data-toggle="tab">Page 1</a>
                 </li>
                 <li><a href="#" class="add-page">+ Add Page</a>
                 </li>

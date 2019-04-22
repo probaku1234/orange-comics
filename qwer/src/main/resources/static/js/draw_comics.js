@@ -19,7 +19,7 @@ $(document).ready(function(){
             saveCanvas();
             currentPageIndex = $(this).parent().index();
             restoreCanvas(currentPageIndex);
-            console.log(currentPageIndex);
+            console.log($(this).parent().index());
         }
     })
         .on("click", "button", function () {
@@ -39,18 +39,19 @@ $(document).ready(function(){
             }
         });
 
+
     $('.add-page').click(function (e) {
         e.preventDefault();
-        var id = $(".nav-tabs").children().length; //think about it ;)
-        var tabId = 'page' + id;
-        var canvas_num = 'canvas' + id;
+        let id = $(".nav-tabs").children().length; //think about it ;)
+        let tabId = 'page' + id;
+        let canvas_num = 'canvas' + id;
 
         $(this).closest('li').before('<li><a href="#page' + id + '">Page ' + id + '</a> <button> x </button></li>');
 
         saveCanvas();
         jsonPageArray.push('{"version":"2.4.6","objects":[]}');
 
-
+        console.log($(".nav-tabs").children().closest('a').attr('id'));
 
         $('.nav-tabs li:nth-child(' + id + ') a').click();
     });
@@ -346,6 +347,13 @@ $(document).ready(function(){
             }
         });
     });
+
+    function sortPages() {
+        var id = $(".nav-tabs").children().length;
+        for (var i = 0; i < id; i++) {
+
+        }
+    }
 
     function saveCanvas() {
         jsonPageArray[currentPageIndex] = JSON.stringify(canvas);
