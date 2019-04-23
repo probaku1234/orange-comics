@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
+<%
+    if (session == null) {
+        %><jsp:forward page="login.jsp"></jsp:forward><%
+    } else {
+        System.out.println(session);
+    }
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -72,7 +79,7 @@
                         %><a class="nav-link" href="login">Log In</a><%
                     } else {
                         String user = (String)session.getAttribute("user");
-                        %><a class="nav-link" href="user_profile"><%=user%></a><%
+                    %><a class="nav-link"><%=user%></a><%
                     }
                 %>
             </li>
@@ -80,70 +87,53 @@
     </div>
 </nav>
 
-
-<div class="splash h-92">
-    <div class="center">
-        <div style="height: 10%"></div>
-        <div class="bookshelf">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
+<div class="col-md-9">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Your Profile</h4>
+                    <hr>
                 </div>
             </div>
-        </div>
-        <div class="bookshelf" style="float: right">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="/user_profile" method="POST">
+                        <div class="form-group row">
+                            <label for="username" class="col-4 col-form-label">User Name</label>
+                            <div class="col-8">
+                                <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text" readonly value=${name} >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-4 col-form-label">Email</label>
+                            <div class="col-8">
+                                <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" readonly value=${email}>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="publicinfo" class="col-4 col-form-label">Profile Description</label>
+                            <div class="col-8">
+                                <textarea id="publicinfo" name="description" cols="40" rows="4" class="form-control">${description}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="newpass" class="col-4 col-form-label">New Password</label>
+                            <div class="col-8">
+                                <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-4 col-8">
+                                <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div style="height: 10%"></div>
-                <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Samples-->
-        <div class="samples">
-            <div class="bar">
-                <a class="icon quit"></a>
-            </div>
-            <div id="book-wrapper">
-                <div id="book-zoom"></div>
-            </div>
-            <div id="slider-bar" class="turnjs-slider">
-                <div id="slider"></div>
             </div>
 
         </div>
-
-        <!-- End samples -->
-
     </div>
-    <div class="gradient"></div>
 </div>
-
-
-
 </body>
 </html>

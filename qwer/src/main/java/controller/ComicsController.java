@@ -46,7 +46,7 @@ public class ComicsController {
         for (Comic comic : comics) {
             if (comic.title.equals(title)) {
                 ArrayList<String> chapterIds = comicServices.getChapters(comic.id);
-                comicServices.updatePages(chapterIds.get(chapterIndex), comic.id, userId, pages);
+                comicServices.updatePages(chapterIds.get(chapterIndex-1), comic.id, userId, pages);
                 break;
             }
         }
