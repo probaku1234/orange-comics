@@ -6,9 +6,9 @@ $(document).ready(function(){
     let isRedoing = false;
     let h = [];
     let selectedObject;
-    
-    canvas.setWidth( 460 );
-    canvas.setHeight( 582 );
+
+    canvas.setWidth( 471 );
+    canvas.setHeight( 600 );
     canvas.calcOffset();
     // canvas.setDimensions({width: '100%', height: '100%'}, {cssOnly: true});
     jsonPageArray.push(JSON.stringify(canvas));
@@ -43,10 +43,10 @@ $(document).ready(function(){
     $('.add-page').click(function (e) {
         e.preventDefault();
         let id = $(".nav-tabs").children().length; //think about it ;)
-        let tabId = 'page' + id;
+        let tabId = 'page' + id - 1;
         let canvas_num = 'canvas' + id;
 
-        $(this).closest('li').before('<li><a href="#page' + id + '">Page ' + id + '</a> <button> x </button></li>');
+        $(this).closest('li').before('<li class="nav-item"><a class="nav-link add-page" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + id + '"> ' + id + ' <span class="remove_button"> x </span></a></li>');
 
         saveCanvas();
         jsonPageArray.push('{"version":"2.4.6","objects":[]}');
@@ -74,7 +74,7 @@ $(document).ready(function(){
             canvas.renderAll();
         }
     });
-    
+
     $("#redo").click(function () {
         if(h.length>0){
             isRedoing = true;
@@ -298,7 +298,7 @@ $(document).ready(function(){
             }
         });
     });
-    
+
     $("#free_draw").click(function () {
         if (canvas.isDrawingMode == false) {
             canvas.isDrawingMode = true;
@@ -348,13 +348,6 @@ $(document).ready(function(){
         });
     });
 
-    function sortPages() {
-        var id = $(".nav-tabs").children().length;
-        for (var i = 0; i < id; i++) {
-
-        }
-    }
-
     function saveCanvas() {
         jsonPageArray[currentPageIndex] = JSON.stringify(canvas);
     }
@@ -362,7 +355,7 @@ $(document).ready(function(){
     function restoreCanvas(index) {
         canvas.loadFromJSON(jsonPageArray[index]);
     }
-    
+
     function createJSONObjectArray() {
         var jsonObjectArray = new Array();
         for (var i = 0; i <  jsonPageArray.length; i++) {
