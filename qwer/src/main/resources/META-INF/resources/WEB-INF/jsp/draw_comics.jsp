@@ -95,164 +95,183 @@
     </div>
 </nav>
 <div class="splash h-92">
-    <div class="align-content-center" style="display: flex; height: 85%">
-        <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 2%; align-items: center; border-style: solid; border-color: #1d2124;">
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Cartoonize Image</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Add Genre & Tags</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="save_button">Save Draft</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Post Comics</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_page">Add New Page</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="delete_page">Delete Page</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
-            <div class="dropdown mr-auto mt-2 mt-lg-0">
-                <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Add Comic Title
-                </button>
-                <div class="dropdown-menu" aria-labelledby="newComicButton">
-                    <input class="form-control mr-sm-2" id="new_comic_book_input" type="search" placeholder="Enter the Title" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
+    <div class="container container-width-limit">
+        <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#page1" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Cover Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link add-page page-nav-link" href="#">+ Add Page</a>
+            </li>
+        </ul>
+        <div class="row">
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-2 tabs-margin">
+                        <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active function-menu-tabs" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">IMAGES</a>
+                            <a class="nav-link function-menu-tabs" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">SHAPES</a>
+                            <a class="nav-link function-menu-tabs" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">TEXT</a>
+                            <a class="nav-link function-menu-tabs" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">POST</a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Pre-made Characters
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10" id="premade_images">
+                                        <a class="dropdown-item" value="add_premade1" href="#">1</a>
+                                        <a class="dropdown-item" value="add_premade2" href="#">2</a>
+                                        <a class="dropdown-item" value="add_premade3" href="#">3</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Add Image from URL
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
+                                        <input class="form-control mr-sm-2" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" id="addImageButton">Add</button>
+                                    </div>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Add Background from URL
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
+                                        <input class="form-control mr-sm-2" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" id="addBackgroundButton">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                <div class="mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Draw Line
+                                    </button>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Draw Shapes
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="shapes">
+                                        <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
+                                        <a class="dropdown-item" value="circle" href="#">Circle</a>
+                                        <a class="dropdown-item" value="triangle" href="#">Triangle</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Speech Bubbles
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
+                                        <a class="dropdown-item" value="bubble1" href="#">1</a>
+                                        <%--<a class="dropdown-item" value="bubble2" href="#">2</a>--%>
+                                        <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                <div class="mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Add Textbox
+                                    </button>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Fonts
+                                    </button>
+                                    <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
+                                        <a class="dropdown-item" href="#">Ariel</a>
+                                        <a class="dropdown-item" href="#">Helvetica</a>
+                                        <a class="dropdown-item" href="#">Times New Roman</a>
+                                        <a class="dropdown-item" href="#">Courier New</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Font Style
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <a class="dropdown-item" href="#">Normal</a>
+                                        <a class="dropdown-item" href="#">Bold</a>
+                                        <a class="dropdown-item" href="#">Italic</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Font Size
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                        <a class="dropdown-item" href="#">12</a>
+                                        <a class="dropdown-item" href="#">14</a>
+                                        <a class="dropdown-item" href="#">16</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Cartoonize Image</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Add Genre & Tags</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="save_button">Save Draft</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Post Comics</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Add Comic Title
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="newComicButton">
+                                        <input class="form-control mr-sm-2" id="new_comic_book_input" type="search" placeholder="Enter the Title" aria-label="Search">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_chapter">New Chapter</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_front">Move Front</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="copy">Copy</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="cut">Cut</button>
+                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="paste">Paste</button>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownComicListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Comic Titles
+                                    </button>
+                                    <div id="comic_list" class="dropdown-menu" aria-labelledby="dropdownComicListButton">
+
+                                    </div>
+                                </div>
+                                <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChapterListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Chapters
+                                    </button>
+                                    <div id="chapter_list" class="dropdown-menu" aria-labelledby="dropdownChapterListButton">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_chapter">New Chapter</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
-            <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_front">Move Front</button>
-            <div class="dropdown mr-auto mt-2 mt-lg-0">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownComicListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Comic Titles
-                </button>
-                <div id="comic_list" class="dropdown-menu" aria-labelledby="dropdownComicListButton">
 
-                </div>
-            </div>
-            <div class="dropdown mr-auto mt-2 mt-lg-0">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChapterListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Chapters
-                </button>
-                <div id="chapter_list" class="dropdown-menu" aria-labelledby="dropdownChapterListButton">
+            <div class="col-lg canvas_container">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="page1">
+                        <canvas id="canvas" class="draw_canvas">
 
+                        </canvas>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="container">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="active">
-                    <a href="#page1" data-toggle="tab">Page 1</a>
-                </li>
-                <li><a href="#" class="add-page">+ Add Page</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active" id="page1">
-                    <canvas id="canvas" class="draw_canvas">
-
-                    </canvas>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="functions" style="width: 15%; height: 100%; float: left; margin-left: 2%; margin-right: 10%; align-items: center; border-style: solid; border-color: #1d2124;">
-            <div class="navbar" style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
-                <div class="mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Add Textbox
-                    </button>
-                </div>
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Fonts
-                    </button>
-                    <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
-                        <a class="dropdown-item" href="#">Ariel</a>
-                        <a class="dropdown-item" href="#">Helvetica</a>
-                        <a class="dropdown-item" href="#">Times New Roman</a>
-                        <a class="dropdown-item" href="#">Courier New</a>
-                    </div>
-                </div>
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Font Style
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <a class="dropdown-item" href="#">Normal</a>
-                        <a class="dropdown-item" href="#">Bold</a>
-                        <a class="dropdown-item" href="#">Italic</a>
-                    </div>
-                </div>
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Font Size
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <a class="dropdown-item" href="#">12</a>
-                        <a class="dropdown-item" href="#">14</a>
-                        <a class="dropdown-item" href="#">16</a>
-                    </div>
-                </div>
-            </div>
-            <div class="navbar" style="height: 33%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
-                <div class="mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Draw Line
-                    </button>
-                </div>
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Draw Shapes
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="shapes">
-                        <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
-                        <a class="dropdown-item" value="circle" href="#">Circle</a>
-                        <a class="dropdown-item" value="triangle" href="#">Triangle</a>
-                    </div>
-                </div>
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Speech Bubbles
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
-                        <a class="dropdown-item" value="bubble1" href="#">1</a>
-                        <%--<a class="dropdown-item" value="bubble2" href="#">2</a>--%>
-                        <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
-                    </div>
-                </div>
-            </div>
-            <div class="navbar" style="height: 34%; width: 100%; border-style: solid; border-color: #1b1e21; flex: 1;">
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pre-made Characters
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10" id="premade_images">
-                        <a class="dropdown-item" value="add_premade1" href="#">1</a>
-                        <a class="dropdown-item" value="add_premade2" href="#">2</a>
-                        <a class="dropdown-item" value="add_premade3" href="#">3</a>
-                    </div>
-                </div>
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Add Image from URL
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
-                        <input class="form-control mr-sm-2" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" id="addImageButton">Add</button>
-                    </div>
-                </div>
-                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Add Background from URL
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
-                        <input class="form-control mr-sm-2" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" id="addBackgroundButton">Add</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
