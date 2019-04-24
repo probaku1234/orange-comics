@@ -61,7 +61,7 @@ public class ComicsController {
         ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
         for (Comic comic : comics) {
             if (comic.title.equals(title)) {
-                ArrayList<String> pages = comicServices.getPages(comic.chapters.get(chapter),comic.id);
+                ArrayList<String> pages = comicServices.getPages(comic.chapters.get(chapter-1),comic.id);
                 return pages;
             }
         }

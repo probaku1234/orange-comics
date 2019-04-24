@@ -3,6 +3,7 @@ function makePictureGray (src){
     // You can try more different parameters
     cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY, 0);
     cv.imshow('canvasOutput', dst);
+    console.log(dst);
     src.delete();
     //return dst;
     dst.delete();
