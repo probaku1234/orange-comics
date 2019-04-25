@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -51,6 +52,34 @@ public class ComicsController {
             }
         }
 
+        return 1;
+    }
+
+    @RequestMapping(value = {"/post_request"}, method = RequestMethod.POST)
+    @ResponseBody
+    public int PostRequest(@RequestParam("jsonArray") String jsonString, @RequestParam(value = "comic_name") String title, @RequestParam(value = "chapter") int chapterIndex, HttpSession session) throws MalformedURLException  {
+        String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
+        JSONArray jsonArray = new JSONArray(jsonString);
+        ArrayList<String> pages = new ArrayList<>();
+        boolean ChapterExist = false;
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            pages.add(jsonObject.toString());
+        }
+        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
+
+        for (Comic comic : comics) {
+            if (comic.title.equals(title)) {
+                ArrayList<String> chapterIds = comicServices.getChapters(comic.id);
+                comicServices.publishChapter(chapterIds.get(chapterIndex),comic.id, userId);
+                ChapterExist = true;
+                System.out.println("[In draft] chapter is published");
+                break;
+            }
+        }
+        if(ChapterExist ==false) {
+            System.out.println("Comic was not made yet");
+        }
         return 1;
     }
 

@@ -24,7 +24,13 @@
     <script type="text/javascript" src="lib/bookshelf.js"></script>
     <script type="text/javascript" src="lib/fabric.min.js"></script>
     <script type="text/javascript" src="js/draw_comics.js"></script>
+    <script type="text/javascript" src="js/ImageEffectHandling.js"></script>
     <script type="text/javascript" src="js/comics.js"></script>
+
+    <script type="text/javascript" src="lib/imageBlending.js"></script>
+    <script type="text/javascript" src="lib/blendings.js"></script>
+
+
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -274,6 +280,152 @@
         </div>
     </div>
 </div>
+<div id="wrapper">
+    <div>
+        <div class="inputoutput">
+            <img id="imageSrc" alt="No Image" />
+            <div class="caption">imageSrc
+                <input type="file" id="fileInput" name="file" />
+            </div>
+        </div>
 
+
+        <div class="inputoutput">
+            <canvas id="canvasOutput" ></canvas>
+            <div class="caption">canvasOutput</div>
+        </div>
+    </div>
+    <div>
+        <button id="gray">Effect1</button>
+        <button id="bilateralFilter">Effect2</button>
+        <button id="ImageCanny">Effect3</button>
+        <button>Effect4</button>
+        <button>Effect5</button>
+    </div>
+
+    <div id="aaa" class="clearfix">
+        <div>
+            <img id="_mask" src="/images/mask.jpg" height="200" width="200" alt="mask">
+            <img id="_img" src="/images/air.jpg" height="200" width="200" alt="butterfly">
+            <img id="_hand" src="/images/handd.png" height="200" width="200" alt="hand">
+            <img id="_sign" src="/images/signn.png" height="200" width="200" alt="sign">
+        </div>
+
+        <div>
+            <button onclick="changeImageSet()">Image Setting</button>
+            <button onclick="changeImageSet2()">Image Setting</button>
+        </div>
+    </div>
+    <div id="steps" class="clearfix">
+        <div>
+            <span class="strong">Base Image</span><br />
+            <canvas id="base-canvas" height="200" width="200"></canvas>
+        </div>
+        <div>
+            <span class="strong">Blend Source Image</span><br />
+            <canvas id="src-canvas" height="200" width="200"></canvas>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h3>Step1</h3>
+            &#8595; Draw mask area. <br />
+            <canvas id="mask-canvas" height="200" width="200"></canvas><br />
+            <button name="adjustBtn" onclick="adjustBlendPosition()">HERE</button>
+            <h3>Step2</h3>
+            <canvas id="result-canvas" height="200" width="200"></canvas><br />
+            Adjust blend position:
+            <button name="directionBtn" onclick="moveBlendPosition('up')">&#8593;</button>
+            <button name="directionBtn" onclick="moveBlendPosition('right')">&#8594;</button>
+            <button name="directionBtn" onclick="moveBlendPosition('down')">&#8595;</button>
+            <button name="directionBtn" onclick="moveBlendPosition('left')">&#8592;</button>
+            <br />
+            <button name="blendBtn" onclick="blendImages()">Blending</button>
+        </div>
+    </div>
+    <div id="footer1">
+        <button name="resetBtn" onclick="initializeCanvas()">Reset all Canvas</button><br />
+    </div>
+</div>
+
+<%--<div class="modal fade" id="myModal" role="dialog">--%>
+<%--    <div class="modal-dialog modal-lg">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+<%--            </div>--%>
+<%--            <div id="wrapper">--%>
+<%--                <div>--%>
+<%--                    <div class="inputoutput">--%>
+<%--                        <img id="imageSrc" alt="No Image" />--%>
+<%--                        <div class="caption">imageSrc--%>
+<%--                            <input type="file" id="fileInput" name="file" />--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+
+<%--                    <div class="inputoutput">--%>
+<%--                        <canvas id="canvasOutput" ></canvas>--%>
+<%--                        <div class="caption">canvasOutput</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div>--%>
+<%--                    <button id="gray">Effect1</button>--%>
+<%--                    <button id="bilateralFilter">Effect2</button>--%>
+<%--                    <button id="ImageCanny">Effect3</button>--%>
+<%--                    <button>Effect4</button>--%>
+<%--                    <button>Effect5</button>--%>
+<%--                </div>--%>
+
+<%--                <div id="aaa" class="clearfix">--%>
+<%--                    <div>--%>
+<%--                        <img id="_mask" src="/images/mask.jpg" height="200" width="200" alt="mask">--%>
+<%--                        <img id="_img" src="/images/air.jpg" height="200" width="200" alt="butterfly">--%>
+<%--                        <img id="_hand" src="/images/handd.png" height="200" width="200" alt="hand">--%>
+<%--                        <img id="_sign" src="/images/signn.png" height="200" width="200" alt="sign">--%>
+<%--                    </div>--%>
+
+<%--                    <div>--%>
+<%--                        <button onclick="changeImageSet()">Image Setting</button>--%>
+<%--                        <button onclick="changeImageSet2()">Image Setting</button>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div id="steps" class="clearfix">--%>
+<%--                    <div>--%>
+<%--                        <span class="strong">Base Image</span><br />--%>
+<%--                        <canvas id="base-canvas" height="200" width="200"></canvas>--%>
+<%--                    </div>--%>
+<%--                    <div>--%>
+<%--                        <span class="strong">Blend Source Image</span><br />--%>
+<%--                        <canvas id="src-canvas" height="200" width="200"></canvas>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div>--%>
+<%--                    <div>--%>
+<%--                        <h3>Step1</h3>--%>
+<%--                        &#8595; Draw mask area. <br />--%>
+<%--                        <canvas id="mask-canvas" height="200" width="200"></canvas><br />--%>
+<%--                        <button name="adjustBtn" onclick="adjustBlendPosition()">HERE</button>--%>
+<%--                        <h3>Step2</h3>--%>
+<%--                        <canvas id="result-canvas" height="200" width="200"></canvas><br />--%>
+<%--                        Adjust blend position:--%>
+<%--                        <button name="directionBtn" onclick="moveBlendPosition('up')">&#8593;</button>--%>
+<%--                        <button name="directionBtn" onclick="moveBlendPosition('right')">&#8594;</button>--%>
+<%--                        <button name="directionBtn" onclick="moveBlendPosition('down')">&#8595;</button>--%>
+<%--                        <button name="directionBtn" onclick="moveBlendPosition('left')">&#8592;</button>--%>
+<%--                        <br />--%>
+<%--                        <button name="blendBtn" onclick="blendImages()">Blending</button>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div id="footer1">--%>
+<%--                    <button name="resetBtn" onclick="initializeCanvas()">Reset all Canvas</button><br />--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="modal-footer">--%>
+<%--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 </body>
 </html>

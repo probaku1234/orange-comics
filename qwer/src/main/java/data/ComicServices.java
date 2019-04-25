@@ -107,7 +107,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -132,7 +132,7 @@ public class ComicServices {
             System.out.println("Chapter is already published");
             return;
         }
-
+        System.out.println("ssssss");
         chapter.isDraft = false;
         chapter.publishedDate = new Date();
         chapterRepository.save(chapter);
@@ -150,7 +150,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -198,7 +198,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }
@@ -234,7 +234,7 @@ public class ComicServices {
 
         Comic comic = optComic.get();
 
-        if(comic.author != userID){
+        if(!comic.author.equals(userID)){
             System.out.println("User is not author of comic.");
             return;
         }

@@ -1,5 +1,8 @@
+let selectedObject;
+let mouseUpObject;
+let canvas
 $(document).ready(function(){
-    let canvas = new fabric.Canvas('canvas', {preserveObjectStacking: true});
+    canvas = new fabric.Canvas('canvas', {preserveObjectStacking: true});
     let ctx = canvas.getContext('2d');
     let jsonPageArray = new Array();
     let currentPageIndex = 0;
@@ -295,6 +298,26 @@ $(document).ready(function(){
         });
     });
 
+    $("#post_button").click(function () {
+        saveCanvas();
+        console.log(jsonPageArray.toString());
+        let comic_name = $("#dropdownComicListButton").text();
+        let chapter = $("#dropdownChapterListButton").text();
+        $.ajax({
+            type: "POST",
+            url: "/post_request",
+            data: {
+                "jsonArray" : JSON.stringify(createJSONObjectArray(jsonPageArray)),
+                "comic_name" : comic_name,
+                "chapter" : chapter
+            },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+    
     $("#free_draw").click(function () {
         if (canvas.isDrawingMode == false) {
             canvas.isDrawingMode = true;
@@ -405,5 +428,56 @@ $(document).ready(function(){
     document.getElementById("copy").addEventListener("click", copy);
     document.getElementById("cut").addEventListener("click", cut);
     document.getElementById("paste").addEventListener("click", paste);
+    //ImageEffect
+    // $('#cartoonize').on("click", function() {
+    //
+    // })
+    canvas.on("mouse:up", function (options) {
+        mouseUpObject = options;
+        console.log("new12")
+        if(options.target != undefined){ // if multiple elements are selected, this function executed.
+            console.log(options.target._objects);
+            if(options.target._objects != undefined){
+                let img1 =options.target._objects[0]
+                let img2 =options.target._objects[1]
+
+                if(typeof(img1)== "Img" && typeof(img2)){
+                    img1._element.crossOrigin = "anonymous"
+                    img2._element.crossOrigin = "anonymous"
+                }
+
+                // img2._element.crossOrigin = "anonymous"
+                // let image = new fabric.Image(img2._element, {
+                //     width: img2._element.width,
+                //     height: img2._element.height,
+                //     left: 50,
+                //     top: 70,
+                // });
+
+                // canvas.add(image);
+
+                // canvas.add(img2);
+                // console.log(options.target._objects[0]._element)
+                // console.log(options.target._objects[1]._element)
+            }
+        }
+    });
+    document.getElementById('imgLoader').onchange = function handleImage(e) {
+        let reader = new FileReader();
+        reader.onload = function (event) { console.log('fdsf');
+            let imgObj = new Image();
+            imgObj.src = event.target.result;
+            imgObj.onload = function () {
+                // start fabricJS stuff
+                let image = new fabric.Image(imgObj);
+                // image.set({
+                //     padding: 10,
+                // });
+                canvas.add(image);
+            }
+
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    }
 
 });
