@@ -91,6 +91,8 @@
                         <div> <div class="sample thumb1" sample="book1"></div> </div>
                         <div> <div class="sample thumb2" sample="book2"></div> </div>
                         <div> <div class="sample thumb3" sample="book3"></div> </div>
+                        ${TitleList}
+
                     </div>
                 </div>
                 <div style="height: 10%"></div>
@@ -99,6 +101,7 @@
                         <div> <div class="sample thumb1" sample="book1"></div> </div>
                         <div> <div class="sample thumb2" sample="book2"></div> </div>
                         <div> <div class="sample thumb3" sample="book3"></div> </div>
+                        ${AuthorList}
                     </div>
                 </div>
             </div>
@@ -110,6 +113,7 @@
                         <div> <div class="sample thumb1" sample="book1"></div> </div>
                         <div> <div class="sample thumb2" sample="book2"></div> </div>
                         <div> <div class="sample thumb3" sample="book3"></div> </div>
+                        ${idList}
                     </div>
                 </div>
                 <div style="height: 10%"></div>
