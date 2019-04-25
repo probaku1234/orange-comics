@@ -115,16 +115,17 @@
                 <div class="row">
                     <div class="col-2 tabs-margin">
                         <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active function-menu-tabs" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">IMAGES</a>
-                            <a class="nav-link function-menu-tabs" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">SHAPES</a>
-                            <a class="nav-link function-menu-tabs" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">TEXT</a>
-                            <a class="nav-link function-menu-tabs" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">POST</a>
+                            <a class="nav-link active function-menu-tabs" id="v-pills-images-tab" data-toggle="pill" href="#v-pills-images" role="tab" aria-controls="v-pills-images" aria-selected="true">IMAGES</a>
+                            <a class="nav-link function-menu-tabs" id="v-pills-shapes-tab" data-toggle="pill" href="#v-pills-shapes" role="tab" aria-controls="v-pills-shapes" aria-selected="false">SHAPES</a>
+                            <a class="nav-link function-menu-tabs" id="v-pills-text-tab" data-toggle="pill" href="#v-pills-text" role="tab" aria-controls="v-pills-text" aria-selected="false">TEXT</a>
+                            <a class="nav-link function-menu-tabs" id="v-pills-cartoonize-tab" data-toggle="pill" href="#v-pills-cartoonize" role="tab" aria-controls="v-pills-cartoonize" aria-selected="false">CARTOONIZE</a>
+                            <a class="nav-link function-menu-tabs" id="v-pills-post-tab" data-toggle="pill" href="#v-pills-post" role="tab" aria-controls="v-pills-post" aria-selected="false">POST</a>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="tab-content" id="v-pills-tabContent">
 
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade show active" id="v-pills-images" role="tabpanel" aria-labelledby="v-pills-images-tab">
                                 <div class="dropdown mr-auto mt-2 mt-lg-0">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Pre-made Characters
@@ -155,7 +156,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade" id="v-pills-shapes" role="tabpanel" aria-labelledby="v-pills-shapes-tab">
                                 <div class="mr-auto mt-2 mt-lg-0">
                                     <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Draw Line
@@ -183,7 +184,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="tab-pane fade" id="v-pills-text" role="tabpanel" aria-labelledby="v-pills-text-tab">
                                 <div class="mr-auto mt-2 mt-lg-0">
                                     <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Add Textbox
@@ -222,7 +223,13 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-cartoonize-tab">
+
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
                                 <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Cartoonize Image</button>
                                 <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;">Add Genre & Tags</button>
                                 <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="save_button">Save Draft</button>
