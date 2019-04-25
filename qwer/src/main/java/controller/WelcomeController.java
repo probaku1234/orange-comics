@@ -29,7 +29,7 @@ public class WelcomeController {
     @RequestMapping(value={"/index","/"})
     public String index(Map<String, Object> model, Model _model) {
 
-        String userId = "5cbbbe553f48c51ae0bba994";//id=yong
+        String userId = "5cafaeae0309f52d4420c7dc";//id=yong
         ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
