@@ -45,6 +45,7 @@ public class WelcomeController {
                 if(chapter.isDraft == false){
                     chapterIds.add(comics.get(i).chapters.get(j));
                     ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
+                    System.out.println(pages);
 
                     chapterList.add(pages);
                     TitleList.add(comics.get(i).title);
@@ -53,7 +54,6 @@ public class WelcomeController {
                 }
             }
         }
-
         _model.addAttribute("chapterList", chapterList);
         _model.addAttribute("TitleList", TitleList);
         _model.addAttribute("AuthorList", AuthorList);
