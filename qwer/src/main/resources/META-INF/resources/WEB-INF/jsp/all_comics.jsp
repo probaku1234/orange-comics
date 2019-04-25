@@ -73,7 +73,7 @@
                         %><a class="nav-link" href="login">Log In</a><%
                     } else {
                         String user = (String)session.getAttribute("user");
-                        %><a class="nav-link"><%=user%></a><%
+                        %><a class="nav-link" href="user_profile"><%=user%></a><%
                     }
                 %>
             </li>
