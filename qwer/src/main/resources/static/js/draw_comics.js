@@ -37,7 +37,9 @@ $(document).ready(function(){
             $(".nav-tabs li").children('a').first().click();
             currentPageIndex = $(this).parent().parent().index();
             $(".remove_button").each(function () {
-                $(this).parent().text($(this).parent().parent().index()+1);
+                var parent = $(this).parent();
+                parent.text($(this).parent().parent().index()+1);
+                parent.append("<span class='remove_button'>x</span>");
             })
         });
 
