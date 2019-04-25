@@ -22,21 +22,17 @@ $(document).ready(function(){
             console.log($(this).parent().index());
         }
     })
-        .on("click", "button", function () {
+        .on("click", "span", function () {
+            let anchor = $(this).siblings('a');
+            console.log(currentPageIndex);
             if (currentPageIndex > 0) {
-                saveCanvas();
-                var anchor = $(this).siblings('a');
-                var index = $(this).parent().index();
-                $(anchor.attr('href')).remove();
-                $(this).parent().remove();
-                $(".nav-tabs li").children('a').first().click();
-                jsonPageArray.splice(index,1);
-                if (currentPageIndex == index) {
-                    currentPageIndex -= 1;
-                    restoreCanvas(currentPageIndex);
-                }
-                console.log(currentPageIndex);
+                jsonPageArray.splice(currentPageIndex,1);
+                restoreCanvas(currentPageIndex);
             }
+            $(anchor.attr('href')).remove();
+            $(this).parent().remove();
+            $(".nav-tabs li").children('a').first().click();
+            currentPageIndex = $(this).parent().index();
         });
 
 
@@ -46,7 +42,7 @@ $(document).ready(function(){
         let tabId = 'page' + id - 1;
         let canvas_num = 'canvas' + id;
 
-        $(this).closest('li').before('<li class="nav-item"><a class="nav-link add-page" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + id + '"> ' + id + ' <span class="remove_button"> x </span></a></li>');
+        $(this).closest('li').before('<li class="nav-item"><a class="nav-link page-nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + id + '"> ' + id + ' <span class="remove_button"> x </span></a></li>');
 
         saveCanvas();
         jsonPageArray.push('{"version":"2.4.6","objects":[]}');

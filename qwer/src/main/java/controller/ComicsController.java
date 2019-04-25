@@ -77,7 +77,8 @@ public class ComicsController {
     }
 
     @RequestMapping(value = {"/create_chapter"}, method = RequestMethod.POST)
-    public void createChapterRequset(@RequestParam(value = "comic_name") String title, HttpSession session) throws MalformedURLException{
+    @ResponseBody
+    public int createChapterRequset(@RequestParam(value = "comic_name") String title, HttpSession session) throws MalformedURLException{
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
 
         //comicServices.createChapter();
@@ -86,9 +87,10 @@ public class ComicsController {
             if (comic.title.equals(title)) {
                 URL url = new URL(baseURL+title+"/" + comicServices.getChapters(comic.id).size()+1);
                 comicServices.createChapter(comic.id, userId, url);
-                break;
+                return 1;
             }
         }
+        return 0;
     }
 
     @RequestMapping(value = {"/get_comic_list"}, method = RequestMethod.POST)

@@ -43,9 +43,13 @@ function updateDepth(book, newPage) {
 }
 
 function loadPage(page, pageElement) {
-
+	// url "qwejqwwfnjawenfjawejaf"
+	// data: page index
 	$.ajax({url: samplePath + 'pages/page' + page + '.html'}).
 		done(function(pageHtml) {
+			// var pageHhtml = "<html><canvas></canvas></html>";
+			// page json string
+			//
 			pageElement.html(pageHtml);
 		});
 
@@ -336,7 +340,7 @@ bookshelf.loadSample(sampleName, function(action) {
 	sample.previewWidth = 115;
 	sample.previewHeight = 73;
 	sample.previewSrc = samplePath + 'pics/preview.jpg';
-	sample.tableContents = 5;
+	sample.tableContents = 10;
 	sample.shareLink = 'http://' + location.host + '/#'+samplePath;
 	sample.shareText = 'A book about Steve Jobs in HTML5 using the new turn.js via @turnjs';
 
