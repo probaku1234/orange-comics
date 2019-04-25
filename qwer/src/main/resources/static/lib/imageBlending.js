@@ -5,6 +5,7 @@ var image_set = {base:null, src:null};
 function changeImageSet() {
     var base = document.getElementById("_mask");
     var image = document.getElementById("_img");
+    console.log(base)
     image_set.base = base.src;
     image_set.src = image.src;
     initializeCanvas();

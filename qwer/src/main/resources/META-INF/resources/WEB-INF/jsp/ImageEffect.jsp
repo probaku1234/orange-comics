@@ -12,7 +12,7 @@
     <script async src="https://docs.opencv.org/master/opencv.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/opencv.js"></script>
 </head>
-<body>
+<%--<body>--%>
 <div id="wrapper">
     <div>
         <div class="inputoutput">
@@ -88,18 +88,6 @@
     inputElement.addEventListener('change', (e) => {
         imgElement.src = URL.createObjectURL(e.target.files[0]);
     }, false);
-    $('#gray').click(function() {
-        let src = cv.imread(imgElement);
-        makePictureGray(src);
-    });
-    $('#bilateralFilter').click(function() {
-        let src = cv.imread(imgElement);
-        smoothing(src);
-    });
-    $('#ImageCanny').click(function() {
-        let src = cv.imread(imgElement);
-        ImageCanny(src);
-    });
 
 </script>
 </body>
