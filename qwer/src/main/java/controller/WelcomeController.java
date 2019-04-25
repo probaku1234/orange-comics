@@ -45,8 +45,7 @@ public class WelcomeController {
                 if(chapter.isDraft == false){
                     chapterIds.add(comics.get(i).chapters.get(j));
                     ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
-                    System.out.println(pages);
-
+                        
                     chapterList.add(pages);
                     TitleList.add(comics.get(i).title);
                     AuthorList.add(userServices.getUsername(comics.get(i).author));
