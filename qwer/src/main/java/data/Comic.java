@@ -36,4 +36,6 @@ public class Comic {
         tags = new ArrayList<>();
         chapters = new ArrayList<>();
     }
+
+    public Comic(){};
 }
