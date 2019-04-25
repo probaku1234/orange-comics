@@ -79,6 +79,7 @@ function getChapterList(title) {
         },
         dataType: "json",
         success: function (array) {
+            $("#chapter_list").empty();
             for (var i = 0; i < array.length; i++) {
                 var text = i + 1;
                 $("#chapter_list").append("<a class='dropdown-item' value='"+ i + "'>" + text + "</a>");
