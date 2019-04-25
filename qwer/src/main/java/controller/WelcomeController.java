@@ -35,7 +35,7 @@ public class WelcomeController {
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();
         ArrayList<String> TitleList = new ArrayList<>();
-        ArrayList<String> idList = new ArrayList<>();
+//        ArrayList<String> idList = new ArrayList<>();
         for(int i = 0; i < comics.size(); i++) {
             for(int j = 0; j < comics.get(i).chapters.size(); j++) {
 
@@ -48,15 +48,16 @@ public class WelcomeController {
 
                     chapterList.add(pages);
                     TitleList.add(comics.get(i).title);
-                    AuthorList.add(comics.get(i).author);
-                    idList.add(comics.get(i).id);
+                    AuthorList.add(userServices.getUsername(comics.get(i).author));
+//                    idList.add(comics.get(i).id);
                 }
             }
         }
+
         _model.addAttribute("chapterList", chapterList);
         _model.addAttribute("TitleList", TitleList);
         _model.addAttribute("AuthorList", AuthorList);
-        _model.addAttribute("idList", idList);
+//        _model.addAttribute("idList", idList);
 
 
 
