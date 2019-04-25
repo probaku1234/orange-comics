@@ -1,6 +1,7 @@
 package data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -68,6 +69,15 @@ public class ComicServices {
             comicIDs.add(comic.id);
         }
         return comicIDs;
+    }
+
+    public ArrayList<Comic> getRecentComics(int amount){
+        Comic publicComic = new Comic();
+        publicComic.publishedStatus = STATUS_PUBLIC;
+        Example<Comic> example = Example.of(publicComic, ExampleMatcher.matchingAll().withIgnorePaths("id", "title", "author",
+                "description", "url", "publishedDate", "lastUpdate", "genres", "tags", "chapters"));
+        Page<Comic> comics = comicRepository.findAll(example, PageRequest.of(0, amount, Sort.by(Sort.Direction.DESC, "lastUpdate")));
+        return new ArrayList<>(comics.getContent());
     }
 
     public void createChapter(String comicID, String userID, URL url){
