@@ -224,38 +224,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-cartoonize-tab">
-                                <div id="wrapper">
-                                <div id="steps" class="clearfix">
-                                    <div>
-                                        <span class="strong">Base Image</span><br />
-                                        <canvas id="base-canvas" height="200" width="200"></canvas>
-                                    </div>
-                                    <div>
-                                        <span class="strong">Blend Source Image</span><br />
-                                        <canvas id="src-canvas" height="200" width="200"></canvas>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <h3>Step1</h3>
-                                        &#8595; Draw mask area. <br />
-                                        <canvas id="mask-canvas" height="200" width="200"></canvas><br />
-                                        <button name="adjustBtn" onclick="adjustBlendPosition()">HERE</button>
-                                        <h3>Step2</h3>
-                                        <canvas id="result-canvas" height="200" width="200"></canvas><br />
-                                        Adjust blend position:
-                                        <button name="directionBtn" onclick="moveBlendPosition('up')">&#8593;</button>
-                                        <button name="directionBtn" onclick="moveBlendPosition('right')">&#8594;</button>
-                                        <button name="directionBtn" onclick="moveBlendPosition('down')">&#8595;</button>
-                                        <button name="directionBtn" onclick="moveBlendPosition('left')">&#8592;</button>
-                                        <br />
-                                        <button name="blendBtn" onclick="blendImages()">Blending</button>
-                                    </div>
-                                </div>
-                                <div id="footer1">
-                                    <button name="resetBtn" onclick="initializeCanvas()">Reset all Canvas</button><br />
-                                </div>
-                            </div>
+
 
 
 
@@ -319,7 +288,31 @@
         </div>
     </div>
 </div>
-
+<div id="wrapper">
+            <canvas id="base-canvas" height="200" width="200" style="display:none"></canvas>
+            <canvas id="src-canvas" height="200" width="200" style="display:none"></canvas>
+    <div>
+        <div>
+            <h3>Step1</h3>
+            &#8595; Draw mask area. <br />
+            <canvas id="mask-canvas" height="200" width="200"></canvas><br />
+            <button name="adjustBtn" onclick="adjustBlendPosition()">HERE</button>
+            <h3>Step2</h3>
+            <canvas id="result-canvas" height="200" width="200"></canvas><br />
+            Adjust blend position:
+            <button name="directionBtn" onclick="moveBlendPosition('up')">&#8593;</button>
+            <button name="directionBtn" onclick="moveBlendPosition('right')">&#8594;</button>
+            <button name="directionBtn" onclick="moveBlendPosition('down')">&#8595;</button>
+            <button name="directionBtn" onclick="moveBlendPosition('left')">&#8592;</button>
+            <br />
+            <button name="blendBtn" onclick="blendImages()">Blending</button>
+            <button id="addToFabric">AddToFabric</button>
+        </div>
+    </div>
+    <div id="footer1">
+        <button name="resetBtn" onclick="initializeCanvas()">Reset all Canvas</button><br />
+    </div>
+</div>
 
 
 </body>
