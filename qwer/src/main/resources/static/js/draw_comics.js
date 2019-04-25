@@ -339,6 +339,26 @@ $(document).ready(function(){
         canvas.bringToFront(selectedObject);
     });
 
+    $("#addToFabric").click(function () {
+        let can = document.getElementById('result-canvas');
+        let ctx = can.getContext('2d');
+
+        let _Image = new Image();
+        _Image.src= can.toDataURL();
+        console.log(_Image)
+
+        fabric.Image.fromURL(_Image.src, function(img) {
+            img.left = 50;
+            img.top = 50;
+            canvas.add(img);
+            img.bringToFront();
+            canvas.renderAll();
+        });
+        // let imgInstance = new fabric.Image(_Image, {
+        //
+        // });
+        // canvas.add(imgInstance);
+    });
     $(document).on('click', '#chapter_list a', function () {
         var value = $(this).attr("value");
         value = parseInt(value,10) + 1;
@@ -445,9 +465,6 @@ $(document).ready(function(){
     document.getElementById("cut").addEventListener("click", cut);
     document.getElementById("paste").addEventListener("click", paste);
     //ImageEffect
-    // $('#cartoonize').on("click", function() {
-    //
-    // })
     canvas.on("mouse:up", function (options) {
         mouseUpObject = options;
         console.log("new12")
@@ -461,20 +478,6 @@ $(document).ready(function(){
                     img1._element.crossOrigin = "anonymous"
                     img2._element.crossOrigin = "anonymous"
                 }
-
-                // img2._element.crossOrigin = "anonymous"
-                // let image = new fabric.Image(img2._element, {
-                //     width: img2._element.width,
-                //     height: img2._element.height,
-                //     left: 50,
-                //     top: 70,
-                // });
-
-                // canvas.add(image);
-
-                // canvas.add(img2);
-                // console.log(options.target._objects[0]._element)
-                // console.log(options.target._objects[1]._element)
             }
         }
     });
@@ -495,5 +498,6 @@ $(document).ready(function(){
         }
         reader.readAsDataURL(e.target.files[0]);
     }
+
 
 });
