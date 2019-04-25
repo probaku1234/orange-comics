@@ -33,9 +33,12 @@ $(document).ready(function(){
                 restoreCanvas(currentPageIndex);
             }
             $(anchor.attr('href')).remove();
-            $(this).parent().remove();
+            $(this).parent().parent().remove();
             $(".nav-tabs li").children('a').first().click();
-            currentPageIndex = $(this).parent().index();
+            currentPageIndex = $(this).parent().parent().index();
+            $(".remove_button").each(function () {
+                $(this).parent().text($(this).parent().parent().index()+1);
+            })
         });
 
 
@@ -356,9 +359,10 @@ $(document).ready(function(){
                     // add tabs
                     if (i > 0) {
                         var id = $(".nav-tabs").children().length;
-                        $(".add-page").closest('li').before('<li><a href="#page' + id + '">Page ' + id + '</a> <button> x </button></li>');
+                        $(".add-page").closest('li').before('<li class="nav-item"><a class="nav-link page-nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + id + '"> ' + id + ' <span class="remove_button"> x </span></a></li>');
                     }
                 }
+                canvas.clear();
                 restoreCanvas(0);
                 currentPageIndex = 0;
 
