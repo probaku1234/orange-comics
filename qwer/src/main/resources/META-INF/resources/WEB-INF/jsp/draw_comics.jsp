@@ -102,7 +102,7 @@
 </nav>
 <div class="splash h-92">
     <div class="container container-width-limit">
-        <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
+        <ul class="nav nav-tabs nav-tabs-custom" role="tablist" id="tab">
             <li class="nav-item">
                 <a class="nav-link active" href="#page1" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Cover Page</a>
             </li>

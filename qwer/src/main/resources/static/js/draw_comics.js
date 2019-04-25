@@ -39,7 +39,7 @@ $(document).ready(function(){
             $(".remove_button").each(function () {
                 var parent = $(this).parent();
                 parent.text($(this).parent().parent().index()+1);
-                parent.append("<span class='remove_button'>x</span>");
+                parent.append("<span class='remove_button'> x </span>");
             })
         });
 
@@ -356,6 +356,16 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (array) {
                 jsonPageArray.length = 0;
+                var tab = $("#tab").children();
+
+                tab.each(function (index) {
+                    if (index >0 && index < tab.length-1) {
+                        $(this).remove();
+                    }
+                });
+                if (array.length == 0) {
+                    $(".add-page").closest('li').before('<li class="nav-item"><a class="nav-link page-nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + 2 + '"> ' + 2 + ' <span class="remove_button"> x </span></a></li>');
+                }
                 for (var i = 0; i < array.length; i++) {
                     jsonPageArray.push(array[i]);
                     // add tabs
