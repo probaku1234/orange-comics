@@ -1,16 +1,26 @@
 package data;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.net.URL;
 import java.util.List;
 
 @Repository
-public interface ComicRepository extends MongoRepository<Comic, String>{
-    public List<Comic> findByTitle(String title);
+public interface ComicRepository extends MongoRepository<Comic, String>, QuerydslPredicateExecutor<Comic> {
+    public Page<Comic> findByTitleIgnoreCase(String title, Pageable pageable);
     public List<Comic> findByAuthor(String author);
-    public List<Comic> findByTagsContaining(List<String> tags);
-    public List<Comic> findByGenresContaining(List<String> genres);
+    public Page<Comic> findByTagsContaining(List<String> tags, Pageable pageable);
+    public Page<Comic> findByGenresContaining(List<String> genres, Pageable pageable);
     public Comic findByURL(URL url);
+
+    public Page<Comic> findByTitleIgnoreCaseAndPublishedStatus(String title, String publishedStatus, Pageable pageable);
+    public Page<Comic> findByAuthorAndPublishedStatus(String author, String publishedStatus, Pageable pageable);
+    public Page<Comic> findByTagsContainingAndPublishedStatus(List<String> tags, String publishedStatus, Pageable pageable);
+    public Page<Comic> findByGenresContainingAndPublishedStatus(List<String> genres, String publishedStatus, Pageable pageable);
+
+    public Page<Comic> findByTagsContainingAndGenresContainingAndPublishedStatus(List<String> tags, List<String> genres, String publishedStatus, Pageable pageable);
 }
