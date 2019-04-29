@@ -1,9 +1,7 @@
 package data;
 
-import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -27,12 +25,6 @@ public class ComicServices {
 
     @Autowired
     ChapterRepository chapterRepository;
-
-    private MongoTemplate mongoTemplate;
-
-    public ComicServices(){
-        mongoTemplate = new MongoTemplate(new MongoClient(), "database");
-    }
 
     public void createComic(String title, String authorID, URL url, String publishedStatus){
         if(comicRepository.findByURL(url) != null){

@@ -3,14 +3,13 @@ package data;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.net.URL;
 import java.util.List;
 
 @Repository
-public interface ComicRepository extends MongoRepository<Comic, String>, QuerydslPredicateExecutor<Comic> {
+public interface ComicRepository extends MongoRepository<Comic, String>{
     public Page<Comic> findByTitleIgnoreCase(String title, Pageable pageable);
     public List<Comic> findByAuthor(String author);
     public Page<Comic> findByTagsContaining(List<String> tags, Pageable pageable);
