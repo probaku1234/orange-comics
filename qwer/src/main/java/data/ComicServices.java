@@ -11,9 +11,14 @@ import java.net.URL;
 
 @Component
 public class ComicServices {
-    public static String STATUS_PRIVATE = "PRIVATE";
-    public static String STATUS_UNLISTED = "UNLISTED";
-    public static String STATUS_PUBLIC = "PUBLIC";
+    public static final String STATUS_PRIVATE = "PRIVATE";
+    public static final String STATUS_UNLISTED = "UNLISTED";
+    public static final String STATUS_PUBLIC = "PUBLIC";
+
+    public static final String SORT_NEW = "NEW";
+    public static final String SORT_OLD = "OLD";
+    public static final String SORT_ALPHABETICAL = "ALPHA";
+    public static final String SORT_REV_ALPHABETICAL = "R_ALPHA";
 
     @Autowired
     ComicRepository comicRepository;
@@ -71,12 +76,62 @@ public class ComicServices {
         return comicIDs;
     }
 
-    public ArrayList<Comic> getRecentComics(int amount){
+    /**
+     *
+     * @param sortType way comics will be sorted (uses public static final variables from this class labels SORT_...), defaults to newest update
+     * @param amount number of comics you want returned
+     * @param page how many sections of comic you want to skip over (0 gives you the first *amount* of comics, 1 gives you the next *amount*, etc)
+     * @param tags list of tags you are searching for
+     * @param genres list of genres you are searching for
+     * @return
+     */
+    public ArrayList<Comic> advancedComicSearch(String sortType, int amount, int page, ArrayList<String> tags, ArrayList<String> genres){
+        Sort sort;
+        switch (sortType){
+            case SORT_ALPHABETICAL:
+                sort = Sort.by(Sort.Direction.ASC, "title");
+                break;
+            case SORT_REV_ALPHABETICAL:
+                sort = Sort.by(Sort.Direction.DESC, "title");
+                break;
+            case SORT_OLD:
+                sort = Sort.by(Sort.Direction.DESC, "lastUpdate");
+                break;
+            case SORT_NEW:
+            default:
+                sort = Sort.by(Sort.Direction.ASC, "lastUpdate");
+                break;
+        }
+
+        Page<Comic> comics = comicRepository.findByTagsContainingAndGenresContainingAndPublishedStatus(tags, genres,
+                STATUS_PUBLIC, PageRequest.of(page, amount, sort));
+        return new ArrayList<>(comics.getContent());
+    }
+
+    public ArrayList<Comic> getRecentComics(int amount, int page){
         Comic publicComic = new Comic();
         publicComic.publishedStatus = STATUS_PUBLIC;
         Example<Comic> example = Example.of(publicComic, ExampleMatcher.matchingAll().withIgnorePaths("id", "title", "author",
                 "description", "url", "publishedDate", "lastUpdate", "genres", "tags", "chapters"));
-        Page<Comic> comics = comicRepository.findAll(example, PageRequest.of(0, amount, Sort.by(Sort.Direction.DESC, "lastUpdate")));
+        Page<Comic> comics = comicRepository.findAll(example, PageRequest.of(page, amount, Sort.by(Sort.Direction.DESC, "lastUpdate")));
+        return new ArrayList<>(comics.getContent());
+    }
+
+    public ArrayList<Comic> getComicsByTags(ArrayList<String> tags, int amount, int page){
+        Page<Comic> comics = comicRepository.findByTagsContainingAndPublishedStatus(tags, STATUS_PUBLIC,
+                PageRequest.of(page, amount, Sort.by(Sort.Direction.DESC, "lastUpdate")));
+        return new ArrayList<>(comics.getContent());
+    }
+
+    public ArrayList<Comic> getComicsByGenres(ArrayList<String> genres, int amount, int page){
+        Page<Comic> comics = comicRepository.findByGenresContainingAndPublishedStatus(genres, STATUS_PUBLIC,
+                PageRequest.of(page, amount, Sort.by(Sort.Direction.DESC, "lastUpdate")));
+        return new ArrayList<>(comics.getContent());
+    }
+
+    public ArrayList<Comic> findComicsByTitle(String title, int amount, int page){
+        Page<Comic> comics = comicRepository.findByTitleIgnoreCaseAndPublishedStatus(title, STATUS_PUBLIC,
+                PageRequest.of(page, amount, Sort.by(Sort.Direction.DESC, "lastUpdate")));
         return new ArrayList<>(comics.getContent());
     }
 
