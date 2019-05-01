@@ -122,7 +122,7 @@ public class ComicsController {
         return 0;
     }
 
-    @RequestMapping(value = {"/get_comic_list"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/get_comic_list", "/get_user_comic_list"}, method = RequestMethod.POST)
     @ResponseBody
     public ArrayList<Comic> getComicListRequset(HttpSession session) {
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));

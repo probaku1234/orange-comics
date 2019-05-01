@@ -1,7 +1,6 @@
 package controller;
 
-import data.UserRepository;
-import data.UserServices;
+import data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Map;
 
 @Controller
@@ -18,6 +18,10 @@ public class UserProfileController {
     private UserServices userServices;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ComicServices comicServices;
+    @Autowired
+    private ComicRepository comicRepository;
 
     @RequestMapping("/user_profile")
     public ModelAndView user_profile(HttpSession session) {
@@ -37,5 +41,19 @@ public class UserProfileController {
             userServices.changePassword(userId, password);
         }
         userServices.setProfileDescription(userId, description);
+    }
+
+    @RequestMapping(value = "/delete_selected_comic", method = RequestMethod.POST)
+    public int deleteComicRequest(@RequestParam(value = "title") String title, HttpSession session) {
+        // delete comic
+        String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
+
+        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
+        for (Comic comic : comics) {
+            if (comic.title.equals(title)) {
+                comicServices.deleteComic(comic.id, userId);
+            }
+        }
+        return 1;
     }
 }

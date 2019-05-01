@@ -23,6 +23,7 @@
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="js/user_profile.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -86,54 +87,72 @@
         </ul>
     </div>
 </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="list-group ">
+                <button href="#" class="list-group-item list-group-item-action active">Dashboard</button>
+                <button href="#" class="list-group-item list-group-item-action">Post</button>
+            </div>
+        </div>
+        <div class="col-md-9" id="profile">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Your Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="/user_profile" method="POST">
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">User Name</label>
+                                    <div class="col-8">
+                                        <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text" readonly value=${name} >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Email</label>
+                                    <div class="col-8">
+                                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" readonly value=${email}>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="publicinfo" class="col-4 col-form-label">Profile Description</label>
+                                    <div class="col-8">
+                                        <textarea id="publicinfo" name="description" cols="40" rows="4" class="form-control">${description}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="newpass" class="col-4 col-form-label">New Password</label>
+                                    <div class="col-8">
+                                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
-<div class="col-md-9">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Your Profile</h4>
-                    <hr>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <form action="/user_profile" method="POST">
-                        <div class="form-group row">
-                            <label for="username" class="col-4 col-form-label">User Name</label>
-                            <div class="col-8">
-                                <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text" readonly value=${name} >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-4 col-form-label">Email</label>
-                            <div class="col-8">
-                                <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" readonly value=${email}>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="publicinfo" class="col-4 col-form-label">Profile Description</label>
-                            <div class="col-8">
-                                <textarea id="publicinfo" name="description" cols="40" rows="4" class="form-control">${description}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="newpass" class="col-4 col-form-label">New Password</label>
-                            <div class="col-8">
-                                <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="offset-4 col-8">
-                                <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        </div>
+        <div class="col-md-9" id="post">
+            <h3>Comic List</h3>
+            <div class="list-group" id="comic_list">
 
+            </div>
+            <button class="btn btn-primary" id="delete_comic_button">Delete Comic</button>
         </div>
     </div>
 </div>
+
+
 </body>
 </html>
