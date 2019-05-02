@@ -1,13 +1,11 @@
 package controller;
 
-import data.Comic;
-import data.ComicRepository;
-import data.ComicServices;
-import data.UserServices;
+import data.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ComicsController {
@@ -28,6 +27,9 @@ public class ComicsController {
     private UserServices userServices;
     @Autowired
     private ComicRepository comicRepository;
+    @Autowired
+    private ChapterRepository chapterRepository;
+
     final String baseURL = "http://orangecomics.herokuapp.com";
 
     @RequestMapping(value = {"/save_draft"}, method = RequestMethod.POST)
@@ -143,4 +145,39 @@ public class ComicsController {
         }
         return null;
     }
+
+    @RequestMapping(value = "/get_comic_list_by_tags", method = RequestMethod.POST)
+    @ResponseBody
+    public int getComicsListByTagsRequest(@RequestParam(value = "tags[]") ArrayList<String> tags, Model model) {
+        System.out.println(tags);
+        ArrayList<Comic> comics = comicServices.getComicsByTags(tags, 10, 10);
+        ArrayList<String> chapterIds = new ArrayList<>();
+        ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
+        ArrayList<String> AuthorList = new ArrayList<>();
+        ArrayList<String> TitleList = new ArrayList<>();
+
+        for(int i = 0; i < comics.size(); i++) {
+            for(int j = 0; j < comics.get(i).chapters.size(); j++) {
+
+                Optional<Chapter> optChapter = chapterRepository.findById(comics.get(i).chapters.get(j));
+                Chapter chapter = optChapter.get();
+
+                if(chapter.isDraft == false){
+                    chapterIds.add(comics.get(i).chapters.get(j));
+                    ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
+
+                    chapterList.add(pages);
+                    TitleList.add(comics.get(i).title);
+                    AuthorList.add(userServices.getUsername(comics.get(i).author));
+//                    idList.add(comics.get(i).id);
+                }
+            }
+        }
+
+        model.addAttribute("chapterList", chapterList);
+        model.addAttribute("TitleList", TitleList);
+        model.addAttribute("AuthorList", AuthorList);
+        return 1;
+    }
+
 }

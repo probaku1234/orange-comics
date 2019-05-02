@@ -93,7 +93,7 @@
 
     <div style="height: 85%; display: flex; margin-left: 10%; margin-right: 10%">
         <div style="width: 100%; height: 100%; border-style: solid; border-color: #1d2124;">
-            <div style="text-align: center; font-size: 30px">Search results are showed here</div>
+            <div style="text-align: center; font-size: 30px">${chapterList}</div>
         </div>
 
     </div>
