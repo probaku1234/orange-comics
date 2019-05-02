@@ -53,9 +53,9 @@
                 <a class="nav-link" href="my_favorites">My Favorites</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type>Search</button>
+        <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result" method="get">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">

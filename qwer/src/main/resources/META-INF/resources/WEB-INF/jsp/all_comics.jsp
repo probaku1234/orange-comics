@@ -49,9 +49,9 @@
                 <a class="nav-link" href="my_favorites">My Favorites</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type>Search</button>
+        <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result" method="get">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">
@@ -87,13 +87,13 @@
         <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 3%;">
 
         </div>
-        <div style="width: 62%; height: 100%; margin-right: 10%;">
-            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
-            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
-            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
-            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
-            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
-            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</a>
+        <div style="width: 62%; height: 100%; margin-right: 10%;" id="genre_list">
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 7%; margin-top: 4px; margin-left: 4px; margin-right: 0px">genre</button>
         </div>
     </div>
 
@@ -111,7 +111,7 @@
             <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</button>
         </div>
         <div style="width: 62%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124;">
-            <div style="text-align: center; font-size: 30px">List of comics are showed here</div>
+            <div style="text-align: center; font-size: 30px">${chapterList}</div>
         </div>
 
     </div>
