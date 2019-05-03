@@ -10,14 +10,6 @@ $(document).ready(function () {
         }
     });
 
-    $("#genre_list button").each(function () {
-        genres.push($(this).text());
-    });
-
-    $("#tag_list").each(function () {
-        tags.push($(this).text());
-    });
-
     $("#tag_list button").click(function () {
         if ($(this).hasClass("active")) {
             $(this).removeClass("active");
