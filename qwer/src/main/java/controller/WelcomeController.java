@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
@@ -23,6 +25,11 @@ public class WelcomeController {
     private ComicRepository comicRepository;
     @Autowired
     ChapterRepository chapterRepository;
+
+    @Autowired
+    MessagingServices messagingServices;
+
+
     final String baseURL = "http://orangecomics.herokuapp.com";
 
 
@@ -71,10 +78,49 @@ public class WelcomeController {
     }
 
     @RequestMapping("/messages")
-    public String messages(Map<String, Object> model) {
+    public String messages(Map<String, Object> model, HttpSession session,Model _model) {
+
+        String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
+        String userName = userServices.getUsername(userId);
+        ArrayList<MessageGroup> msgGroup = messagingServices.getMessageGroups(userId, 50, 0);
+        ArrayList<String> lastMsg  = new ArrayList<>();
+        ArrayList<String> UserName  = new ArrayList<>();
+        ArrayList<String> msgGroupId  = new ArrayList<>();
+
+        for(int i=0;i<msgGroup.size();i++){// iterate message group for getting opponent name and last message
+            ArrayList<Comment>  comments= messagingServices.getMessages(msgGroup.get(i).id , 50, 0);
+            if(comments.size() >0) {
+                String val = comments.get(0).message; // get recent messeage
+                String post_userID = comments.get(0).user;
+                String post_userNAME = userServices.getUsername(post_userID);
+
+                lastMsg.add(val);
+                UserName.add(post_userNAME);
+                msgGroupId.add(msgGroup.get(i).id);
+            }
+        }
+//        System.out.println(UserName);
+//        System.out.println(lastMsg);
+
+        _model.addAttribute("lastMsg", lastMsg);
+        _model.addAttribute("UserName", UserName);
+        _model.addAttribute("msgGroupId", msgGroupId);
+
+
+//        System.out.println(lastMsg);
+//        messagingServices.getMessages(String messageGroupID, 1, 0)
+
+
         model.put("message", "You are in new page !!");
         return "messages";
     }
+
+
+
+
+
+
+
 
     @RequestMapping("/all_comics")
     public String all_comics(Map<String, Object> model) {
