@@ -557,7 +557,7 @@ li{
 
 .bookshelf{
 	float:left;
-	margin-top:140px;
+	margin-top: 0px;
 }
 
 .bookshelf .shelf{
@@ -590,7 +590,7 @@ li{
 
 .bookshelf .shelf .row-2{
 	position:relative;
-	margin-top:20px;
+	margin-top:0px;
 	height:164px;
 	width:360px;
 	margin-left:33px;

@@ -61,12 +61,11 @@
 
 .function-menu-tabs {
     font-weight: bold;
-    font-family: Gautami;
+    font-family: san-serif;
     text-align: center;
     writing-mode: vertical-rl;
     text-orientation: upright;
     padding: 15px 5px;
-    line-height: 3;
 }
 
 .container-width-limit {

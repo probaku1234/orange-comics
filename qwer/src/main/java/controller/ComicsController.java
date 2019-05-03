@@ -174,9 +174,9 @@ public class ComicsController {
             }
         }
 
-        model.addAttribute("chapterList", chapterList);
-        model.addAttribute("TitleList", TitleList);
-        model.addAttribute("AuthorList", AuthorList);
+        model.addAttribute("allComics_chapterList", chapterList);
+        model.addAttribute("allComics_TitleList", TitleList);
+        model.addAttribute("allComics_AuthorList", AuthorList);
         return 1;
     }
 }

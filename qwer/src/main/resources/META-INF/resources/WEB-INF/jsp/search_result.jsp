@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -98,6 +99,64 @@
 
     </div>
 </div>
+
+<script>
+    let chapterList = eval('('+'${searchResult_chapterList}'+')');
+    let TitleList = [];
+    let AuthorList = [];
+    let coverPage;
+    let pageLength;
+    let chapter;
+    let title;
+    let author;
+
+    if (TitleList != null && AuthorList != null) {
+        <%
+            ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("searchResult_TitleList");
+            ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("searchResult_AuthorList");
+        %>
+
+        <%for(int i=0;i<TitleList.size();i++){%>
+        TitleList.push("<%= TitleList.get(i)%>");
+        <%}%>
+
+        <%for(int i=0;i<AuthorList.size();i++){%>
+        AuthorList.push("<%= AuthorList.get(i)%>");
+        <%}%>
+
+        console.log(TitleList);
+        console.log(AuthorList);
+
+        $(document).ready(function(){
+            for (let i = 0; i < 24; i++) {
+
+                if (chapterList[i] != null){
+                    console.log("in");
+                    $('#recommended'+i).click(function() {
+                        coverPage = chapterList[i][0];
+                        pageLength = chapterList[i].length;
+                        chapter = i;
+                    });
+
+                    let canvasTemp = new fabric.Canvas();
+                    coverPage = chapterList[i][0];
+                    canvasTemp.setWidth(461);
+                    canvasTemp.setHeight(600);
+                    canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                    let imgPath = canvasTemp.toDataURL();
+                    $('#recommended'+i).attr('src', imgPath);
+                    $('#recommended'+i).width(97);
+                    $('#recommended'+i).height(125);
+                }
+                else {
+
+                }
+
+            }
+        });
+    }
+
+</script>>
 
 </body>
 </html>
