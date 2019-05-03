@@ -210,10 +210,27 @@
 </div>
 
 
+<%
+    ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
+    ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
 
+%>
 </body>
 <script>
-    var data = eval('('+'${chapterList}'+')');
-    console.log(data)
+    var chapterList = eval('('+'${chapterList}'+')');
+    console.log(chapterList)
+
+    var TitleList = [];
+    <%for(int i=0;i<TitleList.size();i++){%>
+    TitleList.push("<%= TitleList.get(i)%>");
+    <%}%>
+    var AuthorList = [];
+    <%for(int i=0;i<AuthorList.size();i++){%>
+    AuthorList.push("<%= AuthorList.get(i)%>");
+    <%}%>
+
+    console.log(TitleList) 
+    console.log(AuthorList)
+
 </script>
 </html>
