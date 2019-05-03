@@ -146,45 +146,11 @@ public class ComicsController {
         return null;
     }
 
-    @RequestMapping(value = "/get_comic_list_by_tags", method = RequestMethod.POST)
+    @RequestMapping(value = "/get_comic_list_by_tags_and_genres", method = RequestMethod.POST)
     @ResponseBody
-    public int getComicsListByTagsRequest(@RequestParam(value = "tags[]") ArrayList<String> tags, Model model) {
+    public int getComicsListByTagsRequest(@RequestParam(value = "tags[]") ArrayList<String> tags, @RequestParam(value = "genres[]") ArrayList<String> genres,Model model) {
         System.out.println(tags);
-        ArrayList<Comic> comics = comicServices.getComicsByTags(tags, 10, 10);
-        ArrayList<String> chapterIds = new ArrayList<>();
-        ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
-        ArrayList<String> AuthorList = new ArrayList<>();
-        ArrayList<String> TitleList = new ArrayList<>();
-
-        for(int i = 0; i < comics.size(); i++) {
-            for(int j = 0; j < comics.get(i).chapters.size(); j++) {
-
-                Optional<Chapter> optChapter = chapterRepository.findById(comics.get(i).chapters.get(j));
-                Chapter chapter = optChapter.get();
-
-                if(chapter.isDraft == false){
-                    chapterIds.add(comics.get(i).chapters.get(j));
-                    ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
-
-                    chapterList.add(pages);
-                    TitleList.add(comics.get(i).title);
-                    AuthorList.add(userServices.getUsername(comics.get(i).author));
-//                    idList.add(comics.get(i).id);
-                }
-            }
-        }
-
-        model.addAttribute("chapterList", chapterList);
-        model.addAttribute("TitleList", TitleList);
-        model.addAttribute("AuthorList", AuthorList);
-        return 1;
-    }
-
-    @RequestMapping(value = "/get_comic_list_by_genres", method = RequestMethod.POST)
-    @ResponseBody
-    public int getComicsListByGenresRequest(@RequestParam(value = "genres[]") ArrayList<String> genres, Model model) {
-        System.out.println(genres);
-        ArrayList<Comic> comics = comicServices.getComicsByTags(genres, 10, 10);
+        ArrayList<Comic> comics = comicServices.advancedComicSearch("NEW", 10, 10, tags, genres);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();

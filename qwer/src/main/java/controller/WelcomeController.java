@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
@@ -83,7 +84,10 @@ public class WelcomeController {
     }
 
     @RequestMapping("/my_favorites")
-    public String my_favorites(Map<String, Object> model) {
+    public String my_favorites(Map<String, Object> model, HttpSession session) {
+        String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
+        ArrayList<String> comicIds = userServices.getFavoriteComics(userId);
+        ArrayList<Comic> comics = new ArrayList<>();
         model.put("message", "You are in new page !!");
         return "my_favorites";
     }

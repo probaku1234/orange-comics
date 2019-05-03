@@ -499,5 +499,15 @@ $(document).ready(function(){
         reader.readAsDataURL(e.target.files[0]);
     }
 
-
+    $("#genre_list").click(function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            genres.splice(genres.indexOf($(this).text()), 1);
+            console.log(genres);
+        } else {
+            $(this).addClass("active");
+            genres.push($(this).text());
+            console.log(genres);
+        }
+    });
 });

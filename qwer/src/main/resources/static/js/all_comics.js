@@ -2,6 +2,14 @@ $(document).ready(function () {
     let tags = new Array();
     let genres = new Array();
 
+    $("#genre_list button").each(function () {
+        genres.push($(this).text());
+    });
+
+    $("#tag_list").each(function () {
+        tags.push($(this).text());
+    });
+
     $("#tag_list button").click(function () {
         if ($(this).hasClass("active")) {
             $(this).removeClass("active");
@@ -12,7 +20,7 @@ $(document).ready(function () {
             tags.push($(this).text());
             console.log(tags);
         }
-        getComicListByTags(tags);
+        getComicListByTagsAndGenres(tags, genres);
     });
     
     $("#genre_list button").click(function () {
@@ -25,28 +33,16 @@ $(document).ready(function () {
             genres.push($(this).text());
             console.log(genres);
         }
-        getComicsListByGenres(genres);
+        getComicListByTagsAndGenres(tags, genres);
     });
 });
 
-function getComicListByTags(tags) {
+function getComicListByTagsAndGenres(tags, genres) {
     $.ajax({
         type: "POST",
-        url: "/get_comic_list_by_tags",
+        url: "/get_comic_list_by_tags_and_genres",
         data: {
-            "tags": tags
-        },
-        success: function (data) {
-            console.log(data);
-        }
-    });
-}
-
-function getComicsListByGenres(genres) {
-    $.ajax({
-        type: "POST",
-        url: "/get_comic_list_by_genres",
-        data: {
+            "tags": tags,
             "genres": genres
         },
         success: function (data) {
