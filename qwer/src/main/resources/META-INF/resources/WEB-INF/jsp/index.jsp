@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -58,6 +59,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="messages">Messages</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="author_profile">Author</a>
+            </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,27 +88,40 @@
 </nav>
 
 <script>
-    let chapterList = ${chapterList};
-    <%--let titleList = ${TitleList};--%>
-    <%--let authorList = ${AuthorList};--%>
+    let chapterList = eval('('+'${chapterList}'+')');
+    let TitleList = [];
+    let AuthorList = [];
     let coverPage;
     let pageLength;
     let chapter;
     let title;
     let author;
-    // console.log(titleList);
-    // console.log(authorList);
+
+    <%
+        ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
+        ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
+    %>
+
+    <%for(int i=0;i<TitleList.size();i++){%>
+    TitleList.push("<%= TitleList.get(i)%>");
+    <%}%>
+
+    <%for(int i=0;i<AuthorList.size();i++){%>
+    AuthorList.push("<%= AuthorList.get(i)%>");
+    <%}%>
+
+
+    console.log(TitleList);
+    console.log(AuthorList);
 
     $(document).ready(function(){
         for (let i = 0; i < 12; i++) {
 
             if (chapterList[i] != null){
-                console.log(chapterList[i]);
                 $('#recommended'+i).click(function() {
                     coverPage = chapterList[i][0];
                     pageLength = chapterList[i].length;
                     chapter = i;
-                    console.log(pageLength);
                 });
 
                 let canvasTemp = new fabric.Canvas();
@@ -122,54 +139,6 @@
             }
 
         }
-
-        // for (i = 1; i < 13; i++) {
-        //     if (chapterList[i] != null){
-        //         for (let j = 0; j < chapterList[i].length; j++){
-        //             if (chapterList[i][j] != null){
-        //                 canvas = canvas.loadFromJSON(chapterList[i][j], canvas.renderAll.bind(canvas), function(o, object) {
-        //                     fabric.log(o, object);
-        //                 });
-        //                 document.getElementsByClassName('p'+i).each( function(e) {
-        //                     let image = new Image();
-        //                     image.src = canvas.toDataURL("image/png");
-        //
-        //                     $(this).getElementsByTagName("img")[0].replaceWith(image);
-        //                 });
-        //             }
-        //
-        //         }
-        //     }
-        //
-        // }
-
-
-        // for (i = 1; i < 13; i++) {
-        //     document.getElementById('recommended'+i).style.backgroundImage = 'url(../pics/loader.gif)';
-        // }
-
-
-        // if (chapterList[1][0] != null) {
-        //     $('#recommended1').each( function(e)
-        //     {
-        //         let image = new Image();
-        //         image.src = canvas.toDataURL("image/png");
-        //
-        //         $(this).replaceWith(image);
-        //     });
-        //
-        // }
-
-
-        // document.getElementById('recommended'+i).onclick = function(e){
-        //     console.log(this.id);
-        //     $(this).css('background-image', 'url(../pics/loader.gif)');
-        // }
-
-
-        // document.getElementById('recommended1').onclick = function(e){
-        //     console.log("clicked");
-        // }
     });
 </script>
 
@@ -194,6 +163,7 @@
                         <div> <img class="sample thumb4" id= "recommended5" sample="magazine1"> </div>
                     </div>
                 </div>
+                <div class="h-10"></div>
             </div>
         </div>
         <div class="bookshelf" style="float: right">
@@ -214,6 +184,7 @@
                         <div> <img class="sample thumb4" id= "recommended11" sample="magazine1"> </div>
                     </div>
                 </div>
+                <div class="h-10"></div>
             </div>
         </div>
 

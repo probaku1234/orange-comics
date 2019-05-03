@@ -2,7 +2,7 @@ let selectedObject;
 let mouseUpObject;
 let canvas
 $(document).ready(function(){
-    canvas = new fabric.Canvas('canvas', {preserveObjectStacking: true});
+    canvas = new fabric.Canvas('canvas', {backgroundColor : "#fff", preserveObjectStacking: true});
     let ctx = canvas.getContext('2d');
     let jsonPageArray = new Array();
     let currentPageIndex = 0;
