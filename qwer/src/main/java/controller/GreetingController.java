@@ -34,6 +34,7 @@ public class GreetingController {
     @Autowired
     private UserRepository userRepository;
 
+
     @MessageMapping("/hello")
     @SendTo("/topic/greetings/")
     public Greeting greeting(HelloMessage message) throws Exception {
@@ -89,6 +90,14 @@ public class GreetingController {
 
 
         return json;
+    }
+    @RequestMapping(value = {"/removeMsg"}, method = RequestMethod.POST)
+    @ResponseBody
+    public String removeMsgRequest(@RequestParam("msgId") String msgId, HttpSession session, HttpServletResponse response) throws IOException {
+        messagingServices.deleteComment(msgId);
+        System.out.println("message hi");
+
+        return "succ";
     }
 
 }

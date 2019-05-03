@@ -62,7 +62,7 @@ $(document).ready(function(){
                             '<div class="outgoing_msg">'+
                                 '<div class="sent_msg">'+
                                 '<p>'+messages[j].message+'</p>'+
-                            '<span class="time_date">'+messages[j].datePosted+'</span> </div>'+
+                            '<span class="time_date">'+messages[j].datePosted+'</span><button style="border:none;" class="msg_remove" name='+messages[j].id+'>x</button></div>'+
                             '</div>'
                                 );
                         }else{
@@ -73,13 +73,63 @@ $(document).ready(function(){
                                 '<div class="received_msg">'+
                                 '<div class="received_withd_msg">'+
                                 '<p>'+messages[j].message+'</p>'+
-                                '<span class="time_date">'+messages[j].datePosted+'</span></div>'+
+                                '<span class="time_date">'+messages[j].datePosted+'</span></div>'+ //<button style="border:none;"  class="msg_remove2" name='+messages[j].id+'>x</button>
                                 '</div></div>'
                             );
 
                         }
                     }
+
                     console.log(messages);
+                },
+                complete: function () {
+                    let rmv_list = $(".msg_remove");
+                    for(let i=0;i<rmv_list.length;i++) {
+                        rmv_list[i].addEventListener('click', function (event) {
+                            let msgId = rmv_list[i].name;
+                            rmv_list[i].parentNode.remove()
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/removeMsg",
+                                data: {
+                                    "msgId": msgId
+                                },
+                                dataType: 'json',
+                                success: function (messages) {
+                                    console.log(messages +"deleted")
+
+                                },fail: function(msg){
+                                    console.log(msg)
+                                },
+
+                            })
+
+                        })
+                    }
+                    let rmv_list2 = $(".msg_remove2");
+                    for(let i=0;i<rmv_list2.length;i++) {
+                        rmv_list2[i].addEventListener('click', function (event) {
+                            let msgId2 = rmv_list2[i].name;
+                            rmv_list2[i].parentNode.parentNode.remove()
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/removeMsg",
+                                data: {
+                                    "msgId": msgId2
+                                },
+                                dataType: 'json',
+                                success: function (messages) {
+                                    console.log(messages +"deleted")
+
+                                },fail: function(msg){
+                                    console.log(msg)
+                                },
+
+                            })
+                        })
+                    }
                 }
             });
         })
