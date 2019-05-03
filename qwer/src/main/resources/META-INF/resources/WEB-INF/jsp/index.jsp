@@ -60,7 +60,7 @@
                 <a class="nav-link" href="messages">Messages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="author_profile">Author</a>
+                <a class="nav-link" href="author_profile?id=hun">Author</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -208,13 +208,6 @@
     </div>
     <div class="gradient"></div>
 </div>
-
-
-<%
-    ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
-    ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
-
-%>
 </body>
 <script>
     var chapterList = eval('('+'${chapterList}'+')');

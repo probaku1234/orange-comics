@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class WelcomeController {
 
     @Autowired
     MessagingServices messagingServices;
-
+    @Autowired
+    private UserRepository userRepository;
 
     final String baseURL = "http://orangecomics.herokuapp.com";
 
@@ -150,7 +152,12 @@ public class WelcomeController {
     }
 
     @RequestMapping("/author_profile")
-    public String author_profile(Map<String, Object> model) {
+    public String author_profile(@RequestParam(value = "id") String name, Map<String, Object> model, Model _model) {
+        String userId = userServices.getIDbyUsername(name);
+        _model.addAttribute("name", name);
+
+        _model.addAttribute("email", userRepository.findByName(name).email);
+        _model.addAttribute("description", userServices.getProfileDescription(userId));
         model.put("message", "You are in new page !!");
         return "author_profile";
     }

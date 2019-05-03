@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -44,6 +45,7 @@ public class UserProfileController {
     }
 
     @RequestMapping(value = "/delete_selected_comic", method = RequestMethod.POST)
+    @ResponseBody
     public int deleteComicRequest(@RequestParam(value = "title") String title, HttpSession session) {
         // delete comic
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
