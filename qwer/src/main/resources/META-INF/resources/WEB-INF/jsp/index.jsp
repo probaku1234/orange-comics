@@ -12,10 +12,13 @@
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
     <script type="text/javascript" src='bootstrap/js/bootstrap.min.js'></script>
     <script type="text/javascript" src="extras/all.js"></script>
+    <script type="text/javascript" src="samples/magazine1/js/magazine1.js"></script>
     <script type="text/javascript" src="lib/hash.js"></script>
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="lib/fabric.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -80,28 +83,115 @@
     </div>
 </nav>
 
+<script>
+    let chapterList = ${chapterList};
+    <%--let titleList = ${TitleList};--%>
+    <%--let authorList = ${AuthorList};--%>
+    let coverPage;
+    let pageLength;
+    let chapter;
+    let title;
+    let author;
+    // console.log(titleList);
+    // console.log(authorList);
+
+    $(document).ready(function(){
+        for (let i = 0; i < 12; i++) {
+
+            if (chapterList[i] != null){
+                console.log(chapterList[i]);
+                $('#recommended'+i).click(function() {
+                    coverPage = chapterList[i][0];
+                    pageLength = chapterList[i].length;
+                    chapter = i;
+                    console.log(pageLength);
+                });
+
+                let canvasTemp = new fabric.Canvas();
+                coverPage = chapterList[i][0];
+                canvasTemp.setWidth(461);
+                canvasTemp.setHeight(600);
+                canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                let imgPath = canvasTemp.toDataURL();
+                $('#recommended'+i).attr('src', imgPath);
+                $('#recommended'+i).width(97);
+                $('#recommended'+i).height(125);
+            }
+            else {
+
+            }
+
+        }
+
+        // for (i = 1; i < 13; i++) {
+        //     if (chapterList[i] != null){
+        //         for (let j = 0; j < chapterList[i].length; j++){
+        //             if (chapterList[i][j] != null){
+        //                 canvas = canvas.loadFromJSON(chapterList[i][j], canvas.renderAll.bind(canvas), function(o, object) {
+        //                     fabric.log(o, object);
+        //                 });
+        //                 document.getElementsByClassName('p'+i).each( function(e) {
+        //                     let image = new Image();
+        //                     image.src = canvas.toDataURL("image/png");
+        //
+        //                     $(this).getElementsByTagName("img")[0].replaceWith(image);
+        //                 });
+        //             }
+        //
+        //         }
+        //     }
+        //
+        // }
+
+
+        // for (i = 1; i < 13; i++) {
+        //     document.getElementById('recommended'+i).style.backgroundImage = 'url(../pics/loader.gif)';
+        // }
+
+
+        // if (chapterList[1][0] != null) {
+        //     $('#recommended1').each( function(e)
+        //     {
+        //         let image = new Image();
+        //         image.src = canvas.toDataURL("image/png");
+        //
+        //         $(this).replaceWith(image);
+        //     });
+        //
+        // }
+
+
+        // document.getElementById('recommended'+i).onclick = function(e){
+        //     console.log(this.id);
+        //     $(this).css('background-image', 'url(../pics/loader.gif)');
+        // }
+
+
+        // document.getElementById('recommended1').onclick = function(e){
+        //     console.log("clicked");
+        // }
+    });
+</script>
 
 <div class="splash h-92">
+    <img class="sample thumb4" id= "recommended13" sample="magazine1">
     <div class="center">
-        <div style="height: 10%"></div>
         <div class="bookshelf">
             <div class="shelf">
                 <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                        ${TitleList}
+                    <div class="loc" id="group1">
+                        <div> <img class="sample thumb4" id= "recommended0" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended1" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended2" sample="magazine1"> </div>
 
                     </div>
                 </div>
-                <div style="height: 10%"></div>
+                <div class="h-10"></div>
                 <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-                        ${AuthorList}
+                    <div class="loc" id="group2">
+                        <div> <img class="sample thumb4" id= "recommended3" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended4" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended5" sample="magazine1"> </div>
                     </div>
                 </div>
             </div>
@@ -109,23 +199,24 @@
         <div class="bookshelf" style="float: right">
             <div class="shelf">
                 <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    <div class="loc" id="group3">
+                        <div> <img class="sample thumb4" id= "recommended6" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended7" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended8" sample="magazine1"> </div>
 
                     </div>
                 </div>
-                <div style="height: 10%"></div>
+                <div class="h-10"></div>
                 <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    <div class="loc" id="group4">
+                        <div> <img class="sample thumb4" id= "recommended9" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended10" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended11" sample="magazine1"> </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Samples-->
         <div class="samples">
