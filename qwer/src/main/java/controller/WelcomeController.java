@@ -54,7 +54,7 @@ public class WelcomeController {
                 if(chapter.isDraft == false){
                     chapterIds.add(comics.get(i).chapters.get(j));
                     ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
-                        
+
                     chapterList.add(pages);
                     TitleList.add(comics.get(i).title);
                     AuthorList.add(userServices.getUsername(comics.get(i).author));
@@ -133,8 +133,36 @@ public class WelcomeController {
 
 
     @RequestMapping("/all_comics")
-    public String all_comics(Map<String, Object> model) {
+    public String all_comics(Map<String, Object> model, Model _model) {
         model.put("message", "You are in new page !!");
+
+        ArrayList<Comic> comics = comicServices.getRecentComics(12,5);
+        ArrayList<String> chapterIds = new ArrayList<>();
+        ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
+        ArrayList<String> AuthorList = new ArrayList<>();
+        ArrayList<String> TitleList = new ArrayList<>();
+
+        for(int i = 0; i < comics.size(); i++) {
+            for(int j = 0; j < comics.get(i).chapters.size(); j++) {
+
+                Optional<Chapter> optChapter = chapterRepository.findById(comics.get(i).chapters.get(j));
+                Chapter chapter = optChapter.get();
+
+                if(chapter.isDraft == false){
+                    chapterIds.add(comics.get(i).chapters.get(j));
+                    ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
+
+                    chapterList.add(pages);
+                    TitleList.add(comics.get(i).title);
+                    AuthorList.add(userServices.getUsername(comics.get(i).author));
+//                    idList.add(comics.get(i).id);
+                }
+            }
+        }
+
+        _model.addAttribute("allcomics_chapterList", chapterList);
+        _model.addAttribute("allcomics_TitleList", TitleList);
+        _model.addAttribute("allcomics_AuthorList", AuthorList);
         return "all_comics";
     }
 

@@ -2,6 +2,14 @@ $(document).ready(function () {
     let tags = new Array();
     let genres = new Array();
 
+    $.ajax({
+        type: "POST",
+        url: "/get_all_comics",
+        success: function (data) {
+            console.log(data);
+        }
+    });
+
     $("#genre_list button").each(function () {
         genres.push($(this).text());
     });
