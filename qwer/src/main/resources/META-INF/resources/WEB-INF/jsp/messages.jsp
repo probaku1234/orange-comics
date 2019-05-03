@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,6 +17,23 @@
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+
+
+<%--    <spring:url value="extras/all.js" var="mainJs" />--%>
+<%--    <script src="${mainJs}"></script>--%>
+
+
+
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+
+
+<%--    <spring:url value="js/message.js" var="amainJs" />--%>
+<%--    <script src="${amainJs}"></script>--%>
+
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -25,6 +43,9 @@
     <link rel="stylesheet" href="/css/messages.css">
     <link rel="icon" href="/images/logo.png">
 
+
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="js/message.js"></script>
     <title>Orange Comics</title>
     <%
         if (session.getAttribute("user") == null) {
@@ -78,7 +99,7 @@
                         %><a class="nav-link" href="login">Log In</a><%
                     } else {
                         String user = (String)session.getAttribute("user");
-                        %><a class="nav-link"><%=user%></a><%
+                        %><a class="nav-link" id="user_id"><%=user%></a><%
                     }
                 %>
             </li>
@@ -86,14 +107,25 @@
     </div>
 </nav>
 <div class="splash h-92">
-    <div style="height: 10%"></div>
+    <div style="height: 10%">
+        To : <input type="text" id="_user2">
+        Content : <input type="text" id="_contents">
+        <button id="_msgBtn">Send</button>
+    </div>
     <div class="container">
         <div class="messaging">
             <div class="inbox_msg">
                 <div class="inbox_people">
                     <div class="headind_srch">
                         <div class="recent_heading">
-                            <h4>Recent</h4>
+
+                            <%
+                                ArrayList<String> msgGroupId = (ArrayList<String>) request.getAttribute("msgGroupId");
+                                ArrayList<String> UserName = (ArrayList<String>) request.getAttribute("UserName");
+                                ArrayList<String> lastMsg = (ArrayList<String>) request.getAttribute("lastMsg");
+
+                            %>
+
                         </div>
                         <div class="srch_bar">
                             <div class="stylish-input-group">
@@ -103,68 +135,8 @@
                 </span> </div>
                         </div>
                     </div>
-                    <div class="inbox_chat">
+                    <div class="inbox_chat" id="inbox_chat">
                         <div class="chat_list active_chat">
-                            <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
-                                <div class="chat_ib">
-                                    <h5>Kyung Chul Cho <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
-                                <div class="chat_ib">
-                                    <h5>Kyung Chul Cho <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
-                                <div class="chat_ib">
-                                    <h5>Kyung Chul Cho <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
-                                <div class="chat_ib">
-                                    <h5>Kyung Chul Cho <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
-                                <div class="chat_ib">
-                                    <h5>Kyung Chul Cho <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
-                                <div class="chat_ib">
-                                    <h5>Kyung Chul Cho <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
                             <div class="chat_people">
                                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
                                 <div class="chat_ib">
@@ -177,7 +149,7 @@
                     </div>
                 </div>
                 <div class="mesgs">
-                    <div class="msg_history">
+                    <div class="msg_history" id="id_msg_history" name="">
                         <div class="incoming_msg">
                             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>
                             <div class="received_msg">
@@ -219,8 +191,8 @@
                     </div>
                     <div class="type_msg">
                         <div class="input_msg_write">
-                            <input type="text" class="write_msg" placeholder="Type a message" />
-                            <button class="msg_send_btn" type="button">Send</button>
+                            <input id = "input_msg_write" type="text" class="write_msg" placeholder="Type a message" />
+                            <button id= "input_msg_btn" class="msg_send_btn" type="button">Send</button>
                         </div>
                     </div>
                 </div>
@@ -230,4 +202,31 @@
 </div>
 
 </body>
+<script>
+    var msgGroupId = [];
+    var UserName = [];
+    var lastMsg = [];
+    <%for(int i=0;i<msgGroupId.size();i++){%>
+    msgGroupId.push("<%= msgGroupId.get(i)%>");<%}%>
+    <%for(int i=0;i<UserName.size();i++){%>
+    UserName.push("<%= UserName.get(i)%>");<%}%>
+    <%for(int i=0;i<lastMsg.size();i++){%>
+    lastMsg.push("<%= lastMsg.get(i)%>");<%}%>
+
+    for(let i=0;i<msgGroupId.length;i++) {
+
+
+        $('#inbox_chat').append(
+            '<a href="#"  id=inbox_list_id'+i+'>'+
+            `<div class="inbox_list_class chat_list active_chat"> ` +
+                `<div class="chat_people"> ` +
+                    `<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>` +
+                    `<div class="chat_ib">` +
+                        ' <h5>'+UserName[i]+'<span class="chat_date">May 3</span></h5>' +
+                        '<p>'+lastMsg[i]+'</p><span class="msgGroupId" hidden>'+msgGroupId[i]+'</span>'+
+                    `</div>` +
+                `</div>` +
+            '</div>'+'</a>');
+    }
+</script>
 </html>
