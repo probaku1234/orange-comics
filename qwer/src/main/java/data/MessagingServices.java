@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Optional;
 import java.net.URL;
@@ -34,11 +35,11 @@ public class MessagingServices {
         ArrayList<String> users = new ArrayList<>();
         users.add(fromUserID);
         users.add(toUserID);
+        Collections.sort(users);//add sort to prevent from making 2 rooms for 2 users
         MessageGroup messageGroup = messageGroupRepository.findByUsers(users);
         if(messageGroup == null){
             messageGroup = new MessageGroup(users);
         }
-
         Comment comment = new Comment(fromUserID, message, new Date());
         comment.setMessageGroup(messageGroup.id);
         commentRepository.save(comment);
