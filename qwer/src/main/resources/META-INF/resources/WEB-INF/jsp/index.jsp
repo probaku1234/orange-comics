@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,10 +13,13 @@
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
     <script type="text/javascript" src='bootstrap/js/bootstrap.min.js'></script>
     <script type="text/javascript" src="extras/all.js"></script>
+    <script type="text/javascript" src="samples/magazine1/js/magazine1.js"></script>
     <script type="text/javascript" src="lib/hash.js"></script>
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="lib/fabric.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -55,6 +59,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="messages">Messages</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="author_profile">Author</a>
+            </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,53 +87,107 @@
     </div>
 </nav>
 
+<script>
+    let chapterList = eval('('+'${chapterList}'+')');
+    let TitleList = [];
+    let AuthorList = [];
+    let coverPage;
+    let pageLength;
+    let chapter;
+    let title;
+    let author;
+
+    <%
+        ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
+        ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
+    %>
+
+    <%for(int i=0;i<TitleList.size();i++){%>
+    TitleList.push("<%= TitleList.get(i)%>");
+    <%}%>
+
+    <%for(int i=0;i<AuthorList.size();i++){%>
+    AuthorList.push("<%= AuthorList.get(i)%>");
+    <%}%>
+
+
+    console.log(TitleList);
+    console.log(AuthorList);
+
+    $(document).ready(function(){
+        for (let i = 0; i < 12; i++) {
+
+            if (chapterList[i] != null){
+                $('#recommended'+i).click(function() {
+                    coverPage = chapterList[i][0];
+                    pageLength = chapterList[i].length;
+                    chapter = i;
+                });
+
+                let canvasTemp = new fabric.Canvas();
+                coverPage = chapterList[i][0];
+                canvasTemp.setWidth(461);
+                canvasTemp.setHeight(600);
+                canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                let imgPath = canvasTemp.toDataURL();
+                $('#recommended'+i).attr('src', imgPath);
+                $('#recommended'+i).width(97);
+                $('#recommended'+i).height(125);
+            }
+            else {
+
+            }
+
+        }
+    });
+</script>
 
 <div class="splash h-92">
+    <img class="sample thumb4" id= "recommended13" sample="magazine1">
     <div class="center">
-        <div style="height: 10%"></div>
         <div class="bookshelf">
             <div class="shelf">
                 <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    <div class="loc" id="group1">
+                        <div> <img class="sample thumb4" id= "recommended0" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended1" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended2" sample="magazine1"> </div>
+
                     </div>
                 </div>
-                <div style="height: 10%"></div>
+                <div class="h-10"></div>
                 <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    <div class="loc" id="group2">
+                        <div> <img class="sample thumb4" id= "recommended3" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended4" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended5" sample="magazine1"> </div>
                     </div>
                 </div>
+                <div class="h-10"></div>
             </div>
         </div>
         <div class="bookshelf" style="float: right">
             <div class="shelf">
                 <div class="row-1">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
-<%--                        <%--%>
-<%--                            ArrayList a =  chapterList--%>
-<%--                        %>--%>
-
+                    <div class="loc" id="group3">
+                        <div> <img class="sample thumb4" id= "recommended6" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended7" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended8" sample="magazine1"> </div>
 
                     </div>
                 </div>
-                <div style="height: 10%"></div>
+                <div class="h-10"></div>
                 <div class="row-2">
-                    <div class="loc">
-                        <div> <div class="sample thumb1" sample="book1"></div> </div>
-                        <div> <div class="sample thumb2" sample="book2"></div> </div>
-                        <div> <div class="sample thumb3" sample="book3"></div> </div>
+                    <div class="loc" id="group4">
+                        <div> <img class="sample thumb4" id= "recommended9" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended10" sample="magazine1"> </div>
+                        <div> <img class="sample thumb4" id= "recommended11" sample="magazine1"> </div>
                     </div>
                 </div>
+                <div class="h-10"></div>
             </div>
         </div>
+
 
         <!-- Samples-->
         <div class="samples">

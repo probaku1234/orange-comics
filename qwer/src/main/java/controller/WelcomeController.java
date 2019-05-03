@@ -103,4 +103,10 @@ public class WelcomeController {
         model.put("message", "You are in new page !!");
         return "search_result";
     }
+
+    @RequestMapping("/author_profile")
+    public String author_profile(Map<String, Object> model) {
+        model.put("message", "You are in new page !!");
+        return "author_profile";
+    }
 }

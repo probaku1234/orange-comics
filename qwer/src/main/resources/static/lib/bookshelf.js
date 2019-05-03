@@ -113,7 +113,7 @@ bookshelf = {
 
       setTimeout(function() {
         $('#book-zoom').addClass('animate').transform('');
-        sample.flipbook.turn('page', sample.startPage || 2);
+        sample.flipbook.turn('page', sample.startPage || 1);
       }, 0);
 
       if (!$('.splash .details').is(':visible')) {
@@ -537,7 +537,7 @@ $(document).ready(function() {
       attr('class').
       replace(/\b([a-z-]*hover|icon)\b/g, '')));
 
-  });
+  });1
 
 
   // Slider
