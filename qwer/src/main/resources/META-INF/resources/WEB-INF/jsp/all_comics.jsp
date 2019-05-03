@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -81,8 +82,7 @@
         </ul>
     </div>
 </nav>
-<div class="splash h-92">
-    <div style="height: 5%;"></div>
+<div class="splash h-100">
     <div style="height: 5%;">
         <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 3%;">
 
@@ -100,22 +100,176 @@
     <div style="height: 85%; display: flex">
         <div style="width: 15%; height: 100%; float: left; margin-left: 10%; margin-right: 3%; border-style: solid; border-color: #1d2124;" id="tag_list">
             <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">Gore</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">tag</button>
-            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">tag</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">Animals</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">Kid</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">Love</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">Fun</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">Camera</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">Boy</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">Girl</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 4px; margin-right: 0px">Robot</button>
+            <button href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true" style="width: 47%; margin-top: 4px; margin-left: 0px; margin-right: 4px">Baby</button>
         </div>
         <div style="width: 62%; height: 100%; margin-right: 10%; border-style: solid; border-color: #1d2124;">
-            <div style="text-align: center; font-size: 30px">${chapterList}</div>
+            <div style="text-align: center; font-size: 30px">
+                <div class="center">
+                    <div class="bookshelf">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group1">
+                                    <div> <img class="sample" id= "recommended0" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended1" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended2" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group2">
+                                    <div> <img class="sample" id= "recommended3" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended4" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended5" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bookshelf" style="float: right">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group3">
+                                    <div> <img class="sample" id= "recommended6" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended7" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended8" sample="magazine1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group4">
+                                    <div> <img class="sample" id= "recommended9" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended10" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended11" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bookshelf">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group5">
+                                    <div> <img class="sample" id= "recommended12" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended13" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended14" sample="magazine1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group6">
+                                    <div> <img class="sample" id= "recommended15" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended16" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended17" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bookshelf" style="float: right">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group7">
+                                    <div> <img class="sample" id= "recommended18" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended19" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended20" sample="magazine1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group8">
+                                    <div> <img class="sample" id= "recommended21" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended22" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended23" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Samples-->
+                    <div class="samples">
+                        <div class="bar">
+                            <a class="icon quit"></a>
+                        </div>
+                        <div id="book-wrapper">
+                            <div id="book-zoom"></div>
+                        </div>
+                        <div id="slider-bar" class="turnjs-slider">
+                            <div id="slider"></div>
+                        </div>
+
+                    </div>
+
+                    <!-- End samples -->
+
+                </div>
+                <div class="gradient"></div>
+            </div>
         </div>
 
     </div>
 </div>
+
+<script>
+    let chapterList = eval('('+'${allComics_chapterList}'+')');
+    let TitleList = [];
+    let AuthorList = [];
+    let coverPage;
+    let pageLength;
+    let chapter;
+    let title;
+    let author;
+
+    if (TitleList != null && AuthorList != null) {
+        <%
+            ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("allComics_TitleList");
+            ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("allComics_AuthorList");
+        %>
+
+        <%--<%for(int i=0;i<TitleList.size();i++){%>--%>
+        <%--TitleList.push("<%= TitleList.get(i)%>");--%>
+        <%--<%}%>--%>
+
+        <%--<%for(int i=0;i<AuthorList.size();i++){%>--%>
+        <%--AuthorList.push("<%= AuthorList.get(i)%>");--%>
+        <%--<%}%>--%>
+
+        console.log(TitleList);
+        console.log(AuthorList);
+
+        $(document).ready(function(){
+            for (let i = 0; i < 24; i++) {
+
+                if (chapterList[i] != null){
+                    console.log("in");
+                    $('#recommended'+i).click(function() {
+                        coverPage = chapterList[i][0];
+                        pageLength = chapterList[i].length;
+                        chapter = i;
+                    });
+
+                    let canvasTemp = new fabric.Canvas();
+                    coverPage = chapterList[i][0];
+                    canvasTemp.setWidth(461);
+                    canvasTemp.setHeight(600);
+                    canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                    let imgPath = canvasTemp.toDataURL();
+                    $('#recommended'+i).attr('src', imgPath);
+                    $('#recommended'+i).width(97);
+                    $('#recommended'+i).height(125);
+                }
+                else {
+
+                }
+
+            }
+        });
+    }
+
+</script>>
 
 </body>
 </html>

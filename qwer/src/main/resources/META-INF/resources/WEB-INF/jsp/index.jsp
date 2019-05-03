@@ -97,70 +97,74 @@
     let title;
     let author;
 
-    <%
-        ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
-        ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
-    %>
+    if (TitleList != null && AuthorList != null) {
+        <%
+            ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
+            ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
+        %>
 
-    <%for(int i=0;i<TitleList.size();i++){%>
-    TitleList.push("<%= TitleList.get(i)%>");
-    <%}%>
+        <%for(int i=0;i<TitleList.size();i++){%>
+        TitleList.push("<%= TitleList.get(i)%>");
+        <%}%>
 
-    <%for(int i=0;i<AuthorList.size();i++){%>
-    AuthorList.push("<%= AuthorList.get(i)%>");
-    <%}%>
+        <%for(int i=0;i<AuthorList.size();i++){%>
+        AuthorList.push("<%= AuthorList.get(i)%>");
+        <%}%>
 
+        console.log(TitleList);
+        console.log(AuthorList);
+        console.log(chapterList);
 
-    console.log(TitleList);
-    console.log(AuthorList);
+        $(document).ready(function(){
+            for (let i = 0; i < 12; i++) {
 
-    $(document).ready(function(){
-        for (let i = 0; i < 12; i++) {
+                if (chapterList[i] != null){
+                    $('#recommended'+i).click(function() {
+                        coverPage = chapterList[i][0];
+                        pageLength = chapterList[i].length;
+                        chapter = i;
+                    });
 
-            if (chapterList[i] != null){
-                $('#recommended'+i).click(function() {
+                    let canvasTemp = new fabric.Canvas();
                     coverPage = chapterList[i][0];
-                    pageLength = chapterList[i].length;
-                    chapter = i;
-                });
+                    canvasTemp.setWidth(461);
+                    canvasTemp.setHeight(600);
+                    canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                    let imgPath = canvasTemp.toDataURL();
+                    $('#recommended'+i).attr('src', imgPath);
+                    $('#recommended'+i).width(97);
+                    $('#recommended'+i).height(125);
+                }
+                else {
 
-                let canvasTemp = new fabric.Canvas();
-                coverPage = chapterList[i][0];
-                canvasTemp.setWidth(461);
-                canvasTemp.setHeight(600);
-                canvasTemp = canvasTemp.loadFromJSON(coverPage);
-                let imgPath = canvasTemp.toDataURL();
-                $('#recommended'+i).attr('src', imgPath);
-                $('#recommended'+i).width(97);
-                $('#recommended'+i).height(125);
-            }
-            else {
+                }
 
             }
+        });
+    }
 
-        }
-    });
+
+
 </script>
 
 <div class="splash h-92">
-    <img class="sample thumb4" id= "recommended13" sample="magazine1">
     <div class="center">
         <div class="bookshelf">
             <div class="shelf">
                 <div class="row-1">
                     <div class="loc" id="group1">
-                        <div> <img class="sample thumb4" id= "recommended0" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended1" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended2" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended0" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended1" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended2" sample="magazine1"> </div>
 
                     </div>
                 </div>
                 <div class="h-10"></div>
                 <div class="row-2">
                     <div class="loc" id="group2">
-                        <div> <img class="sample thumb4" id= "recommended3" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended4" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended5" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended3" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended4" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended5" sample="magazine1"> </div>
                     </div>
                 </div>
                 <div class="h-10"></div>
@@ -170,24 +174,23 @@
             <div class="shelf">
                 <div class="row-1">
                     <div class="loc" id="group3">
-                        <div> <img class="sample thumb4" id= "recommended6" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended7" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended8" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended6" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended7" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended8" sample="magazine1"> </div>
 
                     </div>
                 </div>
                 <div class="h-10"></div>
                 <div class="row-2">
                     <div class="loc" id="group4">
-                        <div> <img class="sample thumb4" id= "recommended9" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended10" sample="magazine1"> </div>
-                        <div> <img class="sample thumb4" id= "recommended11" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended9" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended10" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended11" sample="magazine1"> </div>
                     </div>
                 </div>
                 <div class="h-10"></div>
             </div>
         </div>
-
 
         <!-- Samples-->
         <div class="samples">
@@ -209,28 +212,5 @@
     <div class="gradient"></div>
 </div>
 
-
-<%
-    ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
-    ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
-
-%>
 </body>
-<script>
-    var chapterList = eval('('+'${chapterList}'+')');
-    console.log(chapterList)
-
-    var TitleList = [];
-    <%for(int i=0;i<TitleList.size();i++){%>
-    TitleList.push("<%= TitleList.get(i)%>");
-    <%}%>
-    var AuthorList = [];
-    <%for(int i=0;i<AuthorList.size();i++){%>
-    AuthorList.push("<%= AuthorList.get(i)%>");
-    <%}%>
-
-    console.log(TitleList) 
-    console.log(AuthorList)
-
-</script>
 </html>
