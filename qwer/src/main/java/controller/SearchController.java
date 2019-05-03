@@ -52,9 +52,9 @@ public class SearchController {
 
         ModelAndView modelAndView = new ModelAndView("search_result");
         modelAndView.addObject("keyword",keyword);
-        modelAndView.addObject("TitleList", titleList);
-        modelAndView.addObject("AuthorList", authorList);
-        modelAndView.addObject("chapterList", chapterList);
+        modelAndView.addObject("searchResult_TitleList", titleList);
+        modelAndView.addObject("searchResult_AuthorList", authorList);
+        modelAndView.addObject("searchResult_chapterList", chapterList);
         // search comics by keyword
         // add attribute
         return modelAndView;
