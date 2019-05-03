@@ -123,6 +123,8 @@
                                 ArrayList<String> msgGroupId = (ArrayList<String>) request.getAttribute("msgGroupId");
                                 ArrayList<String> UserName = (ArrayList<String>) request.getAttribute("UserName");
                                 ArrayList<String> lastMsg = (ArrayList<String>) request.getAttribute("lastMsg");
+                                ArrayList<String> Opponent = (ArrayList<String>) request.getAttribute("Opponent");
+
 
                             %>
 
@@ -206,12 +208,16 @@
     var msgGroupId = [];
     var UserName = [];
     var lastMsg = [];
+    var Opponent = [];
+
     <%for(int i=0;i<msgGroupId.size();i++){%>
     msgGroupId.push("<%= msgGroupId.get(i)%>");<%}%>
     <%for(int i=0;i<UserName.size();i++){%>
     UserName.push("<%= UserName.get(i)%>");<%}%>
     <%for(int i=0;i<lastMsg.size();i++){%>
     lastMsg.push("<%= lastMsg.get(i)%>");<%}%>
+    <%for(int i=0;i<Opponent.size();i++){%>
+    Opponent.push("<%= Opponent.get(i)%>");<%}%>
 
     for(let i=0;i<msgGroupId.length;i++) {
 
@@ -222,8 +228,8 @@
                 `<div class="chat_people"> ` +
                     `<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="Jake"> </div>` +
                     `<div class="chat_ib">` +
-                        ' <h5>'+UserName[i]+'<span class="chat_date">May 3</span></h5>' +
-                        '<p>'+lastMsg[i]+'</p><span class="msgGroupId" hidden>'+msgGroupId[i]+'</span>'+
+                        ' <h5>'+Opponent[i]+'<span class="chat_date">May 3</span></h5>' +
+                        '<p>'+UserName[i]+' : '+lastMsg[i]+'</p><span class="msgGroupId" hidden>'+msgGroupId[i]+'</span>'+
                     `</div>` +
                 `</div>` +
             '</div>'+'</a>');
