@@ -17,6 +17,7 @@
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
+    <script type="text/javascript" src="lib/fabric.min.js"></script>
     <script type="text/javascript" src="js/all_comics.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -214,7 +215,7 @@
 </div>
 
 <script>
-    let chapterList = eval('('+'${allComics_chapterList}'+')');
+    let chapterList = eval('('+'${allcomics_chapterList}'+')');
     let TitleList = [];
     let AuthorList = [];
     let coverPage;
@@ -225,17 +226,17 @@
 
     if (TitleList != null && AuthorList != null) {
         <%
-            ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("allComics_TitleList");
-            ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("allComics_AuthorList");
+            ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("allcomics_TitleList");
+            ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("allcomics_AuthorList");
         %>
 
-        <%--<%for(int i=0;i<TitleList.size();i++){%>--%>
-        <%--TitleList.push("<%= TitleList.get(i)%>");--%>
-        <%--<%}%>--%>
+        <%for(int i=0;i<TitleList.size();i++){%>
+        TitleList.push("<%= TitleList.get(i)%>");
+        <%}%>
 
-        <%--<%for(int i=0;i<AuthorList.size();i++){%>--%>
-        <%--AuthorList.push("<%= AuthorList.get(i)%>");--%>
-        <%--<%}%>--%>
+        <%for(int i=0;i<AuthorList.size();i++){%>
+        AuthorList.push("<%= AuthorList.get(i)%>");
+        <%}%>
 
         console.log(TitleList);
         console.log(AuthorList);
