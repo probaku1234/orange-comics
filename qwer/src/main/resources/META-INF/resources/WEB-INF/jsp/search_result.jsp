@@ -82,7 +82,7 @@
     </div>
 </nav>
 <div class="splash h-92">
-    <div style="height: 5%;"></div>
+    <div style="height: 1%;"></div>
     <div style="height: 5%; margin-left: 10%; margin-right: 10%">
         <div style="width: 62%; height: 100%; margin-right: 10%;">
             <form class="form-inline my-2 my-lg-0 nav_list_indent" method="post">
@@ -92,9 +92,105 @@
         </div>
     </div>
 
-    <div style="height: 85%; display: flex; margin-left: 10%; margin-right: 10%">
-        <div style="width: 100%; height: 100%; border-style: solid; border-color: #1d2124;">
-            <div style="text-align: center; font-size: 30px">${chapterList}</div>
+    <div style="height: 92%; display: flex; margin-left: 10%; margin-right: 10%">
+        <div style="width: 80%; height: 100%; border-style: solid; border-color: #1d2124;">
+            <div style="text-align: center; font-size: 30px">
+                <div class="center">
+                    <div class="bookshelf">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group1">
+                                    <div> <img class="sample" id= "recommended0" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended1" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended2" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group2">
+                                    <div> <img class="sample" id= "recommended3" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended4" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended5" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bookshelf" style="float: right">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group3">
+                                    <div> <img class="sample" id= "recommended6" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended7" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended8" sample="magazine1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group4">
+                                    <div> <img class="sample" id= "recommended9" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended10" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended11" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bookshelf">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group5">
+                                    <div> <img class="sample" id= "recommended12" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended13" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended14" sample="magazine1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group6">
+                                    <div> <img class="sample" id= "recommended15" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended16" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended17" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bookshelf" style="float: right">
+                        <div class="shelf">
+                            <div class="row-1">
+                                <div class="loc" id="group7">
+                                    <div> <img class="sample" id= "recommended18" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended19" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended20" sample="magazine1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="loc" id="group8">
+                                    <div> <img class="sample" id= "recommended21" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended22" sample="magazine1"> </div>
+                                    <div> <img class="sample" id= "recommended23" sample="magazine1"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Samples-->
+                    <div class="samples">
+                        <div class="bar">
+                            <a class="icon quit"></a>
+                        </div>
+                        <div id="book-wrapper">
+                            <div id="book-zoom"></div>
+                        </div>
+                        <div id="slider-bar" class="turnjs-slider">
+                            <div id="slider"></div>
+                        </div>
+
+                    </div>
+
+                    <!-- End samples -->
+
+                </div>
+                <div class="gradient"></div>
+            </div>
         </div>
 
     </div>

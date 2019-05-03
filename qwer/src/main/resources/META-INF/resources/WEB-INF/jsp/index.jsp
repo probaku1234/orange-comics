@@ -143,11 +143,12 @@
         });
     }
 
-
-
 </script>
 
 <div class="splash h-92">
+    <div class="h-10">
+
+    </div>
     <div class="center">
         <div class="bookshelf">
             <div class="shelf">
