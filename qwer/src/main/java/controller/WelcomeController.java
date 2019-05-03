@@ -85,6 +85,7 @@ public class WelcomeController {
         ArrayList<MessageGroup> msgGroup = messagingServices.getMessageGroups(userId, 50, 0);
         ArrayList<String> lastMsg  = new ArrayList<>();
         ArrayList<String> UserName  = new ArrayList<>();
+        ArrayList<String> Opponent  = new ArrayList<>();
         ArrayList<String> msgGroupId  = new ArrayList<>();
 
         for(int i=0;i<msgGroup.size();i++){// iterate message group for getting opponent name and last message
@@ -94,6 +95,12 @@ public class WelcomeController {
                 String post_userID = comments.get(0).user;
                 String post_userNAME = userServices.getUsername(post_userID);
 
+                ArrayList<String> users = msgGroup.get(i).users;
+                if(users.get(0).equals(userId)){ //group first member vs login user
+                    Opponent.add(userServices.getUsername(users.get(1)));
+                }else{
+                    Opponent.add(userServices.getUsername(users.get(0)));
+                }
                 lastMsg.add(val);
                 UserName.add(post_userNAME);
                 msgGroupId.add(msgGroup.get(i).id);
@@ -105,6 +112,7 @@ public class WelcomeController {
         _model.addAttribute("lastMsg", lastMsg);
         _model.addAttribute("UserName", UserName);
         _model.addAttribute("msgGroupId", msgGroupId);
+        _model.addAttribute("Opponent", Opponent);
 
 
 //        System.out.println(lastMsg);
