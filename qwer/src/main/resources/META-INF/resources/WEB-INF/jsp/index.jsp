@@ -169,7 +169,7 @@
     AuthorList.push("<%= AuthorList.get(i)%>");
     <%}%>
 
-    console.log(TitleList) 
+    console.log(TitleList)
     console.log(AuthorList)
 
 </script>
