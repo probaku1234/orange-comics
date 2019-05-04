@@ -37,6 +37,7 @@ public class MessagingServices {
         MessageGroup messageGroup = messageGroupRepository.findByUsers(users);
         if(messageGroup == null){
             messageGroup = new MessageGroup(users);
+            messageGroupRepository.save(messageGroup);
         }
 
         Comment comment = new Comment(fromUserID, message, new Date());
@@ -57,7 +58,7 @@ public class MessagingServices {
                 PageRequest.of(page, amount, Sort.by(Sort.Direction.DESC, "lastMessage")));
         return new ArrayList<>(groups.getContent());
     }
-    
+
     public ArrayList<Comment> getMessages(String messageGroupID, int amount, int page){
         Page<Comment> comments = commentRepository.findByMessageGroup(messageGroupID,
                 PageRequest.of(page, amount, Sort.by(Sort.Direction.DESC, "datePosted")));

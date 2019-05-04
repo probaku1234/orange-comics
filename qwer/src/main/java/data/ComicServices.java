@@ -12,7 +12,6 @@ import java.net.URL;
 @Component
 public class ComicServices {
     public static final String STATUS_PRIVATE = "PRIVATE";
-    public static final String STATUS_UNLISTED = "UNLISTED";
     public static final String STATUS_PUBLIC = "PUBLIC";
 
     public static final String SORT_NEW = "NEW";
@@ -32,8 +31,7 @@ public class ComicServices {
             return;
         }
 
-        if(!publishedStatus.equals(STATUS_PRIVATE) && !publishedStatus.equals(STATUS_UNLISTED) &&
-                !publishedStatus.equals(STATUS_PUBLIC)){
+        if(!publishedStatus.equals(STATUS_PRIVATE) && !publishedStatus.equals(STATUS_PUBLIC)){
             System.out.println("Invalid published status.");
             return;
         }
@@ -67,13 +65,35 @@ public class ComicServices {
         comicRepository.delete(comic);
     }
 
-    public ArrayList<String> getUsersComics(String userID){
-        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userID));
-        ArrayList<String> comicIDs = new ArrayList<>();
-        for (Comic comic : comics) {
-            comicIDs.add(comic.id);
+    public Comic getComicbyID(String comicID){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return null;
         }
-        return comicIDs;
+        return optComic.get();
+    }
+
+    public Comic getComicbyURL(URL url, String userID){
+        Comic comic = comicRepository.findByURL(url);
+
+        if(comic == null){
+            System.out.println("Comic doesn't exist.");
+            return null;
+        }
+
+        if(comic.publishedStatus != STATUS_PUBLIC && comic.author != userID){
+            System.out.println("Comic isn't public and user isn't author.");
+            return null;
+        }
+
+        return comic;
+    }
+
+    public ArrayList<Comic> getUsersComics(String userID){
+        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userID));
+        return comics;
     }
 
     /**
@@ -285,8 +305,7 @@ public class ComicServices {
     }
 
     public void changePublishedStatus(String comicID, String userID, String status){
-        if(!status.equals(STATUS_PRIVATE) && !status.equals(STATUS_UNLISTED) &&
-                !status.equals(STATUS_PUBLIC)){
+        if(!status.equals(STATUS_PRIVATE) && !status.equals(STATUS_PUBLIC)){
             System.out.println("Invalid published status.");
             return;
         }
@@ -375,5 +394,43 @@ public class ComicServices {
 
         Chapter chapter = optChapter.get();
         return chapter.pages;
+    }
+
+    public void updateTags(String comicID, String userID, ArrayList<String> tags){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return;
+        }
+
+        Comic comic = optComic.get();
+
+        if(!comic.author.equals(userID)){
+            System.out.println("User is not author of comic.");
+            return;
+        }
+
+        comic.tags = tags;
+        comicRepository.save(comic);
+    }
+
+    public void updateGenress(String comicID, String userID, ArrayList<String> genres){
+        Optional<Comic> optComic = comicRepository.findById(comicID);
+
+        if(!optComic.isPresent()){
+            System.out.println("Comic doesn't exist.");
+            return;
+        }
+
+        Comic comic = optComic.get();
+
+        if(!comic.author.equals(userID)){
+            System.out.println("User is not author of comic.");
+            return;
+        }
+
+        comic.genres = genres;
+        comicRepository.save(comic);
     }
 }
