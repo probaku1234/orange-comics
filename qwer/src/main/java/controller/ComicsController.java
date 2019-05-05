@@ -104,7 +104,7 @@ public class ComicsController {
         // create comic in db
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
         URL url = new URL(baseURL + title);
-        comicServices.createComic(title, userId, url, "UNLISTED");
+        comicServices.createComic(title, userId, url, "PUBLIC");
     }
 
     @RequestMapping(value = {"/create_chapter"}, method = RequestMethod.POST)

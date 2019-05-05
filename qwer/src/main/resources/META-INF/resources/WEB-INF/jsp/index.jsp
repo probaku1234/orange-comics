@@ -129,7 +129,9 @@
                     coverPage = chapterList[i][0];
                     canvasTemp.setWidth(461);
                     canvasTemp.setHeight(600);
+                    console.log(coverPage);
                     canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                    console.log(canvasTemp);
                     let imgPath = canvasTemp.toDataURL();
                     $('#recommended'+i).attr('src', imgPath);
                     $('#recommended'+i).width(97);
