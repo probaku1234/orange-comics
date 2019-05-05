@@ -37,9 +37,7 @@ public class WelcomeController {
 
     @RequestMapping(value={"/index","/"})
     public String index(Map<String, Object> model, Model _model) {
-
-        String userId = "5cafaeae0309f52d4420c7dc";//id=yong
-        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
+        ArrayList<Comic> comics = comicServices.getRecentComics(12, 1);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();
@@ -137,7 +135,7 @@ public class WelcomeController {
         model.put("message", "You are in new page !!");
 
         String userId = "5cafaeae0309f52d4420c7dc";//id=yong
-        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
+        ArrayList<Comic> comics = comicServices.getRecentComics(12,20);
         System.out.println("###########Comics: "+comics);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();

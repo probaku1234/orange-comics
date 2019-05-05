@@ -2,6 +2,8 @@ $(document).ready(function () {
     let comicList;
     let chapterList;
     let currentComicTitle;
+    let tags = new Array();
+    let genres = new Array();
 
     $.ajax({
         type: "POST",
@@ -54,7 +56,44 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("click","#tag_list button",function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            tags.splice(tags.indexOf($(this).text()), 1);
+            console.log(tags);
+        } else {
+            $(this).addClass("active");
+            tags.push($(this).text());
+            console.log(tags);
+        }
+    });
 
+    $(document).on("click", "#genre_list button",function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            genres.splice(genres.indexOf($(this).text()), 1);
+            console.log(genres);
+        } else {
+            $(this).addClass("active");
+            genres.push($(this).text());
+            console.log(genres);
+        }
+    });
+
+    $(document).on("click","#tagandgenre_button", function () {
+        $.ajax({
+            type: "POST",
+            url: "/add_tags_and_genres",
+            data: {
+                "title": $("#dropdownComicListButton").text(),
+                "tags": tags,
+                "genres": genres
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
 });
 
 function getComicList() {
