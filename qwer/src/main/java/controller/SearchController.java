@@ -26,7 +26,7 @@ public class SearchController {
     @RequestMapping(value = {"/search_result"}, method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView searchRequset(@RequestParam(value = "keyword") String keyword) {
         System.out.println(keyword);
-        ArrayList<Comic> comics = comicServices.findComicsByTitle(keyword, 10, 10);
+        ArrayList<Comic> comics = comicServices.findComicsByTitle(keyword, 10, 1);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> authorList = new ArrayList<>();

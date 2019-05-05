@@ -76,7 +76,7 @@ public class ComicServices {
     }
 
     public Comic getComicbyURL(URL url, String userID){
-        Comic comic = comicRepository.findByURL(url);
+        Comic comic = comicRepository.findByUrl(url);
 
         if(comic == null){
             System.out.println("Comic doesn't exist.");
