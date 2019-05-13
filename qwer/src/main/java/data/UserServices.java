@@ -95,6 +95,17 @@ public class UserServices {
         return user.id;
     }
 
+    public String getIDbyEmail(String email){
+        User user = userRepository.findByEmail(email);
+
+        if(user == null){
+            System.out.println("User with given email doesn't exist.");
+            return null;
+        }
+
+        return user.id;
+    }
+
     public void changePassword(String userID, String password){
         Optional<User> optUser = userRepository.findById(userID);
 
@@ -103,6 +114,31 @@ public class UserServices {
             return;
         }
         User user = optUser.get();
+
+        user.password_hash = Passwords.hash(password.toCharArray(), user.password_salt);
+        userRepository.save(user);
+    }
+
+    public void setResetURL(String userID, URL resetURL){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return;
+        }
+        User user = optUser.get();
+
+        user.resetURL = resetURL;
+        userRepository.save(user);
+    }
+
+    public void resetPassword(URL resetURL, String password){
+        User user = userRepository.findByResetURL(resetURL);
+
+        if(user == null){
+            System.out.println("No user with given resetURL exist.");
+            return;
+        }
 
         user.password_hash = Passwords.hash(password.toCharArray(), user.password_salt);
         userRepository.save(user);
@@ -211,6 +247,7 @@ public class UserServices {
         if(!notificationType.equals(FAVORITE_NOTIFICATIONS) && !notificationType.equals(COMMENT_NOTIFICATIONS) &&
                 !notificationType.equals(MESSAGE_NOTIFICATIONS)){
             System.out.println("Invalid notification type.");
+            return;
         }
 
         Optional<User> optUser = userRepository.findById(userID);
@@ -223,26 +260,26 @@ public class UserServices {
 
         if(!user.notification_settings.get(notification)){
             System.out.println("Notification type disabled.");
+            return;
         }
 
-        user.notifications.add(notification);
+        user.newNotifications.add(notification);
         userRepository.save(user);
     }
 
-    public void clearNotifications(String userID){
+    public int sizeOfNewNotifications(String userID){
         Optional<User> optUser = userRepository.findById(userID);
 
         if(!optUser.isPresent()){
             System.out.println("User doesn't exist.");
-            return;
+            return -1;
         }
         User user = optUser.get();
 
-        user.notifications.clear();
-        userRepository.save(user);
+        return user.newNotifications.size();
     }
 
-    public ArrayList<String> getNotifications(String userID){
+    public ArrayList<String> getNewNotifications(String userID, int amount){
         Optional<User> optUser = userRepository.findById(userID);
 
         if(!optUser.isPresent()){
@@ -250,7 +287,55 @@ public class UserServices {
             return null;
         }
         User user = optUser.get();
-        return user.notifications;
+
+        ArrayList<String> notifications;
+        if(amount < user.newNotifications.size()){
+            notifications = new ArrayList<>(user.newNotifications.subList(0, amount));
+            user.newNotifications = new ArrayList<>(user.newNotifications.subList(amount, user.newNotifications.size()));
+        }else{
+            notifications = new ArrayList<>(user.newNotifications);
+            user.newNotifications.clear();
+        }
+        user.oldNotifications.addAll(notifications);
+        userRepository.save(user);
+
+        return notifications;
+    }
+
+    public ArrayList<String> getOldNotifications(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return null;
+        }
+        User user = optUser.get();
+
+        return user.oldNotifications;
+    }
+
+    public void clearOldNotifications(String userID){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+        }
+        User user = optUser.get();
+
+        user.oldNotifications.clear();
+        userRepository.save(user);
+    }
+
+    public void removeOldNotifications(String userID, int index){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+        }
+        User user = optUser.get();
+
+        user.oldNotifications.remove(index);
+        userRepository.save(user);
     }
 
     public String getTheme(String userID){
