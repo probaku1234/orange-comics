@@ -8,7 +8,6 @@ $(document).ready(function(){
     let currentPageIndex = 0;
     let isRedoing = false;
     let h = [];
-    let selectedObject;
 
     canvas.setWidth( 471 );
     canvas.setHeight( 600 );
@@ -70,6 +69,8 @@ $(document).ready(function(){
     canvas.on("object:selected", function (event) {
         console.log(event.target);
         selectedObject = event.target;
+        console.log(selectedObject.fill.substring(1));
+        $('#color_picker').val(selectedObject.fill.substring(1));
     });
 
     $("#undo").click(function () {
@@ -165,19 +166,19 @@ $(document).ready(function(){
         switch (value) {
             case "rectangle":
                 var rect = new fabric.Rect({
-                    width: 60, height: 45, fill: 'orange', left: 100, top: 100
+                    width: 60, height: 45, fill: '#53f442', left: 100, top: 100
                 });
                 canvas.add(rect).setActiveObject(rect);
                 break;
             case "circle":
                 var circle = new fabric.Circle({
-                    radius: 40, fill: 'orange', left: 70, top: 200
+                    radius: 40, fill: '#53f442', left: 70, top: 200
                 });
                 canvas.add(circle).setActiveObject(circle);
                 break;
             case "triangle":
                 var triangle = new fabric.Triangle({
-                    radius: 15, fill: 'orange', left: 120, top: 250
+                    radius: 15, fill: '#53f442', left: 120, top: 250
                 });
                 canvas.add(triangle).setActiveObject(triangle);
                 break;
@@ -498,6 +499,10 @@ $(document).ready(function(){
         }
         reader.readAsDataURL(e.target.files[0]);
     }
-    
 
+    function update(picker) {
+        if (selectedObject != undefined) {
+            selectedObject.fill = picker.toHEXString();
+        }
+    }
 });

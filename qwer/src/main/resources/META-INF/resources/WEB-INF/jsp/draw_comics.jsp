@@ -23,13 +23,14 @@
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
     <script type="text/javascript" src="lib/fabric.min.js"></script>
+
     <script type="text/javascript" src="js/draw_comics.js"></script>
     <script type="text/javascript" src="js/ImageEffectHandling.js"></script>
     <script type="text/javascript" src="js/comics.js"></script>
 
     <script type="text/javascript" src="lib/imageBlending.js"></script>
     <script type="text/javascript" src="lib/blendings.js"></script>
-
+    <script type="text/javascript" src="lib/jscolor.js"></script>
 
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -182,6 +183,18 @@
                                         <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
                                     </div>
                                 </div>
+                                <div>
+                                    <input class="jscolor {onFineChange:'update(this)'}" id="color_picker" >
+                                </div>
+                                <script>
+                                    function update(picker) {
+                                        if (selectedObject != undefined) {
+                                            console.log(selectedObject);
+
+                                            selectedObject.set("fill", picker.toHEXString());
+                                        }
+                                    }
+                                </script>
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-text" role="tabpanel" aria-labelledby="v-pills-text-tab">
