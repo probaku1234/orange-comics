@@ -192,6 +192,7 @@
                                             console.log(selectedObject);
 
                                             selectedObject.set("fill", picker.toHEXString());
+                                            canvas.requestRenderAll();
                                         }
                                     }
                                 </script>

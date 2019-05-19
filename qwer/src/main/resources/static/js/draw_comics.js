@@ -500,9 +500,44 @@ $(document).ready(function(){
         reader.readAsDataURL(e.target.files[0]);
     }
 
-    function update(picker) {
-        if (selectedObject != undefined) {
-            selectedObject.fill = picker.toHEXString();
+    function getActiveStyle() {
+        object = object || canvas.getActiveObject();
+        if (!object) return '';
+
+        return (object.getSelectionStyles && object.isEditing)
+            ? (object.getSelectionStyles()[styleName] || '')
+            : (object[styleName] || '');
+    }
+
+    function setActiveStyle() {
+        object = object || canvas.getActiveObject();
+        if (!object) return;
+
+        if (object.setSelectionStyles && object.isEditing) {
+            var style = { };
+            style[styleName] = value;
+            object.setSelectionStyles(style);
+            object.setCoords();
         }
+        else {
+            object.set(styleName, value);
+        }
+
+        object.setCoords();
+        canvas.requestRenderAll();
+    }
+
+    function getActiveProp(name) {
+        var object = canvas.getActiveObject();
+        if (!object) return '';
+
+        return object[name] || '';
+    }
+
+    function setActiveProp(name, value) {
+        var object = canvas.getActiveObject();
+        if (!object) return;
+        object.set(name, value).setCoords();
+        canvas.renderAll();
     }
 });
