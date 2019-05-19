@@ -45,7 +45,7 @@
     %>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top top-nav-font-style">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -66,8 +66,8 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result" method="get">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2 top-nav-search-bar" type="search" placeholder="Search" aria-label="Search" name="keyword">
+            <button class="btn btn-outline-success my-2 my-sm-0 top-nav-search-button" type="submit"><i class="fas fa-search"></i></button>
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">
@@ -98,14 +98,15 @@
     </div>
 </nav>
 <div class="page-header"> Post Comics </div>
-<div class="d-flex flex-row align-items-stretch body-container">
+<div class="d-flex justify-content-between flex-row align-items-stretch body-container">
+    <%-- left tab bar --%>
     <div class="d-flex flex-row align-items-stretch body-container-inner">
         <div class="left-tabs-container">
             <div id="left-tabs-title" class="left-tabs">
-                Title <i class="fas fa-chevron-right"></i>
+                New <i class="fas fa-chevron-right"></i>
             </div>
             <div id="left-tabs-chapter" class="left-tabs">
-                Chapter <i class="fas fa-chevron-right"></i>
+                Load <i class="fas fa-chevron-right"></i>
             </div>
             <div id="left-tabs-save" class="left-tabs">
                 Save <i class="fas fa-chevron-right"></i>
@@ -114,19 +115,11 @@
                 Post <i class="fas fa-chevron-right"></i>
             </div>
         </div>
-        <%-- MADE BY JKC --%>
         <div class="left-list-container" id="left-list-container">
             <div class="left-list-items" id="left-list-title">
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                <p class="left-list-item">Title</p>
-                </div>
+                <p class="left-list-item">Add a New Title</p>
+
+            </div>
             <div class="left-list-items" id="left-list-chapter">
                 <p class="left-list-item">CHAPTER</p>
                 <p class="left-list-item">CHAPTER</p>
@@ -139,8 +132,8 @@
             <div class="left-list-items" id="left-list-save"></div>
             <div class="left-list-items" id="left-list-post"></div>
         </div>
-        <%-- //MADE BY JKC --%>
     </div>
+    <%-- left tab bar --%>
     <div class="h-92">
         <div class="container container-width-limit">
             <ul class="nav nav-tabs nav-tabs-custom" role="tablist" id="tab">
@@ -329,6 +322,48 @@
             </div>
         </div>
     </div>
+    <%-- right tab bar --%>
+    <div class="d-flex flex-row-reverse align-items-stretch body-container-inner">
+        <div class="right-tabs-container">
+            <div id="right-tabs-title" class="right-tabs">
+                Title <i class="fas fa-chevron-right"></i>
+            </div>
+            <div id="right-tabs-chapter" class="right-tabs">
+                Chapter <i class="fas fa-chevron-right"></i>
+            </div>
+            <div id="right-tabs-save" class="right-tabs">
+                Save <i class="fas fa-chevron-right"></i>
+            </div>
+            <div id="right-tabs-post" class="right-tabs">
+                Post <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="right-list-container" id="right-list-container">
+            <div class="right-list-items" id="right-list-title">
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+                <p class="right-list-item">Title</p>
+            </div>
+            <div class="right-list-items" id="right-list-chapter">
+                <p class="right-list-item">CHAPTER</p>
+                <p class="right-list-item">CHAPTER</p>
+                <p class="right-list-item">CHAPTER</p>
+                <p class="right-list-item">CHAPTER</p>
+                <p class="right-list-item">CHAPTER</p>
+                <p class="right-list-item">CHAPTER</p>
+                <p class="right-list-item">CHAPTER</p>
+            </div>
+            <div class="right-list-items" id="right-list-save"></div>
+            <div class="right-list-items" id="right-list-post"></div>
+        </div>
+    </div>
+    <%-- right tab bar --%>
 </div>
 
 <div id="wrapper">
@@ -398,31 +433,4 @@
     </div>
 </div>
 </body>
-<%-- MADE BY JKC --%>
-<script>
-    $(document).ready(function(){
-        $(".left-tabs-container div").click(function(){
-            $index = $(this).index();
-            $(".left-tabs-container div").eq($index).css('backgroundColor', '#f39c12')
-            $(".left-list-container div").eq($index).show().siblings().hide();
-        });
-
-
-        window.addEventListener('mouseup', function(event){
-            var listArray = ['left-list-title', 'left-list-chapter', 'left-list-save', 'left-list-post'];
-            var tabArray = ['left-tabs-title', 'left-tabs-chapter', 'left-tabs-save', 'left-tabs-post'];
-            for(var i=0; i < listArray.length; i++){
-                var list = document.getElementById(listArray[i]);
-                var tab = document.getElementById(tabArray[i]);
-                if(event.target != list && event.target.parentNode != list){
-                    list.style.display = 'none';
-                    tab.style.backgroundColor = '#ffaf05';
-                }
-            }
-        });
-
-    });
-
-</script>
-<%-- /MADE BY JKC --%>
 </html>

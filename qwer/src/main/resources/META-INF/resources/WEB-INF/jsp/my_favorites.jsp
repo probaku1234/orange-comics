@@ -33,7 +33,7 @@
     %>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top top-nav-font-style">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -54,8 +54,8 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 nav_list_indent" action="search_result" method="get">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2 top-nav-search-bar" type="search" placeholder="Search" aria-label="Search" name="keyword">
+            <button class="btn btn-outline-success my-2 my-sm-0 top-nav-search-button" type="submit"><i class="fas fa-search"></i></button>
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">

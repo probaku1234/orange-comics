@@ -498,6 +498,50 @@ $(document).ready(function(){
         }
         reader.readAsDataURL(e.target.files[0]);
     }
-    
 
+
+});
+
+//------------------------------- left tab bar--------------------------------
+$(document).ready(function(){
+    $(".left-tabs-container div").click(function(){
+        $index = $(this).index();
+        $(".left-tabs-container div").eq($index).css('backgroundColor', '#f39c12')
+        $(".left-list-container div").eq($index).show().siblings().hide();
+    });
+
+    window.addEventListener('mouseup', function(event){
+        var listArray = ['left-list-title', 'left-list-chapter', 'left-list-save', 'left-list-post'];
+        var tabArray = ['left-tabs-title', 'left-tabs-chapter', 'left-tabs-save', 'left-tabs-post'];
+        for(var i=0; i < listArray.length; i++){
+            var list = document.getElementById(listArray[i]);
+            var tab = document.getElementById(tabArray[i]);
+            if(event.target != list && event.target.parentNode != list){
+                list.style.display = 'none';
+                tab.style.backgroundColor = '#ffc107';
+            }
+        }
+    });
+});
+
+//------------------------------- right tab bar--------------------------------
+$(document).ready(function(){
+    $(".right-tabs-container div").click(function(){
+        $index = $(this).index();
+        $(".right-tabs-container div").eq($index).css('backgroundColor', '#f39c12')
+        $(".right-list-container div").eq($index).show().siblings().hide();
+    });
+
+    window.addEventListener('mouseup', function(event){
+        var listArray = ['right-list-title', 'right-list-chapter', 'right-list-save', 'right-list-post'];
+        var tabArray = ['right-tabs-title', 'right-tabs-chapter', 'right-tabs-save', 'right-tabs-post'];
+        for(var i=0; i < listArray.length; i++){
+            var list = document.getElementById(listArray[i]);
+            var tab = document.getElementById(tabArray[i]);
+            if(event.target != list && event.target.parentNode != list){
+                list.style.display = 'none';
+                tab.style.backgroundColor = '#ffc107';
+            }
+        }
+    });
 });

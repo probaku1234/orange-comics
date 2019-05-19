@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     $(".genre, .tag").on("click",function () {
         $index = $(this).index();
-        $("#left-tab a").eq($index).css("background","rgba(240,135,59,0.7)").siblings().css("background","rgba(240,135,59,0.2)");
+        $("#left-tab a").eq($index).css("background","#f39c12").siblings().css("background","#ffc107");
         $("#left-items div").eq($index).show().siblings().hide();
     })
 });
