@@ -35,6 +35,12 @@ $(document).ready(function () {
         }
         getComicListByTagsAndGenres(tags, genres);
     });
+
+    $(".genre, .tag").on("click",function () {
+        $index = $(this).index();
+        $("#left-tab a").eq($index).css("background","rgba(240,135,59,0.7)").siblings().css("background","rgba(240,135,59,0.2)");
+        $("#left-items div").eq($index).show().siblings().hide();
+    })
 });
 
 function getComicListByTagsAndGenres(tags, genres) {

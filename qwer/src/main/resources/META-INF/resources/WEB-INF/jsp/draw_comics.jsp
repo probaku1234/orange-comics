@@ -26,11 +26,8 @@
     <script type="text/javascript" src="js/draw_comics.js"></script>
     <script type="text/javascript" src="js/ImageEffectHandling.js"></script>
     <script type="text/javascript" src="js/comics.js"></script>
-
     <script type="text/javascript" src="lib/imageBlending.js"></script>
     <script type="text/javascript" src="lib/blendings.js"></script>
-
-
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -100,194 +97,240 @@
         </ul>
     </div>
 </nav>
-<div class="splash h-92">
-    <div class="container container-width-limit">
-        <ul class="nav nav-tabs nav-tabs-custom" role="tablist" id="tab">
-            <li class="nav-item">
-                <a class="nav-link active" href="#page1" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Cover Page</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link add-page page-nav-link" href="#">+ Add Page</a>
-            </li>
-        </ul>
-        <div class="row">
-            <div class="col-sm">
-                <div class="row">
-                    <div class="col-2 tabs-margin">
-                        <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active function-menu-tabs" id="v-pills-images-tab" data-toggle="pill" href="#v-pills-images" role="tab" aria-controls="v-pills-images" aria-selected="true">IMAGES</a>
-                            <a class="nav-link function-menu-tabs" id="v-pills-shapes-tab" data-toggle="pill" href="#v-pills-shapes" role="tab" aria-controls="v-pills-shapes" aria-selected="false">SHAPES</a>
-                            <a class="nav-link function-menu-tabs" id="v-pills-text-tab" data-toggle="pill" href="#v-pills-text" role="tab" aria-controls="v-pills-text" aria-selected="false">TEXT</a>
-                            <a class="nav-link function-menu-tabs" id="v-pills-cartoonize-tab" data-toggle="pill" href="#v-pills-cartoonize" role="tab" aria-controls="v-pills-cartoonize" aria-selected="false">CARTOONIZE</a>
-                            <a class="nav-link function-menu-tabs" id="v-pills-post-tab" data-toggle="pill" href="#v-pills-post" role="tab" aria-controls="v-pills-post" aria-selected="false">POST</a>
+<div class="page-header"> Post Comics </div>
+<div class="d-flex flex-row align-items-stretch body-container">
+    <div class="d-flex flex-row align-items-stretch body-container-inner">
+        <div class="left-tabs-container">
+            <div id="left-tabs-title" class="left-tabs">
+                Title <i class="fas fa-chevron-right"></i>
+            </div>
+            <div id="left-tabs-chapter" class="left-tabs">
+                Chapter <i class="fas fa-chevron-right"></i>
+            </div>
+            <div id="left-tabs-save" class="left-tabs">
+                Save <i class="fas fa-chevron-right"></i>
+            </div>
+            <div id="left-tabs-post" class="left-tabs">
+                Post <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <%-- MADE BY JKC --%>
+        <div class="left-list-container" id="left-list-container">
+            <div class="left-list-items" id="left-list-title">
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                <p class="left-list-item">Title</p>
+                </div>
+            <div class="left-list-items" id="left-list-chapter">
+                <p class="left-list-item">CHAPTER</p>
+                <p class="left-list-item">CHAPTER</p>
+                <p class="left-list-item">CHAPTER</p>
+                <p class="left-list-item">CHAPTER</p>
+                <p class="left-list-item">CHAPTER</p>
+                <p class="left-list-item">CHAPTER</p>
+                <p class="left-list-item">CHAPTER</p>
+            </div>
+            <div class="left-list-items" id="left-list-save"></div>
+            <div class="left-list-items" id="left-list-post"></div>
+        </div>
+        <%-- //MADE BY JKC --%>
+    </div>
+    <div class="h-92">
+        <div class="container container-width-limit">
+            <ul class="nav nav-tabs nav-tabs-custom" role="tablist" id="tab">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#page1" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Cover Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link add-page page-nav-link" href="#">+ Add Page</a>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-2 tabs-margin">
+                            <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active function-menu-tabs" id="v-pills-images-tab" data-toggle="pill" href="#v-pills-images" role="tab" aria-controls="v-pills-images" aria-selected="true">IMAGES</a>
+                                <a class="nav-link function-menu-tabs" id="v-pills-shapes-tab" data-toggle="pill" href="#v-pills-shapes" role="tab" aria-controls="v-pills-shapes" aria-selected="false">SHAPES</a>
+                                <a class="nav-link function-menu-tabs" id="v-pills-text-tab" data-toggle="pill" href="#v-pills-text" role="tab" aria-controls="v-pills-text" aria-selected="false">TEXT</a>
+                                <a class="nav-link function-menu-tabs" id="v-pills-cartoonize-tab" data-toggle="pill" href="#v-pills-cartoonize" role="tab" aria-controls="v-pills-cartoonize" aria-selected="false">CARTOONIZE</a>
+                                <a class="nav-link function-menu-tabs" id="v-pills-post-tab" data-toggle="pill" href="#v-pills-post" role="tab" aria-controls="v-pills-post" aria-selected="false">POST</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="tab-content" id="v-pills-tabContent">
+                        <div class="col-6">
+                            <div class="tab-content" id="v-pills-tabContent">
 
-                            <div class="tab-pane fade show active" id="v-pills-images" role="tabpanel" aria-labelledby="v-pills-images-tab">
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Pre-made Characters
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10" id="premade_images">
-                                        <a class="dropdown-item" value="add_premade1" href="#">1</a>
-                                        <a class="dropdown-item" value="add_premade2" href="#">2</a>
-                                        <a class="dropdown-item" value="add_premade3" href="#">3</a>
+                                <div class="tab-pane fade show active" id="v-pills-images" role="tabpanel" aria-labelledby="v-pills-images-tab">
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Pre-made Characters
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10" id="premade_images">
+                                            <a class="dropdown-item" value="add_premade1" href="#">1</a>
+                                            <a class="dropdown-item" value="add_premade2" href="#">2</a>
+                                            <a class="dropdown-item" value="add_premade3" href="#">3</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Add Image from URL
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
+                                            <input class="form-control mr-sm-2" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" id="addImageButton">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Add Background from URL
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
+                                            <input class="form-control mr-sm-2" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" id="addBackgroundButton">Add</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Add Image from URL
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
-                                        <input class="form-control mr-sm-2" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
-                                        <button class="btn btn-outline-success my-2 my-sm-0" id="addImageButton">Add</button>
+
+                                <div class="tab-pane fade" id="v-pills-shapes" role="tabpanel" aria-labelledby="v-pills-shapes-tab">
+                                    <div class="mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Draw Line
+                                        </button>
+                                    </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Draw Shapes
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="shapes">
+                                            <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
+                                            <a class="dropdown-item" value="circle" href="#">Circle</a>
+                                            <a class="dropdown-item" value="triangle" href="#">Triangle</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Speech Bubbles
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
+                                            <a class="dropdown-item" value="bubble1" href="#">1</a>
+                                            <%--<a class="dropdown-item" value="bubble2" href="#">2</a>--%>
+                                            <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Add Background from URL
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
-                                        <input class="form-control mr-sm-2" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
-                                        <button class="btn btn-outline-success my-2 my-sm-0" id="addBackgroundButton">Add</button>
+
+                                <div class="tab-pane fade" id="v-pills-text" role="tabpanel" aria-labelledby="v-pills-text-tab">
+                                    <div class="mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Add Textbox
+                                        </button>
+                                    </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Fonts
+                                        </button>
+                                        <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
+                                            <a class="dropdown-item" href="#">Ariel</a>
+                                            <a class="dropdown-item" href="#">Helvetica</a>
+                                            <a class="dropdown-item" href="#">Times New Roman</a>
+                                            <a class="dropdown-item" href="#">Courier New</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Font Style
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <a class="dropdown-item" href="#">Normal</a>
+                                            <a class="dropdown-item" href="#">Bold</a>
+                                            <a class="dropdown-item" href="#">Italic</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Font Size
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                            <a class="dropdown-item" href="#">12</a>
+                                            <a class="dropdown-item" href="#">14</a>
+                                            <a class="dropdown-item" href="#">16</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="tab-pane fade" id="v-pills-shapes" role="tabpanel" aria-labelledby="v-pills-shapes-tab">
-                                <div class="mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Draw Line
-                                    </button>
+                                <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-cartoonize-tab">
+
+
+
+
                                 </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Draw Shapes
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="shapes">
-                                        <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
-                                        <a class="dropdown-item" value="circle" href="#">Circle</a>
-                                        <a class="dropdown-item" value="triangle" href="#">Triangle</a>
+
+                                <div class="tab-pane fade" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;"id="cartoonize">Cartoonize Image</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" data-toggle="modal" data-target="#exampleModal">Add Genre & Tags</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="save_button">Save Draft</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="post_button">Post Comics</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Add Comic Title
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="newComicButton">
+                                            <input class="form-control mr-sm-2" id="new_comic_book_input" type="search" placeholder="Enter the Title" aria-label="Search">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Speech Bubbles
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
-                                        <a class="dropdown-item" value="bubble1" href="#">1</a>
-                                        <%--<a class="dropdown-item" value="bubble2" href="#">2</a>--%>
-                                        <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_chapter">New Chapter</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_front">Move Front</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="copy">Copy</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="cut">Cut</button>
+                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="paste">Paste</button>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownComicListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Comic Titles
+                                        </button>
+                                        <div id="comic_list" class="dropdown-menu" aria-labelledby="dropdownComicListButton">
+
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChapterListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Chapters
+                                        </button>
+                                        <div id="chapter_list" class="dropdown-menu" aria-labelledby="dropdownChapterListButton">
 
-                            <div class="tab-pane fade" id="v-pills-text" role="tabpanel" aria-labelledby="v-pills-text-tab">
-                                <div class="mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Add Textbox
-                                    </button>
-                                </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Fonts
-                                    </button>
-                                    <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
-                                        <a class="dropdown-item" href="#">Ariel</a>
-                                        <a class="dropdown-item" href="#">Helvetica</a>
-                                        <a class="dropdown-item" href="#">Times New Roman</a>
-                                        <a class="dropdown-item" href="#">Courier New</a>
-                                    </div>
-                                </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Font Style
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <a class="dropdown-item" href="#">Normal</a>
-                                        <a class="dropdown-item" href="#">Bold</a>
-                                        <a class="dropdown-item" href="#">Italic</a>
-                                    </div>
-                                </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Font Size
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                        <a class="dropdown-item" href="#">12</a>
-                                        <a class="dropdown-item" href="#">14</a>
-                                        <a class="dropdown-item" href="#">16</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-cartoonize-tab">
-
-
-
-
-                            </div>
-
-                            <div class="tab-pane fade" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;"id="cartoonize">Cartoonize Image</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" data-toggle="modal" data-target="#exampleModal">Add Genre & Tags</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="save_button">Save Draft</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="post_button">Post Comics</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Add Comic Title
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="newComicButton">
-                                        <input class="form-control mr-sm-2" id="new_comic_book_input" type="search" placeholder="Enter the Title" aria-label="Search">
-                                        <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_chapter">New Chapter</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_front">Move Front</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="copy">Copy</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="cut">Cut</button>
-                                <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="paste">Paste</button>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownComicListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Comic Titles
-                                    </button>
-                                    <div id="comic_list" class="dropdown-menu" aria-labelledby="dropdownComicListButton">
-
-                                    </div>
-                                </div>
-                                <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChapterListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Chapters
-                                    </button>
-                                    <div id="chapter_list" class="dropdown-menu" aria-labelledby="dropdownChapterListButton">
-
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg canvas_container">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="page1">
-                        <canvas id="canvas" class="draw_canvas">
+                <div class="col-lg canvas_container">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="page1">
+                            <canvas id="canvas" class="draw_canvas">
 
-                        </canvas>
+                            </canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div id="wrapper">
             <canvas id="base-canvas" height="200" width="200" style="display:none"></canvas>
             <canvas id="src-canvas" height="200" width="200" style="display:none"></canvas>
@@ -355,4 +398,31 @@
     </div>
 </div>
 </body>
+<%-- MADE BY JKC --%>
+<script>
+    $(document).ready(function(){
+        $(".left-tabs-container div").click(function(){
+            $index = $(this).index();
+            $(".left-tabs-container div").eq($index).css('backgroundColor', '#f39c12')
+            $(".left-list-container div").eq($index).show().siblings().hide();
+        });
+
+
+        window.addEventListener('mouseup', function(event){
+            var listArray = ['left-list-title', 'left-list-chapter', 'left-list-save', 'left-list-post'];
+            var tabArray = ['left-tabs-title', 'left-tabs-chapter', 'left-tabs-save', 'left-tabs-post'];
+            for(var i=0; i < listArray.length; i++){
+                var list = document.getElementById(listArray[i]);
+                var tab = document.getElementById(tabArray[i]);
+                if(event.target != list && event.target.parentNode != list){
+                    list.style.display = 'none';
+                    tab.style.backgroundColor = '#ffaf05';
+                }
+            }
+        });
+
+    });
+
+</script>
+<%-- /MADE BY JKC --%>
 </html>
