@@ -38,8 +38,7 @@ public class WelcomeController {
     @RequestMapping(value={"/index","/"})
     public String index(Map<String, Object> model, Model _model) {
 
-        String userId = "5cafaeae0309f52d4420c7dc";//id=yong
-        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
+        ArrayList<Comic> comics = comicServices.getRecentComics(12, 0);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();
@@ -136,9 +135,7 @@ public class WelcomeController {
     public String all_comics(Map<String, Object> model, Model _model) {
         model.put("message", "You are in new page !!");
 
-        String userId = "5cafaeae0309f52d4420c7dc";//id=yong
-        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
-        System.out.println("###########Comics: "+comics);
+        ArrayList<Comic> comics = comicServices.getRecentComics(24, 0);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();
@@ -187,11 +184,11 @@ public class WelcomeController {
         return "draw_comics";
     }
 
-    @RequestMapping("/search_result")
+    /*@RequestMapping("/search_result")
     public String search_result(Map<String, Object> model) {
         model.put("message", "You are in new page !!");
         return "search_result";
-    }
+    }*/
 
     @RequestMapping("/author_profile")
     public String author_profile(@RequestParam(value = "id") String name, Map<String, Object> model, Model _model) {

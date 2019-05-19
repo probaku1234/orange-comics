@@ -104,7 +104,7 @@ public class ComicsController {
         // create comic in db
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
         URL url = new URL(baseURL + title);
-        comicServices.createComic(title, userId, url, "UNLISTED");
+        comicServices.createComic(title, userId, url, "PUBLIC");
     }
 
     @RequestMapping(value = {"/create_chapter"}, method = RequestMethod.POST)
@@ -177,6 +177,21 @@ public class ComicsController {
         model.addAttribute("allComics_chapterList", chapterList);
         model.addAttribute("allComics_TitleList", TitleList);
         model.addAttribute("allComics_AuthorList", AuthorList);
+        return 1;
+    }
+
+    @RequestMapping(value = "/add_tags_and_genres", method = RequestMethod.POST)
+    @ResponseBody
+    public int addTagAndGenreRequest(@RequestParam(value = "tags[]") ArrayList<String> tags, @RequestParam(value = "genres[]") ArrayList<String> genres, @RequestParam(value = "title") String title, HttpSession session) {
+        String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
+        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
+        for (Comic comic : comics) {
+            if (comic.title.equals(title)) {
+                comicServices.updateGenress(comic.id, userId, genres);
+                comicServices.updateTags(comic.id, userId, tags);
+                return 1;
+            }
+        }
         return 1;
     }
 }

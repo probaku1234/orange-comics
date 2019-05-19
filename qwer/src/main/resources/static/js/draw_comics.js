@@ -1,15 +1,14 @@
 let selectedObject;
 let mouseUpObject;
-let canvas
+let canvas;
 $(document).ready(function(){
-    canvas = new fabric.Canvas('canvas', { preserveObjectStacking: true});
+    canvas = new fabric.Canvas('canvas', { backgroundColor : "#fff", preserveObjectStacking: true});
     let ctx = canvas.getContext('2d');
     let jsonPageArray = new Array();
     let currentPageIndex = 0;
     let isRedoing = false;
     let h = [];
     let selectedObject;
-    canvas.backgroundColor = 'white';
 
     canvas.setWidth( 471 );
     canvas.setHeight( 600 );
@@ -396,7 +395,6 @@ $(document).ready(function(){
                     }
                 }
                 canvas.clear();
-                canvas.backgroundColor = 'white';
                 restoreCanvas(0);
                 currentPageIndex = 0;
 
@@ -500,16 +498,6 @@ $(document).ready(function(){
         }
         reader.readAsDataURL(e.target.files[0]);
     }
+    
 
-    $("#genre_list").click(function () {
-        if ($(this).hasClass("active")) {
-            $(this).removeClass("active");
-            genres.splice(genres.indexOf($(this).text()), 1);
-            console.log(genres);
-        } else {
-            $(this).addClass("active");
-            genres.push($(this).text());
-            console.log(genres);
-        }
-    });
 });
