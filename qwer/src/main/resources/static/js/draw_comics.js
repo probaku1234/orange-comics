@@ -504,32 +504,44 @@ $(document).ready(function(){
 
 //------------------------------- left tab bar--------------------------------
 $(document).ready(function(){
-    $(".left-tabs-container div").click(function(){
+    $(".left-tabs-container .left-tabs").click(function(){
         $index = $(this).index();
-        $(".left-tabs-container div").eq($index).css('backgroundColor', '#f39c12')
-        $(".left-list-container div").eq($index).show().siblings().hide();
+        $(".left-tabs-container .left-tabs").eq($index).css('backgroundColor', '#f39c12');
+        $(".left-tabs-container .left-tabs").eq($index).css('color', '#333333');
+        $(".left-list-container .left-list-items").eq($index).show().siblings().hide();
     });
 
     window.addEventListener('mouseup', function(event){
-        var listArray = ['left-list-title', 'left-list-chapter', 'left-list-save', 'left-list-post'];
-        var tabArray = ['left-tabs-title', 'left-tabs-chapter', 'left-tabs-save', 'left-tabs-post'];
-        for(var i=0; i < listArray.length; i++){
-            var list = document.getElementById(listArray[i]);
-            var tab = document.getElementById(tabArray[i]);
-            if(event.target != list && event.target.parentNode != list){
-                list.style.display = 'none';
-                tab.style.backgroundColor = '#ffc107';
+        var listArray = ['left-list-new', 'left-list-load', 'left-list-save', 'left-list-post'];
+        var tabArray = ['left-tabs-new', 'left-tabs-load', 'left-tabs-save', 'left-tabs-post'];
+        var except = document.getElementById('exampleModal');
+
+        if(event.target == except || event.target.parentNode == except || event.target.parentNode.parentNode == except || event.target.parentNode.parentNode.parentNode == except || event.target.parentNode.parentNode.parentNode.parentNode == except || event.target.parentNode.parentNode.parentNode.parentNode.parentNode == except){
+            console.log(event.target)
+        }
+        else {
+            for(var i=0; i < listArray.length; i++){
+                var list = document.getElementById(listArray[i]);
+                var tab = document.getElementById(tabArray[i]);
+                if(event.target != list && event.target.parentNode != list && event.target.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode.parentNode != list){
+                    list.style.display = 'none';
+                    tab.style.backgroundColor = '#ffc107';
+                    tab.style.color = '#eeeeee';
+                }
             }
         }
+
+
     });
 });
 
 //------------------------------- right tab bar--------------------------------
 $(document).ready(function(){
-    $(".right-tabs-container div").click(function(){
+    $(".right-tabs-container .right-tabs").click(function(){
         $index = $(this).index();
-        $(".right-tabs-container div").eq($index).css('backgroundColor', '#f39c12')
-        $(".right-list-container div").eq($index).show().siblings().hide();
+        $(".right-tabs-container .right-tabs").eq($index).css('backgroundColor', '#f39c12');
+        $(".right-tabs-container .right-tabs").eq($index).css('color', '#333333');
+        $(".right-list-container .right-list-items").eq($index).show().siblings().hide();
     });
 
     window.addEventListener('mouseup', function(event){
@@ -538,9 +550,10 @@ $(document).ready(function(){
         for(var i=0; i < listArray.length; i++){
             var list = document.getElementById(listArray[i]);
             var tab = document.getElementById(tabArray[i]);
-            if(event.target != list && event.target.parentNode != list){
+            if(event.target != list && event.target.parentNode != list && event.target.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode.parentNode != list){
                 list.style.display = 'none';
                 tab.style.backgroundColor = '#ffc107';
+                tab.style.color = '#eeeeee';
             }
         }
     });

@@ -102,10 +102,10 @@
     <%-- left tab bar --%>
     <div class="d-flex flex-row align-items-stretch body-container-inner">
         <div class="left-tabs-container">
-            <div id="left-tabs-title" class="left-tabs">
+            <div id="left-tabs-new" class="left-tabs">
                 New <i class="fas fa-chevron-right"></i>
             </div>
-            <div id="left-tabs-chapter" class="left-tabs">
+            <div id="left-tabs-load" class="left-tabs">
                 Load <i class="fas fa-chevron-right"></i>
             </div>
             <div id="left-tabs-save" class="left-tabs">
@@ -116,21 +116,56 @@
             </div>
         </div>
         <div class="left-list-container" id="left-list-container">
-            <div class="left-list-items" id="left-list-title">
-                <p class="left-list-item">Add a New Title</p>
+            <div class="left-list-items" id="left-list-new">
+                <p class="left-list-item" style="padding-top: 40px; padding-bottom: 10px">Add a New Comic</p>
+                <p class="form-inline left-list-item" style="padding-bottom: 40px;">
+                    <input class="form-control mr-sm-2" id="add-new-comic-input" type="search" placeholder="Enter the Title" aria-label="Search">
+                    <button class="btn-sm btn-success my-2 my-sm-0 add-new-comic-button list-button" id="add-new-comic-button">
+                        Add
+                    </button>
+                </p>
+            </div>
+            <div class="left-list-items" id="left-list-load">
+                <p class="left-list-item" style="padding-top: 40px; padding-bottom: 15px">Load a Comic</p>
+                <div class="left-list-item list-block dropdown mr-auto mt-2 mt-lg-0">
+                    <button class="btn btn-secondary dropdown-toggle list-button" type="button" id="dropdownComicListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Comic Titles
+                    </button>
+                    <div id="comic_list" class="dropdown-menu" aria-labelledby="dropdownComicListButton">
 
+                    </div>
+                </div>
+                <p class="left-list-item" style="padding-top: 0px; padding-bottom: 5px">Choose a Chapter</p>
+                <p class="left-list-item" style="padding-top: 0px; padding-bottom: 5px; padding-left: 100px">or</p>
+                <p class="left-list-item" style="padding-top: 0px; padding-bottom: 15px">Add a New Chapter</p>
+                <div class="form-inline left-list-item dropdown mr-auto mt-2 mt-lg-0" style="padding-bottom: 40px;">
+                    <button class="btn btn-secondary dropdown-toggle list-button" type="button" id="dropdownChapterListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Load Chapter
+                    </button>
+                    <div id="chapter_list" class="dropdown-menu" aria-labelledby="dropdownChapterListButton">
+
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm list-button" id="new_chapter" style="margin-left: 20px">
+                        New Chapter
+                    </button>
+                </div>
             </div>
-            <div class="left-list-items" id="left-list-chapter">
-                <p class="left-list-item">CHAPTER</p>
-                <p class="left-list-item">CHAPTER</p>
-                <p class="left-list-item">CHAPTER</p>
-                <p class="left-list-item">CHAPTER</p>
-                <p class="left-list-item">CHAPTER</p>
-                <p class="left-list-item">CHAPTER</p>
-                <p class="left-list-item">CHAPTER</p>
+            <div class="left-list-items" id="left-list-save" style="padding-bottom: 40px; text-align: center;">
+                <p class="left-list-item" style="padding-top: 40px; padding-bottom: 5px">Do you really want to</p>
+                <p class="left-list-item" style="padding-bottom: 15px">save a comic?</p>
+                <button type="button" class="btn btn-success btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" id="save_button">
+                    Save Draft
+                </button>
             </div>
-            <div class="left-list-items" id="left-list-save"></div>
-            <div class="left-list-items" id="left-list-post"></div>
+            <div class="left-list-items" id="left-list-post" style="padding-bottom: 40px; text-align: center;">
+                <p class="left-list-item " style="padding-top: 40px; padding-bottom: 15px">Select Genres & Tags</p>
+                <button type="button" class="btn btn-success btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" data-toggle="modal" data-target="#exampleModal">
+                    Add Genres & Tags
+                </button>
+                <p class="left-list-item" style="padding-top: 75px; padding-bottom: 5px">Do you really want to</p>
+                <p class="left-list-item" style="padding-bottom: 15px">post a comic?</p>
+                <button type="button" class="btn btn-success btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" id="post_button">Post Comic</button>
+            </div>
         </div>
     </div>
     <%-- left tab bar --%>
@@ -141,11 +176,11 @@
                     <a class="nav-link active" href="#page1" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Cover Page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link add-page page-nav-link" href="#">+ Add Page</a>
+                    <a class="nav-link add-page page-nav-link" href="#">+ Add</a>
                 </li>
             </ul>
-            <div class="row">
-                <div class="col-sm">
+            <div class="row" style="align-items: center; justify-content: center;">
+                <div class="col-sm" style="display: none">
                     <div class="row">
                         <div class="col-2 tabs-margin">
                             <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -266,9 +301,6 @@
 
                                 <div class="tab-pane fade" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;"id="cartoonize">Cartoonize Image</button>
-                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" data-toggle="modal" data-target="#exampleModal">Add Genre & Tags</button>
-                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="save_button">Save Draft</button>
-                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="post_button">Post Comics</button>
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
                                     <div class="dropdown mr-auto mt-2 mt-lg-0">
                                         <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -279,7 +311,6 @@
                                             <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="new_chapter">New Chapter</button>
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
@@ -288,22 +319,7 @@
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="copy">Copy</button>
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="cut">Cut</button>
                                     <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="paste">Paste</button>
-                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownComicListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Comic Titles
-                                        </button>
-                                        <div id="comic_list" class="dropdown-menu" aria-labelledby="dropdownComicListButton">
 
-                                        </div>
-                                    </div>
-                                    <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChapterListButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Chapters
-                                        </button>
-                                        <div id="chapter_list" class="dropdown-menu" aria-labelledby="dropdownChapterListButton">
-
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -326,16 +342,16 @@
     <div class="d-flex flex-row-reverse align-items-stretch body-container-inner">
         <div class="right-tabs-container">
             <div id="right-tabs-title" class="right-tabs">
-                Title <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-left"></i> Title
             </div>
             <div id="right-tabs-chapter" class="right-tabs">
-                Chapter <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-left"></i> Chapter
             </div>
             <div id="right-tabs-save" class="right-tabs">
-                Save <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-left"></i> Save
             </div>
             <div id="right-tabs-post" class="right-tabs">
-                Post <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-left"></i> Post
             </div>
         </div>
         <div class="right-list-container" id="right-list-container">

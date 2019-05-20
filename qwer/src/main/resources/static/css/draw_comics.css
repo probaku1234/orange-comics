@@ -69,7 +69,8 @@
 }
 
 .container-width-limit {
-    max-width: 900px;
+    min-width: 700px;
+    max-width: 700px;
 }
 
 .tabs-margin {
@@ -83,7 +84,7 @@
 
 .body-container-inner {
     height: 100%;
-    min-width: 450px
+    min-width: 500px
 }
 
 .left-tabs {
@@ -106,7 +107,7 @@
 }
 
 .left-list-items {
-    width: 300px;
+    width: 330px;
     background-color: #f39c12;
     margin-top: 1px;
     display: none;
@@ -114,9 +115,8 @@
 
 .left-list-item {
     background-color:#f39c12;
-    padding-top: 10px;
-    padding-bottom: 10px;
     padding-right: 20px;
+    padding-bottom: 20px;
     margin-left: 20px;
     margin-bottom: 0;
     text-align: left;
@@ -126,11 +126,31 @@
     font-style: italic;
 }
 
+#add-new-comic-input {
+    height: 30px;
+    width: 60%;
+}
+
+#add-new-comic-button {
+    height: 30px;
+    width: 70px;
+}
+
+.list-block {
+    padding-bottom: 75px;
+}
+
+.list-button {
+    height: 38px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
 .right-tabs {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 20px;
-    text-align: right;
+    text-align: left;
     font-size: 25px;
     font-family: sans-serif;
     color: #eeeeee;
@@ -154,11 +174,11 @@
 
 .right-list-item {
     background-color:#f39c12;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     padding-right: 20px;
     margin-bottom: 0;
-    text-align: right;
+    text-align: left;
     font-size: 25px;
     font-family: sans-serif;
     color: #eeeeee;
