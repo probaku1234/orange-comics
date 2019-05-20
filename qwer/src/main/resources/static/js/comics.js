@@ -12,6 +12,7 @@ $(document).ready(function () {
             comicList = array;
             for (var i = 0; i < array.length; i++) {
                 $("#comic_list").append("<a class='dropdown-item' value='"+ i + "'>" + array[i].title + "</a>");
+                getChapterList(array[i].title);
             }
         }
     });
@@ -20,7 +21,9 @@ $(document).ready(function () {
         var value = $(this).attr('value');
         currentComicTitle = $(this).text();
         $(this).parents('.dropdown').find('.dropdown-toggle').html(currentComicTitle);
-        getChapterList(comicList[value].title);
+        $('.dropdown-item chapter pika').hide();
+        //$('.dropdown-item chapter ' + currentComicTitle).show();
+        //getChapterList(comicList[value].title);
     });
     
 
@@ -118,11 +121,12 @@ function getChapterList(title) {
         },
         dataType: "json",
         success: function (array) {
-            $("#chapter_list").empty();
             for (var i = 0; i < array.length; i++) {
                 var text = i + 1;
-                $("#chapter_list").append("<a class='dropdown-item' value='"+ i + "'>" + text + "</a>");
+                $("#chapter_list").append("<a class='dropdown-item chapter " + title + "' value='"+ i + "'>" + text + "</a>");
+
             }
+            $('chapter').hide();
         }
     });
 }

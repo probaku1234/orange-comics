@@ -1,6 +1,7 @@
 $(document).ready(function () {
     let selectedComics;
     let index;
+    let chapter;
 
     $('#post').hide();
     $.ajax({
@@ -8,7 +9,9 @@ $(document).ready(function () {
         url: "/get_user_comic_list",
         success: function (array) {
             for (var i = 0; i < array.length; i++) {
-                $("#comic_list").append("<button class='list-group-item'><h4 class='list-group-item-heading'>"+ array[i].title +"</h4><p class='list-group-item-text'>"+ array[i].publishedDate+ "</p></button>");
+                for (var j = 0; j < array[i].chapters.length; j++) {
+                    $("#comic_list").append("<button class='list-group-item'><h4 class='list-group-item-heading'>"+ array[i].title +"</h4><p class='list-group-item-text'>Chapter "+ (j+1) +"</p><p class='list-group-item-text'>"+ array[i].publishedDate+ "</p></button>");
+                }
             }
         }
     });
@@ -34,23 +37,68 @@ $(document).ready(function () {
         $(this).parent().children().removeClass("active");
         $(this).addClass("active");
         selectedComics = $(this).children().eq(0).text();
+        chapter = parseInt($(this).children().eq(1).text().substring(8));
         index = $(this).index();
         console.log(selectedComics);
+        console.log(chapter);
     });
     
     $("#delete_comic_button").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "/delete_selected_comic",
-            data: {
-                "title" : selectedComics
-            },
-            success: function (response) {
-                console.log(response);
-                if (response == 1) {
-                    $("#comic_list").children().eq(index).remove();
+        if (selectedComics == undefined) {
+            alert("Please select comic");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/delete_selected_comic",
+                data: {
+                    "title" : selectedComics
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response == 1) {
+                        $("#comic_list").children().eq(index).remove();
+                    }
                 }
-            }
-        });
+            });
+        }
+    });
+
+    $("#delete_chapter_button").click(function () {
+        if (selectedComics == undefined || chapter == undefined) {
+            alert("Please select comic");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/delete_selected_chapter",
+                data: {
+                    "title" : selectedComics,
+                    "chapter" : chapter
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response == 1) {
+                        $("#comic_list").children().eq(index).remove();
+                    }
+                }
+            });
+        }
+    });
+
+    $("#edit_chapter_button").click(function () {
+        if (selectedComics == undefined || chapter == undefined) {
+            alert("Please select comic");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/edit_selected_chapter",
+                data: {
+                    "title" : selectedComics,
+                    "chapter" : chapter
+                },
+                complete: function () {
+                    window.location.replace("/draw_comics");
+                }
+            });
+        }
     });
 });

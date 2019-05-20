@@ -3,6 +3,7 @@ package controller;
 import data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,6 +57,30 @@ public class UserProfileController {
                 comicServices.deleteComic(comic.id, userId);
             }
         }
+        return 1;
+    }
+
+    @RequestMapping(value = "/delete_selected_chapter", method = RequestMethod.POST)
+    @ResponseBody
+    public int deleteChapterRequest(@RequestParam(value = "title") String title, @RequestParam(value = "chapter") int chapterNumber, HttpSession session) {
+        // delete comic
+        String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
+
+        ArrayList<Comic> comics = new ArrayList<>(comicRepository.findByAuthor(userId));
+        for (Comic comic : comics) {
+            if (comic.title.equals(title)) {
+                //comicServices.deleteComic(comic.id, userId);
+                comicServices.deleteChapter(comic.chapters.get(chapterNumber-1), comic.id, userId);
+            }
+        }
+        return 1;
+    }
+
+    @RequestMapping(value = "/edit_selected_chapter", method = RequestMethod.POST)
+    @ResponseBody
+    public int editChapterRequest(@RequestParam(value = "title") String title, @RequestParam(value = "chapter") int chapterNumber, HttpSession session) {
+        session.setAttribute("title", title);
+        session.setAttribute("chapter", chapterNumber);
         return 1;
     }
 }

@@ -149,6 +149,8 @@
 
             </div>
             <button class="btn btn-primary" id="delete_comic_button">Delete Comic</button>
+            <button class="btn btn-primary" id="delete_chapter_button">Delete Chapter</button>
+            <button class="btn btn-primary" id="edit_chapter_button">Edit Chapter</button>
         </div>
     </div>
 </div>

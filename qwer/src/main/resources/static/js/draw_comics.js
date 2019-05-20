@@ -1,11 +1,62 @@
 let selectedObject;
 let mouseUpObject;
 let canvas;
+let jsonPageArray = new Array();
+let currentPageIndex = 0;
+
+function restoreCanvas(index) {
+    canvas.loadFromJSON(jsonPageArray[index]);
+}
+
+function loadComic() {
+    var value = $(this).attr("value");
+    value = parseInt(value,10) + 1;
+    $(this).parents('.dropdown').find('.dropdown-toggle').html(value);
+    var comic_name = $("#dropdownComicListButton").text();
+    var chapter = $("#dropdownChapterListButton").text();
+
+    $.ajax({
+        type: "POST",
+        url: "/load_draft",
+        data: {
+            "comic_name" : comic_name,
+            "chapter" : chapter
+        },
+        dataType: 'json',
+        success: function (array) {
+            jsonPageArray.length = 0;
+            var tab = $("#tab").children();
+
+            tab.each(function (index) {
+                if (index >0 && index < tab.length-1) {
+                    $(this).remove();
+                }
+            });
+            if (array.length == 0) {
+                $(".add-page").closest('li').before('<li class="nav-item"><a class="nav-link page-nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + 2 + '"> ' + 2 + ' <span class="remove_button"> x </span></a></li>');
+            }
+            for (var i = 0; i < array.length; i++) {
+                jsonPageArray.push(array[i]);
+                // add tabs
+                if (i > 0) {
+                    var id = $(".nav-tabs").children().length;
+                    $(".add-page").closest('li').before('<li class="nav-item"><a class="nav-link page-nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + id + '"> ' + id + ' <span class="remove_button"> x </span></a></li>');
+                }
+            }
+            canvas.clear();
+            restoreCanvas(0);
+            currentPageIndex = 0;
+
+            console.log("load pages done");
+        }
+    });
+}
+
 $(document).ready(function(){
     canvas = new fabric.Canvas('canvas', { backgroundColor : "#fff", preserveObjectStacking: true});
     let ctx = canvas.getContext('2d');
-    let jsonPageArray = new Array();
-    let currentPageIndex = 0;
+
+
     let isRedoing = false;
     let h = [];
 
@@ -360,57 +411,14 @@ $(document).ready(function(){
         // });
         // canvas.add(imgInstance);
     });
-    $(document).on('click', '#chapter_list a', function () {
-        var value = $(this).attr("value");
-        value = parseInt(value,10) + 1;
-        $(this).parents('.dropdown').find('.dropdown-toggle').html(value);
-        var comic_name = $("#dropdownComicListButton").text();
-        var chapter = $("#dropdownChapterListButton").text();
 
-        $.ajax({
-            type: "POST",
-            url: "/load_draft",
-            data: {
-                "comic_name" : comic_name,
-                "chapter" : chapter
-            },
-            dataType: 'json',
-            success: function (array) {
-                jsonPageArray.length = 0;
-                var tab = $("#tab").children();
-
-                tab.each(function (index) {
-                    if (index >0 && index < tab.length-1) {
-                        $(this).remove();
-                    }
-                });
-                if (array.length == 0) {
-                    $(".add-page").closest('li').before('<li class="nav-item"><a class="nav-link page-nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + 2 + '"> ' + 2 + ' <span class="remove_button"> x </span></a></li>');
-                }
-                for (var i = 0; i < array.length; i++) {
-                    jsonPageArray.push(array[i]);
-                    // add tabs
-                    if (i > 0) {
-                        var id = $(".nav-tabs").children().length;
-                        $(".add-page").closest('li').before('<li class="nav-item"><a class="nav-link page-nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false" href="#page' + id + '"> ' + id + ' <span class="remove_button"> x </span></a></li>');
-                    }
-                }
-                canvas.clear();
-                restoreCanvas(0);
-                currentPageIndex = 0;
-
-                console.log("load pages done");
-            }
-        });
-    });
+    $(document).on('click', '#chapter_list a', loadComic);
 
     function saveCanvas() {
         jsonPageArray[currentPageIndex] = JSON.stringify(canvas);
     }
 
-    function restoreCanvas(index) {
-        canvas.loadFromJSON(jsonPageArray[index]);
-    }
+
 
     function createJSONObjectArray() {
         var jsonObjectArray = new Array();

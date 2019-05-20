@@ -455,4 +455,25 @@
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(function () {
+        let title = '<%=session.getAttribute("title")%>';
+        let chapter = '<%=session.getAttribute("chapter")%>';
+        console.log(title);
+        console.log(chapter);
+        <%
+            if (session.getAttribute("title") != null) { %>
+                $("#dropdownComicListButton").text(title);
+                $("#dropdownChapterListButton").text(chapter);
+                loadComic();
+                <%
+                    session.removeAttribute("title");
+                    session.removeAttribute("chapter");
+                %>
+                console.log("from user profile");
+            <%}
+        %>
+        console.log('<%=session.getAttribute("title")%>');
+    });
+</script>
 </html>
