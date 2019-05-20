@@ -91,6 +91,7 @@
     let chapterList = eval('('+'${chapterList}'+')');
     let TitleList = [];
     let AuthorList = [];
+    let chapterIds = [];
     let coverPage;
     let pageLength;
     let chapter;
@@ -101,6 +102,7 @@
         <%
             ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
             ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
+            ArrayList<String> chapterIds = (ArrayList<String>) request.getAttribute("chapterIds");
         %>
 
         <%for(int i=0;i<TitleList.size();i++){%>
@@ -111,13 +113,16 @@
         AuthorList.push("<%= AuthorList.get(i)%>");
         <%}%>
 
+        <%for(int i=0;i<chapterIds.size();i++){%>
+        chapterIds.push("<%= chapterIds.get(i)%>");
+        <%}%>
+
         console.log(TitleList);
         console.log(AuthorList);
         console.log(chapterList);
 
         $(document).ready(function(){
             for (let i = 0; i < 12; i++) {
-
                 if (chapterList[i] != null){
                     $('#recommended'+i).click(function() {
                         coverPage = chapterList[i][0];
@@ -136,6 +141,9 @@
                     $('#recommended'+i).attr('src', imgPath);
                     $('#recommended'+i).width(97);
                     $('#recommended'+i).height(125);
+                    $('#comic-title-'+i).text(TitleList[i]);
+                    $('#comic-chapter-'+i).text('Chapter ' + chapterIds[i]);
+                    $('#comic-author-'+i).text(AuthorList[i]);
                 }
                 else {
 
@@ -148,42 +156,168 @@
 </script>
 
 <div class="splash h-92">
-    <div class="h-10">
-
-    </div>
     <div class="center">
-        <div class="bookshelf">
-            <div class="shelf">
+        <div class="bookshelf" style="margin-top: 100px">
+            <div class="shelf" style="text-align: center; font-size: 15px; font-family: 'Comic Sans MS';">
                 <div class="row-1">
                     <div class="loc" id="group1">
                         <div> <img class="sample" id= "recommended0" sample="magazine1"> </div>
                         <div> <img class="sample" id= "recommended1" sample="magazine1"> </div>
                         <div> <img class="sample" id= "recommended2" sample="magazine1"> </div>
+                    </div>
+                </div>
+                <div style="height: 80px;">
+                    <div class="d-flex" style="margin-top: 20px; text-align: center;">
+                        <div style="width: 5px"></div>
+                        <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-0">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-1">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-2">
+
+                        </div>
+                    </div>
+                    <div class="d-flex" style="text-align: center; ">
+                        <div style="width: 5px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-0">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-1">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-2">
+
+                        </div>
+                    </div>
+                    <div class="d-flex" style="text-align: center;">
+                        <div style="width: 5px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-0">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-1">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-2">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-2">
+                    <div class="loc" id="group2">
+                        <div> <img class="sample" id= "recommended6" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended7" sample="magazine1"> </div>
+                        <div> <img class="sample" id= "recommended8" sample="magazine1"> </div>
+                    </div>
+                </div>
+                <div class="d-flex" style="margin-top: 20px; text-align: center;">
+                    <div style="width: 5px"></div>
+                    <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-6">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-7">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-8">
 
                     </div>
                 </div>
-                <div class="h-10"></div>
-                <div class="row-2">
-                    <div class="loc" id="group2">
+                <div class="d-flex" style="text-align: center;">
+                    <div style="width: 5px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-6">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-7">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-8">
+
+                    </div>
+                </div>
+                <div class="d-flex" style="text-align: center;">
+                    <div style="width: 5px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-6">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-7">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-8">
+
+                    </div>
+                </div>
+                <div class="h-10">
+
+                </div>
+            </div>
+        </div>
+        <div class="bookshelf" style="float: right; margin-top: 100px">
+            <div class="shelf" style="text-align: center; font-size: 15px; font-family: 'Comic Sans MS'; text-overflow: ellipsis;">
+                <div class="row-1">
+                    <div class="loc" id="group3">
                         <div> <img class="sample" id= "recommended3" sample="magazine1"> </div>
                         <div> <img class="sample" id= "recommended4" sample="magazine1"> </div>
                         <div> <img class="sample" id= "recommended5" sample="magazine1"> </div>
                     </div>
                 </div>
-                <div class="h-10"></div>
-            </div>
-        </div>
-        <div class="bookshelf" style="float: right">
-            <div class="shelf">
-                <div class="row-1">
-                    <div class="loc" id="group3">
-                        <div> <img class="sample" id= "recommended6" sample="magazine1"> </div>
-                        <div> <img class="sample" id= "recommended7" sample="magazine1"> </div>
-                        <div> <img class="sample" id= "recommended8" sample="magazine1"> </div>
+                <div style="height: 80px;">
+                    <div class="d-flex" style="margin-top: 20px; text-align: center;">
+                        <div style="width: 5px"></div>
+                        <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-3">
 
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-4">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-5">
+
+                        </div>
+                    </div>
+                    <div class="d-flex" style="text-align: center;">
+                        <div style="width: 5px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-3">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-4">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-5">
+
+                        </div>
+                    </div>
+                    <div class="d-flex" style="text-align: center;">
+                        <div style="width: 5px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-3">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-4">
+
+                        </div>
+                        <div style="width: 17px"></div>
+                        <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-5">
+
+                        </div>
                     </div>
                 </div>
-                <div class="h-10"></div>
                 <div class="row-2">
                     <div class="loc" id="group4">
                         <div> <img class="sample" id= "recommended9" sample="magazine1"> </div>
@@ -191,14 +325,58 @@
                         <div> <img class="sample" id= "recommended11" sample="magazine1"> </div>
                     </div>
                 </div>
-                <div class="h-10"></div>
+                <div class="d-flex" style="margin-top: 20px; text-align: center;">
+                    <div style="width: 5px"></div>
+                    <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-9">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-10">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; font-weight: bold; font-size: 24px; text-overflow:ellipsis;" id="comic-title-11">
+
+                    </div>
+                </div>
+                <div class="d-flex" style="text-align: center;">
+                    <div style="width: 5px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-9">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-10">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-chapter-11">
+
+                    </div>
+                </div>
+                <div class="d-flex" style="text-align: center;">
+                    <div style="width: 5px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-9">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-10">
+
+                    </div>
+                    <div style="width: 17px"></div>
+                    <div style="width: 125px; overflow:hidden; color: lightslategrey; text-overflow:ellipsis;" id="comic-author-11">
+
+                    </div>
+                </div>
+                <div class="h-10">
+
+                </div>
             </div>
         </div>
 
         <!-- Samples-->
         <div class="samples">
             <div class="bar">
-                <a class="icon quit"></a>
+                <a class="icon quit" style="top: 10px"></a>
             </div>
             <div id="book-wrapper">
                 <div id="book-zoom"></div>
