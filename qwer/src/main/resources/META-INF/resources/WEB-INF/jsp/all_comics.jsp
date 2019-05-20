@@ -209,6 +209,11 @@
                 </div>
                 <div class="gradient"></div>
             </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination" id="page_navigation">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                </ul>
+            </nav>
         </div>
 
     </div>
@@ -223,6 +228,9 @@
     let chapter;
     let title;
     let author;
+    let pageSize = parseInt(${page_number});
+    let currentSubPageIndex = 0;
+    let maxSubPageIndex = pageSize / 10;
 
     if (TitleList != null && AuthorList != null) {
         <%
@@ -242,31 +250,83 @@
         console.log(AuthorList);
 
         $(document).ready(function(){
-            for (let i = 0; i < 24; i++) {
-
-                if (chapterList[i] != null){
-                    console.log("in");
-                    $('#recommended'+i).click(function() {
-                        coverPage = chapterList[i][0];
-                        pageLength = chapterList[i].length;
-                        chapter = i;
-                    });
-
-                    let canvasTemp = new fabric.Canvas();
-                    coverPage = chapterList[i][0];
-                    canvasTemp.setWidth(461);
-                    canvasTemp.setHeight(600);
-                    canvasTemp = canvasTemp.loadFromJSON(coverPage);
-                    let imgPath = canvasTemp.toDataURL();
-                    $('#recommended'+i).attr('src', imgPath);
-                    $('#recommended'+i).width(97);
-                    $('#recommended'+i).height(125);
+            function createPageNavigationNumbers(length, sub_index) {
+                for (var i = 0; i < length; i++) {
+                    $('#page_navigation').append("<li class=\"page-item number\"><a class=\"page-link\" href=\"#\">"+ (i + 1 + 10*sub_index)+ "</a></li>");
                 }
-                else {
-
-                }
-
+                $('#page_navigation').append("<li class=\"page-item next\"><a class=\"page-link\" href=\"#\">Next</a></li>");
             }
+            
+            function generateThumbnail() {
+                for (let i = 0; i < 24; i++) {
+
+                    if (chapterList[i] != null){
+                        console.log("in");
+                        $('#recommended'+i).click(function() {
+                            coverPage = chapterList[i][0];
+                            pageLength = chapterList[i].length;
+                            chapter = i;
+                        });
+
+                        let canvasTemp = new fabric.Canvas();
+                        coverPage = chapterList[i][0];
+                        canvasTemp.setWidth(461);
+                        canvasTemp.setHeight(600);
+                        canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                        let imgPath = canvasTemp.toDataURL();
+                        $('#recommended'+i).attr('src', imgPath);
+                        $('#recommended'+i).width(97);
+                        $('#recommended'+i).height(125);
+                    }
+                }
+            }
+
+            if (pageSize > 10) {
+                createPageNavigationNumbers(10, 0);
+            } else {
+                createPageNavigationNumbers(pageSize, 0);
+            }
+            generateThumbnail();
+
+            $(document).on("click", "#page_navigation li a", function () {
+                var count = $("#page_navigation li").length;
+                if ($(this).parent().index() == 0) {
+                    if (currentSubPageIndex > 0) {
+                        $(".page-item number").remove();
+                        $('.page-item next').remove();
+                        currentSubPageIndex -= 1;
+                        createPageNavigationNumbers(10, currentSubPageIndex);
+                    }
+                    $(this).parent().children().eq(1).trigger("click");
+                } else if ($(this).parent().index() == count -1) {
+                    if (currentSubPageIndex < maxSubPageIndex) {
+                        currentSubPageIndex += 1;
+                        if (currentSubPageIndex == maxSubPageIndex) {
+                            createPageNavigationNumbers(pageSize - 10 * currentSubPageIndex, currentSubPageIndex);
+                        } else {
+                            createPageNavigationNumbers(10, currentSubPageIndex);
+                        }
+                    }
+                    $(this).parent().children().eq(1).trigger("click");
+                } else {
+                    if (!$(this).parent().hasClass("active")) {
+                        $('.page-item number').removeClass('active');
+                        $(this).parent().addClass('active');
+                        $.ajax({
+                            type:"post",
+                            url: "/page_number_request",
+                            data: {
+                                "page_number" : $(this).text()
+                            },
+                            dataType:'json',
+                            success : function(data) {
+                                console.log(data);
+                                generateThumbnail();
+                            }
+                        });
+                    }
+                }
+            })
         });
     }
 

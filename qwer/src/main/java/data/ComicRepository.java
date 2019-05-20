@@ -22,4 +22,6 @@ public interface ComicRepository extends MongoRepository<Comic, String>{
     public Page<Comic> findByGenresContainingAndPublishedStatus(List<String> genres, String publishedStatus, Pageable pageable);
 
     public Page<Comic> findByTagsContainingAndGenresContainingAndPublishedStatus(List<String> tags, List<String> genres, String publishedStatus, Pageable pageable);
+
+    long count();
 }

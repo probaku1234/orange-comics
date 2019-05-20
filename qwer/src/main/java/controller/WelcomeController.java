@@ -135,6 +135,7 @@ public class WelcomeController {
     public String all_comics(Map<String, Object> model, Model _model) {
         model.put("message", "You are in new page !!");
 
+        int totalSize = (int) comicRepository.count();
         ArrayList<Comic> comics = comicServices.getRecentComics(24, 0);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
@@ -163,6 +164,7 @@ public class WelcomeController {
         System.out.println("###########chapterList: "+chapterList);
         System.out.println("###########TitleList: "+TitleList);
         System.out.println("###########AuthorList: "+AuthorList);
+        _model.addAttribute("page_number",totalSize/24 + 1);
         _model.addAttribute("allcomics_chapterList", chapterList);
         _model.addAttribute("allcomics_TitleList", TitleList);
         _model.addAttribute("allcomics_AuthorList", AuthorList);

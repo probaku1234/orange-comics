@@ -194,4 +194,37 @@ public class ComicsController {
         }
         return 1;
     }
+
+    @RequestMapping(value = "/page_number_request", method = RequestMethod.POST)
+    @ResponseBody
+    public int getComicListByPageIndex(@RequestParam(value = "page_number") int pageIndex ,Model _model) {
+        ArrayList<Comic> comics = comicServices.getRecentComics(24, pageIndex-1);
+        ArrayList<String> chapterIds = new ArrayList<>();
+        ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
+        ArrayList<String> AuthorList = new ArrayList<>();
+        ArrayList<String> TitleList = new ArrayList<>();
+
+        for(int i = 0; i < comics.size(); i++) {
+            for(int j = 0; j < comics.get(i).chapters.size(); j++) {
+
+                Optional<Chapter> optChapter = chapterRepository.findById(comics.get(i).chapters.get(j));
+                Chapter chapter = optChapter.get();
+
+                if(chapter.isDraft == false){
+                    chapterIds.add(comics.get(i).chapters.get(j));
+                    ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
+
+                    chapterList.add(pages);
+                    TitleList.add(comics.get(i).title);
+                    AuthorList.add(userServices.getUsername(comics.get(i).author));
+//                    idList.add(comics.get(i).id);
+                }
+            }
+        }
+
+        _model.addAttribute("allcomics_chapterList", chapterList);
+        _model.addAttribute("allcomics_TitleList", TitleList);
+        _model.addAttribute("allcomics_AuthorList", AuthorList);
+        return pageIndex;
+    }
 }
