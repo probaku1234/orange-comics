@@ -496,7 +496,7 @@
     let author;
     let pageSize = parseInt(${page_number});
     let currentSubPageIndex = 0;
-    let maxSubPageIndex = pageSize / 10;
+    let maxSubPageIndex = parseInt(pageSize / 10);
 
     if (TitleList != null && AuthorList != null) {
         <%
