@@ -28,7 +28,7 @@
         let chapter;
         let title;
         let author;
-        let pageSize = parseInt(${page_number});
+        let pageSize = parseInt();
         let currentSubPageIndex = 0;
         let maxSubPageIndex = parseInt(pageSize / 10);
         console.log(maxSubPageIndex);
@@ -37,19 +37,8 @@
 
 
             function generateThumbnail() {
-                chapterList = eval('('+'${allcomics_chapterList}'+')')
-                <%
-                    ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("allcomics_TitleList");
-                    ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("allcomics_AuthorList");
-                %>
+                chapterList = eval('('+'+')')
 
-                <%for(int i=0;i<TitleList.size();i++){%>
-                TitleList.push("<%= TitleList.get(i)%>");
-                <%}%>
-
-                <%for(int i=0;i<AuthorList.size();i++){%>
-                AuthorList.push("<%= AuthorList.get(i)%>");
-                <%}%>
 
                 console.log(TitleList);
                 console.log(AuthorList);
