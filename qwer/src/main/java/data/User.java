@@ -16,17 +16,20 @@ public class User {
     public byte[] password_salt;
     public byte[] password_hash;
     public String email;
-    public URL avatar;
+    public String avatar;  //imageID
     public String profile_description;
-    public HashMap<String, Boolean> notification_settings;
-    public ArrayList<String> notifications;
     public String site_theme;
     public ArrayList<String> favorites;
     public ArrayList<String> conversations;
     public ArrayList<String> private_characters;
 
+    public HashMap<String, Boolean> notification_settings;
+    public ArrayList<String> newNotifications;
+    public ArrayList<String> oldNotifications;
+
     public boolean activated;
     public String activationCode;
+    public URL resetURL;
 
 
     public User(String name, byte[] password_salt, byte[] password_hash, String email, String activationCode){
@@ -37,7 +40,8 @@ public class User {
         avatar = null;
         profile_description = "";
         notification_settings = new HashMap<String, Boolean>();
-        notifications = new ArrayList<String>();
+        newNotifications = new ArrayList<String>();
+        oldNotifications = new ArrayList<String>();
         site_theme = "DEFAULT";
         favorites = new ArrayList<String>();
         conversations = new ArrayList<String>();
