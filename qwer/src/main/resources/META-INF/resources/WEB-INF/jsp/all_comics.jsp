@@ -124,8 +124,10 @@
                                     <div> <img class="sample" id= "recommended0" sample="magazine1"> </div>
                                     <div> <img class="sample" id= "recommended1" sample="magazine1"> </div>
                                     <div> <img class="sample" id= "recommended2" sample="magazine1"> </div>
+
                                 </div>
                             </div>
+                            <div class="h-10"></div>
                             <div class="row-2">
                                 <div class="loc" id="group2">
                                     <div> <img class="sample" id= "recommended3" sample="magazine1"> </div>
@@ -133,6 +135,7 @@
                                     <div> <img class="sample" id= "recommended5" sample="magazine1"> </div>
                                 </div>
                             </div>
+                            <div class="h-10"></div>
                         </div>
                     </div>
                     <div class="bookshelf" style="float: right">
@@ -145,6 +148,7 @@
 
                                 </div>
                             </div>
+                            <div class="h-10"></div>
                             <div class="row-2">
                                 <div class="loc" id="group4">
                                     <div> <img class="sample" id= "recommended9" sample="magazine1"> </div>
@@ -152,44 +156,7 @@
                                     <div> <img class="sample" id= "recommended11" sample="magazine1"> </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="bookshelf">
-                        <div class="shelf">
-                            <div class="row-1">
-                                <div class="loc" id="group5">
-                                    <div> <img class="sample" id= "recommended12" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended13" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended14" sample="magazine1"> </div>
-
-                                </div>
-                            </div>
-                            <div class="row-2">
-                                <div class="loc" id="group6">
-                                    <div> <img class="sample" id= "recommended15" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended16" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended17" sample="magazine1"> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bookshelf" style="float: right">
-                        <div class="shelf">
-                            <div class="row-1">
-                                <div class="loc" id="group7">
-                                    <div> <img class="sample" id= "recommended18" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended19" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended20" sample="magazine1"> </div>
-
-                                </div>
-                            </div>
-                            <div class="row-2">
-                                <div class="loc" id="group8">
-                                    <div> <img class="sample" id= "recommended21" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended22" sample="magazine1"> </div>
-                                    <div> <img class="sample" id= "recommended23" sample="magazine1"> </div>
-                                </div>
-                            </div>
+                            <div class="h-10"></div>
                         </div>
                     </div>
 
@@ -261,7 +228,7 @@
             }
             
             function generateThumbnail() {
-                for (let i = 0; i < 24; i++) {
+                for (let i = 0; i < 12; i++) {
 
                     if (chapterList[i] != null){
                         console.log("in");

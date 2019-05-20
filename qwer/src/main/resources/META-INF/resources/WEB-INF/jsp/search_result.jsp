@@ -226,7 +226,7 @@
         console.log(chapterList);
 
         $(document).ready(function(){
-            for (let i = 0; i < 24; i++) {
+            for (let i = 0; i < 12; i++) {
 
                 if (chapterList[i] != null){
                     console.log("in");

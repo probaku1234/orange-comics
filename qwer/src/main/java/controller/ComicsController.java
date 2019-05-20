@@ -198,7 +198,7 @@ public class ComicsController {
     @RequestMapping(value = "/page_number_request", method = RequestMethod.POST)
     @ResponseBody
     public int getComicListByPageIndex(@RequestParam(value = "page_number") int pageIndex ,Model _model) {
-        ArrayList<Comic> comics = comicServices.getRecentComics(24, pageIndex-1);
+        ArrayList<Comic> comics = comicServices.getRecentComics(12, pageIndex-1);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();
