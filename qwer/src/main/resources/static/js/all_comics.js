@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    let tags = new Array();
-    let genres = new Array();
+    let tags = [];
+    let genres = [];
 
     $.ajax({
         type: "POST",
@@ -53,6 +53,7 @@ function getComicListByTagsAndGenres(tags, genres) {
         },
         success: function (data) {
             console.log(data);
+            generateThumbnail();
         }
     });
 }

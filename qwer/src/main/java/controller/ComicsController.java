@@ -150,7 +150,7 @@ public class ComicsController {
     @ResponseBody
     public int getComicsListByTagsRequest(@RequestParam(value = "tags[]") ArrayList<String> tags, @RequestParam(value = "genres[]") ArrayList<String> genres,Model model) {
         System.out.println(tags);
-        ArrayList<Comic> comics = comicServices.advancedComicSearch("NEW", 10, 10, tags, genres);
+        ArrayList<Comic> comics = comicServices.advancedComicSearch("NEW", 12, 0, tags, genres);
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();
