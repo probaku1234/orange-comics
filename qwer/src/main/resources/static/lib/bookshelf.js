@@ -21,12 +21,7 @@ var currentDemo,
   scrolling = false,
   sid = Math.round(Math.random()*100000),
   samples = {
-    'book1' : {'path' : 'samples/book1/'},
-    'book2' : {'path' : 'samples/book2/'},
-    'book3' : {'path' : 'samples/book3/'},
-    'magazine1' : {'path' : 'samples/magazine1/'},
-    'magazine2' : {'path' : 'samples/magazine2/'},
-    'magazine3' : {'path' : 'samples/magazine3/'}
+    'magazine1' : {'path' : 'samples/magazine1/'}
   },
   status = {
     'unloaded' : 0,
