@@ -550,7 +550,7 @@
                         $('#recommended'+i).height(125);
                         $('#comic-title-'+i).text(TitleList[i]);
                         $('#comic-chapter-'+i).text('Chapter ' + chapterIds[i]);
-                        $('#comic-author-'+i).text(AuthorList[i]);
+                        $('#comic-author-'+i).append("<a class='nav-link' href='author_profile?id="+ AuthorList[i] + "'>"+ AuthorList[i] + "</a>");
                     }
                 }
             }
