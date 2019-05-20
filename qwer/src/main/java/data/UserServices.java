@@ -173,7 +173,7 @@ public class UserServices {
         return user.name;
     }
 
-    public void setAvatar(String userID, URL imageLink){
+    public void setAvatar(String userID, String imageID){
         Optional<User> optUser = userRepository.findById(userID);
 
         if(!optUser.isPresent()){
@@ -182,11 +182,11 @@ public class UserServices {
         }
         User user = optUser.get();
 
-        user.avatar = imageLink;
+        user.avatar = imageID;
         userRepository.save(user);
     }
 
-    public URL getAvatarLink(String userID){
+    public String getAvatar(String userID){
         Optional<User> optUser = userRepository.findById(userID);
 
         if(!optUser.isPresent()){
