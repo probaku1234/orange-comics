@@ -569,7 +569,7 @@ li{
 
 .bookshelf .shelf .row-1{
 	position:relative;
-	width:360px;
+	width:426px;
 	height:158px;
 	margin-left:33px;
 
@@ -592,7 +592,7 @@ li{
 	position:relative;
 	margin-top:0px;
 	height:164px;
-	width:360px;
+	width:426px;
 	margin-left:33px;
 }
 
@@ -603,6 +603,7 @@ li{
 .bookshelf .shelf .loc{
 	position:absolute;
 	bottom:0;
+	left:-35px;
 	width:100%;
 }
 
@@ -805,7 +806,7 @@ footer{
 }
 
 .samples .bar{
-	height:100px;
+	height:50px;
 	width:1000px;
 	overflow:hidden;
 	opacity:0;

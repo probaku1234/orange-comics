@@ -51,7 +51,8 @@ public class WelcomeController {
                 Chapter chapter = optChapter.get();
 
                 if(chapter.isDraft == false){
-                    chapterIds.add(comics.get(i).chapters.get(j));
+                    String chapterId = comics.get(i).chapters.get(j);
+                    chapterIds.add(Integer.toString(comics.get(i).chapters.indexOf(chapterId) + 1));
                     ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
 
                     chapterList.add(pages);
@@ -64,6 +65,7 @@ public class WelcomeController {
         _model.addAttribute("chapterList", chapterList);
         _model.addAttribute("TitleList", TitleList);
         _model.addAttribute("AuthorList", AuthorList);
+        _model.addAttribute("chapterIds", chapterIds);
 //        _model.addAttribute("idList", idList);
 
 
@@ -149,7 +151,8 @@ public class WelcomeController {
                 Chapter chapter = optChapter.get();
 
                 if(chapter.isDraft == false){
-                    chapterIds.add(comics.get(i).chapters.get(j));
+                    String chapterId = comics.get(i).chapters.get(j);
+                    chapterIds.add(Integer.toString(comics.get(i).chapters.indexOf(chapterId) + 1));
                     ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
 
                     chapterList.add(pages);
@@ -168,6 +171,7 @@ public class WelcomeController {
         _model.addAttribute("allcomics_chapterList", chapterList);
         _model.addAttribute("allcomics_TitleList", TitleList);
         _model.addAttribute("allcomics_AuthorList", AuthorList);
+        _model.addAttribute("allcomics_chapterIds", chapterIds);
         return "all_comics";
     }
 

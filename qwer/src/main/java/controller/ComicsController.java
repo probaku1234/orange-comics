@@ -158,12 +158,12 @@ public class ComicsController {
 
         for(int i = 0; i < comics.size(); i++) {
             for(int j = 0; j < comics.get(i).chapters.size(); j++) {
-
                 Optional<Chapter> optChapter = chapterRepository.findById(comics.get(i).chapters.get(j));
                 Chapter chapter = optChapter.get();
 
                 if(chapter.isDraft == false){
-                    chapterIds.add(comics.get(i).chapters.get(j));
+                    String chapterId = comics.get(i).chapters.get(j);
+                    chapterIds.add(Integer.toString(comics.get(i).chapters.indexOf(chapterId) + 1));
                     ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
 
                     chapterList.add(pages);
@@ -174,9 +174,10 @@ public class ComicsController {
             }
         }
 
-        model.addAttribute("allComics_chapterList", chapterList);
-        model.addAttribute("allComics_TitleList", TitleList);
-        model.addAttribute("allComics_AuthorList", AuthorList);
+        model.addAttribute("allcomics_chapterList", chapterList);
+        model.addAttribute("allcomics_TitleList", TitleList);
+        model.addAttribute("allcomics_AuthorList", AuthorList);
+        model.addAttribute("allcomics_chapterIds", chapterIds);
         return 1;
     }
 
