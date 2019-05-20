@@ -25,8 +25,8 @@ $(document).ready(function () {
     
 
 
-    $("#new_comicbook").click(function () {
-        var title = $("#new_comic_book_input").val();
+    $("#add-new-comic-button").click(function () {
+        var title = $("#add-new-comic-input").val();
 
         $.ajax({
             type: "POST",

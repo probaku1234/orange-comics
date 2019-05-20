@@ -540,4 +540,62 @@ $(document).ready(function(){
         object.set(name, value).setCoords();
         canvas.renderAll();
     }
+
+});
+
+//------------------------------- left tab bar--------------------------------
+$(document).ready(function(){
+    $(".left-tabs-container .left-tabs").click(function(){
+        $index = $(this).index();
+        $(".left-tabs-container .left-tabs").eq($index).css('backgroundColor', '#f39c12');
+        $(".left-tabs-container .left-tabs").eq($index).css('color', '#333333');
+        $(".left-list-container .left-list-items").eq($index).show().siblings().hide();
+    });
+
+    window.addEventListener('mouseup', function(event){
+        var listArray = ['left-list-new', 'left-list-load', 'left-list-save', 'left-list-post'];
+        var tabArray = ['left-tabs-new', 'left-tabs-load', 'left-tabs-save', 'left-tabs-post'];
+        var except = document.getElementById('exampleModal');
+
+        if(event.target == except || event.target.parentNode == except || event.target.parentNode.parentNode == except || event.target.parentNode.parentNode.parentNode == except || event.target.parentNode.parentNode.parentNode.parentNode == except || event.target.parentNode.parentNode.parentNode.parentNode.parentNode == except){
+            console.log(event.target)
+        }
+        else {
+            for(var i=0; i < listArray.length; i++){
+                var list = document.getElementById(listArray[i]);
+                var tab = document.getElementById(tabArray[i]);
+                if(event.target != list && event.target.parentNode != list && event.target.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode.parentNode != list){
+                    list.style.display = 'none';
+                    tab.style.backgroundColor = '#ffc107';
+                    tab.style.color = '#eeeeee';
+                }
+            }
+        }
+
+
+    });
+});
+
+//------------------------------- right tab bar--------------------------------
+$(document).ready(function(){
+    $(".right-tabs-container .right-tabs").click(function(){
+        $index = $(this).index();
+        $(".right-tabs-container .right-tabs").eq($index).css('backgroundColor', '#f39c12');
+        $(".right-tabs-container .right-tabs").eq($index).css('color', '#333333');
+        $(".right-list-container .right-list-items").eq($index).show().siblings().hide();
+    });
+
+    window.addEventListener('mouseup', function(event){
+        var listArray = ['right-list-title', 'right-list-chapter', 'right-list-save', 'right-list-post'];
+        var tabArray = ['right-tabs-title', 'right-tabs-chapter', 'right-tabs-save', 'right-tabs-post'];
+        for(var i=0; i < listArray.length; i++){
+            var list = document.getElementById(listArray[i]);
+            var tab = document.getElementById(tabArray[i]);
+            if(event.target != list && event.target.parentNode != list && event.target.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode.parentNode != list){
+                list.style.display = 'none';
+                tab.style.backgroundColor = '#ffc107';
+                tab.style.color = '#eeeeee';
+            }
+        }
+    });
 });
