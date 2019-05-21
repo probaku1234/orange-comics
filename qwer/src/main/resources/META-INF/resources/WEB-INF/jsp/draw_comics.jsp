@@ -33,6 +33,7 @@
 
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.css">
@@ -184,7 +185,7 @@
                     </li>
                 </ul>
                 <div class="row" style="align-items: center; justify-content: center;">
-                    <div class="col-sm" style="display: none">
+                    <div class="col-sm">
                         <div class="row">
                             <div class="col-2 tabs-margin">
                                 <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -315,7 +316,6 @@
                                                 <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
                                         <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
                                         <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
                                         <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
@@ -345,48 +345,56 @@
         <%-- right tab bar --%>
         <div class="d-flex flex-row-reverse align-items-stretch body-container-inner">
             <div class="right-tabs-container">
-                <div id="right-tabs-title" class="right-tabs">
-                    <i class="fas fa-chevron-left"></i> Title
+                <div id="right-tabs-tools" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Tools">
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-tools vertical-align"></i>
                 </div>
-                <div id="right-tabs-chapter" class="right-tabs">
-                    <i class="fas fa-chevron-left"></i> Chapter
+                <div id="right-tabs-drawing" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Drawing">
+                    <i class="fas fa-angle-left vertical-align"></i> <img src="icons/drawing.png" class="vertical-align" id="drawing-icon" style="width: 25px; height: 25px">
                 </div>
-                <div id="right-tabs-save" class="right-tabs">
-                    <i class="fas fa-chevron-left"></i> Save
+                <div id="right-tabs-shapes" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Shapes">
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-shapes vertical-align"></i>
                 </div>
-                <div id="right-tabs-post" class="right-tabs">
-                    <i class="fas fa-chevron-left"></i> Post
+                <div id="right-tabs-text" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Text">
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="material-icons vertical-align">font_download</i>
+                </div>
+                <div id="right-tabs-images" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Images">
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-image vertical-align"></i>
+                </div>
+                <div id="right-tabs-premade-characters" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Pre-made Charaters">
+                    <i class="fas fa-angle-left vertical-align"></i> <img src="icons/premade.png" class="vertical-align" id="premade-character-icon" style="width: 25px; height: 25px">
+                </div>
+                <div id="right-tabs-filtering" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Images">
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-filter vertical-align"></i>
                 </div>
             </div>
             <div class="right-list-container" id="right-list-container">
-                <div class="right-list-items" id="right-list-title">
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
-                    <p class="right-list-item">Title</p>
+                <div class="right-list-items" id="right-list-tools">
+                    <div class="icons-container">
+
+                    </div>
                 </div>
-                <div class="right-list-items" id="right-list-chapter">
-                    <p class="right-list-item">CHAPTER</p>
-                    <p class="right-list-item">CHAPTER</p>
-                    <p class="right-list-item">CHAPTER</p>
-                    <p class="right-list-item">CHAPTER</p>
-                    <p class="right-list-item">CHAPTER</p>
-                    <p class="right-list-item">CHAPTER</p>
+                <div class="right-list-items" id="right-list-drawing">
+                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
+
+                </div>
+                <div class="right-list-items" id="right-list-shapes">
                     <p class="right-list-item">CHAPTER</p>
                 </div>
-                <div class="right-list-items" id="right-list-save"></div>
-                <div class="right-list-items" id="right-list-post"></div>
+                <div class="right-list-items" id="right-list-text"></div>
+                <div class="right-list-items" id="right-list-images"></div>
+                <div class="right-list-items" id="right-list-premade-characters"></div>
+                <div class="right-list-items" id="right-list-filtering"></div>
             </div>
         </div>
         <%-- right tab bar --%>
     </div>
 </div>
 
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 
 <div id="wrapper">
             <canvas id="base-canvas" height="200" width="200" style="display:none"></canvas>

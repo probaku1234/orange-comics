@@ -147,20 +147,20 @@
 }
 
 .right-tabs {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     text-align: left;
     font-size: 25px;
     font-family: sans-serif;
-    color: #eeeeee;
+    color: #333333;
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
 }
 
 .right-tabs-container {
-    width: 180px;
+    width: 80px;
     background-color: #ffc107;
     margin-top: 1px;
 }
@@ -176,7 +176,7 @@
     background-color:#f39c12;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-right: 20px;
+    padding-left: 20px;
     margin-bottom: 0;
     text-align: left;
     font-size: 25px;
@@ -184,4 +184,12 @@
     color: #eeeeee;
     font-weight: bold;
     font-style: italic;
+}
+
+.icons-container {
+
+}
+
+.vertical-align {
+    vertical-align: middle;
 }
