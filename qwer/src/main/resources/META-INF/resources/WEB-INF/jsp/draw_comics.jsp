@@ -299,7 +299,8 @@
                                     </div>
 
                             <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-post-tab">
-                                <input type="checkbox" id="sepia">sepia</input>
+                                <span>sepia</span>
+                                <input type="checkbox" id="sepia">
                                 <label>
                                     <span>grayScale</span>
                                     <input type="checkbox" id="grayScale">
