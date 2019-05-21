@@ -150,7 +150,7 @@ public class ComicServices {
     }
 
     public ArrayList<Comic> findComicsByTitle(String title, int amount, int page){
-        Page<Comic> comics = comicRepository.findByTitleIgnoreCaseAndPublishedStatus(title, STATUS_PUBLIC,
+        Page<Comic> comics = comicRepository.findByTitleMatchesRegexAndPublishedStatus(".*"+title+".*", STATUS_PUBLIC,
                 PageRequest.of(page, amount, Sort.by(Sort.Direction.DESC, "lastUpdate")));
         return new ArrayList<>(comics.getContent());
     }

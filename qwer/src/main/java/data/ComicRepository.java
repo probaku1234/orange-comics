@@ -17,6 +17,7 @@ public interface ComicRepository extends MongoRepository<Comic, String>{
     public Comic findByUrl(URL url);
 
     public Page<Comic> findByTitleIgnoreCaseAndPublishedStatus(String title, String publishedStatus, Pageable pageable);
+    public Page<Comic> findByTitleMatchesRegexAndPublishedStatus(String regex, String publishedStatus, Pageable pageable);
     public Page<Comic> findByAuthorAndPublishedStatus(String author, String publishedStatus, Pageable pageable);
     public Page<Comic> findByTagsContainingAndPublishedStatus(List<String> tags, String publishedStatus, Pageable pageable);
     public Page<Comic> findByGenresContainingAndPublishedStatus(List<String> genres, String publishedStatus, Pageable pageable);
