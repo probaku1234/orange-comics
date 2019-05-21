@@ -86,6 +86,7 @@
     </div>
 </nav>
 <div class="splash h-92">
+    <div class="page-header"> Search Results </div>
     <div class="center">
         <div class="bookshelf" style="margin-top: 100px">
             <div class="shelf" style="text-align: center; font-size: 15px; font-family: 'Comic Sans MS';">
@@ -379,7 +380,7 @@
         });
     }
 
-</script>>
+</script>
 
 </body>
 </html>
