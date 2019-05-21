@@ -21,7 +21,8 @@ $(document).ready(function () {
         var value = $(this).attr('value');
         currentComicTitle = $(this).text();
         $(this).parents('.dropdown').find('.dropdown-toggle').html(currentComicTitle);
-        $('.dropdown-item chapter pika').hide();
+        $('.chapter').hide();
+        $('.' + currentComicTitle).show();
         //$('.dropdown-item chapter ' + currentComicTitle).show();
         //getChapterList(comicList[value].title);
     });
@@ -40,6 +41,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 console.log(response);
+                $("#comic_list").append("<a class='dropdown-item'>" + title + "</a>");
             }
         });
     });
@@ -55,6 +57,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 console.log(response);
+                //$("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + text + "</a>");
             }
         });
     });
