@@ -18,6 +18,7 @@
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
     <script type="text/javascript" src="lib/fabric.min.js"></script>
+    <script type="text/javascript" src="js/logout.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -77,7 +78,7 @@
                     else {
                         String user = (String)session.getAttribute("user");
                         %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><%=user%></a><%
-                        %><a class="nav-link" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
+                        %><a class="nav-link" id="logout_button" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
                     }
                 %>
             </li>
