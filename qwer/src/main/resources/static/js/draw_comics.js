@@ -577,6 +577,9 @@ $(document).ready(function(){
                     tab.style.backgroundColor = '#ffc107';
                     tab.style.color = '#eeeeee';
                 }
+                else {
+                    console.log("nope")
+                }
             }
         }
 
@@ -586,23 +589,49 @@ $(document).ready(function(){
 
 //------------------------------- right tab bar--------------------------------
 $(document).ready(function(){
+    // $("#right-tabs-tools").css('backgroundColor', '#f39c12');
+    // $("#right-tabs-tools").css('color', '#eeeeee');
+    // $("#right-list-tools").show();
+
     $(".right-tabs-container .right-tabs").click(function(){
         $index = $(this).index();
         $(".right-tabs-container .right-tabs").eq($index).css('backgroundColor', '#f39c12');
-        $(".right-tabs-container .right-tabs").eq($index).css('color', '#333333');
+        $(".right-tabs-container .right-tabs").eq($index).css('color', '#eeeeee');
         $(".right-list-container .right-list-items").eq($index).show().siblings().hide();
+
+        if($index == 0) {
+            $("#right-tabs-tools").css('backgroundColor', '#f39c12');
+            $("#right-tabs-tools").css('color', '#eeeeee');
+        }
+        else {
+            $("#right-tabs-tools").css('backgroundColor', '#ffc107');
+            $("#right-tabs-tools").css('color', '#333333');
+        }
+
+        if($index == 1) {
+            $("#drawing-icon").css('filter', 'invert(100%)');
+        }
+        else {
+            $("#drawing-icon").css('filter', 'invert(0%)');
+        }
+        if($index == 5) {
+            $("#premade-character-icon").css('filter', 'invert(100%)');
+        }
+        else {
+            $("#premade-character-icon").css('filter', 'invert(0%)');
+        }
     });
 
     window.addEventListener('mouseup', function(event){
-        var listArray = ['right-list-title', 'right-list-chapter', 'right-list-save', 'right-list-post'];
-        var tabArray = ['right-tabs-title', 'right-tabs-chapter', 'right-tabs-save', 'right-tabs-post'];
+        var listArray = ['right-list-tools', 'right-list-drawing', 'right-list-shapes', 'right-list-text', 'right-list-images', 'right-list-premade-characters', 'right-list-filtering'];
+        var tabArray = ['right-tabs-tools', 'right-tabs-drawing', 'right-tabs-shapes', 'right-tabs-text', 'right-tabs-images', 'right-tabs-premade-characters', 'right-tabs-filtering'];
         for(var i=0; i < listArray.length; i++){
             var list = document.getElementById(listArray[i]);
             var tab = document.getElementById(tabArray[i]);
             if(event.target != list && event.target.parentNode != list && event.target.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode.parentNode != list){
                 list.style.display = 'none';
                 tab.style.backgroundColor = '#ffc107';
-                tab.style.color = '#eeeeee';
+                tab.style.color = '#333333';
             }
         }
     });
