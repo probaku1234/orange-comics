@@ -211,6 +211,7 @@
                                             </div>
                                         </div>
                                         <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <input type="file" id="myFile">
                                             <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Add Image from URL
                                             </button>
@@ -297,6 +298,7 @@
                                         </div>
                                     </div>
 
+                            <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-post-tab">
                                 <input type="checkbox" id="sepia">sepia</input>
                                 <label>
                                     <span>grayScale</span>
@@ -337,47 +339,43 @@
                                 </label>
 
 
-                                    <label><span>Gamma:</span> <input type="checkbox" id="gamma"></label>
-                                    <label>R : <input type="range" id="gamma_red" value="1" min="0.2" max="2.2" step="0.003921"></label>
-                                    <label>G : <input type="range" id="gamma_green" value="1" min="0.2" max="2.2" step="0.003921"></label>
-                                    <label>B : <input type="range" id="gamma_blue" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                                <label><span>Gamma:</span> <input type="checkbox" id="gamma"></label>
+                                <label>R : <input type="range" id="gamma_red" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                                <label>G : <input type="range" id="gamma_green" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                                <label>B : <input type="range" id="gamma_blue" value="1" min="0.2" max="2.2" step="0.003921"></label>
 
 
-                                    <label>
-                                        <span>Contrast:</span>
-                                        <input type="checkbox" id="contrast">
-                                        <input type="range" id="contrastValue" value="0" min="-1" max="1" step="0.003921">
-                                    </label>
-                                    <label>
-                                        <span>Saturation:</span>
-                                        <input type="checkbox" id="saturation">
-                                        <input type="range" id="saturationValue" value="0" min="-1" max="1" step="0.003921">
-                                    </label>
-                                    <label>
-                                        <span>Hue </span>
-                                        <input type="checkbox" id="hue">
-                                        <input type="range" id="hueValue" value="0" min="-1" max="1" step="0.003921">
-                                    </label>
-                                    <label>
-                                        <span>Noise </span>
-                                        <input type="checkbox" id="noise">
-                                        <input type="range" id="noiseValue" value="100" min="0" max="1000">
-                                     </label>
-                                    <label>
-                                        <span>Pixelate</span>
-                                        <input type="checkbox" id="pixelate">
-                                        <input type="range" id="pixelateValue" value="4" min="2" max="20">
-                                    </label>
+                                <label>
+                                    <span>Contrast:</span>
+                                    <input type="checkbox" id="contrast">
+                                    <input type="range" id="contrastValue" value="0" min="-1" max="1" step="0.003921">
+                                </label>
+                                <label>
+                                    <span>Saturation:</span>
+                                    <input type="checkbox" id="saturation">
+                                    <input type="range" id="saturationValue" value="0" min="-1" max="1" step="0.003921">
+                                </label>
+                                <label>
+                                    <span>Hue </span>
+                                    <input type="checkbox" id="hue">
+                                    <input type="range" id="hueValue" value="0" min="-1" max="1" step="0.003921">
+                                </label>
+                                <label>
+                                    <span>Noise </span>
+                                    <input type="checkbox" id="noise">
+                                    <input type="range" id="noiseValue" value="100" min="0" max="1000">
+                                 </label>
+                                <label>
+                                    <span>Pixelate</span>
+                                    <input type="checkbox" id="pixelate">
+                                    <input type="range" id="pixelateValue" value="4" min="2" max="20">
+                                </label>
 
-                                    <label>
-                                        <span>Blur:</span>
-                                        <input type="checkbox" id="blur">
-                                        <input type="range" id="blurValue" value="0.1" min="0" max="1" step="0.01">
-                                    </label>
-
-
-
-
+                                <label>
+                                    <span>Blur:</span>
+                                    <input type="checkbox" id="blur">
+                                    <input type="range" id="blurValue" value="0.1" min="0" max="1" step="0.01">
+                                </label>
 
                                     </div>
 

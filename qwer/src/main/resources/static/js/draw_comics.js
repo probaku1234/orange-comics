@@ -361,6 +361,42 @@ $(document).ready(function(){
 
     });
 
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                // $('#blah').attr('src', e.target.result);
+
+                toDataURL( e.target.result, function(dataUrl) {
+                    console.log('RESULT:', )
+                    var imageUrl = dataUrl;
+                    console.log(imageUrl)
+                    fabric.Image.fromURL(imageUrl, function(oImg) {
+                        oImg.scale(0.5).set('flipX', true);
+                        canvas.add(oImg);
+                    });
+                })
+
+
+
+            }
+
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#myFile").change(function() {
+        readURL(this);
+    });
+
+    // $("#myFile").on("change",function(){
+    //     let myFile = document.getElementById('myFile').files[0];
+    //     console.log(myFile);
+    // })
+
     $("#new_page").click(function () {
         saveCanvas();
         jsonPageArray.push('{"version":"2.4.6","objects":[]}');
