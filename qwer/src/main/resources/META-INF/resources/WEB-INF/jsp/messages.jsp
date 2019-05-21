@@ -107,7 +107,7 @@
                     }
                     else {
                         String user = (String)session.getAttribute("user");
-                        %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><%=user%></a><%
+                        %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><div id="user_id"><%=user%></div></a><%
                         %><a class="nav-link" id="logout_button" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
                     }
                 %>
