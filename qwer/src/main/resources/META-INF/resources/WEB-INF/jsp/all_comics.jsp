@@ -18,6 +18,7 @@
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
     <script type="text/javascript" src="lib/fabric.min.js"></script>
+    <script type="text/javascript" src="js/logout.js"></script>
     <script>
         let chapterList;
         let TitleList = [];
@@ -202,7 +203,7 @@
                     else {
                         String user = (String)session.getAttribute("user");
                         %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><%=user%></a><%
-                        %><a class="nav-link" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
+                        %><a class="nav-link" id="logout_button" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
                     }
                 %>
             </li>

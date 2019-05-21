@@ -258,7 +258,7 @@ public class UserServices {
         }
         User user = optUser.get();
 
-        if(!user.notification_settings.get(notification)){
+        if(!user.notification_settings.get(notificationType)){
             System.out.println("Notification type disabled.");
             return;
         }

@@ -1,6 +1,13 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
+<%
+    if (session == null) {
+%><jsp:forward page="login.jsp"></jsp:forward><%
+    } else {
+        System.out.println(session);
+    }
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -17,7 +24,7 @@
     <script type="text/javascript" src="lib/turn.min.js"></script>
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
-
+    <script type="text/javascript" src="js/logout.js"></script>
 
 <%--    <spring:url value="extras/all.js" var="mainJs" />--%>
 <%--    <script src="${mainJs}"></script>--%>
@@ -101,7 +108,7 @@
                     else {
                         String user = (String)session.getAttribute("user");
                         %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><%=user%></a><%
-                        %><a class="nav-link" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
+                        %><a class="nav-link" id="logout_button" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
                     }
                 %>
             </li>

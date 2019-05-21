@@ -20,6 +20,7 @@
     <script type="text/javascript" src="lib/bookshelf.js"></script>
     <script type="text/javascript" src="lib/fabric.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/logout.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -65,9 +66,10 @@
 
             <li class="nav-item dropdown" style="margin-right: 20px" data-toggle="tooltip" data-placement="left" title="Notification">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell" style="font-size: 25px"></i>
+                    
+                    <i class="fas fa-bell" style="font-size: 25px"></i>(<span id="notiNum"></span> )
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="noti_detail">
                     <a class="dropdown-item" href="notifications">notification 1</a>
                     <a class="dropdown-item" href="notifications">notification 2</a>
                     <a class="dropdown-item" href="notifications">notification 3</a>
@@ -76,13 +78,13 @@
             <li class="nav-item d-flex">
                 <%
                     if (session.getAttribute("user") == null) {
-                        %><a class="nav-link" href="login" data-toggle="tooltip" data-placement="left" title="Signs In">Sign In</a><%
-                    }
-                    else {
-                        String user = (String)session.getAttribute("user");
-                        %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><%=user%></a><%
-                        %><a class="nav-link" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
-                    }
+                %><a class="nav-link" href="login" data-toggle="tooltip" data-placement="left" title="Signs In">Sign In</a><%
+            }
+            else {
+                String user = (String)session.getAttribute("user");
+            %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><%=user%></a><%
+            %><a class="nav-link" id="logout_button" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
+                }
                 %>
             </li>
         </ul>
@@ -94,6 +96,8 @@
     let TitleList = [];
     let AuthorList = [];
     let chapterIds = [];
+    let NotificationArray = [];
+
     let coverPage;
     let pageLength;
     let chapter;
@@ -105,7 +109,14 @@
             ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
             ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
             ArrayList<String> chapterIds = (ArrayList<String>) request.getAttribute("chapterIds");
+
+            ArrayList<String> NotificationArray = (ArrayList<String>) request.getAttribute("NotificationArray");
         %>
+
+        <%for(int i=0;i<NotificationArray.size();i++){%>
+        NotificationArray.push("<%= NotificationArray.get(i)%>");
+        <%}%>
+        $("#notiNum").text(NotificationArray.length);
 
         <%for(int i=0;i<TitleList.size();i++){%>
         TitleList.push("<%= TitleList.get(i)%>");
@@ -119,6 +130,7 @@
         chapterIds.push("<%= chapterIds.get(i)%>");
         <%}%>
 
+        console.log(NotificationArray);
         console.log(TitleList);
         console.log(AuthorList);
         console.log(chapterList);
