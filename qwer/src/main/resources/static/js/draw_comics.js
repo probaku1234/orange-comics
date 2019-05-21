@@ -141,7 +141,7 @@ $(document).ready(function(){
     });
 
     $('#textbox').click(function(){
-        var textbox = new fabric.Textbox('hello world', {
+        var textbox = new fabric.Textbox('Text', {
             left: 50,
             top: 50,
             width: 150,
@@ -397,6 +397,21 @@ $(document).ready(function(){
                 console.log(response);
             }
         });
+    });
+
+    $('#text-font-family a').click(function () {
+        canvas.getActiveObject().set("fontFamily", $(this).text());
+        canvas.requestRenderAll();
+    });
+
+    $('#text-font-style a').click(function () {
+        canvas.getActiveObject().set("fontStyle", $(this).text());
+        canvas.requestRenderAll();
+    });
+
+    $('#text-font-size a').click(function () {
+        canvas.getActiveObject().set("fontSize", $(this).text());
+        canvas.requestRenderAll();
     });
     
     $("#free_draw").click(function () {

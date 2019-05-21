@@ -266,39 +266,56 @@
                 <div class="right-list-items" id="right-list-text">
                     <div class="row" style="width: 330px">
                         <a class="right-list-item" id="textbox" href="#"><i class="far fa-edit vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Text Box"></i></a>
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Fonts
-                        </button>
-                        <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
-                            <a class="dropdown-item" href="#">Ariel</a>
-                            <a class="dropdown-item" href="#">Helvetica</a>
-                            <a class="dropdown-item" href="#">Times New Roman</a>
-                            <a class="dropdown-item" href="#">Courier New</a>
+                        <div class="right-list-item">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Fonts
+                            </button>
+                            <div id="text-font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
+                                <a class="dropdown-item" href="#">Ariel</a>
+                                <a class="dropdown-item" href="#">sans-serif</a>
+                                <a class="dropdown-item" href="#">Calibri</a>
+                                <a class="dropdown-item" href="#">Comic Sans MS</a>
+                                <a class="dropdown-item" href="#">Consolas</a>
+                                <a class="dropdown-item" href="#">Courier New</a>
+                                <a class="dropdown-item" href="#">Helvetica</a>
+                                <a class="dropdown-item" href="#">Tahoma</a>
+                                <a class="dropdown-item" href="#">Verdana</a>
+                            </div>
                         </div>
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Font Style
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="#">Normal</a>
-                            <a class="dropdown-item" href="#">Bold</a>
-                            <a class="dropdown-item" href="#">Italic</a>
+                        <div class="right-list-item">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Font Style
+                            </button>
+                            <div id="text-font-style" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" href="#">Normal</a>
+                                <a class="dropdown-item" href="#">Italic</a>
+                            </div>
                         </div>
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Font Size
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <a class="dropdown-item" href="#">10</a>
-                            <a class="dropdown-item" href="#">12</a>
-                            <a class="dropdown-item" href="#">14</a>
-                            <a class="dropdown-item" href="#">16</a>
-                            <a class="dropdown-item" href="#">18</a>
-                            <a class="dropdown-item" href="#">20</a>
-                            <a class="dropdown-item" href="#">22</a>
-                            <a class="dropdown-item" href="#">24</a>
-                            <a class="dropdown-item" href="#">26</a>
-                            <a class="dropdown-item" href="#">28</a>
-                            <a class="dropdown-item" href="#">30</a>
+                        <div class="right-list-item">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Font Size
+                            </button>
+                            <div id="text-font-size" class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <a class="dropdown-item" href="#">10</a>
+                                <a class="dropdown-item" href="#">12</a>
+                                <a class="dropdown-item" href="#">14</a>
+                                <a class="dropdown-item" href="#">16</a>
+                                <a class="dropdown-item" href="#">18</a>
+                                <a class="dropdown-item" href="#">20</a>
+                                <a class="dropdown-item" href="#">24</a>
+                                <a class="dropdown-item" href="#">28</a>
+                                <a class="dropdown-item" href="#">32</a>
+                                <a class="dropdown-item" href="#">36</a>
+                                <a class="dropdown-item" href="#">40</a>
+                                <a class="dropdown-item" href="#">44</a>
+                                <a class="dropdown-item" href="#">48</a>
+                                <a class="dropdown-item" href="#">54</a>
+                                <a class="dropdown-item" href="#">60</a>
+                                <a class="dropdown-item" href="#">66</a>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
                 <div class="right-list-items" id="right-list-images">
