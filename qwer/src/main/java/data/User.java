@@ -16,7 +16,7 @@ public class User {
     public byte[] password_salt;
     public byte[] password_hash;
     public String email;
-    public String avatar;  //imageID
+    public String avatar;
     public String profile_description;
     public String site_theme;
     public ArrayList<String> favorites;

@@ -12,9 +12,9 @@ public class PremadeCharacter {
     public String id;
 
     public boolean isPublic;
-    public URL image;
+    public String image;
 
-    public PremadeCharacter(boolean isPublic, URL image){
+    public PremadeCharacter(boolean isPublic, String image){
         this.isPublic = isPublic;
         this.image= image;
     }

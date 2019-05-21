@@ -414,7 +414,7 @@ public class UserServices {
         return new ArrayList<>(premadeCharacterRepository.findByIsPublicIsTrue());
     }
 
-    public void createPremadeCharacter(String userID, URL image){
+    public void createPremadeCharacter(String userID, String image){
         Optional<User> optUser = userRepository.findById(userID);
 
         if(!optUser.isPresent()){
