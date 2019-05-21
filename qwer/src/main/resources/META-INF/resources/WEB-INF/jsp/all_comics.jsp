@@ -18,30 +18,44 @@
     <script type="text/javascript" src="lib/zoom.min.js"></script>
     <script type="text/javascript" src="lib/bookshelf.js"></script>
     <script type="text/javascript" src="lib/fabric.min.js"></script>
-    <!--
     <script>
         let chapterList;
         let TitleList = [];
         let AuthorList = [];
+        let chapterIds = [];
         let coverPage;
         let pageLength;
         let chapter;
         let title;
         let author;
-        let pageSize = parseInt();
+        let pageSize = parseInt(${page_number});
         let currentSubPageIndex = 0;
         let maxSubPageIndex = parseInt(pageSize / 10);
-        console.log(maxSubPageIndex);
+
+        chapterList = eval('('+'${allcomics_chapterList}'+')');
+        <%
+        ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("allcomics_TitleList");
+        ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("allcomics_AuthorList");
+        ArrayList<String> chapterIds = (ArrayList<String>) request.getAttribute("allcomics_chapterIds");
+        %>
+        <%for(int i=0;i<TitleList.size();i++){%>
+        TitleList.push("<%= TitleList.get(i)%>");
+        <%}%>
+
+        <%for(int i=0;i<AuthorList.size();i++){%>
+        AuthorList.push("<%= AuthorList.get(i)%>");
+        <%}%>
+
+        <%for(int i=0;i<chapterIds.size();i++){%>
+        chapterIds.push("<%= chapterIds.get(i)%>");
+        <%}%>
+
+        console.log(TitleList);
+        console.log(AuthorList);
 
         if (TitleList != null && AuthorList != null) {
-
-
             function generateThumbnail() {
-                chapterList = eval('('+'+')')
 
-
-                console.log(TitleList);
-                console.log(AuthorList);
 
                 for (let i = 0; i < 12; i++) {
 
@@ -62,6 +76,9 @@
                         $('#recommended'+i).attr('src', imgPath);
                         $('#recommended'+i).width(97);
                         $('#recommended'+i).height(125);
+                        $('#comic-title-'+i).text(TitleList[i]);
+                        $('#comic-chapter-'+i).text('Chapter ' + chapterIds[i]);
+                        $('#comic-author-'+i).append("<a class='nav-link' href='author_profile?id="+ AuthorList[i] + "'>"+ AuthorList[i] + "</a>");
                     }
                 }
             }
@@ -124,9 +141,7 @@
                 })
             });
         }
-
     </script>
-    -->
     <script type="text/javascript" src="js/all_comics.js"></script>
     <link rel="icon" type="image/png" href="pics/favicon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -486,127 +501,7 @@
     </div>
 </div>
 
-<script>
-    let chapterList = eval('('+'${allcomics_chapterList}'+')');
-    let TitleList = [];
-    let AuthorList = [];
-    let chapterIds = [];
-    let coverPage;
-    let pageLength;
-    let chapter;
-    let title;
-    let author;
-    let pageSize = parseInt(${page_number});
-    let currentSubPageIndex = 0;
-    let maxSubPageIndex = parseInt(pageSize / 10);
 
-    if (TitleList != null && AuthorList != null) {
-        <%
-            ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("allcomics_TitleList");
-            ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("allcomics_AuthorList");
-            ArrayList<String> chapterIds = (ArrayList<String>) request.getAttribute("allcomics_chapterIds");
-        %>
-
-        <%for(int i=0;i<TitleList.size();i++){%>
-        TitleList.push("<%= TitleList.get(i)%>");
-        <%}%>
-
-        <%for(int i=0;i<AuthorList.size();i++){%>
-        AuthorList.push("<%= AuthorList.get(i)%>");
-        <%}%>
-
-        <%for(int i=0;i<chapterIds.size();i++){%>
-        chapterIds.push("<%= chapterIds.get(i)%>");
-        <%}%>
-
-        console.log(TitleList);
-        console.log(AuthorList);
-
-        $(document).ready(function(){
-            function createPageNavigationNumbers(length, sub_index) {
-                for (var i = 0; i < length; i++) {
-                    $('#page_navigation').append("<li class=\"page-item number\"><a class=\"page-link\" href=\"#\">"+ (i + 1 + 10*sub_index)+ "</a></li>");
-                }
-                $('#page_navigation').append("<li class=\"page-item next\"><a class=\"page-link\" href=\"#\">Next</a></li>");
-            }
-            
-            function generateThumbnail() {
-                for (let i = 0; i < 12; i++) {
-
-                    if (chapterList[i] != null){
-                        console.log("in");
-                        $('#recommended'+i).click(function() {
-                            coverPage = chapterList[i][0];
-                            pageLength = chapterList[i].length;
-                            chapter = i;
-                        });
-
-                        let canvasTemp = new fabric.Canvas();
-                        coverPage = chapterList[i][0];
-                        canvasTemp.setWidth(461);
-                        canvasTemp.setHeight(600);
-                        canvasTemp = canvasTemp.loadFromJSON(coverPage);
-                        let imgPath = canvasTemp.toDataURL();
-                        $('#recommended'+i).attr('src', imgPath);
-                        $('#recommended'+i).width(97);
-                        $('#recommended'+i).height(125);
-                        $('#comic-title-'+i).text(TitleList[i]);
-                        $('#comic-chapter-'+i).text('Chapter ' + chapterIds[i]);
-                        $('#comic-author-'+i).append("<a class='nav-link' href='author_profile?id="+ AuthorList[i] + "'>"+ AuthorList[i] + "</a>");
-                    }
-                }
-            }
-
-            if (pageSize > 10) {
-                createPageNavigationNumbers(10, 0);
-            } else {
-                createPageNavigationNumbers(pageSize, 0);
-            }
-            generateThumbnail();
-
-            $(document).on("click", "#page_navigation li a", function () {
-                var count = $("#page_navigation li").length;
-                if ($(this).parent().index() == 0) {
-                    if (currentSubPageIndex > 0) {
-                        $(".page-item number").remove();
-                        $('.page-item next').remove();
-                        currentSubPageIndex -= 1;
-                        createPageNavigationNumbers(10, currentSubPageIndex);
-                    }
-                    $(this).parent().children().eq(1).trigger("click");
-                } else if ($(this).parent().index() == count -1) {
-                    if (currentSubPageIndex < maxSubPageIndex) {
-                        currentSubPageIndex += 1;
-                        if (currentSubPageIndex == maxSubPageIndex) {
-                            createPageNavigationNumbers(pageSize - 10 * currentSubPageIndex, currentSubPageIndex);
-                        } else {
-                            createPageNavigationNumbers(10, currentSubPageIndex);
-                        }
-                    }
-                    $(this).parent().children().eq(1).trigger("click");
-                } else {
-                    if (!$(this).parent().hasClass("active")) {
-                        $('.page-item number').removeClass('active');
-                        $(this).parent().addClass('active');
-                        $.ajax({
-                            type:"post",
-                            url: "/page_number_request",
-                            data: {
-                                "page_number" : $(this).text()
-                            },
-                            dataType:'json',
-                            success : function(data) {
-                                console.log(data);
-                                generateThumbnail();
-                            }
-                        });
-                    }
-                }
-            })
-        });
-    }
-
-</script>
 
 </body>
 </html>

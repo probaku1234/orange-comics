@@ -42,6 +42,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 $("#comic_list").append("<a class='dropdown-item'>" + title + "</a>");
+                currentComicTitle = title;
                 $.ajax({
                     type: "POST",
                     url: "/create_chapter",
@@ -51,8 +52,9 @@ $(document).ready(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log(response);
-                        var count = $('.'+title);
-                        $("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + (count+1) + "</a>");
+                        $("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + 1 + "</a>");
+                        $("#dropdownComicListButton").text(title);
+                        $("#dropdownChapterListButton").text("1");
                     }
                 });
             }
@@ -116,19 +118,6 @@ $(document).ready(function () {
     });
 });
 
-function getComicList() {
-    $.ajax({
-        type: "POST",
-        url: "/get_comic_list",
-        success: function (array) {
-            comicList = array;
-            for (var i = 0; i < array.length; i++) {
-                $("#comic_list").append("<a class='dropdown-item' value='"+ i + "'>" + array[i].title + "</a>");
-            }
-        }
-    });
-}
-
 function getChapterList(title) {
     $.ajax({
         type: "POST",
@@ -141,7 +130,6 @@ function getChapterList(title) {
             for (var i = 0; i < array.length; i++) {
                 var text = i + 1;
                 $("#chapter_list").append("<a class='dropdown-item chapter " + title + "' value='"+ i + "'>" + text + "</a>");
-
             }
             $('chapter').hide();
         }

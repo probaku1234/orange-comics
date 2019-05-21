@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class ComicsController {
@@ -148,9 +145,10 @@ public class ComicsController {
 
     @RequestMapping(value = "/get_comic_list_by_tags_and_genres", method = RequestMethod.POST)
     @ResponseBody
-    public int getComicsListByTagsRequest(@RequestParam(value = "tags[]") ArrayList<String> tags, @RequestParam(value = "genres[]") ArrayList<String> genres,Model model) {
+    public Map<String, Object> getComicsListByTagsRequest(@RequestParam(value = "tags[]") ArrayList<String> tags, @RequestParam(value = "genres[]") ArrayList<String> genres, Model model) {
         System.out.println(tags);
         ArrayList<Comic> comics = comicServices.advancedComicSearch("NEW", 12, 0, tags, genres);
+        Map<String, Object> map = new HashMap<>();
         ArrayList<String> chapterIds = new ArrayList<>();
         ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
         ArrayList<String> AuthorList = new ArrayList<>();
@@ -178,7 +176,12 @@ public class ComicsController {
         model.addAttribute("allcomics_TitleList", TitleList);
         model.addAttribute("allcomics_AuthorList", AuthorList);
         model.addAttribute("allcomics_chapterIds", chapterIds);
-        return 1;
+
+        map.put("allcomics_chapterList", chapterList);
+        map.put("allcomics_TitleList", TitleList);
+        map.put("allcomics_AuthorList", AuthorList);
+        map.put("allcomics_chapterIds", chapterIds);
+        return map;
     }
 
     @RequestMapping(value = "/add_tags_and_genres", method = RequestMethod.POST)

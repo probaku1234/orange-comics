@@ -37,9 +37,9 @@ $(document).ready(function () {
     });
 
     $(".genre, .tag").on("click",function () {
-        $index = $(this).index();
-        $("#left-tab a").eq($index).css("background","#f39c12").siblings().css("background","#ffc107");
-        $("#left-items div").eq($index).show().siblings().hide();
+        var index = $(this).index();
+        $("#left-tab a").eq(index).css("background","#f39c12").siblings().css("background","#ffc107");
+        $("#left-items div").eq(index).show().siblings().hide();
     })
 });
 
@@ -53,7 +53,24 @@ function getComicListByTagsAndGenres(tags, genres) {
         },
         success: function (data) {
             console.log(data);
+            initailizeShelves();
+
+            chapterList = data.allcomics_chapterList;
+            TitleList = data.allcomics_TitleList;
+            AuthorList = data.allcomics_AuthorList;
+            chapterIds = data.allcomics_chapterIds;
+
             generateThumbnail();
         }
     });
+}
+
+function initailizeShelves() {
+    for (var i = 0; i < 12; i++) {
+        $("#recommended" + i).removeAttr("src");
+        $("#recommended" + i).removeAttr("style");
+        $("#comic-title-"+ i).empty();
+        $("#comic-author-"+i).empty();
+        $('#comic-chapter-'+i).empty();
+    }
 }
