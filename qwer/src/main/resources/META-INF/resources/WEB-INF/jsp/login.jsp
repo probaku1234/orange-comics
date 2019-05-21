@@ -56,12 +56,12 @@
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">
-                <a class="nav-link" href="messages">Messages</a>
+                <a class="nav-link" href="messages" data-toggle="tooltip" data-placement="left" title="Messages"><i class="fas fa-envelope" style="font-size: 25px"></i></a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" style="margin-right: 20px" data-toggle="tooltip" data-placement="left" title="Notification">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Notification (3)
+                    <i class="fas fa-bell" style="font-size: 25px"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="notifications">notification 1</a>
@@ -69,7 +69,7 @@
                     <a class="dropdown-item" href="notifications">notification 3</a>
                 </div>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex">
                 <a class="nav-link" href="login">Log In</a>
             </li>
         </ul>

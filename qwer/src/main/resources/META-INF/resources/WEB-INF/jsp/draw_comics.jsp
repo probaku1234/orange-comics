@@ -75,12 +75,12 @@
         </form>
         <ul class="navbar-nav mr-10 mt-2 mt-lg-0 nav_right_margin">
             <li class="nav-item">
-                <a class="nav-link" href="messages">Messages</a>
+                <a class="nav-link" href="messages" data-toggle="tooltip" data-placement="left" title="Messages"><i class="fas fa-envelope" style="font-size: 25px"></i></a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" style="margin-right: 20px" data-toggle="tooltip" data-placement="left" title="Notification">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Notification (3)
+                    <i class="fas fa-bell" style="font-size: 25px"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="notifications">notification 1</a>
@@ -88,13 +88,15 @@
                     <a class="dropdown-item" href="notifications">notification 3</a>
                 </div>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex">
                 <%
                     if (session.getAttribute("user") == null) {
-                        %><a class="nav-link" href="login">Log In</a><%
-                    } else {
+                        %><a class="nav-link" href="login" data-toggle="tooltip" data-placement="left" title="Signs In">Sign In</a><%
+                    }
+                    else {
                         String user = (String)session.getAttribute("user");
-                        %><a class="nav-link" href="user_profile"><%=user%></a><%
+                        %><a class="nav-link" href="user_profile" data-toggle="tooltip" data-placement="left" title="My Profile"><%=user%></a><%
+                        %><a class="nav-link" href="" data-toggle="tooltip" data-placement="left" title="Sign Out"><i class="fas fa-sign-out-alt" style="font-size: 25px"></i></a><%
                     }
                 %>
             </li>
@@ -158,23 +160,32 @@
                 <div class="left-list-items" id="left-list-save" style="padding-bottom: 40px; text-align: center;">
                     <p class="left-list-item" style="padding-top: 40px; padding-bottom: 5px">Do you really want to</p>
                     <p class="left-list-item" style="padding-bottom: 15px">save a comic?</p>
-                    <button type="button" class="btn btn-success btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" id="save_button">
+                    <button type="button" class="btn-sm btn-success" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" id="save_button">
                         Save Draft
                     </button>
                 </div>
                 <div class="left-list-items" id="left-list-post" style="padding-bottom: 40px; text-align: center;">
                     <p class="left-list-item " style="padding-top: 40px; padding-bottom: 15px">Select Genres & Tags</p>
-                    <button type="button" class="btn btn-success btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn-sm btn-success" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" data-toggle="modal" data-target="#exampleModal">
                         Add Genres & Tags
                     </button>
                     <p class="left-list-item" style="padding-top: 75px; padding-bottom: 5px">Do you really want to</p>
                     <p class="left-list-item" style="padding-bottom: 15px">post a comic?</p>
-                    <button type="button" class="btn btn-success btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" id="post_button">Post Comic</button>
+                    <button type="button" class="btn-sm btn-success" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 60%;" id="post_button">Post Comic</button>
                 </div>
             </div>
         </div>
         <%-- left tab bar --%>
+
         <div class="h-92">
+            <div class="d-flex" style="margin-left: 100px">
+                <div style="display: inline; margin-right: 100px;font-family: 'Comic Sans MS'; font-size: 20px; font-weight: bold;">
+                    Title: <span id="show-title" style="font-weight: normal;"></span>
+                </div>
+                <div style="display: inline; margin-right: 100px; font-family: 'Comic Sans MS'; font-size: 20px; font-weight: bold;">
+                    Chapter: <span id="show-chapter" style="font-weight: normal;"></span>
+                </div>
+            </div>
             <div class="container container-width-limit">
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist" id="tab">
                     <li class="nav-item">
@@ -225,13 +236,15 @@
             <div class="right-list-container" id="right-list-container">
                 <div class="right-list-items" id="right-list-tools">
                     <div class="row" style="width: 330px">
-                        <a class="right-list-item" id="send_front"><i class="fas fa-arrow-up vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Move Up"></i></a>
-                        <a class="right-list-item" id="send_back"><i class="fas fa-arrow-down vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Move Down"></i></a>
-                        <a class="right-list-item" id="undo"><i class="fas fa-undo-alt vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Undo"></i></a>
-                        <a class="right-list-item" id="redo"><i class="fas fa-redo-alt vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Redo"></i></a>
-                        <a class="right-list-item" id="copy"><i class="fas fa-copy vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Copy"></i></a>
-                        <a class="right-list-item" id="cut"><i class="fas fa-cut vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Cut"></i></a>
-                        <a class="right-list-item" id="paste"><i class="fas fa-paste vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Paste"></i></a>
+                        <a class="right-list-item"><i id="send_front" class="fas fa-arrow-up vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Bring to Front"></i></a>
+                        <a class="right-list-item"><i id="send_back" class="fas fa-arrow-down vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Send to Back"></i></a>
+                        <a class="right-list-item"><i id="undo" class="fas fa-undo-alt vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Undo"></i></a>
+                        <a class="right-list-item"><i id="redo" class="fas fa-redo-alt vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Redo"></i></a>
+                        <a class="right-list-item"><i id="copy" class="fas fa-copy vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Copy"></i></a>
+                        <a class="right-list-item"><i id="cut" class="fas fa-cut vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Cut"></i></a>
+                        <a class="right-list-item"><i id="paste" class="fas fa-paste vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Paste"></i></a>
+                        <a class="right-list-item"><img id="flip_horizon" src="icons/flip-horizon.png" class="vertical-align icon-style" id="flip_horizon-icon" data-toggle="tooltip" data-placement="top" title="Flip Horizontally"></a>
+                        <a class="right-list-item"><img id="flip_vertical" src="icons/flip-vertical.png" class="vertical-align icon-style" id="flip_vertical-icon" data-toggle="tooltip" data-placement="top" title="Flip Vertically"></a>
                         <a class="right-list-item" id="cartoonize">Cartoonize</a>
                     </div>
                 </div>
@@ -274,9 +287,17 @@
                             Font Size
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <a class="dropdown-item" href="#">10</a>
                             <a class="dropdown-item" href="#">12</a>
                             <a class="dropdown-item" href="#">14</a>
                             <a class="dropdown-item" href="#">16</a>
+                            <a class="dropdown-item" href="#">18</a>
+                            <a class="dropdown-item" href="#">20</a>
+                            <a class="dropdown-item" href="#">22</a>
+                            <a class="dropdown-item" href="#">24</a>
+                            <a class="dropdown-item" href="#">26</a>
+                            <a class="dropdown-item" href="#">28</a>
+                            <a class="dropdown-item" href="#">30</a>
                         </div>
                     </div>
                 </div>
@@ -300,7 +321,10 @@
                     </div>
                 </div>
                 <div class="right-list-items" id="right-list-filtering" style="padding: 20px 20px 20px 20px">
-                    <input type="checkbox" id="sepia">sepia</input>
+                    <label>
+                        <span>Sepia</span>
+                        <input type="checkbox" id="sepia">
+                    </label>
                     <label>
                         <span>grayScale</span>
                         <input type="checkbox" id="grayScale">

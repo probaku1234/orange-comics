@@ -58,6 +58,8 @@ $(document).ready(function () {
                         $('.'+title).show();
                         //$("#chapter_list a").trigger('click');
                         clearCanvas();
+                        $('#show-title').text(title);
+                        $('#show-chapteer').text('1');
                     }
                 });
             }
