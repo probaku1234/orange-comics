@@ -262,13 +262,52 @@ $(document).ready(function(){
             });
         });
     });
+    // function getBase64Image(img){
+    //
+    //     let canvas = document.createElement("canvas");
+    //     canvas.width = img.width;
+    //     canvas.height = img.height;
+    //     let ctx = canvas.getContext("2d");
+    //     ctx.drawImage(img, 0, 0);
+    //     let dataURL = canvas.toDataURL("image/png");
+    //     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    // }
+
+    function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                callback(reader.result);
+            }
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
 
     $("#addImageButton").click(function () {
-        var imageUrl = $('#addImageFromURL').val();
-        fabric.Image.fromURL(imageUrl, function(oImg) {
-            oImg.scale(0.5).set('flipX', true);
-            canvas.add(oImg);
-        });
+
+        // var imageUrl = getBase64Image($('#addImageFromURL').val());
+        // var imageUrl = $('#addImageFromURL').val();
+        // console.log(imageUrl)
+        // fabric.Image.fromURL(imageUrl, function(oImg) {
+        //     oImg.scale(0.5).set('flipX', true);
+        //     canvas.add(oImg);
+        // });
+
+        toDataURL($('#addImageFromURL').val(), function(dataUrl) {
+            console.log('RESULT:', )
+            var imageUrl = dataUrl;
+            console.log(imageUrl)
+            fabric.Image.fromURL(imageUrl, function(oImg) {
+                oImg.scale(0.5).set('flipX', true);
+                canvas.add(oImg);
+            });
+        })
+
+
     });
 
     $("#new_page").click(function () {
