@@ -59,7 +59,7 @@ $(document).ready(function () {
                         //$("#chapter_list a").trigger('click');
                         clearCanvas();
                         $('#show-title').text(title);
-                        $('#show-chapteer').text('1');
+                        $('#show-chapter').text('1');
                     }
                 });
             }

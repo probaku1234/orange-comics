@@ -65,6 +65,7 @@ function clearCanvas() {
     });
 
     canvas.clear();
+    canvas.set('backgroundColor', '#fff');
     currentPageIndex = 0;
 }
 
