@@ -208,23 +208,23 @@
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                            <a class="dropdown-item " value="add_premade1" href="#" style="padding:5px 5px">
-                                                            <img width="30px" height="30px" src="https://www.pinclipart.com/picdir/big/91-910919_mule-clipart-shrek-character-donkey-from-shrek-png.png">
+                                                            <a class="dropdown-item " value="add_premade48" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/60/13534727415379.png">
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a class="dropdown-item " value="add_premade2" href="#" style="padding:5px 5px">
-                                                                <img width="30px" height="30px" src="https://www.pinclipart.com/picdir/big/202-2020508_shrek-face-png-shrek-pixel-art-maker-pixel.png">
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <a class="dropdown-item " value="add_premade3" href="#" style="padding:5px 5px">
-                                                                <img width="30px" height="30px" src="https://www.pinclipart.com/picdir/big/194-1949751_newest-version-of-pixel-art-maker-sans-clipart.png">
+                                                            <a class="dropdown-item " value="add_premade49" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/53/13526739613080.png">
                                                             </a>
                                                         </td>
                                                         <td>
                                                             <a class="dropdown-item " value="add_premade4" href="#" style="padding:5px 5px">
                                                                 <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932658217304.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade47" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/17/13504552819340.png">
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -460,27 +460,10 @@
                                                                 <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/17/13504596613288.png">
                                                             </a>
                                                         </td>
-                                                        <td>
-                                                            <a class="dropdown-item " value="add_premade47" href="#" style="padding:5px 5px">
-                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/17/13504552819340.png">
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <a class="dropdown-item " value="add_premade48" href="#" style="padding:5px 5px">
-                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/60/13534727415379.png">
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a class="dropdown-item " value="add_premade49" href="#" style="padding:5px 5px">
-                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/53/13526739613080.png">
-                                                            </a>
-                                                        </td>
-                                                        <td></td>
                                                         <td></td>
                                                         <td></td>
                                                     </tr>
+
 
 
                                                 </table>
@@ -488,7 +471,7 @@
                                             </div>
                                         </div>
                                         <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <input type="file" id="myFile">
+                                            <input type="file" id="myFile" style=""width:200px>
                                             <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Add Image from URL
                                             </button>

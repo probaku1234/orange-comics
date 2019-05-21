@@ -278,27 +278,7 @@ $(document).ready(function(){
         var value = $(this).attr('value');
 
         switch (value) {
-            case "add_premade1":
-                var imageUrl = 'https://www.pinclipart.com/picdir/big/91-910919_mule-clipart-shrek-character-donkey-from-shrek-png.png';
-                fabric.Image.fromURL(imageUrl, function(oImg) {
-                    oImg.scale(0.5).set('flipX', true);
-                    canvas.add(oImg).setActiveObject(oImg);
-                });
-                break;
-            case "add_premade2":
-                var imageUrl = 'https://www.pinclipart.com/picdir/big/202-2020508_shrek-face-png-shrek-pixel-art-maker-pixel.png';
-                fabric.Image.fromURL(imageUrl, function(oImg) {
-                    oImg.scale(0.2).set('flipX', true);
-                    canvas.add(oImg).setActiveObject(oImg);
-                });
-                break;
-            case "add_premade3":
-                var imageUrl = 'https://www.pinclipart.com/picdir/big/194-1949751_newest-version-of-pixel-art-maker-sans-clipart.png';
-                fabric.Image.fromURL(imageUrl, function(oImg) {
-                    oImg.scale(0.5).set('flipX', true);
-                    canvas.add(oImg).setActiveObject(oImg);
-                });
-                break;
+
             case "add_premade4":
                 var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932658217304.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
@@ -306,9 +286,6 @@ $(document).ready(function(){
                     canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
-
-
-
 
             case "add_premade5":
                 var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/61/13540113018988.png';
