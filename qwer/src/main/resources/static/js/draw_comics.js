@@ -46,6 +46,8 @@ function loadComic() {
             canvas.clear();
             restoreCanvas(0);
             currentPageIndex = 0;
+            $('#show-title').text(comic_name);
+            $('#show-chapter').text(chapter);
 
             console.log("load pages done");
         }
@@ -267,21 +269,18 @@ $(document).ready(function(){
             case "add_premade1":
                 var imageUrl = 'https://www.pinclipart.com/picdir/big/91-910919_mule-clipart-shrek-character-donkey-from-shrek-png.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
-                    oImg.scale(0.5).set('flipX', true);
                     canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
             case "add_premade2":
                 var imageUrl = 'https://www.pinclipart.com/picdir/big/202-2020508_shrek-face-png-shrek-pixel-art-maker-pixel.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
-                    oImg.scale(0.2).set('flipX', true);
                     canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
             case "add_premade3":
                 var imageUrl = 'https://www.pinclipart.com/picdir/big/194-1949751_newest-version-of-pixel-art-maker-sans-clipart.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
-                    oImg.scale(0.5).set('flipX', true);
                     canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
@@ -340,7 +339,6 @@ $(document).ready(function(){
             var imageUrl = dataUrl;
             console.log(imageUrl)
             fabric.Image.fromURL(imageUrl, function(oImg) {
-                oImg.scale(0.5).set('flipX', true);
                 canvas.add(oImg);
             });
         })
@@ -402,19 +400,48 @@ $(document).ready(function(){
     });
     
     $("#free_draw").click(function () {
-        if (canvas.isDrawingMode == false) {
-            canvas.isDrawingMode = true;
-        } else {
+        canvas.isDrawingMode = true;
+        canvas.on('mouse:up', function (o) {
             canvas.isDrawingMode = false;
+        });
+    });
+
+    function isObjectTopOrBottom(object) {
+        var idx = canvas.getObjects().indexOf(object);
+
+        return idx === -1 ? null : idx === canvas.size() - 1 ? 'top' : idx === 0 ? 'bottom' : null;
+    }
+
+    $("#send_back").click(function () {
+        if (isObjectTopOrBottom(canvas.getActiveObject()) !== 'bottom') {
+            canvas.sendToBack(canvas.getActiveObject());
         }
     });
 
-    $("#send_back").click(function () {
-        canvas.sendToBack(selectedObject);
+    $("#send_front").click(function () {
+        if (isObjectTopOrBottom(canvas.getActiveObject()) !== 'top') {
+            canvas.bringToFront(canvas.getActiveObject());
+        }
     });
 
-    $("#send_front").click(function () {
-        canvas.bringToFront(selectedObject);
+    $("#flip_horizon").click(function () {
+        if(canvas.getActiveObject().get('flipX') == false) {
+            canvas.getActiveObject().set('flipX', true);
+        }
+        else {
+            canvas.getActiveObject().set('flipX', false);
+        }
+        canvas.renderAll();
+    });
+
+    $("#flip_vertical").click(function () {
+        if(canvas.getActiveObject().get('flipY') == false) {
+            canvas.getActiveObject().set('flipY', true);
+        }
+        else {
+            canvas.getActiveObject().set('flipY', false);
+        }
+        canvas.renderAll();
     });
 
     $("#addToFabric").click(function () {

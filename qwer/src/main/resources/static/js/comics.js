@@ -55,6 +55,8 @@ $(document).ready(function () {
                         $("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + 1 + "</a>");
                         $("#dropdownComicListButton").text(title);
                         $("#dropdownChapterListButton").text("1");
+                        $('#show-title').text(title);
+                        $('#show-chapteer').text('1');
                     }
                 });
             }
