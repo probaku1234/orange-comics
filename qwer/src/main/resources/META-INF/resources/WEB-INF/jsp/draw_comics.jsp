@@ -185,232 +185,10 @@
                     </li>
                 </ul>
                 <div class="row" style="align-items: center; justify-content: center;">
-                    <div class="col-sm">
-                        <div class="row">
-                            <div class="col-2 tabs-margin">
-                                <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active function-menu-tabs" id="v-pills-images-tab" data-toggle="pill" href="#v-pills-images" role="tab" aria-controls="v-pills-images" aria-selected="true">IMAGES</a>
-                                    <a class="nav-link function-menu-tabs" id="v-pills-shapes-tab" data-toggle="pill" href="#v-pills-shapes" role="tab" aria-controls="v-pills-shapes" aria-selected="false">SHAPES</a>
-                                    <a class="nav-link function-menu-tabs" id="v-pills-text-tab" data-toggle="pill" href="#v-pills-text" role="tab" aria-controls="v-pills-text" aria-selected="false">TEXT</a>
-                                    <a class="nav-link function-menu-tabs" id="v-pills-cartoonize-tab" data-toggle="pill" href="#v-pills-cartoonize" role="tab" aria-controls="v-pills-cartoonize" aria-selected="false">CARTOONIZE</a>
-                                    <a class="nav-link function-menu-tabs" id="v-pills-post-tab" data-toggle="pill" href="#v-pills-post" role="tab" aria-controls="v-pills-post" aria-selected="false">POST</a>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="tab-content" id="v-pills-tabContent">
-
-                                    <div class="tab-pane fade show active" id="v-pills-images" role="tabpanel" aria-labelledby="v-pills-images-tab">
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Pre-made Characters
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10" id="premade_images">
-                                                <a class="dropdown-item" value="add_premade1" href="#">1</a>
-                                                <a class="dropdown-item" value="add_premade2" href="#">2</a>
-                                                <a class="dropdown-item" value="add_premade3" href="#">3</a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Add Image from URL
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
-                                                <input class="form-control mr-sm-2" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
-                                                <button class="btn btn-outline-success my-2 my-sm-0" id="addImageButton">Add</button>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Add Background from URL
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
-                                                <input class="form-control mr-sm-2" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
-                                                <button class="btn btn-outline-success my-2 my-sm-0" id="addBackgroundButton">Add</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="v-pills-shapes" role="tabpanel" aria-labelledby="v-pills-shapes-tab">
-                                        <div class="mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Draw Line
-                                            </button>
-                                        </div>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Draw Shapes
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="shapes">
-                                                <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
-                                                <a class="dropdown-item" value="circle" href="#">Circle</a>
-                                                <a class="dropdown-item" value="triangle" href="#">Triangle</a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Speech Bubbles
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
-                                                <a class="dropdown-item" value="bubble1" href="#">1</a>
-                                                <%--<a class="dropdown-item" value="bubble2" href="#">2</a>--%>
-                                                <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="v-pills-text" role="tabpanel" aria-labelledby="v-pills-text-tab">
-                                        <div class="mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Add Textbox
-                                            </button>
-                                        </div>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Fonts
-                                            </button>
-                                            <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
-                                                <a class="dropdown-item" href="#">Ariel</a>
-                                                <a class="dropdown-item" href="#">Helvetica</a>
-                                                <a class="dropdown-item" href="#">Times New Roman</a>
-                                                <a class="dropdown-item" href="#">Courier New</a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Font Style
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <a class="dropdown-item" href="#">Normal</a>
-                                                <a class="dropdown-item" href="#">Bold</a>
-                                                <a class="dropdown-item" href="#">Italic</a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Font Size
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item" href="#">12</a>
-                                                <a class="dropdown-item" href="#">14</a>
-                                                <a class="dropdown-item" href="#">16</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                <input type="checkbox" id="sepia">sepia</input>
-                                <label>
-                                    <span>grayScale</span>
-                                    <input type="checkbox" id="grayScale">
-                                </label>
-                                <label>
-                                    <span>invert</span>
-                                    <input type="checkbox" id="invert">
-                                </label>
-                                <label>
-                                    <span>Black/White</span>
-                                    <input type="checkbox" id="BlackWhite">
-                                </label>
-                                <label>
-                                    <span>Brownie</span>
-                                    <input type="checkbox" id="Brownie">
-                                </label>
-                                <label>
-                                    <span>Vintage</span>
-                                    <input type="checkbox" id="Vintage">
-                                </label>
-                                <label>
-                                    <span>Kodachrome</span>
-                                    <input type="checkbox" id="Kodachrome">
-                                </label>
-                                <label>
-                                    <span>Technicolor</span>
-                                    <input type="checkbox" id="Technicolor">
-                                </label>
-                                <label>
-                                    <span>Polaroid</span>
-                                    <input type="checkbox" id="Polaroid">
-                                </label>
-                                <label>
-                                    <span>Brightness</span>
-                                    <input type="checkbox" id="Brightness">
-                                    <input type="range" id="brightnessValue" value="0.1" min="-1" max="1" step="0.003921">
-                                </label>
-
-
-                                    <label><span>Gamma:</span> <input type="checkbox" id="gamma"></label>
-                                    <label>R : <input type="range" id="gamma_red" value="1" min="0.2" max="2.2" step="0.003921"></label>
-                                    <label>G : <input type="range" id="gamma_green" value="1" min="0.2" max="2.2" step="0.003921"></label>
-                                    <label>B : <input type="range" id="gamma_blue" value="1" min="0.2" max="2.2" step="0.003921"></label>
-
-
-                                    <label>
-                                        <span>Contrast:</span>
-                                        <input type="checkbox" id="contrast">
-                                        <input type="range" id="contrastValue" value="0" min="-1" max="1" step="0.003921">
-                                    </label>
-                                    <label>
-                                        <span>Saturation:</span>
-                                        <input type="checkbox" id="saturation">
-                                        <input type="range" id="saturationValue" value="0" min="-1" max="1" step="0.003921">
-                                    </label>
-                                    <label>
-                                        <span>Hue </span>
-                                        <input type="checkbox" id="hue">
-                                        <input type="range" id="hueValue" value="0" min="-1" max="1" step="0.003921">
-                                    </label>
-                                    <label>
-                                        <span>Noise </span>
-                                        <input type="checkbox" id="noise">
-                                        <input type="range" id="noiseValue" value="100" min="0" max="1000">
-                                     </label>
-                                    <label>
-                                        <span>Pixelate</span>
-                                        <input type="checkbox" id="pixelate">
-                                        <input type="range" id="pixelateValue" value="4" min="2" max="20">
-                                    </label>
-
-                                    <label>
-                                        <span>Blur:</span>
-                                        <input type="checkbox" id="blur">
-                                        <input type="range" id="blurValue" value="0.1" min="0" max="1" step="0.01">
-                                    </label>
-
-
-
-
-
-                                    </div>
-
-                                    <div class="tab-pane fade" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;"id="cartoonize">Cartoonize Image</button>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
-                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
-                                            <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Add Comic Title
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="newComicButton">
-                                                <input class="form-control mr-sm-2" id="new_comic_book_input" type="search" placeholder="Enter the Title" aria-label="Search">
-                                                <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_front">Move Front</button>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="copy">Copy</button>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="cut">Cut</button>
-                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="paste">Paste</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-lg canvas_container">
                         <div class="tab-content">
                             <div class="tab-pane active" id="page1">
-                                <canvas id="canvas" class="draw_canvas">
+                                <canvas id="canvas" class="draw_canvas" >
 
                                 </canvas>
                             </div>
@@ -423,44 +201,183 @@
         <div class="d-flex flex-row-reverse align-items-stretch body-container-inner">
             <div class="right-tabs-container">
                 <div id="right-tabs-tools" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Tools">
-                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-tools vertical-align"></i>
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-tools vertical-align icon-style"></i>
                 </div>
                 <div id="right-tabs-drawing" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Drawing">
-                    <i class="fas fa-angle-left vertical-align"></i> <img src="icons/drawing.png" class="vertical-align" id="drawing-icon" style="width: 25px; height: 25px">
+                    <i class="fas fa-angle-left vertical-align"></i> <img src="icons/drawing.png" class="vertical-align icon-style" id="drawing-icon">
                 </div>
                 <div id="right-tabs-shapes" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Shapes">
-                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-shapes vertical-align"></i>
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-shapes vertical-align icon-style"></i>
                 </div>
                 <div id="right-tabs-text" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Text">
-                    <i class="fas fa-angle-left vertical-align"></i> <i class="material-icons vertical-align">font_download</i>
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="material-icons vertical-align icon-style">font_download</i>
                 </div>
                 <div id="right-tabs-images" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Images">
-                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-image vertical-align"></i>
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-image vertical-align icon-style"></i>
                 </div>
                 <div id="right-tabs-premade-characters" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Pre-made Charaters">
-                    <i class="fas fa-angle-left vertical-align"></i> <img src="icons/premade.png" class="vertical-align" id="premade-character-icon" style="width: 25px; height: 25px">
+                    <i class="fas fa-angle-left vertical-align"></i> <img src="icons/premade.png" class="vertical-align icon-style" id="premade-character-icon">
                 </div>
-                <div id="right-tabs-filtering" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Images">
-                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-filter vertical-align"></i>
+                <div id="right-tabs-filtering" class="right-tabs" data-toggle="tooltip" data-placement="left" title="Filtering">
+                    <i class="fas fa-angle-left vertical-align"></i> <i class="fas fa-filter vertical-align icon-style"></i>
                 </div>
             </div>
             <div class="right-list-container" id="right-list-container">
                 <div class="right-list-items" id="right-list-tools">
-                    <div class="icons-container">
-
+                    <div class="row" style="width: 330px">
+                        <a class="right-list-item" id="send_front"><i class="fas fa-arrow-up vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Move Up"></i></a>
+                        <a class="right-list-item" id="send_back"><i class="fas fa-arrow-down vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Move Down"></i></a>
+                        <a class="right-list-item" id="undo"><i class="fas fa-undo-alt vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Undo"></i></a>
+                        <a class="right-list-item" id="redo"><i class="fas fa-redo-alt vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Redo"></i></a>
+                        <a class="right-list-item" id="copy"><i class="fas fa-copy vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Copy"></i></a>
+                        <a class="right-list-item" id="cut"><i class="fas fa-cut vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Cut"></i></a>
+                        <a class="right-list-item" id="paste"><i class="fas fa-paste vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Paste"></i></a>
+                        <a class="right-list-item" id="cartoonize">Cartoonize</a>
                     </div>
                 </div>
                 <div class="right-list-items" id="right-list-drawing">
-                    <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="free_draw">Free Drawing</button>
+                    <div class="row" style="width: 330px">
+                        <a class="right-list-item" id="free_draw"><i class="fas fa-pencil-alt vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Pencil"></i></a>
+                    </div>
 
                 </div>
                 <div class="right-list-items" id="right-list-shapes">
-                    <p class="right-list-item">CHAPTER</p>
+                    <div class="row" id="shapes" style="width: 330px">
+                        <a class="right-list-item" value="rectangle" href="#"><i class="far fa-square vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Rectangle"></i></a>
+                        <a class="right-list-item" value="circle" href="#"><i class="far fa-circle vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Circle"></i></a>
+                        <a class="right-list-item" value="triangle" href="#"><img src="icons/triangle.png" class="vertical-align image-style" data-toggle="tooltip" data-placement="top" title="Triangle"></a>
+                        <a class="right-list-item" id="speech_bubbles" href="#"><i class="far fa-comment vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Speech Bubble"></i></a>
+                        <a class="right-list-item" id="draw_line"><img src="icons/straight-line.png" class="vertical-align image-style" data-toggle="tooltip" data-placement="top" title="Straight Line"></a>
+                    </div>
                 </div>
-                <div class="right-list-items" id="right-list-text"></div>
-                <div class="right-list-items" id="right-list-images"></div>
-                <div class="right-list-items" id="right-list-premade-characters"></div>
-                <div class="right-list-items" id="right-list-filtering"></div>
+                <div class="right-list-items" id="right-list-text">
+                    <div class="row" style="width: 330px">
+                        <a class="right-list-item" id="textbox" href="#"><i class="far fa-edit vertical-align icon-style" data-toggle="tooltip" data-placement="top" title="Text Box"></i></a>
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Fonts
+                        </button>
+                        <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
+                            <a class="dropdown-item" href="#">Ariel</a>
+                            <a class="dropdown-item" href="#">Helvetica</a>
+                            <a class="dropdown-item" href="#">Times New Roman</a>
+                            <a class="dropdown-item" href="#">Courier New</a>
+                        </div>
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Font Style
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="#">Normal</a>
+                            <a class="dropdown-item" href="#">Bold</a>
+                            <a class="dropdown-item" href="#">Italic</a>
+                        </div>
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Font Size
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <a class="dropdown-item" href="#">12</a>
+                            <a class="dropdown-item" href="#">14</a>
+                            <a class="dropdown-item" href="#">16</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-list-items" id="right-list-images">
+                    <p class="right-list-item" style="padding-top: 40px; padding-bottom: 10px">Add Image from URL</p>
+                    <p class="form-inline right-list-item list-block">
+                        <input class="form-control mr-sm-2 right-list-input" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                        <button class="btn-sm btn-success my-2 my-sm-0 right-list-button" id="addImageButton"> Add </button>
+                    </p>
+                    <p class="right-list-item" style="padding-top: 40px; padding-bottom: 10px">Add Background from URL</p>
+                    <p class="form-inline right-list-item list-block">
+                        <input class="form-control mr-sm-2 right-list-input" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                        <button class="btn-sm btn-success my-2 my-sm-0 right-list-button" id="addBackgroundButton"> Add </button>
+                    </p>
+                </div>
+                <div class="right-list-items" id="right-list-premade-characters">
+                    <div class="row" id="premade_images" style="width: 330px">
+                        <a class="right-list-item" value="add_premade1" href="#">1</a>
+                        <a class="right-list-item" value="add_premade2" href="#">2</a>
+                        <a class="right-list-item" value="add_premade3" href="#">3</a>
+                    </div>
+                </div>
+                <div class="right-list-items" id="right-list-filtering" style="padding: 20px 20px 20px 20px">
+                    <input type="checkbox" id="sepia">sepia</input>
+                    <label>
+                        <span>grayScale</span>
+                        <input type="checkbox" id="grayScale">
+                    </label>
+                    <label>
+                        <span>invert</span>
+                        <input type="checkbox" id="invert">
+                    </label>
+                    <label>
+                        <span>Black/White</span>
+                        <input type="checkbox" id="BlackWhite">
+                    </label>
+                    <label>
+                        <span>Brownie</span>
+                        <input type="checkbox" id="Brownie">
+                    </label>
+                    <label>
+                        <span>Vintage</span>
+                        <input type="checkbox" id="Vintage">
+                    </label>
+                    <label>
+                        <span>Kodachrome</span>
+                        <input type="checkbox" id="Kodachrome">
+                    </label>
+                    <label>
+                        <span>Technicolor</span>
+                        <input type="checkbox" id="Technicolor">
+                    </label>
+                    <label>
+                        <span>Polaroid</span>
+                        <input type="checkbox" id="Polaroid">
+                    </label>
+                    <label>
+                        <span>Brightness</span>
+                        <input type="checkbox" id="Brightness">
+                        <input type="range" id="brightnessValue" value="0.1" min="-1" max="1" step="0.003921">
+                    </label>
+
+
+                    <label><span>Gamma:</span> <input type="checkbox" id="gamma"></label>
+                    <label>R : <input type="range" id="gamma_red" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                    <label>G : <input type="range" id="gamma_green" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                    <label>B : <input type="range" id="gamma_blue" value="1" min="0.2" max="2.2" step="0.003921"></label>
+
+
+                    <label>
+                        <span>Contrast:</span>
+                        <input type="checkbox" id="contrast">
+                        <input type="range" id="contrastValue" value="0" min="-1" max="1" step="0.003921">
+                    </label>
+                    <label>
+                        <span>Saturation:</span>
+                        <input type="checkbox" id="saturation">
+                        <input type="range" id="saturationValue" value="0" min="-1" max="1" step="0.003921">
+                    </label>
+                    <label>
+                        <span>Hue </span>
+                        <input type="checkbox" id="hue">
+                        <input type="range" id="hueValue" value="0" min="-1" max="1" step="0.003921">
+                    </label>
+                    <label>
+                        <span>Noise </span>
+                        <input type="checkbox" id="noise">
+                        <input type="range" id="noiseValue" value="100" min="0" max="1000">
+                    </label>
+                    <label>
+                        <span>Pixelate</span>
+                        <input type="checkbox" id="pixelate">
+                        <input type="range" id="pixelateValue" value="4" min="2" max="20">
+                    </label>
+
+                    <label>
+                        <span>Blur:</span>
+                        <input type="checkbox" id="blur">
+                        <input type="range" id="blurValue" value="0.1" min="0" max="1" step="0.01">
+                    </label>
+                </div>
             </div>
         </div>
         <%-- right tab bar --%>

@@ -146,6 +146,17 @@
     margin-left: 10px;
 }
 
+.right-list-input {
+    width: 170px;
+    height: 30px;
+}
+
+.right-list-button {
+    height: 30px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
 .right-tabs {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -166,7 +177,7 @@
 }
 
 .right-list-items {
-    width: 180px;
+    width: 330px;
     background-color: #f39c12;
     margin-top: 1px;
     display: none;
@@ -186,8 +197,25 @@
     font-style: italic;
 }
 
-.icons-container {
+.icon-style {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
 
+.icon-style:hover {
+    color: grey;
+}
+
+.image-style {
+    width: 25px;
+    height: 25px;
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+.image-style:hover {
+    filter: invert(50%);
 }
 
 .vertical-align {
