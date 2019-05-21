@@ -481,6 +481,8 @@
             &#8595; Draw mask area. <br />
             <canvas id="mask-canvas" height="200" width="200"></canvas><br />
             <button name="adjustBtn" onclick="adjustBlendPosition()">HERE</button>
+            <button id="changeImageBtn">Change Images</button>
+
             <h3>Step2</h3>
             <canvas id="result-canvas" height="200" width="200"></canvas><br />
             Adjust blend position:

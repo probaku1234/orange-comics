@@ -555,8 +555,8 @@ $(document).ready(function(){
         if(options.target != undefined){ // if multiple elements are selected, this function executed.
             console.log(options.target._objects);
             if(options.target._objects != undefined){
-                let img1 =options.target._objects[0]
-                let img2 =options.target._objects[1]
+                let img1 =options.target._objects[0].src
+                let img2 =options.target._objects[1].src
 
                 if(typeof(img1)== "Img" && typeof(img2)){
                     img1._element.crossOrigin = "anonymous"
