@@ -97,11 +97,13 @@ public class ComicsController {
     }
 
     @RequestMapping(value = {"/create_comic"}, method = RequestMethod.POST)
-    public void createComicRequest(@RequestParam(value = "comic_name") String title, HttpSession session) throws MalformedURLException {
+    @ResponseBody
+    public int createComicRequest(@RequestParam(value = "comic_name") String title, HttpSession session) throws MalformedURLException {
         // create comic in db
         String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
         URL url = new URL(baseURL + title);
         comicServices.createComic(title, userId, url, "PUBLIC");
+        return 1;
     }
 
     @RequestMapping(value = {"/create_chapter"}, method = RequestMethod.POST)
@@ -118,7 +120,7 @@ public class ComicsController {
                 return 1;
             }
         }
-        return 0;
+        return 1;
     }
 
     @RequestMapping(value = {"/get_comic_list", "/get_user_comic_list"}, method = RequestMethod.POST)

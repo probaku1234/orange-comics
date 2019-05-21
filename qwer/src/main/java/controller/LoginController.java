@@ -30,4 +30,9 @@ public class LoginController {
             return 1;
         }
     }
+
+    public String logoutRequest(HttpSession session) {
+        session.removeAttribute("user");
+        return "index";
+    }
 }

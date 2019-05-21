@@ -51,7 +51,7 @@ $(document).ready(function () {
                     },
                     dataType: 'json',
                     success: function (response) {
-                        console.log(response);
+                        console.log("chapter");
                         $("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + 1 + "</a>");
                         $("#dropdownComicListButton").text(title);
                         $("#dropdownChapterListButton").text("1");
