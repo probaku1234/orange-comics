@@ -46,10 +46,14 @@ html {
 }
 
 .top-nav-search-bar {
-    width: 220px;
-    height: 30px;
+    width: 220px !important;
+    height: 30px !important;
+    font-size: 16px !important;
 }
 
 .top-nav-search-button {
     border-color: #ffc107;
+    width: 40px !important;
+    height: 30px !important;
+    font-size: 16px !important;
 }

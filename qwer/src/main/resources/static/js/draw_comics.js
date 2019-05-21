@@ -138,7 +138,7 @@ $(document).ready(function(){
         }
     });
 
-    $('#dropdownMenuButton').click(function(){
+    $('#textbox').click(function(){
         var textbox = new fabric.Textbox('hello world', {
             left: 50,
             top: 50,
@@ -176,7 +176,7 @@ $(document).ready(function(){
         }
     });
 
-    $('#dropdownMenuButton3').on("click", function(){
+    $('#draw_line').on("click", function(){
         var line;
         var isDrawing;
 
@@ -236,42 +236,28 @@ $(document).ready(function(){
         }
     });
 
-    $('#speech_bubbles a').on('click', function () {
-        var value = $(this).attr('value');
+    $('#speech_bubbles').on('click', function () {
+        var circle = new fabric.Circle({
+            radius: 100,
+            fill: '#eef',
+            scaleY: 0.5,
+            originX: 'center',
+            originY: 'center'
+        });
 
-        switch (value) {
-            case "bubble1":
-                var circle = new fabric.Circle({
-                    radius: 100,
-                    fill: '#eef',
-                    scaleY: 0.5,
-                    originX: 'center',
-                    originY: 'center'
-                });
+        var text = new fabric.Textbox('', {
+            fontSize: 30,
+            originX: 'center',
+            originY: 'center'
+        });
 
-                var text = new fabric.Textbox('hello world', {
-                    fontSize: 30,
-                    originX: 'center',
-                    originY: 'center'
-                });
+        var group = new fabric.Group([ circle, text ], {
+            left: 150,
+            top: 100,
+            angle: -10
+        });
 
-                var group = new fabric.Group([ circle, text ], {
-                    left: 150,
-                    top: 100,
-                    angle: -10
-                });
-
-                canvas.add(group).setActiveObject(group);
-                break;
-            case "bubble2":
-
-                canvas.add().setActiveObject();
-                break;
-            case "bubble3":
-
-                canvas.add().setActiveObject();
-                break;
-        }
+        canvas.add(group).setActiveObject(group);
     });
 
     $('#premade_images a').on('click', function () {
@@ -348,6 +334,7 @@ $(document).ready(function(){
         //     canvas.add(oImg);
         // });
 
+        console.log("im in")
         toDataURL($('#addImageFromURL').val(), function(dataUrl) {
             console.log('RESULT:', )
             var imageUrl = dataUrl;
@@ -831,9 +818,10 @@ $(document).ready(function(){
             var list = document.getElementById(listArray[i]);
             var tab = document.getElementById(tabArray[i]);
             if(event.target != list && event.target.parentNode != list && event.target.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode != list && event.target.parentNode.parentNode.parentNode.parentNode.parentNode != list){
-                list.style.display = 'none';
                 tab.style.backgroundColor = '#ffc107';
                 tab.style.color = '#333333';
+                $("#drawing-icon").css('filter', 'invert(0%)');
+                $("#premade-character-icon").css('filter', 'invert(0%)');
             }
         }
     });
