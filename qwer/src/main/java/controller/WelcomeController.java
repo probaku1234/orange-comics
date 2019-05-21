@@ -65,7 +65,7 @@ public class WelcomeController {
         ArrayList<String> NotificationArray = new ArrayList<>();
         if(null != userServices.getIDbyUsername((String) session.getAttribute("user"))){
             String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
-            NotificationArray = userServices.getNewNotifications(userId,50);
+            NotificationArray = userServices.getNewNotifications(userId);
             _model.addAttribute("NotificationArray",NotificationArray);
             System.out.println(NotificationArray);
 

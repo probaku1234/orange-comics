@@ -25,7 +25,7 @@ $(document).ready(function(){
         let user2 = $("#id_msg_history").attr('name');
         let message = $("#input_msg_write").val();
 
-
+        console.log(user2,message,$("#user_id").text())
         stompClient.send(
             "/app/hello",
             {},
@@ -172,8 +172,6 @@ function showGreeting2(sender,receiver,message) {
             );
 
         }
-
-
 
     }else{
 
