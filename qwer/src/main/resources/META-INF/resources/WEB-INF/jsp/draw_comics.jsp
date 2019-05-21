@@ -197,6 +197,488 @@
                     </li>
                 </ul>
                 <div class="row" style="align-items: center; justify-content: center;">
+                    <!--
+                    <div class="col-sm">
+                        <div class="row">
+                            <div class="col-2 tabs-margin">
+                                <div class="nav flex-column nav-pills" style="transform: scale(0.85, 1);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active function-menu-tabs" id="v-pills-images-tab" data-toggle="pill" href="#v-pills-images" role="tab" aria-controls="v-pills-images" aria-selected="true">IMAGES</a>
+                                    <a class="nav-link function-menu-tabs" id="v-pills-shapes-tab" data-toggle="pill" href="#v-pills-shapes" role="tab" aria-controls="v-pills-shapes" aria-selected="false">SHAPES</a>
+                                    <a class="nav-link function-menu-tabs" id="v-pills-text-tab" data-toggle="pill" href="#v-pills-text" role="tab" aria-controls="v-pills-text" aria-selected="false">TEXT</a>
+                                    <a class="nav-link function-menu-tabs" id="v-pills-cartoonize-tab" data-toggle="pill" href="#v-pills-cartoonize" role="tab" aria-controls="v-pills-cartoonize" aria-selected="false">CARTOONIZE</a>
+                                    <a class="nav-link function-menu-tabs" id="v-pills-post-tab" data-toggle="pill" href="#v-pills-post" role="tab" aria-controls="v-pills-post" aria-selected="false">POST</a>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="tab-content" id="v-pills-tabContent">
+
+                                    <div class="tab-pane fade show active" id="v-pills-images" role="tabpanel" aria-labelledby="v-pills-images-tab">
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Pre-made Characters
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10" id="premade_images">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade48" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/60/13534727415379.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade49" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/53/13526739613080.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade4" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932658217304.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade47" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/17/13504552819340.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade5" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/61/13540113018988.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade6" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932662416551.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade7" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932670829054.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade8" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932677419173.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade9" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932657015284.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade10" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932666019343.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade11" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932668414295.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade12" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932658817069.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade13" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932700211017.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade14" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932664223023.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade15" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932649215024.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade16" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932697814193.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade17" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932645615835.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade18" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932688212001.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade19" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932684611250.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade20" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932664815276.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade21" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932634218307.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade22" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932622829846.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade23" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932613219416.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade24" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932606612912.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade25" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932641417567.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade26" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/83/13939161014804.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade27" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932607811463.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade28" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932672025948.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade29" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/100/13950199211486.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade30" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932639612165.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade31" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932639014891.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade32" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/60/13539934212140.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade33" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/65/13550874017348.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade34" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/1/13488914417662.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade35" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/53/13526767212422.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade36" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/1/13488673219292.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade37" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/113/13958583025224.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade38" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/74/13932291011199.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade39" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/51/13525719619719.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade40" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/55/13528019416469.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade41" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/52/13526095811713.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade42" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/52/13526245819001.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade43" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/83/13939368015951.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade44" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/55/13528267221867.png">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade45" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/93/13945504815093.png">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="dropdown-item " value="add_premade46" href="#" style="padding:5px 5px">
+                                                                <img width="30px" height="30px" src="http://res.publicdomainfiles.com/pdf_view/17/13504596613288.png">
+                                                            </a>
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+
+
+
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <input type="file" id="myFile" style=""width:200px>
+                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Add Image from URL
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
+                                                <input class="form-control mr-sm-2" id="addImageFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                                                <button class="btn btn-outline-success my-2 my-sm-0" id="addImageButton">Add</button>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Add Background from URL
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
+                                                <input class="form-control mr-sm-2" id="addBackgroundFromURL" type="search" placeholder="Enter the URL" aria-label="Search">
+                                                <button class="btn btn-outline-success my-2 my-sm-0" id="addBackgroundButton">Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-shapes" role="tabpanel" aria-labelledby="v-pills-shapes-tab">
+                                        <div class="mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Draw Line
+                                            </button>
+                                        </div>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Draw Shapes
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4" id="shapes">
+                                                <a class="dropdown-item" value="rectangle" href="#">Rectangle</a>
+                                                <a class="dropdown-item" value="circle" href="#">Circle</a>
+                                                <a class="dropdown-item" value="triangle" href="#">Triangle</a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Speech Bubbles
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5" id="speech_bubbles">
+                                                <a class="dropdown-item" value="bubble1" href="#">1</a>
+                                                <%--<a class="dropdown-item" value="bubble2" href="#">2</a>--%>
+                                                <%--<a class="dropdown-item" value="bubble3" href="#">3</a>--%>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-text" role="tabpanel" aria-labelledby="v-pills-text-tab">
+                                        <div class="mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Add Textbox
+                                            </button>
+                                        </div>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Fonts
+                                            </button>
+                                            <div id="font-family" class="dropdown-menu" aria-labelledby="dropdownMenuButton0">
+                                                <a class="dropdown-item" href="#">Ariel</a>
+                                                <a class="dropdown-item" href="#">Helvetica</a>
+                                                <a class="dropdown-item" href="#">Times New Roman</a>
+                                                <a class="dropdown-item" href="#">Courier New</a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Font Style
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <a class="dropdown-item" href="#">Normal</a>
+                                                <a class="dropdown-item" href="#">Bold</a>
+                                                <a class="dropdown-item" href="#">Italic</a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Font Size
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                                <a class="dropdown-item" href="#">12</a>
+                                                <a class="dropdown-item" href="#">14</a>
+                                                <a class="dropdown-item" href="#">16</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-post-tab">
+                                <span>sepia</span>
+                                <input type="checkbox" id="sepia">
+                                <label>
+                                    <span>grayScale</span>
+                                    <input type="checkbox" id="grayScale">
+                                </label>
+                                <label>
+                                    <span>invert</span>
+                                    <input type="checkbox" id="invert">
+                                </label>
+                                <label>
+                                    <span>Black/White</span>
+                                    <input type="checkbox" id="BlackWhite">
+                                </label>
+                                <label>
+                                    <span>Brownie</span>
+                                    <input type="checkbox" id="Brownie">
+                                </label>
+                                <label>
+                                    <span>Vintage</span>
+                                    <input type="checkbox" id="Vintage">
+                                </label>
+                                <label>
+                                    <span>Kodachrome</span>
+                                    <input type="checkbox" id="Kodachrome">
+                                </label>
+                                <label>
+                                    <span>Technicolor</span>
+                                    <input type="checkbox" id="Technicolor">
+                                </label>
+                                <label>
+                                    <span>Polaroid</span>
+                                    <input type="checkbox" id="Polaroid">
+                                </label>
+                                <label>
+                                    <span>Brightness</span>
+                                    <input type="checkbox" id="Brightness">
+                                    <input type="range" id="brightnessValue" value="0.1" min="-1" max="1" step="0.003921">
+                                </label>
+
+
+                                <label><span>Gamma:</span> <input type="checkbox" id="gamma"></label>
+                                <label>R : <input type="range" id="gamma_red" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                                <label>G : <input type="range" id="gamma_green" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                                <label>B : <input type="range" id="gamma_blue" value="1" min="0.2" max="2.2" step="0.003921"></label>
+
+
+                                <label>
+                                    <span>Contrast:</span>
+                                    <input type="checkbox" id="contrast">
+                                    <input type="range" id="contrastValue" value="0" min="-1" max="1" step="0.003921">
+                                </label>
+                                <label>
+                                    <span>Saturation:</span>
+                                    <input type="checkbox" id="saturation">
+                                    <input type="range" id="saturationValue" value="0" min="-1" max="1" step="0.003921">
+                                </label>
+                                <label>
+                                    <span>Hue </span>
+                                    <input type="checkbox" id="hue">
+                                    <input type="range" id="hueValue" value="0" min="-1" max="1" step="0.003921">
+                                </label>
+                                <label>
+                                    <span>Noise </span>
+                                    <input type="checkbox" id="noise">
+                                    <input type="range" id="noiseValue" value="100" min="0" max="1000">
+                                 </label>
+                                <label>
+                                    <span>Pixelate</span>
+                                    <input type="checkbox" id="pixelate">
+                                    <input type="range" id="pixelateValue" value="4" min="2" max="20">
+                                </label>
+
+                                <label>
+                                    <span>Blur:</span>
+                                    <input type="checkbox" id="blur">
+                                    <input type="range" id="blurValue" value="0.1" min="0" max="1" step="0.01">
+                                </label>
+
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;"id="cartoonize">Cartoonize Image</button>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="load_draft">Load Draft</button>
+                                        <div class="dropdown mr-auto mt-2 mt-lg-0">
+                                            <button class="btn btn-secondary" type="button" id="newComicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Add Comic Title
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="newComicButton">
+                                                <input class="form-control mr-sm-2" id="new_comic_book_input" type="search" placeholder="Enter the Title" aria-label="Search">
+                                                <button class="btn btn-outline-success my-2 my-sm-0" id="new_comicbook">Add</button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="undo">Undo</button>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="redo">Redo</button>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_back">Move Back</button>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="send_front">Move Front</button>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="copy">Copy</button>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="cut">Cut</button>
+                                        <button type="button" class="btn btn-primary btn-sm active" style="margin-top: 5px; margin-left: 5px; margin-right: 5px; width: 96%;" id="paste">Paste</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
                     <div class="col-lg canvas_container">
                         <div class="tab-content">
                             <div class="tab-pane active" id="page1">
@@ -441,6 +923,8 @@
             &#8595; Draw mask area. <br />
             <canvas id="mask-canvas" height="200" width="200"></canvas><br />
             <button name="adjustBtn" onclick="adjustBlendPosition()">HERE</button>
+            <button id="changeImageBtn">Change Images</button>
+
             <h3>Step2</h3>
             <canvas id="result-canvas" height="200" width="200"></canvas><br />
             Adjust blend position:

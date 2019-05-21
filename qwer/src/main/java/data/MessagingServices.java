@@ -21,6 +21,9 @@ public class MessagingServices {
     @Autowired
     MessageGroupRepository messageGroupRepository;
 
+    @Autowired
+    UserServices userServices;
+
     public void postComment(String userID, String comicID, String message){
         Comment comment = new Comment(userID, message, new Date());
         comment.setComic(comicID);
@@ -46,6 +49,13 @@ public class MessagingServices {
         commentRepository.save(comment);
         messageGroup.lastMessage = comment.datePosted;
         messageGroupRepository.save(messageGroup);
+
+        System.out.println(toUserID);
+        System.out.println(message);
+
+
+        userServices.addNotification(toUserID, "MESSAGE", message);
+
     }
 
     public ArrayList<Comment> getComments(String comicID, int amount, int page){

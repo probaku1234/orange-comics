@@ -36,7 +36,7 @@ public class WelcomeController {
 
 
     @RequestMapping(value={"/index","/"})
-    public String index(Map<String, Object> model, Model _model) {
+    public String index(Map<String, Object> model, Model _model, HttpSession session) {
 
         ArrayList<Comic> comics = comicServices.getRecentComics(12, 0);
         ArrayList<String> chapterIds = new ArrayList<>();
@@ -62,10 +62,23 @@ public class WelcomeController {
                 }
             }
         }
+        ArrayList<String> NotificationArray = new ArrayList<>();
+        if(null != userServices.getIDbyUsername((String) session.getAttribute("user"))){
+            String userId = userServices.getIDbyUsername((String) session.getAttribute("user"));
+            NotificationArray = userServices.getNewNotifications(userId,50);
+            _model.addAttribute("NotificationArray",NotificationArray);
+            System.out.println(NotificationArray);
+
+
+        }else{
+            _model.addAttribute("NotificationArray",NotificationArray);
+        }
+
         _model.addAttribute("chapterList", chapterList);
         _model.addAttribute("TitleList", TitleList);
         _model.addAttribute("AuthorList", AuthorList);
         _model.addAttribute("chapterIds", chapterIds);
+
 //        _model.addAttribute("idList", idList);
 
 

@@ -66,9 +66,10 @@
 
             <li class="nav-item dropdown" style="margin-right: 20px" data-toggle="tooltip" data-placement="left" title="Notification">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell" style="font-size: 25px"></i>
+                    
+                    <i class="fas fa-bell" style="font-size: 25px"></i>(<span id="notiNum"></span> )
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="noti_detail">
                     <a class="dropdown-item" href="notifications">notification 1</a>
                     <a class="dropdown-item" href="notifications">notification 2</a>
                     <a class="dropdown-item" href="notifications">notification 3</a>
@@ -95,6 +96,8 @@
     let TitleList = [];
     let AuthorList = [];
     let chapterIds = [];
+    let NotificationArray = [];
+
     let coverPage;
     let pageLength;
     let chapter;
@@ -106,7 +109,14 @@
             ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("TitleList");
             ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("AuthorList");
             ArrayList<String> chapterIds = (ArrayList<String>) request.getAttribute("chapterIds");
+
+            ArrayList<String> NotificationArray = (ArrayList<String>) request.getAttribute("NotificationArray");
         %>
+
+        <%for(int i=0;i<NotificationArray.size();i++){%>
+        NotificationArray.push("<%= NotificationArray.get(i)%>");
+        <%}%>
+        $("#notiNum").text(NotificationArray.length);
 
         <%for(int i=0;i<TitleList.size();i++){%>
         TitleList.push("<%= TitleList.get(i)%>");
@@ -120,6 +130,7 @@
         chapterIds.push("<%= chapterIds.get(i)%>");
         <%}%>
 
+        console.log(NotificationArray);
         console.log(TitleList);
         console.log(AuthorList);
         console.log(chapterList);

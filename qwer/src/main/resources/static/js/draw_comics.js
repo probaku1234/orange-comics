@@ -280,24 +280,330 @@ $(document).ready(function(){
         var value = $(this).attr('value');
 
         switch (value) {
-            case "add_premade1":
-                var imageUrl = 'https://www.pinclipart.com/picdir/big/91-910919_mule-clipart-shrek-character-donkey-from-shrek-png.png';
+
+            case "add_premade4":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932658217304.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+
+            case "add_premade5":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/61/13540113018988.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade6":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932662416551.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade7":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932670829054.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade8":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932677419173.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade9":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932657015284.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade10":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932666019343.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade11":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932668414295.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade12":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932658817069.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade13":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932700211017.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade14":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932664223023.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade15":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932649215024.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade16":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932697814193.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade17":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932645615835.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade18":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932688212001.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade19":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932684611250.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade20":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932664815276.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade21":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932634218307.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade22":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932622829846.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade23":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932613219416.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade24":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932606612912.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade25":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932641417567.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade26":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/83/13939161014804.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade27":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932607811463.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade28":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932672025948.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade29":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/100/13950199211486.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade30":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932639612165.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade31":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932639014891.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade32":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/60/13539934212140.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade33":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/65/13550874017348.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade34":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/1/13488914417662.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade35":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/53/13526767212422.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade36":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/1/13488673219292.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade37":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/113/13958583025224.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade38":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/74/13932291011199.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade39":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/51/13525719619719.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade40":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/55/13528019416469.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade41":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/52/13526095811713.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade42":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/52/13526245819001.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade43":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/83/13939368015951.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade44":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/55/13528267221867.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
                     canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
-            case "add_premade2":
-                var imageUrl = 'https://www.pinclipart.com/picdir/big/202-2020508_shrek-face-png-shrek-pixel-art-maker-pixel.png';
+            case "add_premade45":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/93/13945504815093.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
                     canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
-            case "add_premade3":
-                var imageUrl = 'https://www.pinclipart.com/picdir/big/194-1949751_newest-version-of-pixel-art-maker-sans-clipart.png';
+            case "add_premade46":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/17/13504596613288.png';
                 fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
                     canvas.add(oImg).setActiveObject(oImg);
                 });
                 break;
+            case "add_premade47":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/17/13504552819340.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade48":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/60/13534727415379.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+            case "add_premade49":
+                var imageUrl = 'http://res.publicdomainfiles.com/pdf_view/53/13526739613080.png';
+                fabric.Image.fromURL(imageUrl, function(oImg) {
+                    oImg.scale(0.2).set('flipX', true);
+                    canvas.add(oImg).setActiveObject(oImg);
+                });
+                break;
+
         }
     });
 
@@ -359,6 +665,42 @@ $(document).ready(function(){
 
 
     });
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                // $('#blah').attr('src', e.target.result);
+
+                toDataURL( e.target.result, function(dataUrl) {
+                    console.log('RESULT:', )
+                    var imageUrl = dataUrl;
+                    console.log(imageUrl)
+                    fabric.Image.fromURL(imageUrl, function(oImg) {
+                        oImg.scale(0.5).set('flipX', true);
+                        canvas.add(oImg);
+                    });
+                })
+
+
+
+            }
+
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#myFile").change(function() {
+        readURL(this);
+    });
+
+    // $("#myFile").on("change",function(){
+    //     let myFile = document.getElementById('myFile').files[0];
+    //     console.log(myFile);
+    // })
 
     $("#new_page").click(function () {
         saveCanvas();
