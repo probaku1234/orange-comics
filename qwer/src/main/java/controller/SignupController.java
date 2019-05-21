@@ -1,7 +1,6 @@
 package controller;
 
-import data.UserRepository;
-import data.UserServices;
+import data.*;
 import model.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import data.UserServices;
 import data.UserRepository;
-import data.User;
+
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
 @Controller
@@ -26,7 +27,12 @@ public class SignupController {
     //private JavaMailSender sender;
     @Autowired
     private UserServices usrServices;
-
+    @Autowired
+    ChapterRepository chapterRepository;
+    @Autowired
+    private ComicServices comicServices;
+    @Autowired
+    private UserServices userServices;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
@@ -50,7 +56,30 @@ public class SignupController {
             System.out.println("If there is no error print before this sentence,sign up complete");
         }
 
+        ArrayList<Comic> comics = comicServices.getRecentComics(12, 0);
+        ArrayList<String> chapterIds = new ArrayList<>();
+        ArrayList<ArrayList<String> > chapterList = new ArrayList< >();
+        ArrayList<String> AuthorList = new ArrayList<>();
+        ArrayList<String> TitleList = new ArrayList<>();
+//        ArrayList<String> idList = new ArrayList<>();
+        for(int i = 0; i < comics.size(); i++) {
+            for(int j = 0; j < comics.get(i).chapters.size(); j++) {
 
+                Optional<Chapter> optChapter = chapterRepository.findById(comics.get(i).chapters.get(j));
+                Chapter chapter = optChapter.get();
+
+                if(chapter.isDraft == false){
+                    String chapterId = comics.get(i).chapters.get(j);
+                    chapterIds.add(Integer.toString(comics.get(i).chapters.indexOf(chapterId) + 1));
+                    ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
+
+                    chapterList.add(pages);
+                    TitleList.add(comics.get(i).title);
+                    AuthorList.add(userServices.getUsername(comics.get(i).author));
+//                    idList.add(comics.get(i).id);
+                }
+            }
+        }
         //Send mail to user
         /*
         String setTo = email;
@@ -61,7 +90,12 @@ public class SignupController {
         Mail mail = new Mail(sender, setTo, text, subject);
         mail.sendMail();
         */
-        return new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("chapterList", chapterList);
+        modelAndView.addObject("TitleList", TitleList);
+        modelAndView.addObject("AuthorList", AuthorList);
+        modelAndView.addObject("chapterIds", chapterIds);
+        return modelAndView;
     }
 
     /*
