@@ -42,6 +42,19 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 $("#comic_list").append("<a class='dropdown-item'>" + title + "</a>");
+                $.ajax({
+                    type: "POST",
+                    url: "/create_chapter",
+                    data: {
+                        "comic_name" : title
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        var count = $('.'+title);
+                        $("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + (count+1) + "</a>");
+                    }
+                });
             }
         });
     });
@@ -57,7 +70,8 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 console.log(response);
-                //$("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + text + "</a>");
+                var count = $('.'+currentComicTitle).length;
+                $("#chapter_list").append("<a class='dropdown-item chapter " + currentComicTitle + "'>" + (count+1) + "</a>");
             }
         });
     });
