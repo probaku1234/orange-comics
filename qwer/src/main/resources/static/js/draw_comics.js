@@ -52,6 +52,20 @@ function loadComic() {
     });
 }
 
+function clearCanvas() {
+    jsonPageArray.length = 0;
+    var tab = $("#tab").children();
+
+    tab.each(function (index) {
+        if (index >0 && index < tab.length-1) {
+            $(this).remove();
+        }
+    });
+
+    canvas.clear();
+    currentPageIndex = 0;
+}
+
 $(document).ready(function(){
     canvas = new fabric.Canvas('canvas', { backgroundColor : "#fff", preserveObjectStacking: true});
     let ctx = canvas.getContext('2d');

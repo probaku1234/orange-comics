@@ -51,10 +51,13 @@ $(document).ready(function () {
                     },
                     dataType: 'json',
                     success: function (response) {
-                        console.log("chapter");
-                        $("#chapter_list").append("<a class='dropdown-item chapter " + title + "'>" + 1 + "</a>");
+                        $("#chapter_list").append("<a class='dropdown-item chapter " + title + "' value='0'>" + 1 + "</a>");
                         $("#dropdownComicListButton").text(title);
                         $("#dropdownChapterListButton").text("1");
+                        $('.chapter').hide();
+                        $('.'+title).show();
+                        //$("#chapter_list a").trigger('click');
+                        clearCanvas();
                     }
                 });
             }
@@ -73,7 +76,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 var count = $('.'+currentComicTitle).length;
-                $("#chapter_list").append("<a class='dropdown-item chapter " + currentComicTitle + "'>" + (count+1) + "</a>");
+                $("#chapter_list").append("<a class='dropdown-item chapter " + currentComicTitle + "' value='"+ count +"'>" + (count+1) + "</a>");
             }
         });
     });
@@ -131,7 +134,7 @@ function getChapterList(title) {
                 var text = i + 1;
                 $("#chapter_list").append("<a class='dropdown-item chapter " + title + "' value='"+ i + "'>" + text + "</a>");
             }
-            $('chapter').hide();
+
         }
     });
 }
