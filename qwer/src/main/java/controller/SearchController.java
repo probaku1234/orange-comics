@@ -39,6 +39,8 @@ public class SearchController {
                 Chapter chapter = optChapter.get();
 
                 if(chapter.isDraft == false){
+                    String chapterId = comics.get(i).chapters.get(j);
+                    chapterIds.add(Integer.toString(comics.get(i).chapters.indexOf(chapterId) + 1));
                     chapterIds.add(comics.get(i).chapters.get(j));
                     ArrayList<String> pages = comicServices.getPages(comics.get(i).chapters.get(j),comics.get(i).id);
 
@@ -55,6 +57,7 @@ public class SearchController {
         modelAndView.addObject("searchResult_TitleList", titleList);
         modelAndView.addObject("searchResult_AuthorList", authorList);
         modelAndView.addObject("searchResult_chapterList", chapterList);
+        modelAndView.addObject("searchResult_chapterIds", chapterIds);
         // search comics by keyword
         // add attribute
         return modelAndView;

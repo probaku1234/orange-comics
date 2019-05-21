@@ -327,16 +327,21 @@
     let chapterList = eval('('+'${searchResult_chapterList}'+')');
     let TitleList = [];
     let AuthorList = [];
+    let chapterIds = [];
+    let NotificationArray = [];
+
     let coverPage;
     let pageLength;
     let chapter;
     let title;
     let author;
 
+
     if (TitleList != null && AuthorList != null) {
         <%
             ArrayList<String> TitleList = (ArrayList<String>) request.getAttribute("searchResult_TitleList");
             ArrayList<String> AuthorList = (ArrayList<String>) request.getAttribute("searchResult_AuthorList");
+            ArrayList<String> chapterIds = (ArrayList<String>) request.getAttribute("searchResult_chapterIds");
         %>
 
         <%for(int i=0;i<TitleList.size();i++){%>
@@ -347,15 +352,17 @@
         AuthorList.push("<%= AuthorList.get(i)%>");
         <%}%>
 
+        <%for(int i=0;i<chapterIds.size();i++){%>
+        chapterIds.push("<%= chapterIds.get(i)%>");
+        <%}%>
+
         console.log(TitleList);
         console.log(AuthorList);
         console.log(chapterList);
 
         $(document).ready(function(){
             for (let i = 0; i < 12; i++) {
-
                 if (chapterList[i] != null){
-                    console.log("in");
                     $('#recommended'+i).click(function() {
                         coverPage = chapterList[i][0];
                         pageLength = chapterList[i].length;
@@ -366,11 +373,16 @@
                     coverPage = chapterList[i][0];
                     canvasTemp.setWidth(461);
                     canvasTemp.setHeight(600);
+                    console.log(coverPage);
                     canvasTemp = canvasTemp.loadFromJSON(coverPage);
+                    console.log(canvasTemp);
                     let imgPath = canvasTemp.toDataURL();
                     $('#recommended'+i).attr('src', imgPath);
                     $('#recommended'+i).width(97);
                     $('#recommended'+i).height(125);
+                    $('#comic-title-'+i).text(TitleList[i]);
+                    $('#comic-chapter-'+i).text('Chapter ' + chapterIds[i]);
+                    $('#comic-author-'+i).text(AuthorList[i]);
                 }
                 else {
 
