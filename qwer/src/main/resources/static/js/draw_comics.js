@@ -313,13 +313,52 @@ $(document).ready(function(){
             });
         });
     });
+    // function getBase64Image(img){
+    //
+    //     let canvas = document.createElement("canvas");
+    //     canvas.width = img.width;
+    //     canvas.height = img.height;
+    //     let ctx = canvas.getContext("2d");
+    //     ctx.drawImage(img, 0, 0);
+    //     let dataURL = canvas.toDataURL("image/png");
+    //     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    // }
+
+    function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                callback(reader.result);
+            }
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
 
     $("#addImageButton").click(function () {
-        var imageUrl = $('#addImageFromURL').val();
-        fabric.Image.fromURL(imageUrl, function(oImg) {
-            oImg.scale(0.5).set('flipX', true);
-            canvas.add(oImg);
-        });
+
+        // var imageUrl = getBase64Image($('#addImageFromURL').val());
+        // var imageUrl = $('#addImageFromURL').val();
+        // console.log(imageUrl)
+        // fabric.Image.fromURL(imageUrl, function(oImg) {
+        //     oImg.scale(0.5).set('flipX', true);
+        //     canvas.add(oImg);
+        // });
+
+        toDataURL($('#addImageFromURL').val(), function(dataUrl) {
+            console.log('RESULT:', )
+            var imageUrl = dataUrl;
+            console.log(imageUrl)
+            fabric.Image.fromURL(imageUrl, function(oImg) {
+                oImg.scale(0.5).set('flipX', true);
+                canvas.add(oImg);
+            });
+        })
+
+
     });
 
     $("#new_page").click(function () {
@@ -490,23 +529,23 @@ $(document).ready(function(){
             }
         }
     });
-    document.getElementById('imgLoader').onchange = function handleImage(e) {
-        let reader = new FileReader();
-        reader.onload = function (event) { console.log('fdsf');
-            let imgObj = new Image();
-            imgObj.src = event.target.result;
-            imgObj.onload = function () {
-                // start fabricJS stuff
-                let image = new fabric.Image(imgObj);
-                // image.set({
-                //     padding: 10,
-                // });
-                canvas.add(image);
-            }
-
-        }
-        reader.readAsDataURL(e.target.files[0]);
-    }
+    // document.getElementById('imgLoader').onchange = function handleImage(e) {
+    //     let reader = new FileReader();
+    //     reader.onload = function (event) { console.log('fdsf');
+    //         let imgObj = new Image();
+    //         imgObj.src = event.target.result;
+    //         imgObj.onload = function () {
+    //             // start fabricJS stuff
+    //             let image = new fabric.Image(imgObj);
+    //             // image.set({
+    //             //     padding: 10,
+    //             // });
+    //             canvas.add(image);
+    //         }
+    //
+    //     }
+    //     reader.readAsDataURL(e.target.files[0]);
+    // }
 
     function getActiveStyle() {
         object = object || canvas.getActiveObject();
@@ -585,6 +624,169 @@ $(document).ready(function(){
 
 
     });
+
+    // let filters = ['grayscale', 'invert', 'remove-color', 'sepia', 'brownie',
+    //     'brightness', 'contrast', 'saturation', 'noise', 'vintage',
+    //     'pixelate', 'blur', 'sharpen', 'emboss', 'technicolor',
+    //     'polaroid', 'blend-color', 'gamma', 'kodachrome',
+    //     'blackwhite', 'blend-image', 'hue', 'resize'];
+
+    var webglBackend;
+    try {
+        webglBackend = new fabric.WebglFilterBackend();
+    } catch (e) {
+        console.log(e)
+    }
+    var canvas2dBackend = new fabric.Canvas2dFilterBackend()
+
+    fabric.filterBackend = canvas2dBackend;
+    let f_filter = fabric.Image.filters;
+    function applyFilter(index, filter) {
+        let obj = canvas.getActiveObject();
+        obj.filters[index] = filter;
+        obj.applyFilters();
+        canvas.renderAll();
+    }
+
+    function applyFilterValue(index, prop, value) {
+        var obj = canvas.getActiveObject();
+        if (obj.filters[index]) {
+            obj.filters[index][prop] = value;
+            obj.applyFilters();
+            canvas.renderAll();
+        }
+    }
+
+    $("#sepia").click(function () {
+        applyFilter(3, this.checked && new f_filter.Sepia());
+    });
+    $("#grayScale").click(function () {
+        applyFilter(0, this.checked && new f_filter.Grayscale());
+    });
+
+    $("#BlackWhite").click(function () {
+        applyFilter(19, this.checked && new f_filter.BlackWhite());
+    });
+    $("#invert").click(function () {
+        applyFilter(1, this.checked && new f_filter.Invert());
+    });
+    $("#Brownie").click(function () {
+        applyFilter(4, this.checked && new f_filter.Brownie());
+    });
+    $("#Vintage").click(function () {
+        applyFilter(9, this.checked && new f_filter.Vintage());
+    });
+    $("#Kodachrome").click(function () {
+        console.log("sepia")
+        applyFilter(18, this.checked && new f_filter.Kodachrome());
+    });
+    $("#Technicolor").click(function () {
+        console.log("sepia")
+        applyFilter(14, this.checked && new f_filter.Technicolor());
+    });
+    $("#Polaroid").click(function () {
+        applyFilter(15, this.checked && new f_filter.Polaroid());
+    });
+    $("#Brightness").click(function () {
+        console.log( parseFloat($('#brightnessValue').val()))
+        applyFilter(5, this.checked && new f_filter.Brightness({
+            brightness: parseFloat($('#brightnessValue').val())
+        }));
+    });
+    $('#brightnessValue').on('input',function() {
+        applyFilterValue(5, 'brightness', $('#brightnessValue').val());
+    });
+
+
+
+
+    function getFilter(index) {
+        let obj = canvas.getActiveObject();
+        return obj.filters[index];
+    }
+    $('#gamma').click(function () {
+        let v1 = parseFloat($('#gamma_red').val());
+        let v2 = parseFloat($('#gamma_green').val());
+        let v3 = parseFloat($('#gamma_blue').val());
+        applyFilter(17, this.checked && new f_filter.Gamma({
+            gamma: [v1, v2, v3]
+        }));
+    });
+    $('#gamma_red').on('input',function() {
+        let current = getFilter(17).gamma;
+        current[0] = parseFloat($('#gamma_red').val());
+        applyFilterValue(17, 'gamma', current);
+    });
+    $('#gamma_green').on('input',function() {
+        let current = getFilter(17).gamma;
+        current[1] = parseFloat($('#gamma_green').val());
+        applyFilterValue(17, 'gamma', current);
+    });
+    $('#gamma_blue').on('input',function() {
+        let current = getFilter(17).gamma;
+        current[2] = parseFloat($('#gamma_blue').val());
+        applyFilterValue(17, 'gamma', current);
+    });
+
+    $('#contrast').click(function () {
+        applyFilter(6, this.checked && new f_filter.Contrast({
+            contrast: parseFloat($('#contrastValue').val())
+        }));
+    });
+    $('#contrastValue').on('input', function() {
+        applyFilterValue(6, 'contrast', parseFloat($('#contrastValue').val()));
+    });
+
+    $('#saturation').click(function () {
+        applyFilter(7, this.checked && new f_filter.Saturation({
+            saturation: parseFloat($('#saturationValue').val())
+        }));
+    });
+    $('#saturationValue').on('input', function() {
+        applyFilterValue(7, 'saturation', parseFloat($('#saturationValue').val()));
+    });
+
+
+    $('#hue').click(function () {
+        applyFilter(21, this.checked && new f_filter.HueRotation({
+            rotation: $('#hueValue').val()
+        }));
+    });
+    $('#hueValue').on('input', function() {
+        applyFilterValue(21, 'rotation', $('#hueValue').val());
+    });
+
+
+    $('#noise').click(function () {
+        applyFilter(8, this.checked && new f_filter.Noise({
+            noise: parseInt($('#noiseValue').val(),10)
+        }));
+    });
+    $('#noiseValue').on('input', function() {
+        applyFilterValue(8, 'noise', parseInt($('#noiseValue').val(),10));
+    });
+
+    $('#pixelate').click(function () {
+        applyFilter(10, this.checked && new f_filter.Pixelate({
+            blocksize: parseInt($('#pixelateValue').val(),10)
+        }));
+    });
+    $('#pixelateValue').on('input', function() {
+        applyFilterValue(10, 'blocksize', parseInt($('#pixelateValue').val(),10));
+    });
+
+
+    $('#blur').click(function () {
+        applyFilter(11, this.checked && new f_filter.Blur({
+            value: parseFloat($('#blurValue').val(),10)
+        }));
+    });
+    $('#blurValue').on('input', function() {
+        applyFilterValue(11, 'blur', parseFloat($('#blurValue').val(),10 ));
+    });
+
+
+
 });
 
 //------------------------------- right tab bar--------------------------------

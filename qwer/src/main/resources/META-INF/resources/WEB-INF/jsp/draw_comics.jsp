@@ -297,7 +297,84 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="v-pills-cartoonize" role="tabpanel" aria-labelledby="v-pills-cartoonize-tab">
+                                <input type="checkbox" id="sepia">sepia</input>
+                                <label>
+                                    <span>grayScale</span>
+                                    <input type="checkbox" id="grayScale">
+                                </label>
+                                <label>
+                                    <span>invert</span>
+                                    <input type="checkbox" id="invert">
+                                </label>
+                                <label>
+                                    <span>Black/White</span>
+                                    <input type="checkbox" id="BlackWhite">
+                                </label>
+                                <label>
+                                    <span>Brownie</span>
+                                    <input type="checkbox" id="Brownie">
+                                </label>
+                                <label>
+                                    <span>Vintage</span>
+                                    <input type="checkbox" id="Vintage">
+                                </label>
+                                <label>
+                                    <span>Kodachrome</span>
+                                    <input type="checkbox" id="Kodachrome">
+                                </label>
+                                <label>
+                                    <span>Technicolor</span>
+                                    <input type="checkbox" id="Technicolor">
+                                </label>
+                                <label>
+                                    <span>Polaroid</span>
+                                    <input type="checkbox" id="Polaroid">
+                                </label>
+                                <label>
+                                    <span>Brightness</span>
+                                    <input type="checkbox" id="Brightness">
+                                    <input type="range" id="brightnessValue" value="0.1" min="-1" max="1" step="0.003921">
+                                </label>
+
+
+                                    <label><span>Gamma:</span> <input type="checkbox" id="gamma"></label>
+                                    <label>R : <input type="range" id="gamma_red" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                                    <label>G : <input type="range" id="gamma_green" value="1" min="0.2" max="2.2" step="0.003921"></label>
+                                    <label>B : <input type="range" id="gamma_blue" value="1" min="0.2" max="2.2" step="0.003921"></label>
+
+
+                                    <label>
+                                        <span>Contrast:</span>
+                                        <input type="checkbox" id="contrast">
+                                        <input type="range" id="contrastValue" value="0" min="-1" max="1" step="0.003921">
+                                    </label>
+                                    <label>
+                                        <span>Saturation:</span>
+                                        <input type="checkbox" id="saturation">
+                                        <input type="range" id="saturationValue" value="0" min="-1" max="1" step="0.003921">
+                                    </label>
+                                    <label>
+                                        <span>Hue </span>
+                                        <input type="checkbox" id="hue">
+                                        <input type="range" id="hueValue" value="0" min="-1" max="1" step="0.003921">
+                                    </label>
+                                    <label>
+                                        <span>Noise </span>
+                                        <input type="checkbox" id="noise">
+                                        <input type="range" id="noiseValue" value="100" min="0" max="1000">
+                                     </label>
+                                    <label>
+                                        <span>Pixelate</span>
+                                        <input type="checkbox" id="pixelate">
+                                        <input type="range" id="pixelateValue" value="4" min="2" max="20">
+                                    </label>
+
+                                    <label>
+                                        <span>Blur:</span>
+                                        <input type="checkbox" id="blur">
+                                        <input type="range" id="blurValue" value="0.1" min="0" max="1" step="0.01">
+                                    </label>
+
 
 
 
