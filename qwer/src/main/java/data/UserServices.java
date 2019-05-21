@@ -279,7 +279,7 @@ public class UserServices {
         return user.newNotifications.size();
     }
 
-    public ArrayList<String> getNewNotifications(String userID, int amount){
+    public ArrayList<String> getNewNotifications(String userID){
         Optional<User> optUser = userRepository.findById(userID);
 
         if(!optUser.isPresent()){
@@ -288,18 +288,21 @@ public class UserServices {
         }
         User user = optUser.get();
 
-        ArrayList<String> notifications;
-        if(amount < user.newNotifications.size()){
-            notifications = new ArrayList<>(user.newNotifications.subList(0, amount));
-            user.newNotifications = new ArrayList<>(user.newNotifications.subList(amount, user.newNotifications.size()));
-        }else{
-            notifications = new ArrayList<>(user.newNotifications);
-            user.newNotifications.clear();
-        }
-        user.oldNotifications.addAll(notifications);
-        userRepository.save(user);
+        return user.newNotifications;
+    }
 
-        return notifications;
+    public void readNotification(String userID, int index){
+        Optional<User> optUser = userRepository.findById(userID);
+
+        if(!optUser.isPresent()){
+            System.out.println("User doesn't exist.");
+            return;
+        }
+        User user = optUser.get();
+
+        user.newNotifications.remove(index);
+        userRepository.save(user);
+        return;
     }
 
     public ArrayList<String> getOldNotifications(String userID){
